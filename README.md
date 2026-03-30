@@ -33,7 +33,7 @@ A self-hosted, real-time RF surveillance and monitoring dashboard running on a R
 | LoRa Monitor | XIAO ESP32S3 MQTT / HTTP | ⏳ Pending |
 | Field Agent | NetHunter tacops-agent.py → ngrok | ⏳ Pending |
 | Spectrum Analyzer | RTL-SDR wideband sweep | Simulated |
-| AI Intel (TACINT) | Claude API with live sensor context | ● Ready |
+| AI Intel (TACINT) | Claude API via Puter.js with live sensor context | ● Ready |
 
 ---
 
