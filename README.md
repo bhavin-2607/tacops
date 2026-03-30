@@ -165,7 +165,7 @@ cd ~/tacops/backend && npm install
 
 # Configure environment
 cp .env.example .env
-nano .env  # add ANTHROPIC_API_KEY
+nano .env  # Removed ANTHROPIC_API_KEY
 ```
 
 ```bash
@@ -307,7 +307,7 @@ The plugin auto-discovers the Pi 5 via UDP beacon (port 5005, broadcast every 5s
 
 ---
 
-### Step 6 — ngrok Tunnel
+### Step 6 — ngrok Tunnel (W.I.P.)
 
 ```bash
 # Install
@@ -352,7 +352,7 @@ sudo systemctl start ngrok
 
 ---
 
-### Step 7 — NetHunter Field Agent (Mi A2)
+### Step 7 — NetHunter Field Agent (Mi A2)(W.I.P.)
 
 ```bash
 # Transfer to phone
@@ -372,7 +372,7 @@ Scans WiFi networks, BLE devices, probe requests, nmap hosts. Posts every 10 sec
 
 ---
 
-### Step 8 — XIAO ESP32S3 Wio SX1262 (LoRa)
+### Step 8 — XIAO ESP32S3 Wio SX1262 (LoRa)(W.I.P.)
 
 ```
 Board Manager URL:
