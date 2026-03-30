@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TacticalOps Dashboard</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      background: #050810;
+      color: #b8ccd8;
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      height: 100vh
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0b1018
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #182028
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .15
+      }
+    }
+
+    .nav-btn {
+      width: 100%;
+      padding: 12px 4px;
+      border: none;
+      border-left: 2px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: #4a6070;
+      font-family: 'Share Tech Mono', monospace;
+      transition: all .15s
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 229, 160, .08);
+      color: #00e5a0
+    }
+
+    .nav-btn.on {
+      background: rgba(0, 229, 160, .13);
+      color: #00e5a0;
+      border-left: 2px solid #00e5a0
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    th {
+      text-align: left;
+      padding: 4px 6px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #4a6070;
+      border-bottom: 1px solid rgba(0, 229, 160, .12);
+      white-space: nowrap;
+      font-size: 10px
+    }
+
+    td {
+      padding: 5px 6px;
+      border-bottom: 1px solid rgba(0, 229, 160, .05);
+      font-size: 11px
+    }
+
+    input {
+      background: #111820;
+      border: 1px solid rgba(0, 229, 160, .35);
+      color: #b8ccd8;
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      outline: none;
+      width: 100%
+    }
+
+    button.send {
+      background: #00e5a0;
+      color: #050810;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Orbitron', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+
+    const T = {
+      bg0: "#050810", bg1: "#0b1018", bg2: "#111820", bg3: "#182028",
+      acc: "#00e5a0", acc2: "#38b2ff", warn: "#ffaa00", danger: "#ff4444",
+      text: "#b8ccd8", dim: "#4a6070",
+      border: "rgba(0,229,160,0.12)", borderAcc: "rgba(0,229,160,0.35)",
+      mono: "'Share Tech Mono',monospace", display: "'Orbitron',monospace",
+    };
+
+    /* ── shared ──────────────────────────────────────────── */
+    const Dot = ({ c = T.acc, pulse }) => <span style={{ display: "inline-block", width: 7, height: 7, borderRadius: "50%", background: c, animation: pulse ? "pulse 2s infinite" : "none" }} />;
+
+    const SigBar = ({ rssi, min = -100, max = -30 }) => {
+      const pct = Math.max(0, Math.min(100, ((rssi - min) / (max - min)) * 100));
+      const c = pct > 60 ? T.acc : pct > 30 ? T.warn : T.danger;
+      return <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+        <div style={{ width: 46, height: 3, background: T.bg3, borderRadius: 2, overflow: "hidden" }}>
+          <div style={{ width: `${pct}%`, height: "100%", background: c, transition: "width .4s" }} />
+        </div>
+        <span style={{ fontSize: 10, color: T.dim, minWidth: 34 }}>{rssi}dB</span>
+      </div>;
+    };
+
+    const PanelHdr = ({ title, sub, live }) => <div style={{ padding: "6px 12px", borderBottom: `1px solid ${T.border}`, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <Dot pulse />
+        <span style={{ fontFamily: T.display, fontSize: 11, letterSpacing: 2, color: T.acc }}>{title}</span>
+        {sub && <span style={{ fontSize: 10, color: T.dim }}>— {sub}</span>}
+      </div>
+      <span style={{ fontSize: 10, letterSpacing: 1, color: live ? T.acc : T.dim }}>{live ? "● LIVE" : "○ SIM"}</span>
+    </div>;
+
+    /* ── radar canvas ────────────────────────────────────── */
+    function Radar({ flights }) {
+      const ref = useRef(); const ang = useRef(0); const raf = useRef();
+      useEffect(() => {
+        const cv = ref.current; if (!cv) return;
+        const ctx = cv.getContext("2d"), S = cv.width, cx = S / 2, cy = S / 2, R = S / 2 - 8;
+        function draw() {
+          ctx.clearRect(0, 0, S, S);
+          ctx.fillStyle = T.bg1; ctx.fillRect(0, 0, S, S);
+          [.25, .5, .75, 1].forEach(rr => {
+            ctx.beginPath(); ctx.arc(cx, cy, R * rr, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgba(0,229,160,0.1)"; ctx.lineWidth = 1; ctx.stroke();
+          });
+          ctx.strokeStyle = "rgba(0,229,160,0.1)";
+          ctx.beginPath(); ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy + R); ctx.stroke();
+          for (let i = 0; i < 40; i++) {
+            const a = ang.current - (i / 40) * (Math.PI / 2);
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, a, a + 0.05); ctx.closePath();
+            ctx.fillStyle = `rgba(0,229,160,${(1 - i / 40) * .22})`; ctx.fill();
+          }
+          ctx.beginPath(); ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + R * Math.cos(ang.current), cy + R * Math.sin(ang.current));
+          ctx.strokeStyle = T.acc; ctx.lineWidth = 1.5; ctx.stroke();
+          (flights || []).forEach(f => {
+            const nr = Math.min(1, (f.dist || 50) / 250), hr = ((f.hdg || 0) - 90) * Math.PI / 180;
+            const px = cx + R * nr * Math.cos(hr), py = cy + R * nr * Math.sin(hr);
+            ctx.beginPath(); ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+            ctx.fillStyle = T.acc2; ctx.fill();
+            ctx.font = `8px ${T.mono}`; ctx.fillStyle = T.acc2;
+            ctx.fillText(f.callsign || f.id || "", px + 4, py - 3);
+          });
+          ang.current += 0.018;
+          raf.current = requestAnimationFrame(draw);
+        }
+        draw();
+        return () => cancelAnimationFrame(raf.current);
+      }, [flights]);
+      return <canvas ref={ref} width={196} height={196} style={{ display: "block" }} />;
+    }
+
+    /* ── panels ──────────────────────────────────────────── */
+    function AdsbPanel({ data, live }) {
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="ADS-B FLIGHTS" sub="readsb → port 30003" live={live} />
+        <table style={{ marginTop: 6 }}>
+          <thead><tr>{["CALLSIGN", "ALT ft", "SPD kt", "HDG", "DIST km", "SQUAWK", "RSSI"].map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{(data || []).map((f, i) => <tr key={i}>
+            <td style={{ color: T.acc2 }}>{f.callsign || f.id}</td>
+            <td>{(f.alt || 0).toLocaleString()}</td>
+            <td>{f.spd || 0}</td>
+            <td>{f.hdg || 0}°</td>
+            <td>{f.dist || 0}</td>
+            <td style={{ color: (f.squawk || 0) >= 7500 ? T.danger : T.dim }}>{f.squawk || 0}</td>
+            <td><SigBar rssi={f.rssi || -70} /></td>
+          </tr>)}</tbody>
+        </table>
+        {(!data || data.length === 0) && <div style={{ padding: 20, textAlign: "center", color: T.dim, fontSize: 11 }}>Waiting for aircraft...</div>}
+      </div>;
+    }
+
+    function WifiPanel({ data, pwna, live }) {
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="WIFI INTELLIGENCE" sub="ESP32 + Pwnagotchi" live={live} />
+        <div style={{ margin: "8px 0", padding: "8px 12px", background: "rgba(255,170,0,.07)", border: `1px solid rgba(255,170,0,.2)`, borderRadius: 4, display: "flex", gap: 20, flexWrap: "wrap", fontSize: 11 }}>
+          <span style={{ color: T.warn, letterSpacing: 1 }}>PWNAGOTCHI</span>
+          <span style={{ color: T.dim }}>mood: <span style={{ color: T.acc }}>{pwna.mood || "unknown"}</span></span>
+          <span style={{ color: T.dim }}>captures: <span style={{ color: T.acc }}>{pwna.captures || 0}</span></span>
+          <span style={{ color: T.dim }}>epoch: <span style={{ color: T.acc }}>{pwna.epoch || 0}</span></span>
+          <span style={{ color: pwna.live ? T.acc : T.dim, fontSize: 10 }}>{pwna.live ? "● LIVE" : "○ SIM"}</span>
+        </div>
+        <table>
+          <thead><tr>{["SSID", "BSSID", "CH", "BAND", "ENC", "CLI", "SIG"].map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{(data || []).map((n, i) => <tr key={i}>
+            <td style={{ color: T.acc, maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{n.ssid}</td>
+            <td style={{ color: T.dim, fontSize: 10 }}>{n.bssid}</td>
+            <td>{n.ch}</td>
+            <td style={{ color: n.band === "5GHz" ? T.acc2 : T.warn, fontSize: 10 }}>{n.band}</td>
+            <td style={{ color: n.enc === "Open" ? T.danger : n.enc?.includes("✓") ? T.acc2 : T.acc }}>{n.enc}</td>
+            <td style={{ color: (n.cli || 0) > 7 ? T.warn : T.text }}>{n.cli || 0}</td>
+            <td><SigBar rssi={n.rssi || -70} /></td>
+          </tr>)}</tbody>
+        </table>
+        {(!data || data.length === 0) && <div style={{ padding: 20, textAlign: "center", color: T.dim, fontSize: 11 }}>Waiting for networks...</div>}
+      </div>;
+    }
+
+    function BlePanel({ data, live }) {
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="BLE DEVICES" sub="ESP32 ×3" live={live} />
+        <table style={{ marginTop: 6 }}>
+          <thead><tr>{["NAME", "MAC", "TYPE", "RSSI", "SEEN"].map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{(data || []).map((d, i) => <tr key={i}>
+            <td style={{ color: T.acc2 }}>{d.name}</td>
+            <td style={{ color: T.dim, fontSize: 10 }}>{d.mac}</td>
+            <td style={{ color: T.dim }}>{d.type}</td>
+            <td><SigBar rssi={d.rssi || -80} /></td>
+            <td style={{ color: T.dim, fontSize: 10 }}>{new Date(d.seen).toLocaleTimeString()}</td>
+          </tr>)}</tbody>
+        </table>
+      </div>;
+    }
+
+    function Rf433Panel({ data, live }) {
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="433 MHz RF" sub="CC1101" live={live} />
+        <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+          {(data || []).map((s, i) => <div key={i} style={{ padding: "8px 12px", background: T.bg2, borderRadius: 4, borderLeft: `3px solid ${T.warn}`, fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+              <span style={{ color: T.warn, letterSpacing: 1 }}>{s.proto}</span>
+              <span style={{ color: T.dim, fontSize: 10 }}>{new Date(s.ts).toLocaleTimeString()}</span>
+            </div>
+            <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+              <span style={{ color: T.dim }}>freq: <span style={{ color: T.text }}>{s.freq} MHz</span></span>
+              <span style={{ color: T.dim }}>data: <span style={{ color: T.acc }}>{s.data}</span></span>
+              <span style={{ color: T.dim }}>rssi: <span style={{ color: T.text }}>{s.rssi} dBm</span></span>
+            </div>
+          </div>)}
+          {(!data || data.length === 0) && <div style={{ padding: 20, textAlign: "center", color: T.dim }}>Listening on 433 MHz...</div>}
+        </div>
+      </div>;
+    }
+
+    function Nrf24Panel({ data, live }) {
+      const channels = data || [];
+      const maxV = Math.max(...channels.map(c => c.v), 1);
+      return <div style={{ padding: 12 }}>
+        <PanelHdr title="2.4 GHz SPECTRUM" sub="nRF24L01 ×4" live={live} />
+        <div style={{ fontSize: 10, color: T.dim, letterSpacing: 1, margin: "10px 0 6px" }}>126-CHANNEL ACTIVITY MAP</div>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 1, height: 100, background: T.bg2, padding: "6px 8px", borderRadius: 4, border: `1px solid ${T.border}` }}>
+          {channels.map(c => <div key={c.ch} style={{ flex: 1, minWidth: 1, height: `${Math.max(4, (c.v / maxV) * 100)}%`, background: c.v > 50 ? T.danger : c.v > 15 ? T.acc : "rgba(0,229,160,.2)", borderRadius: "1px 1px 0 0", transition: "height .3s" }} />)}
+        </div>
+        <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 10, color: T.dim }}>
+          <span><span style={{ color: T.acc }}>■</span> Active</span>
+          <span><span style={{ color: T.danger }}>■</span> High activity — possible drone/keyboard</span>
+        </div>
+        <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+          {[
+            ["Peak CH", (channels.reduce((a, c) => c.v > a.v ? c : a, channels[0] || { ch: 0, v: 0 })).ch],
+            ["Active CH", channels.filter(c => c.v > 15).length],
+            ["Max Power", maxV + " dBm"],
+          ].map(([l, v]) => <div key={l} style={{ background: T.bg2, borderRadius: 4, padding: "6px 8px", border: `1px solid ${T.border}` }}>
+            <div style={{ fontFamily: T.display, fontSize: 16, color: T.acc2 }}>{v}</div>
+            <div style={{ fontSize: 9, color: T.dim, letterSpacing: 1 }}>{l}</div>
+          </div>)}
+        </div>
+      </div>;
+    }
+
+    function SpectrumPanel({ data }) {
+      const bins = data || [];
+      const maxP = Math.max(...bins.map(b => b.p), 1);
+      return <div style={{ padding: 12 }}>
+        <PanelHdr title="SPECTRUM ANALYZER" sub="RTL-SDR v4 wideband" live={false} />
+        <div style={{ fontSize: 10, color: T.dim, letterSpacing: 1, margin: "10px 0 6px" }}>88–177 MHz SWEEP</div>
+        {/* Y axis labels */}
+        <div style={{ display: "flex", gap: 0 }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", paddingRight: 4, height: 140, fontSize: 8, color: T.dim, textAlign: "right", flexShrink: 0 }}>
+            <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+          </div>
+          {/* Bars */}
+          <div style={{ flex: 1, display: "flex", alignItems: "flex-end", gap: "1px", height: 140, background: T.bg2, padding: "4px 4px 0", borderRadius: 4, border: `1px solid ${T.border}`, overflow: "hidden" }}>
+            {bins.map((b, i) => {
+              const h = Math.max(2, (b.p / maxP) * 130);
+              const c = b.p > 80 ? T.danger : b.p > 50 ? T.warn : T.acc;
+              return <div key={i} style={{ flex: 1, minWidth: 1, height: h, background: c, opacity: .85, borderRadius: "1px 1px 0 0" }} />;
+            })}
+          </div>
+        </div>
+        {/* X axis labels */}
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3, paddingLeft: 28, fontSize: 8, color: T.dim }}>
+          {["88", "100", "115", "130", "145", "160", "177"].map(f => <span key={f}>{f}</span>)}
+        </div>
+        <div style={{ marginTop: 10, fontSize: 10, color: T.dim, display: "flex", gap: 20 }}>
+          <span>Peak: <span style={{ color: T.danger }}>107 MHz</span> (FM)</span>
+          <span>Burst: <span style={{ color: T.warn }}>162 MHz</span></span>
+        </div>
+      </div>;
+    }
+
+    function LoraPanel({ data, live }) {
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="LORA MONITOR" sub="XIAO SX1262 — 865 MHz" live={live} />
+        <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+          {(data || []).map((p, i) => <div key={i} style={{ padding: "8px 12px", background: T.bg2, borderRadius: 4, borderLeft: `3px solid ${p.meshtastic ? T.acc2 : T.acc}`, fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+              <span style={{ color: p.meshtastic ? T.acc2 : T.acc, letterSpacing: 1 }}>{p.meshtastic ? "MESHTASTIC" : "LORA PKT"} — {p.node_id}</span>
+              <span style={{ color: T.dim, fontSize: 10 }}>{new Date(p.ts).toLocaleTimeString()}</span>
+            </div>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <span style={{ color: T.dim }}>freq: <span style={{ color: T.text }}>{p.freq} MHz</span></span>
+              <span style={{ color: T.dim }}>rssi: <span style={{ color: T.text }}>{p.rssi} dBm</span></span>
+              <span style={{ color: T.dim }}>snr: <span style={{ color: T.text }}>{p.snr} dB</span></span>
+              <span style={{ color: T.dim }}>len: <span style={{ color: T.text }}>{p.len}B</span></span>
+              <span style={{ color: T.dim }}>data: <span style={{ color: T.warn }}>{p.data}</span></span>
+            </div>
+          </div>)}
+          {(!data || data.length === 0) && <div style={{ padding: 20, textAlign: "center", color: T.dim, fontSize: 11 }}>
+            <div style={{ marginBottom: 8 }}>Listening on 865.0 MHz IN865</div>
+            <div style={{ fontSize: 10, color: T.dim }}>XIAO ESP32S3 + Wio SX1262 — pending</div>
+          </div>}
+        </div>
+      </div>;
+    }
+
+    function NetHunterPanel({ data, live }) {
+      const hosts = (data?.hosts) || [];
+      return <div style={{ padding: 10, overflow: "auto" }}>
+        <PanelHdr title="FIELD AGENT" sub="Mi A2 NetHunter" live={live} />
+        <div style={{ margin: "8px 0", padding: "8px 12px", background: "rgba(56,178,255,.07)", border: `1px solid rgba(56,178,255,.2)`, borderRadius: 4, display: "flex", gap: 20, flexWrap: "wrap", fontSize: 11 }}>
+          <span style={{ color: T.acc2, letterSpacing: 1 }}>NETHUNTER</span>
+          <span style={{ color: T.dim }}>device: <span style={{ color: T.acc2 }}>{data?.device || "offline"}</span></span>
+          <span style={{ color: T.dim }}>hosts: <span style={{ color: T.acc2 }}>{hosts.length}</span></span>
+          {data?.gps && <span style={{ color: T.dim }}>gps: <span style={{ color: T.acc }}>{data.gps.lat?.toFixed(4)},{data.gps.lon?.toFixed(4)}</span></span>}
+          <span style={{ color: live ? T.acc2 : T.dim, fontSize: 10 }}>{live ? "● LIVE" : "○ OFFLINE"}</span>
+        </div>
+        <div style={{ fontSize: 10, color: T.dim, letterSpacing: 2, margin: "10px 0 6px" }}>DISCOVERED HOSTS — NMAP</div>
+        {hosts.length === 0 && <div style={{ padding: 12, textAlign: "center", color: T.dim, fontSize: 11 }}>No hosts discovered yet</div>}
+        <table>
+          <thead><tr>{["IP ADDRESS", "HOSTNAME", "FIRST SEEN"].map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{hosts.map((h, i) => <tr key={i}>
+            <td style={{ color: T.acc2, fontFamily: T.mono }}>{h.ip}</td>
+            <td style={{ color: T.dim }}>{h.name || "—"}</td>
+            <td style={{ color: T.dim, fontSize: 10 }}>{new Date(h.ts || Date.now()).toLocaleTimeString()}</td>
+          </tr>)}</tbody>
+        </table>
+      </div>;
+    }
+
+    function AiPanel({ state }) {
+      const [chat, setChat] = useState([]);
+      const [inp, setInp] = useState("");
+      const [loading, setLoading] = useState(false);
+      const bottomRef = useRef();
+
+      useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, [chat]);
+
+      const send = async (msg) => {
+        if (!msg.trim() || loading) return;
+        setInp(""); setLoading(true);
+
+        const next = [...chat, { role: "user", content: msg }];
+        setChat(next);
+
+        try {
+          const ctx = `You are TACINT...`;
+
+          const res = await fetch("https://api.anthropic.com/v1/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: "claude-sonnet-4-20250514",
+              max_tokens: 200,
+              system: ctx,
+              messages: next
+            })
+          });
+
+          const d = await res.json();
+
+          setChat([...next, {
+            role: "assistant",
+            content: d.content?.[0]?.text || "No response."
+          }]);
+        } catch (e) {
+          setChat([...next, {
+            role: "assistant",
+            content: "API error — check connection."
+          }]);
+        }
+
+        setLoading(false);
+      };
+
+      const QUICK = [
+        "Analyze current threat level",
+        "Any anomalies detected?",
+        "Summarize all active sensors",
+        "Which networks are suspicious?"
+      ];
+
+      return (
+        <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+          <PanelHdr title="AI INTEL" sub="Claude API" />
+
+          {chat.length === 0 && (
+            <div style={{ padding: 14, display: "flex", flexDirection: "column", gap: 6 }}>
+              <div style={{ fontSize: 10, color: T.dim, letterSpacing: 2, marginBottom: 4 }}>
+                QUICK QUERIES
+              </div>
+              {QUICK.map(q => (
+                <button
+                  key={q}
+                  onClick={() => send(q)}
+                  style={{
+                    textAlign: "left",
+                    background: T.bg2,
+                    border: `1px solid ${T.border}`,
+                    color: T.acc,
+                    padding: "8px 12px",
+                    borderRadius: 4,
+                    cursor: "pointer",
+                    fontFamily: T.mono,
+                    fontSize: 11,
+                    letterSpacing: .5
+                  }}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div style={{ flex: 1, overflow: "auto", padding: "8px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
+            {chat.map((m, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: "7px 10px",
+                  borderRadius: 4,
+                  fontSize: 11,
+                  lineHeight: 1.6,
+                  background: m.role === "user" ? T.bg3 : "rgba(0,229,160,.06)",
+                  borderLeft: `2px solid ${m.role === "user" ? T.dim : T.acc}`,
+                  color: m.role === "user" ? T.dim : T.text
+                }}
+              >
+                {m.role === "assistant" && (
+                  <span style={{ color: T.acc, marginRight: 6 }}>TACINT›</span>
+                )}
+                {m.content}
+              </div>
+            ))}
+
+            {loading && (
+              <div style={{ color: T.acc, fontSize: 11, padding: "7px 10px", animation: "blink 1s infinite" }}>
+                ANALYZING SENSOR DATA...
+              </div>
+            )}
+
+            <div ref={bottomRef} />
+          </div>
+
+          <div style={{ padding: "8px 12px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 6 }}>
+            <input
+              value={inp}
+              onChange={e => setInp(e.target.value)}
+              onKeyDown={e => e.key === "Enter" && send(inp)}
+              placeholder="Query tactical AI..."
+            />
+            <button className="send" onClick={() => send(inp)} disabled={loading}>
+              TX
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    //   const [chat,setChat]=useState([]);
+    //   const [inp,setInp]=useState("");
+    //   const [loading,setLoading]=useState(false);
+    //   const bottomRef=useRef();
+    //   useEffect(()=>{bottomRef.current?.scrollIntoView({behavior:"smooth"});},[chat]);
+
+    //   const send=async(msg)=>{
+    //     if(!msg.trim()||loading)return;
+    //     setInp("");setLoading(true);
+    //     const next=[...chat,{role:"user",content:msg}];
+    //     setChat(next);
+    //     try{
+    //       const ctx=`You are TACINT — a tactical intelligence AI embedded in a real-time surveillance dashboard running on a Raspberry Pi 5 in Ahmedabad, India.
+    // Current sensor state:
+    // - ADS-B: ${(state.adsb?.data||[]).length} aircraft tracked. Live feed: ${state.adsb?.live}
+    // - WiFi: ${(state.wifi?.data||[]).length} networks. Open: ${(state.wifi?.data||[]).filter(n=>n.enc==="Open").length}. Live: ${state.wifi?.live}
+    // - BLE: ${(state.ble?.data||[]).length} devices. Live: ${state.ble?.live}
+    // - 433MHz signals: ${(state.rf433?.data||[]).length}. Live: ${state.rf433?.live}
+    // - Pwnagotchi: captures=${state.pwnagotchi?.captures||0} mood=${state.pwnagotchi?.mood||"unknown"} epoch=${state.pwnagotchi?.epoch||0} live=${state.pwnagotchi?.live}
+    // Respond in brief, precise tactical style. Max 80 words. Reference specific data when available.`;
+    //       const res=await fetch("https://api.anthropic.com/v1/messages",{
+    //         method:"POST",headers:{"Content-Type":"application/json"},
+    //         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:200,system:ctx,messages:next})
+    //       });
+    //       const d=await res.json();
+    //       setChat([...next,{role:"assistant",content:d.content?.[0]?.text||"No response."}]);
+    //     }catch(e){
+    //       setChat([...next,{role:"assistant",content:"API error — check connection."}]);
+    //     }
+    //     setLoading(false);
+    //   };
+
+    //   const QUICK=["Analyze current threat level","Any anomalies detected?","Summarize all active sensors","Which networks are suspicious?"];
+    //   return <div style={{display:"flex",flexDirection:"column",height:"100%"}}>
+    //     <PanelHdr title="AI INTEL" sub="Claude API"/>
+    //     {chat.length===0&&<div style={{padding:14,display:"flex",flexDirection:"column",gap:6}}>
+    //       <div style={{fontSize:10,color:T.dim,letterSpacing:2,marginBottom:4}}>QUICK QUERIES</div>
+    //       {QUICK.map(q=><button key={q} onClick={()=>send(q)} style={{textAlign:"left",background:T.bg2,border:`1px solid ${T.border}`,color:T.acc,padding:"8px 12px",borderRadius:4,cursor:"pointer",fontFamily:T.mono,fontSize:11,letterSpacing:.5}}>{q}</button>)}
+    //     </div>}
+    //     <div style={{flex:1,overflow:"auto",padding:"8px 12px",display:"flex",flexDirection:"column",gap:6}}>
+    //       {chat.map((m,i)=><div key={i} style={{padding:"7px 10px",borderRadius:4,fontSize:11,lineHeight:1.6,background:m.role==="user"?T.bg3:"rgba(0,229,160,.06)",borderLeft:`2px solid ${m.role==="user"?T.dim:T.acc}`,color:m.role==="user"?T.dim:T.text}}>
+    //         {m.role==="assistant"&&<span style={{color:T.acc,marginRight:6}}>TACINT›</span>}{m.content}
+    //       </div>)}
+    //       {loading&&<div style={{color:T.acc,fontSize:11,padding:"7px 10px",animation:"blink 1s infinite"}}>ANALYZING SENSOR DATA...</div>}
+    //       <div ref={bottomRef}/>
+    //     </div>
+    //     <div style={{padding:"8px 12px",borderTop:`1px solid ${T.border}`,display:"flex",gap:6,flexShrink:0}}>
+    //       <input value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>e.key==="Enter"&&send(inp)} placeholder="Query tactical AI..."/>
+    //       <button className="send" onClick={()=>send(inp)} disabled={loading}>TX</button>
+    //     </div>
+    //   </div>;
+    // }
+
+    /* ── nav ─────────────────────────────────────────────── */
+    const NAV = [
+      { id: "adsb", label: "ADS-B", icon: "✈", sub: "RTL-SDR v4" },
+      { id: "wifi", label: "WiFi", icon: "▦", sub: "ESP32+Pwna" },
+      { id: "ble", label: "BLE", icon: "◈", sub: "ESP32 ×3" },
+      { id: "rf433", label: "433MHz", icon: "◎", sub: "CC1101" },
+      { id: "nrf24", label: "2.4GHz", icon: "⚡", sub: "nRF24 ×4" },
+      { id: "lora", label: "LoRa", icon: "◬", sub: "XIAO SX1262" },
+      { id: "nethunter", label: "Field", icon: "◍", sub: "NetHunter" },
+      { id: "spectrum", label: "Spectrum", icon: "∿", sub: "RTL-SDR v4" },
+      { id: "ai", label: "AI Intel", icon: "◉", sub: "Claude" },
+    ];
+
+    /* ── sim data (used when hardware offline) ───────────── */
+    const r = (a, b) => Math.floor(a + Math.random() * (b - a));
+    const genSpectrum = () => Array.from({ length: 60 }, (_, i) => ({ f: (88 + i * 1.5).toFixed(0), p: r(5, 25) + (i > 10 && i < 15 ? 65 : 0) + (i > 35 && i < 42 ? 80 : 0) }));
+
+    /* ── app ─────────────────────────────────────────────── */
+    function App() {
+      const [panel, setPanel] = useState("adsb");
+      const [time, setTime] = useState(new Date());
+      const [connected, setConnected] = useState(false);
+      const [spectrum, setSpectrum] = useState(() => genSpectrum());
+      const [state, setState] = useState({
+        adsb: { data: [], live: false },
+        wifi: { data: [], live: false },
+        ble: { data: [], live: false },
+        rf433: { data: [], live: false },
+        nrf24: { data: Array.from({ length: 126 }, (_, ch) => ({ ch, v: 0 })), live: false },
+        lora: { data: [], live: false },
+        nethunter: { hosts: [], live: false },
+        pwnagotchi: { captures: 0, mood: "unknown", epoch: 0, live: false },
+        alerts: [],
+      });
+      const [alerts, setAlerts] = useState([]);
+      const wsRef = useRef();
+
+      useEffect(() => { const t = setInterval(() => setTime(new Date()), 1000); return () => clearInterval(t); }, []);
+      useEffect(() => { const t = setInterval(() => setSpectrum(genSpectrum()), 3000); return () => clearInterval(t); }, []);
+
+      useEffect(() => {
+        function connect() {
+          const ws = new WebSocket(`ws://${location.host}`);
+          wsRef.current = ws;
+          ws.onopen = () => setConnected(true);
+          ws.onclose = () => { setConnected(false); setTimeout(connect, 3000); };
+          ws.onmessage = e => {
+            try {
+              const msg = JSON.parse(e.data);
+              if (msg.type === "init") {
+                setState(msg.payload);
+                if (msg.payload.alerts) setAlerts(msg.payload.alerts);
+              } else if (msg.type === "alert") {
+                setAlerts(p => [msg.payload, ...p].slice(0, 30));
+              } else if (msg.type === "pwnagotchi") {
+                setState(p => ({ ...p, pwnagotchi: { ...msg.payload, live: true } }));
+              } else if (msg.type === "lora") {
+                setState(p => ({ ...p, lora: { data: msg.payload, live: true } }));
+              } else if (msg.type === "nethunter") {
+                setState(p => ({ ...p, nethunter: { ...msg.payload, live: true } }));
+              } else if (["adsb", "wifi", "ble", "rf433", "nrf24"].includes(msg.type)) {
+                setState(p => ({ ...p, [msg.type]: { data: Array.isArray(msg.payload) ? msg.payload : (p[msg.type]?.data || []), live: true } }));
+              }
+            } catch (err) { }
+          };
+        }
+        connect();
+        return () => wsRef.current?.close();
+      }, []);
+
+      const anyLive = state.adsb?.live || state.wifi?.live || state.ble?.live || state.pwnagotchi?.live;
+      const flights = state.adsb?.data || [];
+      const active = NAV.find(n => n.id === panel);
+
+      const content = () => {
+        switch (panel) {
+          case "adsb": return <AdsbPanel data={flights} live={state.adsb?.live} />;
+          case "wifi": return <WifiPanel data={state.wifi?.data} pwna={state.pwnagotchi || {}} live={state.wifi?.live} />;
+          case "ble": return <BlePanel data={state.ble?.data} live={state.ble?.live} />;
+          case "rf433": return <Rf433Panel data={state.rf433?.data} live={state.rf433?.live} />;
+          case "nrf24": return <Nrf24Panel data={state.nrf24?.data} live={state.nrf24?.live} />;
+          case "lora": return <LoraPanel data={state.lora?.data} live={state.lora?.live} />;
+          case "nethunter": return <NetHunterPanel data={state.nethunter} live={state.nethunter?.live} />;
+          case "spectrum": return <SpectrumPanel data={spectrum} />;
+          case "ai": return <AiPanel state={state} />;
+        }
+      };
+
+      return <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: T.bg0, fontFamily: T.mono, color: T.text }}>
+
+        {/* TOP BAR */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", height: 44, background: T.bg1, borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ fontFamily: T.display, fontSize: 15, letterSpacing: 4, fontWeight: 900, color: T.acc }}>TACTICAL OPS</span>
+            <span style={{ width: 1, height: 18, background: T.border, display: "inline-block" }} />
+            <span style={{ fontSize: 9, color: T.dim, letterSpacing: 2 }}>rfConn // Pi 5 // Ahmedabad</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {[["RTL-SDR", state.adsb?.live, T.acc], ["PWNA", state.pwnagotchi?.live, T.acc], ["ESP32", state.wifi?.live, T.acc2], ["CC1101", state.rf433?.live, T.warn], ["XIAO", state.lora?.live, T.acc2], ["HUNTER", state.nethunter?.live, T.danger]].map(([l, live, c]) => (
+              <div key={l} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 9, letterSpacing: 1 }}>
+                <Dot c={live ? c : T.dim} pulse={live} /><span style={{ color: live ? c : T.dim }}>{l}</span>
+              </div>
+            ))}
+            <span style={{ width: 1, height: 18, background: T.border, display: "inline-block" }} />
+            <span style={{ fontSize: 9, color: connected ? T.acc : T.danger, letterSpacing: 1 }}>{connected ? "● WS" : "○ DC"}</span>
+            <span style={{ fontFamily: T.display, fontSize: 12, color: T.acc, letterSpacing: 2 }}>{time.toTimeString().slice(0, 8)}</span>
+          </div>
+        </div>
+
+        {/* BODY */}
+        <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+
+          {/* LEFT NAV */}
+          <div style={{ width: 70, background: T.bg1, borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", padding: "6px 0", gap: 2, flexShrink: 0 }}>
+            {NAV.map(n => <button key={n.id} className={`nav-btn${panel === n.id ? " on" : ""}`} onClick={() => setPanel(n.id)} title={`${n.label} — ${n.sub}`}>
+              <span style={{ fontSize: 16 }}>{n.icon}</span>
+              <span style={{ fontSize: 8, letterSpacing: .5 }}>{n.label}</span>
+            </button>)}
+          </div>
+
+          {/* MAIN PANEL */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+            <div style={{ padding: "6px 12px", borderBottom: `1px solid ${T.border}`, background: T.bg2, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <Dot pulse />
+                <span style={{ fontFamily: T.display, fontSize: 11, letterSpacing: 2, color: T.acc }}>{active?.label?.toUpperCase()} MODULE</span>
+                <span style={{ fontSize: 10, color: T.dim }}>— {active?.sub}</span>
+              </div>
+              <span style={{ fontSize: 10, color: T.dim, letterSpacing: 1 }}>● LIVE FEED</span>
+            </div>
+            <div style={{ flex: 1, overflow: "auto" }}>{content()}</div>
+          </div>
+
+          {/* RIGHT SIDEBAR */}
+          <div style={{ width: 218, background: T.bg1, borderLeft: `1px solid ${T.border}`, display: "flex", flexDirection: "column", overflow: "hidden", flexShrink: 0 }}>
+
+            {/* Radar */}
+            <div style={{ padding: "8px 8px 4px", borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+              <div style={{ fontFamily: T.display, fontSize: 9, letterSpacing: 2, color: T.dim, marginBottom: 4 }}>RADAR — 250 KM</div>
+              <Radar flights={flights} />
+            </div>
+
+            {/* Stats grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+              {[
+                ["Aircraft", (state.adsb?.data || []).length, T.acc2],
+                ["Networks", (state.wifi?.data || []).length, T.acc],
+                ["BLE Devs", (state.ble?.data || []).length, T.acc],
+                ["RF Sigs", (state.rf433?.data || []).length, T.warn],
+              ].map(([l, v, c]) => <div key={l} style={{ padding: "7px 10px", background: T.bg2, textAlign: "center" }}>
+                <div style={{ fontFamily: T.display, fontSize: 18, color: c, fontWeight: 700, lineHeight: 1 }}>{v}</div>
+                <div style={{ fontSize: 8, color: T.dim, letterSpacing: 1, marginTop: 2 }}>{l.toUpperCase()}</div>
+              </div>)}
+            </div>
+
+            {/* Alert feed */}
+            <div style={{ flex: 1, overflow: "auto" }}>
+              <div style={{ padding: "5px 10px", fontSize: 9, color: T.dim, letterSpacing: 2, borderBottom: `1px solid ${T.border}`, background: T.bg2, fontFamily: T.display, flexShrink: 0 }}>ALERT FEED</div>
+              {alerts.length === 0 && <div style={{ padding: 14, fontSize: 10, color: T.dim, textAlign: "center" }}>Monitoring all channels...</div>}
+              {alerts.map((a, i) => <div key={i} style={{ padding: "7px 10px", borderBottom: `1px solid rgba(0,229,160,.04)`, borderLeft: `2px solid ${a.sev === "danger" ? T.danger : a.sev === "warn" ? T.warn : T.acc}` }}>
+                <div style={{ fontSize: 10, color: a.sev === "danger" ? T.danger : a.sev === "warn" ? T.warn : T.acc, lineHeight: 1.4 }}>{a.msg}</div>
+                <div style={{ fontSize: 9, color: T.dim, marginTop: 2 }}>{new Date(a.ts).toLocaleTimeString()}</div>
+              </div>)}
+            </div>
+
+            {/* Sensor status */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, borderTop: `1px solid ${T.border}`, flexShrink: 0 }}>
+              {[["ADS-B", state.adsb?.live, T.acc2], ["WiFi", state.wifi?.live, T.acc], ["BLE", state.ble?.live, T.acc], ["433MHz", state.rf433?.live, T.warn]].map(([l, live, c]) => (
+                <div key={l} style={{ padding: "5px 8px", background: T.bg2, textAlign: "center" }}>
+                  <div style={{ fontSize: 8, color: live ? c : T.dim, letterSpacing: 1 }}>{live ? "● LIVE" : "○ SIM"}</div>
+                  <div style={{ fontSize: 9, color: T.dim, marginTop: 1 }}>{l}</div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* BOTTOM BAR */}
+        <div style={{ padding: "3px 16px", background: T.bg1, borderTop: `1px solid ${T.border}`, display: "flex", justifyContent: "space-between", flexShrink: 0 }}>
+          <span style={{ fontSize: 9, color: T.dim }}>groot@rfConn — readsb {state.adsb?.live ? "LIVE" : "SIM"} ● MQTT {connected ? "ACTIVE" : "OFFLINE"} ● Pwnagotchi {state.pwnagotchi?.live ? "LIVE" : "SIM"}</span>
+          <span style={{ fontSize: 9, color: T.dim }}>10.96.42.97 — TacticalOps v1.1</span>
+        </div>
+
+      </div>;
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+
+</html>
