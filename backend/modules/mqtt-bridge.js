@@ -5,6 +5,7 @@
 //    tacops/wifi       → [{ssid,bssid,ch,rssi,enc,band,cli}]
 //    tacops/ble        → [{name,mac,rssi,type}]
 //    tacops/nrf24      → [{ch:0-125, v:0-100}]  (126 channels)
+//    tacops/rf433_signal → {id, proto, freq, data, raw, rssi, ts}
 //    tacops/alert      → {msg, sev}
 //    tacops/heartbeat  → {device, uptime, heap}
 // ============================================================
@@ -13,7 +14,7 @@ const mqtt = require("mqtt");
 const BROKER_URL = process.env.MQTT_BROKER || "mqtt://127.0.0.1:1883";
 const RETRY_MS   = 5000;
 
-function start({ onWifi, onBle, onNrf24, onConnect, onDisconnect }) {
+function start({ onWifi, onBle, onNrf24, onRf433, onConnect, onDisconnect }) {
   let client = null;
   let connected = false;
 
@@ -49,6 +50,9 @@ function start({ onWifi, onBle, onNrf24, onConnect, onDisconnect }) {
           break;
         case "nrf24":
           onNrf24(normalizeNrf24(payload));
+          break;
+        case "rf433_signal":
+          if (onRf433) onRf433(payload);
           break;
         case "heartbeat":
           console.log(`[MQTT] Heartbeat from ${payload.device} — uptime ${payload.uptime}s`);

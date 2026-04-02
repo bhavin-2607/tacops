@@ -9,6 +9,7 @@ const http = require("http");
 const WebSocket = require("ws");
 const cors = require("cors");
 const path = require("path");
+const fs = require("fs").promises;
 
 const adsbModule   = require("./modules/adsb");
 const rf433Module  = require("./modules/rf433");
@@ -16,6 +17,10 @@ const mqttBridge   = require("./modules/mqtt-bridge");
 const simulator    = require("./modules/simulator");
 
 const PORT = process.env.PORT || 3000;
+
+// Track seen flights to avoid duplicate alerts
+let seenFlights = new Set();
+let seenBle = new Set();
 
 // ── Express setup ────────────────────────────────────────────
 const app = express();
@@ -38,6 +43,34 @@ const state = {
   alerts:   [],
 };
 
+const STATE_FILE = path.join(__dirname, "state.json");
+
+// ── Load persisted state ─────────────────────────────────────
+async function loadState() {
+  try {
+    const data = await fs.readFile(STATE_FILE, "utf8");
+    const persisted = JSON.parse(data);
+    Object.assign(state, persisted);
+    console.log("[STATE] Loaded persisted state");
+  } catch (err) {
+    console.log("[STATE] No persisted state found, starting fresh");
+  }
+}
+
+// ── Save state to disk ───────────────────────────────────────
+async function saveState() {
+  try {
+    await fs.writeFile(STATE_FILE, JSON.stringify(state, null, 2));
+  } catch (err) {
+    console.warn("[STATE] Failed to save state:", err.message);
+  }
+}
+
+// ── Load persisted state ─────────────────────────────────────
+(async () => {
+  await loadState();
+})();
+
 // ── Broadcast to all connected WS clients ───────────────────
 function broadcast(type, payload) {
   const msg = JSON.stringify({ type, payload, ts: Date.now() });
@@ -48,7 +81,7 @@ function broadcast(type, payload) {
 
 function pushAlert(msg, sev = "info") {
   const alert = { id: Math.random().toString(36).slice(2), msg, sev, ts: Date.now() };
-  state.alerts = [alert, ...state.alerts].slice(0, 50);
+  state.alerts = [alert, ...state.alerts].slice(0, 100);
   broadcast("alert", alert);
 }
 
@@ -58,8 +91,32 @@ adsbModule.start({
     state.adsb.data = flights;
     state.adsb.live = true;
     broadcast("adsb", flights);
+
+    // Alert for new flights
+    flights.forEach(f => {
+      const id = f.id || f.callsign;
+      if (id && !seenFlights.has(id)) {
+        seenFlights.add(id);
+        pushAlert(`Flight detected: ${f.callsign || f.id}`, "info");
+        // Add to history
+        state.adsb.history = state.adsb.history || [];
+        state.adsb.history.push(f);
+        state.adsb.history = state.adsb.history.slice(-500);
+      }
+    });
+
     const emergency = flights.filter(f => f.squawk >= 7500 && f.squawk <= 7777);
     if (emergency.length) pushAlert(`Squawk ${emergency[0].squawk}: ${emergency[0].callsign}`, "danger");
+
+    // Additional alerts
+    const lowAlt = flights.filter(f => f.alt < 5000 && f.alt > 0);
+    if (lowAlt.length) pushAlert(`Low altitude: ${lowAlt[0].callsign || lowAlt[0].id} at ${lowAlt[0].alt}ft`, "warn");
+
+    const noCallsign = flights.filter(f => !f.callsign && f.id);
+    if (noCallsign.length) pushAlert(`Unidentified aircraft: ${noCallsign[0].id} at ${noCallsign[0].alt || '?'}ft`, "info");
+
+    const highSpeed = flights.filter(f => f.spd > 500);
+    if (highSpeed.length) pushAlert(`High speed: ${highSpeed[0].callsign || highSpeed[0].id} at ${highSpeed[0].spd}kt`, "info");
   },
   onError: () => {
     if (state.adsb.live) pushAlert("RTL-SDR ADS-B feed lost — switching to simulation", "warn");
@@ -67,28 +124,34 @@ adsbModule.start({
   }
 });
 
-// ── 433 MHz module (RTL-SDR → rtl_433) ──────────────────────
-// rf433Module.start({
-//   onSignal: signal => {
-//     state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
-//     state.rf433.live = true;
-//     broadcast("rf433", state.rf433.data);
-//     pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
-//   },
-//   onError: () => { state.rf433.live = false; }
-// });
-if (process.env.RTL433_BIN !== "disabled") {
+// ── 433 MHz module (RTL-SDR → rtl_433 or MQTT) ──────────────────────
+const rf433Mode = process.env.RF433_MODE || "usb";
+if (rf433Mode === "mqtt") {
+  // 433MHz data is consumed via MQTT topic tacops/rf433_signal
+  console.log("[RF433] MQTT mode enabled");
+} else if (rf433Mode === "usb") {
   rf433Module.start({
     onSignal: signal => {
-      state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
+      state.rf433.data = [signal, ...state.rf433.data].slice(0, 200);
       state.rf433.live = true;
       broadcast("rf433", state.rf433.data);
       pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
     },
     onError: () => { state.rf433.live = false; }
   });
+} else if (rf433Mode === "disabled") {
+  console.log("[RF433] Module disabled via RF433_MODE");
 } else {
-  console.log("[RF433] Module disabled via .env");
+  console.warn(`\n[RF433] Unknown RF433_MODE='${rf433Mode}', falling back to usb\n`);
+  rf433Module.start({
+    onSignal: signal => {
+      state.rf433.data = [signal, ...state.rf433.data].slice(0, 200);
+      state.rf433.live = true;
+      broadcast("rf433", state.rf433.data);
+      pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
+    },
+    onError: () => { state.rf433.live = false; }
+  });
 }
 
 // ── MQTT bridge (ESP32s → Pi 5) ──────────────────────────────
@@ -104,6 +167,16 @@ mqttBridge.start({
     state.ble.data = devices;
     state.ble.live = true;
     broadcast("ble", devices);
+    // Add to history
+    devices.forEach(d => {
+      const id = d.mac;
+      if (id && !seenBle.has(id)) {
+        seenBle.add(id);
+        state.ble.history = state.ble.history || [];
+        state.ble.history.push(d);
+        state.ble.history = state.ble.history.slice(-500);
+      }
+    });
   },
   onNrf24: channels => {
     state.nrf24.data = channels;
@@ -112,11 +185,21 @@ mqttBridge.start({
     const burst = channels.find(c => c.v > 80);
     if (burst) pushAlert(`nRF24 burst on channel ${burst.ch} — possible drone`, "danger");
   },
-  onConnect: () => pushAlert("MQTT broker connected — ESP32 sensors online", "info"),
+  onRf433: rf433Mode === "mqtt" ? (signal => {
+    state.rf433.data = [signal, ...state.rf433.data].slice(0, 200);
+    state.rf433.live = true;
+    broadcast("rf433", state.rf433.data);
+    pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
+  }) : undefined,
+  onConnect: () => {
+    pushAlert("MQTT broker connected — ESP32 sensors online", "info");
+    if (rf433Mode === "mqtt") state.rf433.live = true;
+  },
   onDisconnect: () => {
     state.wifi.live = false;
     state.ble.live = false;
     state.nrf24.live = false;
+    if (rf433Mode === "mqtt") state.rf433.live = false;
     pushAlert("MQTT broker disconnected — ESP32 sensors offline", "warn");
   }
 });
@@ -141,7 +224,7 @@ app.post("/api/xiao", (req, res) => {
   state.lora = state.lora || { data: [], live: false };
   pkt.ts = pkt.ts || Date.now();
 
-  state.lora.data = [pkt, ...state.lora.data].slice(0, 50);
+  state.lora.data = [pkt, ...state.lora.data].slice(0, 200);
   state.lora.live = true;
   broadcast("lora", state.lora.data);
 
@@ -177,7 +260,7 @@ app.post("/api/nethunter", (req, res) => {
     normalized.forEach(n => {
       const idx = state.wifi.data.findIndex(x => x.bssid === n.bssid);
       if (idx >= 0) state.wifi.data[idx] = n;
-      else state.wifi.data = [n, ...state.wifi.data].slice(0, 40);
+      else state.wifi.data = [n, ...state.wifi.data].slice(0, 100);
     });
     state.wifi.live = true;
     broadcast("wifi", state.wifi.data);
@@ -193,7 +276,7 @@ app.post("/api/nethunter", (req, res) => {
   // LoRa packets → new lora state
   if (Array.isArray(lora_packets) && lora_packets.length > 0) {
     state.lora = state.lora || { data: [], live: false };
-    state.lora.data = [...lora_packets, ...(state.lora.data || [])].slice(0, 50);
+    state.lora.data = [...lora_packets, ...(state.lora.data || [])].slice(0, 200);
     state.lora.live = true;
     broadcast("lora", state.lora.data);
 
@@ -259,11 +342,11 @@ setInterval(() => {
     state.ble.data = devices;
     broadcast("ble", devices);
   }
-  if (!rf433.live && Math.random() > 0.6) {
-    const signal = simulator.genRf433Signal();
-    state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
-    broadcast("rf433", state.rf433.data);
-  }
+  // if (!rf433.live && Math.random() > 0.6) {
+  //   const signal = simulator.genRf433Signal();
+  //   state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
+  //   broadcast("rf433", state.rf433.data);
+  // }
   if (!nrf24.live) {
     const channels = simulator.genNrf24();
     state.nrf24.data = channels;
@@ -276,12 +359,25 @@ setInterval(() => {
 
   broadcast("spectrum", simulator.genSpectrum());
 
+  // Save state periodically
+  saveState();
+
 }, 2800);
 
 // ── WebSocket handshake — send full state on connect ────────
 wss.on("connection", ws => {
   console.log("[WS] Client connected");
   ws.send(JSON.stringify({ type: "init", payload: state, ts: Date.now() }));
+  ws.on("message", msg => {
+    try {
+      const data = JSON.parse(msg);
+      if (data.type === "clear_alerts") {
+        state.alerts = [];
+        broadcast("clear_alerts", null);
+        saveState(); // Save cleared state
+      }
+    } catch (e) {}
+  });
   ws.on("close", () => console.log("[WS] Client disconnected"));
 });
 
