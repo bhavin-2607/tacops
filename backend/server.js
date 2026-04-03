@@ -39,6 +39,8 @@ const state = {
   ble:      { data: [], live: false },
   rf433:    { data: [], live: false },
   nrf24:    { data: [], live: false },
+  lora:     { data: [], live: false },
+  nethunter:{ hosts: [], live: false },
   pwnagotchi: { captures: 0, mood: "bored", epoch: 0, live: false },
   alerts:   [],
 };
@@ -260,7 +262,7 @@ app.post("/api/nethunter", (req, res) => {
     normalized.forEach(n => {
       const idx = state.wifi.data.findIndex(x => x.bssid === n.bssid);
       if (idx >= 0) state.wifi.data[idx] = n;
-      else state.wifi.data = [n, ...state.wifi.data].slice(0, 100);
+      else state.wifi.data = [n, ...state.wifi.data].slice(0, 40);
     });
     state.wifi.live = true;
     broadcast("wifi", state.wifi.data);
@@ -276,7 +278,7 @@ app.post("/api/nethunter", (req, res) => {
   // LoRa packets → new lora state
   if (Array.isArray(lora_packets) && lora_packets.length > 0) {
     state.lora = state.lora || { data: [], live: false };
-    state.lora.data = [...lora_packets, ...(state.lora.data || [])].slice(0, 200);
+    state.lora.data = [...lora_packets, ...(state.lora.data || [])].slice(0, 50);
     state.lora.live = true;
     broadcast("lora", state.lora.data);
 
@@ -310,6 +312,7 @@ app.post("/api/nethunter", (req, res) => {
   console.log(`[NetHunter] ${device} → wifi:${(wifi_networks||[]).length} ble:${(ble_devices||[]).length} hosts:${(hosts||[]).length} lora:${(lora_packets||[]).length}`);
   res.json({ ok: true, ts: Date.now() });
 });
+
 
 
 // ── REST API — current state snapshot ────────────────────────

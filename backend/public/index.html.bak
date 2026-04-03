@@ -338,61 +338,6 @@ function Rf433Panel({data,live,state}){
   );
 }
 
-function LoraPanel({data,live}){
-  return(
-    <div className="panel-anim" style={{padding:10,overflow:"auto",height:"100%"}}>
-      <PanelHdr title="LORA MONITOR" sub="XIAO SX1262 — 865 MHz" live={live}/>
-      <div style={{marginTop:8,display:"flex",flexDirection:"column",gap:6}}>
-        {data.map((p,i)=>(
-          <div key={i} style={{padding:"8px 13px",background:T.bg2,borderRadius:3,borderLeft:`3px solid ${p.meshtastic?T.acc2:T.acc}`,fontSize:11}}>
-            <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
-              <span style={{color:p.meshtastic?T.acc2:T.acc,letterSpacing:1}}>{p.meshtastic?"MESHTASTIC":"LORA PKT"} — {p.node_id}</span>
-              <span style={{color:T.dim,fontSize:10}}>{new Date(p.ts||Date.now()).toLocaleTimeString()}</span>
-            </div>
-            <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
-              <span style={{color:T.dim}}>freq: <span style={{color:T.text}}>{p.freq} MHz</span></span>
-              <span style={{color:T.dim}}>rssi: <span style={{color:T.text}}>{p.rssi} dBm</span></span>
-              <span style={{color:T.dim}}>snr: <span style={{color:T.text}}>{p.snr} dB</span></span>
-              <span style={{color:T.dim}}>len: <span style={{color:T.text}}>{p.len}B</span></span>
-              <span style={{color:T.dim}}>data: <span style={{color:T.warn}}>{p.data}</span></span>
-            </div>
-          </div>
-        ))}
-        {data.length===0&&<div style={{padding:20,textAlign:"center",color:T.dim,fontSize:11}}>
-          <div style={{marginBottom:8}}>Listening on 865.0 MHz IN865</div>
-          <div style={{fontSize:10,color:T.dim}}>XIAO ESP32S3 + Wio SX1262 — pending</div>
-        </div>}
-      </div>
-    </div>
-  );
-}
-
-function NetHunterPanel({data,live}){
-  const hosts=(data?.hosts)||[];
-  return(
-    <div className="panel-anim" style={{padding:10,overflow:"auto",height:"100%"}}>
-      <PanelHdr title="FIELD AGENT" sub="Mi A2 NetHunter" live={live}/>
-      <div style={{margin:"8px 0",padding:"8px 13px",background:"rgba(56,178,255,.07)",border:`1px solid rgba(56,178,255,.2)`,borderRadius:3,display:"flex",gap:20,flexWrap:"wrap",fontSize:11}}>
-        <span style={{color:T.acc2,letterSpacing:1}}>NETHUNTER</span>
-        <span style={{color:T.dim}}>device: <span style={{color:T.acc2}}>{data?.device||"offline"}</span></span>
-        <span style={{color:T.dim}}>hosts: <span style={{color:T.acc2}}>{hosts.length}</span></span>
-        {data?.gps&&<span style={{color:T.dim}}>gps: <span style={{color:T.acc}}>{data.gps.lat?.toFixed(4)},{data.gps.lon?.toFixed(4)}</span></span>}
-        <span style={{color:live?T.acc2:T.dim,fontSize:10}}>{live?"● LIVE":"○ OFFLINE"}</span>
-      </div>
-      <div style={{fontSize:10,color:T.dim,letterSpacing:2,margin:"10px 0 6px"}}>DISCOVERED HOSTS — NMAP</div>
-      {hosts.length===0&&<div style={{padding:12,textAlign:"center",color:T.dim,fontSize:11}}>No hosts discovered yet</div>}
-      <table>
-        <thead><tr>{["IP ADDRESS","HOSTNAME","FIRST SEEN"].map(h=><th key={h}>{h}</th>)}</tr></thead>
-        <tbody>{hosts.map((h,i)=><tr key={i}>
-          <td style={{color:T.acc2,fontFamily:T.display}}>{h.ip}</td>
-          <td style={{color:T.dim}}>{h.name||"—"}</td>
-          <td style={{color:T.dim,fontSize:10}}>{new Date(h.ts||Date.now()).toLocaleTimeString()}</td>
-        </tr>)}</tbody>
-      </table>
-    </div>
-  );
-}
-
 /* ── nRF24 Panel ────────────────────────────────────────────────── */
 function Nrf24Panel({data,live}){
   const maxV=Math.max(...(data.map(c=>c.v)||[1]),1);
@@ -745,8 +690,6 @@ const NAV=[
   {id:"ble",   label:"BLE",    icon:"◈"},
   {id:"rf433", label:"433MHz", icon:"◎"},
   {id:"nrf24", label:"2.4GHz", icon:"⚡"},
-  {id:"lora",  label:"LoRa",   icon:"◬"},
-  {id:"nethunter", label:"Field", icon:"◍"},
   {id:"spec",  label:"Spectrum",icon:"〰"},
   {id:"ai",    label:"AI Intel",icon:"◉"},
 ];
@@ -764,8 +707,6 @@ function App(){
     rf433:{data:[],live:false},
     nrf24:{data:Array.from({length:126},(_,ch)=>({ch,v:0})),live:false},
     spectrum:{data:[],live:false},
-    lora:{data:[],live:false},
-    nethunter:{hosts:[],live:false},
     pwnagotchi:{captures:0,mood:"unknown",epoch:0,live:false},
     alerts:[]
   });
@@ -809,7 +750,7 @@ function App(){
     return()=>wsRef.current?.close();
   },[]);
 
-  const liveCount=[state.adsb,state.wifi,state.ble,state.rf433,state.lora,state.nethunter].filter(s=>s?.live).length;
+  const liveCount=[state.adsb,state.wifi,state.ble,state.rf433].filter(s=>s?.live).length;
 
   const renderPanel=()=>{
     switch(panel){
@@ -818,11 +759,8 @@ function App(){
       case"ble":   return <BlePanel data={state.ble?.data||[]} live={state.ble?.live} state={state}/>;
       case"rf433": return <Rf433Panel data={state.rf433?.data||[]} live={state.rf433?.live} state={state}/>;
       case"nrf24": return <Nrf24Panel data={state.nrf24?.data||[]} live={state.nrf24?.live}/>;
-      case"lora":  return <LoraPanel data={state.lora?.data||[]} live={state.lora?.live}/>;
-      case"nethunter": return <NetHunterPanel data={state.nethunter||{}} live={state.nethunter?.live}/>;
       case"spec":  return <SpectrumPanel data={state.spectrum?.data||[]} live={state.spectrum?.live}/>;
       case"ai":    return <AiPanel state={state}/>;
-      default: return null;
     }
   };
 
@@ -943,8 +881,6 @@ function App(){
               ["WiFi",   state.wifi?.live,  T.acc],
               ["BLE",    state.ble?.live,   T.acc],
               ["433MHz", state.rf433?.live, T.warn],
-              ["LoRa",   state.lora?.live,  T.acc],
-              ["NetHunter", state.nethunter?.live, T.acc2],
               ["PWNA",   state.pwnagotchi?.live, T.warn],
               ["MQTT",   wsConn,            T.acc],
             ].map(([l,live,c])=>(

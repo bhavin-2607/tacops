@@ -242,187 +242,749 @@
         "dist": 0,
         "rssi": -60,
         "squawk": 0
+      },
+      {
+        "id": "7020AC",
+        "callsign": "7020AC",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "801603",
+        "callsign": "801603",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "89611B",
+        "callsign": "89611B",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "750421",
+        "callsign": "750421",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "801850",
+        "callsign": "801850",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "7020BE",
+        "callsign": "7020BE",
+        "alt": 32000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "06A103",
+        "callsign": "06A103",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "89653C",
+        "callsign": "89653C",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "7020B4",
+        "callsign": "7020B4",
+        "alt": 0,
+        "spd": 342,
+        "hdg": 255,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "801405",
+        "callsign": "801405",
+        "alt": 0,
+        "spd": 234,
+        "hdg": 305,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "801405",
+        "callsign": "801405",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "896535",
+        "callsign": "ETD899",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "4BA869",
+        "callsign": "4BA869",
+        "alt": 41000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "4BA869",
+        "callsign": "4BA869",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8966BD",
+        "callsign": "8966BD",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "801831",
+        "callsign": "801831",
+        "alt": 0,
+        "spd": 235,
+        "hdg": 282,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "800BEF",
+        "callsign": "800BEF",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8014F8",
+        "callsign": "8014F8",
+        "alt": 0,
+        "spd": 267,
+        "hdg": 299,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8015DB",
+        "callsign": "8015DB",
+        "alt": 0,
+        "spd": 258,
+        "hdg": 7,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "06A1E8",
+        "callsign": "06A1E8",
+        "alt": 0,
+        "spd": 536,
+        "hdg": 86,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "896442",
+        "callsign": "896442",
+        "alt": 41000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "~6089F3",
+        "callsign": "~6089F3",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "06A3B6",
+        "callsign": "06A3B6",
+        "alt": 37000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "800BE6",
+        "callsign": "800BE6",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "80145A",
+        "callsign": "80145A",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "710102",
+        "callsign": "710102",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "70203E",
+        "callsign": "70203E",
+        "alt": 34000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "040062",
+        "callsign": "040062",
+        "alt": 0,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "800C99",
+        "callsign": "800C99",
+        "alt": 0,
+        "spd": 179,
+        "hdg": 2,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8965D4",
+        "callsign": "8965D4",
+        "alt": 35000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "896306",
+        "callsign": "896306",
+        "alt": 0,
+        "spd": 541,
+        "hdg": 86,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8963CE",
+        "callsign": "8963CE",
+        "alt": 2300,
+        "spd": 247,
+        "hdg": 301,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "8963E3",
+        "callsign": "8963E3",
+        "alt": 30000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
+      },
+      {
+        "id": "89660C",
+        "callsign": "89660C",
+        "alt": 30000,
+        "spd": 0,
+        "hdg": 0,
+        "lat": 0,
+        "lon": 0,
+        "dist": 0,
+        "rssi": -60,
+        "squawk": 0
       }
     ]
   },
   "wifi": {
     "data": [
       {
-        "id": 0,
-        "ssid": "Airtel_Xstream",
-        "bssid": "d4:8c:dc:fd:03:8a",
-        "ch": 40,
-        "rssi": -1065,
+        "id": "ea:12:c6:b9:be:90",
+        "ssid": "Redmi Note 11 Pro+ 5G",
+        "bssid": "ea:12:c6:b9:be:90",
+        "ch": "2462",
+        "rssi": -82,
         "enc": "WPA2",
-        "cli": 2,
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "a8:da:0c:4e:94:90",
+        "ssid": "Mishku 5G",
+        "bssid": "a8:da:0c:4e:94:90",
+        "ch": "5745",
+        "rssi": -84,
+        "enc": "WPA2",
+        "band": "5GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "b0:be:76:67:95:8c",
+        "ssid": "JIOFIBERNET",
+        "bssid": "b0:be:76:67:95:8c",
+        "ch": "2452",
+        "rssi": -75,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "6c:4f:89:de:35:15",
+        "ssid": "Airtel_Abhishek",
+        "bssid": "6c:4f:89:de:35:15",
+        "ch": "2412",
+        "rssi": -81,
+        "enc": "Open",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "5e:a4:f4:2a:df:6a",
+        "ssid": "Mitesh GTPL\\x20",
+        "bssid": "5e:a4:f4:2a:df:6a",
+        "ch": "2432",
+        "rssi": -70,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "8e:a3:99:36:fe:da",
+        "ssid": "Hidden",
+        "bssid": "8e:a3:99:36:fe:da",
+        "ch": "5805",
+        "rssi": -78,
+        "enc": "WPA2",
+        "band": "5GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "9c:d4:a6:1d:30:53",
+        "ssid": "Jio_4G",
+        "bssid": "9c:d4:a6:1d:30:53",
+        "ch": "2412",
+        "rssi": -80,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "6a:90:0a:d6:94:11",
+        "ssid": "PRAGNESH",
+        "bssid": "6a:90:0a:d6:94:11",
+        "ch": "2412",
+        "rssi": -82,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "72:88:1f:17:13:a9",
+        "ssid": "SUNIL",
+        "bssid": "72:88:1f:17:13:a9",
+        "ch": "2437",
+        "rssi": -81,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "8c:a3:99:16:fe:da",
+        "ssid": "Airtel_RC Patel",
+        "bssid": "8c:a3:99:16:fe:da",
+        "ch": "5805",
+        "rssi": -78,
+        "enc": "WPA2",
+        "band": "5GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "b4:a7:c6:6a:59:49",
+        "ssid": "Hexor_HRLS",
+        "bssid": "b4:a7:c6:6a:59:49",
+        "ch": "2462",
+        "rssi": -54,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": 14,
+        "ssid": "Hidden",
+        "bssid": "00:00:00:00:00:00",
+        "ch": 0,
+        "rssi": -80,
+        "enc": "WPA2",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "b4:a7:c6:6a:59:4a",
+        "ssid": "Hexor_LRHS",
+        "bssid": "b4:a7:c6:6a:59:4a",
+        "ch": "5785",
+        "rssi": -64,
+        "enc": "WPA2",
+        "band": "5GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": "8c:a3:99:16:fe:d9",
+        "ssid": "Airtel_RC Patel",
+        "bssid": "8c:a3:99:16:fe:d9",
+        "ch": "2412",
+        "rssi": -74,
+        "enc": "Open",
+        "band": "2.4GHz",
+        "cli": 0,
+        "source": "nethunter"
+      },
+      {
+        "id": 0,
+        "ssid": "Reliance_JioFiber",
+        "bssid": "36:16:01:15:f9:30",
+        "ch": 36,
+        "rssi": -1041,
+        "enc": "WPA2",
+        "cli": 7,
         "band": "2.4GHz"
       },
       {
         "id": 1,
-        "ssid": "Corp_Office_5G",
-        "bssid": "88:e2:59:20:49:db",
-        "ch": 40,
-        "rssi": -1133,
-        "enc": "WPA2",
-        "cli": 11,
-        "band": "5GHz"
-      },
-      {
-        "id": 2,
         "ssid": "AndroidAP_8B3F",
-        "bssid": "95:51:19:05:da:44",
-        "ch": 11,
-        "rssi": -1003,
-        "enc": "Open",
-        "cli": 11,
-        "band": "2.4GHz"
-      },
-      {
-        "id": 3,
-        "ssid": "DD-WRT_Mesh",
-        "bssid": "46:09:08:01:15:21",
+        "bssid": "f8:49:ab:3e:c6:97",
         "ch": 36,
-        "rssi": -1081,
+        "rssi": -1075,
         "enc": "WPA2",
-        "cli": 1,
-        "band": "5GHz"
-      },
-      {
-        "id": 4,
-        "ssid": "Corp_Office_5G",
-        "bssid": "1c:ab:8c:da:ba:62",
-        "ch": 1,
-        "rssi": -1154,
-        "enc": "WPA3",
         "cli": 7,
         "band": "5GHz"
       },
       {
-        "id": 5,
-        "ssid": "Reliance_JioFiber",
-        "bssid": "bf:1b:ef:92:aa:b0",
-        "ch": 36,
-        "rssi": -1219,
+        "id": 2,
+        "ssid": "Corp_Office_5G",
+        "bssid": "95:96:43:62:a2:d1",
+        "ch": 44,
+        "rssi": -1087,
         "enc": "WPA2",
-        "cli": 4,
+        "cli": 6,
+        "band": "5GHz"
+      },
+      {
+        "id": 3,
+        "ssid": "Corp_Office_5G",
+        "bssid": "bc:92:85:03:91:76",
+        "ch": 11,
+        "rssi": -988,
+        "enc": "WPA2",
+        "cli": 11,
         "band": "2.4GHz"
       },
       {
-        "id": 6,
-        "ssid": "DIRECT-Fire",
-        "bssid": "bc:1a:14:73:65:f3",
+        "id": 4,
+        "ssid": "Guest_Net",
+        "bssid": "06:d5:7d:26:48:78",
         "ch": 44,
-        "rssi": -1244,
+        "rssi": -1015,
+        "enc": "WPA3",
+        "cli": 9,
+        "band": "5GHz"
+      },
+      {
+        "id": 5,
+        "ssid": "HP_Printer_78A",
+        "bssid": "c2:8f:68:19:ef:10",
+        "ch": 6,
+        "rssi": -1043,
+        "enc": "WPA3",
+        "cli": 1,
+        "band": "5GHz"
+      },
+      {
+        "id": 6,
+        "ssid": "Guest_Net",
+        "bssid": "8e:b5:66:81:97:22",
+        "ch": 6,
+        "rssi": -886,
         "enc": "Open",
         "cli": 7,
         "band": "5GHz"
       },
       {
         "id": 7,
-        "ssid": "Jio_Home_5G",
-        "bssid": "04:82:fa:e3:a2:e2",
-        "ch": 1,
-        "rssi": -1115,
-        "enc": "WPA2",
-        "cli": 10,
-        "band": "5GHz"
-      },
-      {
-        "id": 8,
-        "ssid": "Jio_Home_5G",
-        "bssid": "a7:ee:41:81:e4:79",
-        "ch": 40,
-        "rssi": -1074,
-        "enc": "WPA2",
-        "cli": 9,
+        "ssid": "TP-Link_3F2A",
+        "bssid": "a2:5d:15:3e:64:cd",
+        "ch": 11,
+        "rssi": -1087,
+        "enc": "Open",
+        "cli": 11,
         "band": "2.4GHz"
       },
       {
+        "id": 8,
+        "ssid": "DIRECT-Fire",
+        "bssid": "8a:7c:94:6d:5e:62",
+        "ch": 44,
+        "rssi": -1149,
+        "enc": "WPA2",
+        "cli": 8,
+        "band": "5GHz"
+      },
+      {
         "id": 9,
-        "ssid": "BSNL_Fiber_01",
-        "bssid": "8c:94:81:0b:4e:33",
-        "ch": 1,
-        "rssi": -1055,
+        "ssid": "Corp_Office_5G",
+        "bssid": "69:3f:3c:f7:e1:0f",
+        "ch": 40,
+        "rssi": -950,
         "enc": "WPA2",
         "cli": 5,
         "band": "5GHz"
       }
     ],
-    "live": false
+    "live": true
   },
   "ble": {
     "data": [
       {
         "id": 0,
         "name": "ESP32-BLE",
-        "mac": "11:78:e8:11:00:0b",
-        "rssi": -1092,
-        "type": "Phone",
-        "seen": 1775149518866
+        "mac": "c7:7c:4b:8a:7c:fa",
+        "rssi": -1206,
+        "type": "Audio",
+        "seen": 1775232966395
       },
       {
         "id": 1,
-        "name": "Galaxy S23",
-        "mac": "a4:cb:07:10:ed:49",
-        "rssi": -1097,
+        "name": "Sony WH-1000",
+        "mac": "48:c5:c5:43:05:d7",
+        "rssi": -1269,
         "type": "Wearable",
-        "seen": 1775149520193
+        "seen": 1775233162092
       },
       {
         "id": 2,
-        "name": "Redmi Note 12",
-        "mac": "e5:ce:00:3b:79:80",
-        "rssi": -1157,
-        "type": "IoT",
-        "seen": 1775149670147
+        "name": "Sony WH-1000",
+        "mac": "ba:37:54:c9:b5:cc",
+        "rssi": -1287,
+        "type": "Unknown",
+        "seen": 1775233185554
       },
       {
         "id": 3,
-        "name": "Pixel 7",
-        "mac": "2c:e2:60:33:be:a8",
-        "rssi": -1226,
-        "type": "Phone",
-        "seen": 1775149587794
+        "name": "Mi Band 7",
+        "mac": "26:c7:d6:b7:62:17",
+        "rssi": -1344,
+        "type": "Wearable",
+        "seen": 1775233198416
       },
       {
         "id": 4,
-        "name": "Pixel 7",
-        "mac": "91:ec:60:a3:31:5b",
-        "rssi": -1190,
-        "type": "Unknown",
-        "seen": 1775149556217
+        "name": "Fitbit Versa",
+        "mac": "ac:47:75:57:a5:d0",
+        "rssi": -1249,
+        "type": "Wearable",
+        "seen": 1775233041160
       },
       {
         "id": 5,
-        "name": "ESP32-BLE",
-        "mac": "d4:6b:fa:83:b9:37",
-        "rssi": -1182,
+        "name": "Galaxy S23",
+        "mac": "e5:03:8f:27:59:15",
+        "rssi": -1291,
         "type": "IoT",
-        "seen": 1775149574388
+        "seen": 1775233090750
       },
       {
         "id": 6,
-        "name": "MacBook Air",
-        "mac": "a8:e0:06:1e:6d:f8",
-        "rssi": -1168,
-        "type": "Wearable",
-        "seen": 1775149586589
+        "name": "ESP32-BLE",
+        "mac": "10:bd:d8:56:ed:1a",
+        "rssi": -1162,
+        "type": "Audio",
+        "seen": 1775233046263
       },
       {
         "id": 7,
-        "name": "Fitbit Versa",
-        "mac": "09:eb:88:57:06:ed",
-        "rssi": -1181,
+        "name": "AirPods Pro",
+        "mac": "d3:fc:fe:a0:0e:07",
+        "rssi": -1394,
         "type": "Phone",
-        "seen": 1775149770675
+        "seen": 1775233204789
       },
       {
         "id": 8,
         "name": "Sony WH-1000",
-        "mac": "6a:4e:36:66:9d:88",
-        "rssi": -1193,
-        "type": "Phone",
-        "seen": 1775149695194
+        "mac": "9a:b0:a0:31:27:33",
+        "rssi": -1231,
+        "type": "Wearable",
+        "seen": 1775233129458
       }
     ],
     "live": false
@@ -618,75 +1180,75 @@
     "data": [
       {
         "ch": 0,
-        "v": 2
+        "v": 1
       },
       {
         "ch": 1,
-        "v": 4
-      },
-      {
-        "ch": 2,
-        "v": 8
-      },
-      {
-        "ch": 3,
-        "v": 85
-      },
-      {
-        "ch": 4,
-        "v": 58
-      },
-      {
-        "ch": 5,
-        "v": 2
-      },
-      {
-        "ch": 6,
-        "v": 29
-      },
-      {
-        "ch": 7,
-        "v": 2
-      },
-      {
-        "ch": 8,
-        "v": 89
-      },
-      {
-        "ch": 9,
-        "v": 7
-      },
-      {
-        "ch": 10,
-        "v": 0
-      },
-      {
-        "ch": 11,
-        "v": 10
-      },
-      {
-        "ch": 12,
-        "v": 10
-      },
-      {
-        "ch": 13,
         "v": 5
       },
       {
+        "ch": 2,
+        "v": 1
+      },
+      {
+        "ch": 3,
+        "v": 11
+      },
+      {
+        "ch": 4,
+        "v": 0
+      },
+      {
+        "ch": 5,
+        "v": 4
+      },
+      {
+        "ch": 6,
+        "v": 9
+      },
+      {
+        "ch": 7,
+        "v": 71
+      },
+      {
+        "ch": 8,
+        "v": 62
+      },
+      {
+        "ch": 9,
+        "v": 11
+      },
+      {
+        "ch": 10,
+        "v": 10
+      },
+      {
+        "ch": 11,
+        "v": 6
+      },
+      {
+        "ch": 12,
+        "v": 0
+      },
+      {
+        "ch": 13,
+        "v": 7
+      },
+      {
         "ch": 14,
-        "v": 48
+        "v": 7
       },
       {
         "ch": 15,
-        "v": 2
+        "v": 11
       },
       {
         "ch": 16,
-        "v": 3
+        "v": 20
       },
       {
         "ch": 17,
-        "v": 1
+        "v": 3
       },
       {
         "ch": 18,
@@ -694,87 +1256,87 @@
       },
       {
         "ch": 19,
-        "v": 0
+        "v": 2
       },
       {
         "ch": 20,
-        "v": 8
+        "v": 11
       },
       {
         "ch": 21,
-        "v": 5
+        "v": 10
       },
       {
         "ch": 22,
-        "v": 54
+        "v": 7
       },
       {
         "ch": 23,
-        "v": 4
+        "v": 7
       },
       {
         "ch": 24,
-        "v": 92
+        "v": 10
       },
       {
         "ch": 25,
-        "v": 5
+        "v": 76
       },
       {
         "ch": 26,
-        "v": 10
+        "v": 97
       },
       {
         "ch": 27,
-        "v": 85
+        "v": 2
       },
       {
         "ch": 28,
-        "v": 1
+        "v": 56
       },
       {
         "ch": 29,
-        "v": 8
-      },
-      {
-        "ch": 30,
-        "v": 9
-      },
-      {
-        "ch": 31,
         "v": 1
       },
       {
-        "ch": 32,
+        "ch": 30,
         "v": 0
       },
       {
-        "ch": 33,
-        "v": 8
+        "ch": 31,
+        "v": 9
       },
       {
-        "ch": 34,
+        "ch": 32,
         "v": 6
       },
       {
+        "ch": 33,
+        "v": 9
+      },
+      {
+        "ch": 34,
+        "v": 7
+      },
+      {
         "ch": 35,
-        "v": 11
+        "v": 72
       },
       {
         "ch": 36,
-        "v": 69
+        "v": 55
       },
       {
         "ch": 37,
-        "v": 0
+        "v": 76
       },
       {
         "ch": 38,
-        "v": 10
+        "v": 4
       },
       {
         "ch": 39,
-        "v": 11
+        "v": 10
       },
       {
         "ch": 40,
@@ -782,87 +1344,87 @@
       },
       {
         "ch": 41,
-        "v": 10
+        "v": 2
       },
       {
         "ch": 42,
-        "v": 1
-      },
-      {
-        "ch": 43,
-        "v": 3
-      },
-      {
-        "ch": 44,
-        "v": 6
-      },
-      {
-        "ch": 45,
-        "v": 2
-      },
-      {
-        "ch": 46,
-        "v": 6
-      },
-      {
-        "ch": 47,
-        "v": 7
-      },
-      {
-        "ch": 48,
-        "v": 66
-      },
-      {
-        "ch": 49,
-        "v": 10
-      },
-      {
-        "ch": 50,
-        "v": 0
-      },
-      {
-        "ch": 51,
         "v": 11
       },
       {
-        "ch": 52,
-        "v": 6
-      },
-      {
-        "ch": 53,
-        "v": 2
-      },
-      {
-        "ch": 54,
-        "v": 72
-      },
-      {
-        "ch": 55,
-        "v": 3
-      },
-      {
-        "ch": 56,
+        "ch": 43,
         "v": 7
       },
       {
-        "ch": 57,
+        "ch": 44,
+        "v": 3
+      },
+      {
+        "ch": 45,
         "v": 0
       },
       {
-        "ch": 58,
+        "ch": 46,
+        "v": 11
+      },
+      {
+        "ch": 47,
         "v": 5
       },
       {
+        "ch": 48,
+        "v": 4
+      },
+      {
+        "ch": 49,
+        "v": 26
+      },
+      {
+        "ch": 50,
+        "v": 2
+      },
+      {
+        "ch": 51,
+        "v": 8
+      },
+      {
+        "ch": 52,
+        "v": 7
+      },
+      {
+        "ch": 53,
+        "v": 93
+      },
+      {
+        "ch": 54,
+        "v": 23
+      },
+      {
+        "ch": 55,
+        "v": 10
+      },
+      {
+        "ch": 56,
+        "v": 5
+      },
+      {
+        "ch": 57,
+        "v": 4
+      },
+      {
+        "ch": 58,
+        "v": 82
+      },
+      {
         "ch": 59,
-        "v": 6
+        "v": 49
       },
       {
         "ch": 60,
-        "v": 9
+        "v": 2
       },
       {
         "ch": 61,
-        "v": 8
+        "v": 10
       },
       {
         "ch": 62,
@@ -870,111 +1432,111 @@
       },
       {
         "ch": 63,
-        "v": 6
-      },
-      {
-        "ch": 64,
-        "v": 0
-      },
-      {
-        "ch": 65,
-        "v": 5
-      },
-      {
-        "ch": 66,
-        "v": 3
-      },
-      {
-        "ch": 67,
-        "v": 11
-      },
-      {
-        "ch": 68,
-        "v": 11
-      },
-      {
-        "ch": 69,
-        "v": 6
-      },
-      {
-        "ch": 70,
-        "v": 2
-      },
-      {
-        "ch": 71,
-        "v": 9
-      },
-      {
-        "ch": 72,
-        "v": 3
-      },
-      {
-        "ch": 73,
-        "v": 7
-      },
-      {
-        "ch": 74,
-        "v": 56
-      },
-      {
-        "ch": 75,
         "v": 1
       },
       {
-        "ch": 76,
-        "v": 2
+        "ch": 64,
+        "v": 4
       },
       {
-        "ch": 77,
-        "v": 0
-      },
-      {
-        "ch": 78,
-        "v": 9
-      },
-      {
-        "ch": 79,
-        "v": 44
-      },
-      {
-        "ch": 80,
-        "v": 11
-      },
-      {
-        "ch": 81,
-        "v": 7
-      },
-      {
-        "ch": 82,
-        "v": 2
-      },
-      {
-        "ch": 83,
-        "v": 3
-      },
-      {
-        "ch": 84,
-        "v": 8
-      },
-      {
-        "ch": 85,
-        "v": 41
-      },
-      {
-        "ch": 86,
-        "v": 11
-      },
-      {
-        "ch": 87,
+        "ch": 65,
         "v": 93
       },
       {
-        "ch": 88,
+        "ch": 66,
+        "v": 1
+      },
+      {
+        "ch": 67,
+        "v": 3
+      },
+      {
+        "ch": 68,
+        "v": 80
+      },
+      {
+        "ch": 69,
+        "v": 10
+      },
+      {
+        "ch": 70,
+        "v": 69
+      },
+      {
+        "ch": 71,
+        "v": 5
+      },
+      {
+        "ch": 72,
+        "v": 5
+      },
+      {
+        "ch": 73,
+        "v": 5
+      },
+      {
+        "ch": 74,
+        "v": 8
+      },
+      {
+        "ch": 75,
+        "v": 4
+      },
+      {
+        "ch": 76,
+        "v": 7
+      },
+      {
+        "ch": 77,
+        "v": 6
+      },
+      {
+        "ch": 78,
+        "v": 1
+      },
+      {
+        "ch": 79,
+        "v": 5
+      },
+      {
+        "ch": 80,
+        "v": 5
+      },
+      {
+        "ch": 81,
         "v": 2
       },
       {
+        "ch": 82,
+        "v": 23
+      },
+      {
+        "ch": 83,
+        "v": 8
+      },
+      {
+        "ch": 84,
+        "v": 31
+      },
+      {
+        "ch": 85,
+        "v": 4
+      },
+      {
+        "ch": 86,
+        "v": 1
+      },
+      {
+        "ch": 87,
+        "v": 58
+      },
+      {
+        "ch": 88,
+        "v": 91
+      },
+      {
         "ch": 89,
-        "v": 9
+        "v": 83
       },
       {
         "ch": 90,
@@ -982,55 +1544,55 @@
       },
       {
         "ch": 91,
-        "v": 1
+        "v": 0
       },
       {
         "ch": 92,
-        "v": 11
+        "v": 7
       },
       {
         "ch": 93,
-        "v": 9
+        "v": 0
       },
       {
         "ch": 94,
-        "v": 8
-      },
-      {
-        "ch": 95,
-        "v": 6
-      },
-      {
-        "ch": 96,
-        "v": 36
-      },
-      {
-        "ch": 97,
-        "v": 8
-      },
-      {
-        "ch": 98,
-        "v": 8
-      },
-      {
-        "ch": 99,
-        "v": 9
-      },
-      {
-        "ch": 100,
-        "v": 10
-      },
-      {
-        "ch": 101,
-        "v": 39
-      },
-      {
-        "ch": 102,
         "v": 4
       },
       {
-        "ch": 103,
+        "ch": 95,
         "v": 3
+      },
+      {
+        "ch": 96,
+        "v": 7
+      },
+      {
+        "ch": 97,
+        "v": 10
+      },
+      {
+        "ch": 98,
+        "v": 3
+      },
+      {
+        "ch": 99,
+        "v": 2
+      },
+      {
+        "ch": 100,
+        "v": 0
+      },
+      {
+        "ch": 101,
+        "v": 3
+      },
+      {
+        "ch": 102,
+        "v": 11
+      },
+      {
+        "ch": 103,
+        "v": 10
       },
       {
         "ch": 104,
@@ -1038,59 +1600,59 @@
       },
       {
         "ch": 105,
-        "v": 8
+        "v": 0
       },
       {
         "ch": 106,
-        "v": 4
-      },
-      {
-        "ch": 107,
-        "v": 63
-      },
-      {
-        "ch": 108,
-        "v": 0
-      },
-      {
-        "ch": 109,
         "v": 25
       },
       {
-        "ch": 110,
+        "ch": 107,
         "v": 9
+      },
+      {
+        "ch": 108,
+        "v": 36
+      },
+      {
+        "ch": 109,
+        "v": 2
+      },
+      {
+        "ch": 110,
+        "v": 83
       },
       {
         "ch": 111,
-        "v": 9
+        "v": 3
       },
       {
         "ch": 112,
-        "v": 8
+        "v": 11
       },
       {
         "ch": 113,
-        "v": 4
+        "v": 63
       },
       {
         "ch": 114,
-        "v": 30
+        "v": 10
       },
       {
         "ch": 115,
-        "v": 6
+        "v": 2
       },
       {
         "ch": 116,
-        "v": 33
+        "v": 11
       },
       {
         "ch": 117,
-        "v": 7
+        "v": 6
       },
       {
         "ch": 118,
-        "v": 0
+        "v": 6
       },
       {
         "ch": 119,
@@ -1098,15 +1660,15 @@
       },
       {
         "ch": 120,
-        "v": 92
+        "v": 0
       },
       {
         "ch": 121,
-        "v": 7
+        "v": 8
       },
       {
         "ch": 122,
-        "v": 0
+        "v": 6
       },
       {
         "ch": 123,
@@ -1118,617 +1680,37 @@
       },
       {
         "ch": 125,
-        "v": 3
+        "v": 5
       }
     ],
     "live": false
   },
+  "lora": {
+    "data": [],
+    "live": false
+  },
+  "nethunter": {
+    "hosts": [],
+    "live": false
+  },
   "pwnagotchi": {
-    "captures": 2310,
+    "captures": 3143,
     "mood": "bored",
     "epoch": 0,
     "live": false
   },
   "alerts": [
     {
-      "id": "e92mfvkj82r",
-      "msg": "Low altitude: 800D40 at 4925ft",
-      "sev": "warn",
-      "ts": 1775149130381
-    },
-    {
-      "id": "inq5vejlkwf",
-      "msg": "Low altitude: 800D40 at 4925ft",
-      "sev": "warn",
-      "ts": 1775149130072
-    },
-    {
-      "id": "pr30b0g7gq",
-      "msg": "Low altitude: 800D40 at 4925ft",
-      "sev": "warn",
-      "ts": 1775149129444
-    },
-    {
-      "id": "r04sfwgr4wp",
-      "msg": "Low altitude: 800D40 at 4900ft",
-      "sev": "warn",
-      "ts": 1775149129417
-    },
-    {
-      "id": "2ukf3krx9bj",
-      "msg": "Low altitude: 800D40 at 4900ft",
-      "sev": "warn",
-      "ts": 1775149128680
-    },
-    {
-      "id": "c8hcgbzbn4e",
-      "msg": "Low altitude: 800D40 at 4900ft",
-      "sev": "warn",
-      "ts": 1775149128625
-    },
-    {
-      "id": "m7inotwc4kk",
-      "msg": "Low altitude: 800D40 at 4825ft",
-      "sev": "warn",
-      "ts": 1775149128524
-    },
-    {
-      "id": "8bi7ydbatx9",
-      "msg": "Low altitude: 800D40 at 4825ft",
-      "sev": "warn",
-      "ts": 1775149127533
-    },
-    {
-      "id": "npbes53q9pk",
-      "msg": "Low altitude: 800D40 at 4775ft",
-      "sev": "warn",
-      "ts": 1775149127506
-    },
-    {
-      "id": "cnjt32d1ki",
-      "msg": "Low altitude: 800D40 at 4775ft",
-      "sev": "warn",
-      "ts": 1775149127260
-    },
-    {
-      "id": "mzhybec2ki8",
-      "msg": "Low altitude: 800D40 at 4775ft",
-      "sev": "warn",
-      "ts": 1775149126959
-    },
-    {
-      "id": "0c2s581s253",
-      "msg": "Low altitude: 800D40 at 4775ft",
-      "sev": "warn",
-      "ts": 1775149126605
-    },
-    {
-      "id": "2iri84o5588",
-      "msg": "Low altitude: 800D40 at 4775ft",
-      "sev": "warn",
-      "ts": 1775149126441
-    },
-    {
-      "id": "k29sl9rs13i",
-      "msg": "Low altitude: 800D40 at 4700ft",
-      "sev": "warn",
-      "ts": 1775149125622
-    },
-    {
-      "id": "gatzdwvcrkm",
-      "msg": "Low altitude: 800D40 at 4700ft",
-      "sev": "warn",
-      "ts": 1775149125430
-    },
-    {
-      "id": "v3f056nj6z9",
-      "msg": "Low altitude: 800D40 at 4600ft",
-      "sev": "warn",
-      "ts": 1775149123573
-    },
-    {
-      "id": "159mxjsfya",
-      "msg": "Low altitude: 800D40 at 4600ft",
-      "sev": "warn",
-      "ts": 1775149123328
-    },
-    {
-      "id": "5tp4f3r4g4j",
-      "msg": "Low altitude: AIC1NU at 4550ft",
-      "sev": "warn",
-      "ts": 1775149123218
-    },
-    {
-      "id": "6fw3dozl1vc",
-      "msg": "Low altitude: 800D40 at 4550ft",
-      "sev": "warn",
-      "ts": 1775149123136
-    },
-    {
-      "id": "h2l5sfkptan",
-      "msg": "Low altitude: 800D40 at 4550ft",
-      "sev": "warn",
-      "ts": 1775149122618
-    },
-    {
-      "id": "9ifuvzpw6mg",
-      "msg": "Low altitude: 800D40 at 4550ft",
-      "sev": "warn",
-      "ts": 1775149122400
-    },
-    {
-      "id": "4ejmxy24tsy",
-      "msg": "Low altitude: 800D40 at 4500ft",
-      "sev": "warn",
-      "ts": 1775149121553
-    },
-    {
-      "id": "yv54gxzrxkl",
-      "msg": "Low altitude: 800D40 at 4500ft",
-      "sev": "warn",
-      "ts": 1775149121417
-    },
-    {
-      "id": "4c4viz04nx7",
-      "msg": "Low altitude: 800D40 at 4450ft",
-      "sev": "warn",
-      "ts": 1775149121225
-    },
-    {
-      "id": "snx33phew1",
-      "msg": "Low altitude: 800D40 at 4450ft",
-      "sev": "warn",
-      "ts": 1775149120542
-    },
-    {
-      "id": "9ha5wcmg4mv",
-      "msg": "Low altitude: 800D40 at 4450ft",
-      "sev": "warn",
-      "ts": 1775149120488
-    },
-    {
-      "id": "48wq7it6mdk",
-      "msg": "Low altitude: 800D40 at 4400ft",
-      "sev": "warn",
-      "ts": 1775149119696
-    },
-    {
-      "id": "g962ybq4h",
-      "msg": "Low altitude: 800D40 at 4400ft",
-      "sev": "warn",
-      "ts": 1775149119505
-    },
-    {
-      "id": "2e4hg5467wr",
-      "msg": "Low altitude: 800D40 at 4350ft",
-      "sev": "warn",
-      "ts": 1775149119395
-    },
-    {
-      "id": "lgzitztugi9",
-      "msg": "Low altitude: 800D40 at 4350ft",
-      "sev": "warn",
-      "ts": 1775149119368
-    },
-    {
-      "id": "92ivct9dz6r",
-      "msg": "Low altitude: 800D40 at 4350ft",
-      "sev": "warn",
-      "ts": 1775149119286
-    },
-    {
-      "id": "gnndhiyncyq",
-      "msg": "Low altitude: 800D40 at 4350ft",
-      "sev": "warn",
-      "ts": 1775149118822
-    },
-    {
-      "id": "dw3hxjxic7",
-      "msg": "Low altitude: 800D40 at 4350ft",
-      "sev": "warn",
-      "ts": 1775149118494
-    },
-    {
-      "id": "uu6ld9m8uq",
-      "msg": "Low altitude: 800D40 at 4325ft",
-      "sev": "warn",
-      "ts": 1775149117894
-    },
-    {
-      "id": "prawok2qsy",
-      "msg": "Low altitude: 800D40 at 4300ft",
-      "sev": "warn",
-      "ts": 1775149117812
-    },
-    {
-      "id": "2bbmuloikl2",
-      "msg": "Low altitude: 800D40 at 4300ft",
-      "sev": "warn",
-      "ts": 1775149117321
-    },
-    {
-      "id": "p40ezodkuig",
-      "msg": "Low altitude: 800D40 at 4250ft",
-      "sev": "warn",
-      "ts": 1775149117293
-    },
-    {
-      "id": "wl4qadqgt0q",
-      "msg": "Low altitude: 800D40 at 4250ft",
-      "sev": "warn",
-      "ts": 1775149117266
-    },
-    {
-      "id": "k1z3gf8u3me",
-      "msg": "Low altitude: 800D40 at 4250ft",
-      "sev": "warn",
-      "ts": 1775149116720
-    },
-    {
-      "id": "3i4uv38eize",
-      "msg": "Low altitude: 800D40 at 4250ft",
-      "sev": "warn",
-      "ts": 1775149116365
-    },
-    {
-      "id": "7nozhsiepu6",
-      "msg": "Low altitude: 800D40 at 4250ft",
-      "sev": "warn",
-      "ts": 1775149116338
-    },
-    {
-      "id": "dhtdr32a8tr",
-      "msg": "Low altitude: 800D40 at 4225ft",
-      "sev": "warn",
-      "ts": 1775149115765
-    },
-    {
-      "id": "x7b6mt1janb",
-      "msg": "Low altitude: 800D40 at 4225ft",
-      "sev": "warn",
-      "ts": 1775149115655
-    },
-    {
-      "id": "nrvolc40i3",
-      "msg": "Low altitude: 800D40 at 4225ft",
-      "sev": "warn",
-      "ts": 1775149115491
-    },
-    {
-      "id": "bxxojs9jr8o",
-      "msg": "Low altitude: 800D40 at 4200ft",
-      "sev": "warn",
-      "ts": 1775149115361
-    },
-    {
-      "id": "t0eca9z8xmn",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149114590
-    },
-    {
-      "id": "03thas7gyk8r",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149114399
-    },
-    {
-      "id": "ismpijgts5",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149113661
-    },
-    {
-      "id": "2pus2zwxmnd",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149113253
-    },
-    {
-      "id": "rly2tm7qq48",
-      "msg": "Low altitude: AIC1NU at 4050ft",
-      "sev": "warn",
-      "ts": 1775149113088
-    },
-    {
-      "id": "xf7fnpqc9o",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149112678
-    },
-    {
-      "id": "s1894xg05w",
-      "msg": "Low altitude: 800D40 at 4050ft",
-      "sev": "warn",
-      "ts": 1775149112132
-    },
-    {
-      "id": "baekz5ryji5",
-      "msg": "Low altitude: 800D40 at 4000ft",
-      "sev": "warn",
-      "ts": 1775149111613
-    },
-    {
-      "id": "095i8dh4rx26",
-      "msg": "Low altitude: 800D40 at 4000ft",
-      "sev": "warn",
-      "ts": 1775149111313
-    },
-    {
-      "id": "ssc3kvm9tk",
-      "msg": "Low altitude: 800D40 at 4000ft",
-      "sev": "warn",
-      "ts": 1775149111048
-    },
-    {
-      "id": "j9umu0aiqe",
-      "msg": "Low altitude: 800D40 at 3950ft",
-      "sev": "warn",
-      "ts": 1775149110685
-    },
-    {
-      "id": "yglcfl23cw",
-      "msg": "Low altitude: 800D40 at 3950ft",
-      "sev": "warn",
-      "ts": 1775149110166
-    },
-    {
-      "id": "g7icx5rnpt",
-      "msg": "Low altitude: 800D40 at 3925ft",
-      "sev": "warn",
-      "ts": 1775149109703
-    },
-    {
-      "id": "lty1y7n94",
-      "msg": "Low altitude: 800D40 at 3925ft",
-      "sev": "warn",
-      "ts": 1775149109566
-    },
-    {
-      "id": "ggvpt05xe4",
-      "msg": "Low altitude: 800D40 at 3900ft",
-      "sev": "warn",
-      "ts": 1775149109265
-    },
-    {
-      "id": "7at1shz1p1v",
-      "msg": "Low altitude: 800D40 at 3900ft",
-      "sev": "warn",
-      "ts": 1775149109210
-    },
-    {
-      "id": "lkz3vica4tr",
-      "msg": "Low altitude: 800D40 at 3900ft",
-      "sev": "warn",
-      "ts": 1775149109074
-    },
-    {
-      "id": "lhu9trxt1vl",
-      "msg": "Low altitude: 800D40 at 3850ft",
-      "sev": "warn",
-      "ts": 1775149108778
-    },
-    {
-      "id": "qypmkh0nzj",
-      "msg": "Low altitude: 800D40 at 3850ft",
-      "sev": "warn",
-      "ts": 1775149107899
-    },
-    {
-      "id": "b7aclqy239v",
-      "msg": "Low altitude: 800D40 at 3650ft",
-      "sev": "warn",
-      "ts": 1775149107845
-    },
-    {
-      "id": "p1o3nncit6s",
-      "msg": "Low altitude: 800D40 at 3650ft",
-      "sev": "warn",
-      "ts": 1775149107353
-    },
-    {
-      "id": "zjwxu5cn1td",
-      "msg": "Low altitude: 800D40 at 3650ft",
-      "sev": "warn",
-      "ts": 1775149104787
-    },
-    {
-      "id": "rkyc288la8a",
-      "msg": "Low altitude: 800D40 at 3650ft",
-      "sev": "warn",
-      "ts": 1775149103968
-    },
-    {
-      "id": "j39cv98glho",
-      "msg": "Low altitude: 800D40 at 3600ft",
-      "sev": "warn",
-      "ts": 1775149103885
-    },
-    {
-      "id": "wb2gwwk36i",
-      "msg": "Low altitude: 800D40 at 3600ft",
-      "sev": "warn",
-      "ts": 1775149103477
-    },
-    {
-      "id": "urtblwssr9",
-      "msg": "Low altitude: AIC1NU at 3600ft",
-      "sev": "warn",
-      "ts": 1775149102984
-    },
-    {
-      "id": "4oswntpavyd",
-      "msg": "Low altitude: 800D40 at 3600ft",
-      "sev": "warn",
-      "ts": 1775149102903
-    },
-    {
-      "id": "lczg8utxvdm",
-      "msg": "Low altitude: 800D40 at 3600ft",
-      "sev": "warn",
-      "ts": 1775149102793
-    },
-    {
-      "id": "4iinlzog88m",
-      "msg": "Low altitude: 800D40 at 3525ft",
-      "sev": "warn",
-      "ts": 1775149101947
-    },
-    {
-      "id": "a9yu9pfj1fd",
-      "msg": "Low altitude: 800D40 at 3525ft",
-      "sev": "warn",
-      "ts": 1775149101647
-    },
-    {
-      "id": "6doiui2pmeg",
-      "msg": "Low altitude: 800D40 at 3450ft",
-      "sev": "warn",
-      "ts": 1775149101565
-    },
-    {
-      "id": "0g8kemrtcpm7",
-      "msg": "Low altitude: 800D40 at 3450ft",
-      "sev": "warn",
-      "ts": 1775149100913
-    },
-    {
-      "id": "von78y0o2uo",
-      "msg": "Low altitude: 800D40 at 3450ft",
-      "sev": "warn",
-      "ts": 1775149100172
-    },
-    {
-      "id": "pyy5dnxmb",
-      "msg": "Low altitude: 800D40 at 3450ft",
-      "sev": "warn",
-      "ts": 1775149099790
-    },
-    {
-      "id": "yuamryxhq",
-      "msg": "Low altitude: 800D40 at 3450ft",
-      "sev": "warn",
-      "ts": 1775149099627
-    },
-    {
-      "id": "zq8mjxw5nr",
-      "msg": "Low altitude: 800D40 at 3400ft",
-      "sev": "warn",
-      "ts": 1775149099544
-    },
-    {
-      "id": "q48b74vu6p",
-      "msg": "Low altitude: 800D40 at 3400ft",
-      "sev": "warn",
-      "ts": 1775149098697
-    },
-    {
-      "id": "d596mft5vd",
-      "msg": "Low altitude: 800D40 at 3400ft",
-      "sev": "warn",
-      "ts": 1775149098670
-    },
-    {
-      "id": "4jist7wjy1p",
-      "msg": "Low altitude: 800D40 at 3350ft",
-      "sev": "warn",
-      "ts": 1775149097769
-    },
-    {
-      "id": "ddv10qexwl",
-      "msg": "Low altitude: 800D40 at 3350ft",
-      "sev": "warn",
-      "ts": 1775149097659
-    },
-    {
-      "id": "khjeo5st7d",
-      "msg": "Low altitude: 800D40 at 3300ft",
-      "sev": "warn",
-      "ts": 1775149097605
-    },
-    {
-      "id": "l3i13ww4pca",
-      "msg": "Low altitude: 800D40 at 3300ft",
-      "sev": "warn",
-      "ts": 1775149096676
-    },
-    {
-      "id": "yktw7x9szh",
-      "msg": "Low altitude: 800D40 at 3300ft",
-      "sev": "warn",
-      "ts": 1775149096540
-    },
-    {
-      "id": "zhbci3ymkcp",
-      "msg": "Low altitude: 800D40 at 3275ft",
-      "sev": "warn",
-      "ts": 1775149095721
-    },
-    {
-      "id": "42y8y2dk41t",
-      "msg": "Low altitude: 800D40 at 3275ft",
-      "sev": "warn",
-      "ts": 1775149095584
-    },
-    {
-      "id": "7d9755k18r",
-      "msg": "Low altitude: 800D40 at 3225ft",
-      "sev": "warn",
-      "ts": 1775149094601
-    },
-    {
-      "id": "2m6b0oj03dc",
-      "msg": "Low altitude: 800D40 at 3225ft",
-      "sev": "warn",
-      "ts": 1775149094546
-    },
-    {
-      "id": "5mvi92k8lin",
-      "msg": "Low altitude: 800D40 at 3175ft",
-      "sev": "warn",
-      "ts": 1775149093672
-    },
-    {
-      "id": "yurlg9y3p1",
-      "msg": "Low altitude: 800D40 at 3175ft",
-      "sev": "warn",
-      "ts": 1775149093536
-    },
-    {
-      "id": "ctzkkdnyc24",
-      "msg": "Low altitude: AIC1NU at 3150ft",
-      "sev": "warn",
-      "ts": 1775149092990
-    },
-    {
-      "id": "82uzxzjy72r",
-      "msg": "Low altitude: 800D40 at 3150ft",
-      "sev": "warn",
-      "ts": 1775149092662
-    },
-    {
-      "id": "rxh8r44m3y",
-      "msg": "Low altitude: 800D40 at 3150ft",
-      "sev": "warn",
-      "ts": 1775149092389
-    },
-    {
-      "id": "2tyo8gf8nu4",
-      "msg": "Low altitude: 800D40 at 3050ft",
-      "sev": "warn",
-      "ts": 1775149092007
-    },
-    {
-      "id": "rybd77i452",
-      "msg": "Low altitude: 800D40 at 3050ft",
-      "sev": "warn",
-      "ts": 1775149091597
-    },
-    {
-      "id": "560eg4q5ie8",
-      "msg": "Low altitude: 800D40 at 3050ft",
-      "sev": "warn",
-      "ts": 1775149090533
+      "id": "vbpcsk9esfe",
+      "msg": "Flight detected: 89660C",
+      "sev": "info",
+      "ts": 1775232887728
+    },
+    {
+      "id": "mgr1qv6veor",
+      "msg": "Flight detected: 8963E3",
+      "sev": "info",
+      "ts": 1775232293863
     }
   ]
 }
