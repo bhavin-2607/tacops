@@ -1,0 +1,67 @@
+{
+  "server": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "logLevel": "info"
+  },
+  "modules": {
+    "adsb": {
+      "enabled": true,
+      "host": "127.0.0.1",
+      "port": 30003,
+      "reconnectMs": 5000,
+      "historyLimit": 500
+    },
+    "rf433": {
+      "enabled": true,
+      "mode": "disabled",
+      "historyLimit": 200,
+      "comment": "Mode: 'usb' = RTL-SDR, 'mqtt' = ESP32 MQTT, 'disabled' = off"
+    },
+    "mqtt": {
+      "enabled": false,
+      "host": "127.0.0.1",
+      "port": 1883,
+      "username": "",
+      "password": "",
+      "reconnectMs": 5000,
+      "topics": {
+        "wifi": "tacops/wifi",
+        "ble": "tacops/ble",
+        "nrf24": "tacops/nrf24",
+        "rf433": "tacops/rf433_signal",
+        "heartbeat": "tacops/heartbeat"
+      }
+    },
+    "simulator": {
+      "enabled": false,
+      "tickMs": 2800,
+      "comment": "Fills offline modules with simulated data"
+    }
+  },
+  "storage": {
+    "stateFile": "backend/state.json",
+    "dataDirectory": "data",
+    "historiesDirectory": "data/histories",
+    "autoCleanupDays": 30,
+    "comment": "History files are timestamped and auto-cleaned after N days"
+  },
+  "ui": {
+    "defaultPanelVisibility": {
+      "adsb": true,
+      "wifi": true,
+      "ble": true,
+      "rf433": true,
+      "nrf24": true,
+      "lora": true,
+      "nethunter": true,
+      "spec": true,
+      "ai": true
+    }
+  },
+  "security": {
+    "enableCors": true,
+    "maxRequestSize": "100kb",
+    "comment": "Add auth settings here if needed"
+  }
+}

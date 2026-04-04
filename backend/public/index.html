@@ -138,6 +138,34 @@ const PanelHdr=({title,sub,live})=>(
 
 /* ── ADS-B Panel ────────────────────────────────────────────────── */
 function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
+  const [history,setHistory]=React.useState([]);
+  const [historyLoading,setHistoryLoading]=React.useState(false);
+
+  React.useEffect(()=>{
+    const loadHistory=async()=>{
+      try{
+        setHistoryLoading(true);
+        const res=await fetch("/api/history/adsb");
+        if(res.ok){
+          const json=await res.json();
+          setHistory(json.data||[]);
+        }
+      }catch(e){console.error("Failed to load ADS-B history:",e);}
+      finally{setHistoryLoading(false);}
+    };
+    loadHistory();
+  },[]);
+
+  const clearHistoryLocal=async()=>{
+    try{
+      const res=await fetch("/api/history/adsb",{method:"DELETE"});
+      if(res.ok){
+        setHistory([]);
+        clearAdsbHistory();
+      }
+    }catch(e){console.error("Failed to clear history:",e);}
+  };
+
   return(
     <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
       <PanelHdr title="ADS-B FLIGHTS" sub="readsb → :30003" live={live}/>
@@ -173,12 +201,12 @@ function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
             Waiting for aircraft...
           </div>
         )}
-        {state.adsb.history && state.adsb.history.length > 0 && (
+        {history.length > 0 && (
           <div style={{marginTop:20, borderTop: `2px solid ${T.border}`, paddingTop:10}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-              <div style={{fontSize:12, color:T.acc, fontFamily:T.display}}>FLIGHT HISTORY ({state.adsb.history.length})</div>
+              <div style={{fontSize:12, color:T.acc, fontFamily:T.display}}>FLIGHT HISTORY ({history.length})</div>
               {!hideClearButtons && (
-                <button onClick={clearAdsbHistory} style={{fontSize:9,padding:"4px 8px",background:T.danger,color:"#fff",border:"none",borderRadius:2,cursor:"pointer"}}>
+                <button onClick={clearHistoryLocal} style={{fontSize:9,padding:"4px 8px",background:T.danger,color:"#fff",border:"none",borderRadius:2,cursor:"pointer"}}>
                   Clear history
                 </button>
               )}
@@ -189,7 +217,7 @@ function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
                   <th key={h}>{h}</th>
                 ))}</tr>
               </thead>
-              <tbody>{state.adsb.history.slice(-50).reverse().map((f,i)=>(
+              <tbody>{history.slice(-50).reverse().map((f,i)=>(
                 <tr key={i}>
                   <td style={{color:T.acc2,fontWeight:700}}>
                     {f.id ? (

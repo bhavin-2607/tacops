@@ -3,20 +3,47 @@
 //  Raspberry Pi 5 Hub
 //  Each module tries real hardware → falls back to simulation
 // ============================================================
-require("dotenv").config();
+const fs = require("fs").promises;
+const path = require("path");
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
 const cors = require("cors");
-const path = require("path");
-const fs = require("fs").promises;
 
+const HistoryManager = require("./lib/historyManager");
 const adsbModule   = require("./modules/adsb");
 const rf433Module  = require("./modules/rf433");
 const mqttBridge   = require("./modules/mqtt-bridge");
 const simulator    = require("./modules/simulator");
 
-const PORT = process.env.PORT || 3000;
+// ── Load config from config.json ─────────────────────────
+let config = {
+  server: { port: 3000 },
+  modules: {
+    adsb: { enabled: true, host: "127.0.0.1", port: 30003 },
+    rf433: { enabled: true, mode: "usb" },
+    mqtt: { enabled: true },
+  },
+  storage: { dataDirectory: "data" },
+};
+
+try {
+  const configPath = path.join(__dirname, "..", "config.json");
+  const configData = require(configPath);
+  config = { ...config, ...configData };
+  console.log("[CONFIG] Loaded from config.json");
+} catch (err) {
+  console.warn("[CONFIG] Using defaults, config.json not found:", err.message);
+}
+
+const PORT = config.server?.port || 3000;
+const DATA_DIR = config.storage?.dataDirectory || "data";
+const STATE_FILE = path.join(__dirname, config.storage?.stateFile || "state.json");
+
+// Initialize history manager
+const historyManager = new HistoryManager(DATA_DIR);
+(async () => await historyManager.init())();
+historyManager.setLimits(config.storage?.historyLimits);
 
 // Track seen flights to avoid duplicate alerts
 let seenFlights = new Set();
@@ -43,9 +70,9 @@ app.use(logRequest);
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// ── Shared state ─────────────────────────────────────────────
+// ── Shared state (transient, no history) ────────────────
 const state = {
-  adsb:     { data: [], live: false, history: [] },
+  adsb:     { data: [], live: false },
   wifi:     { data: [], live: false },
   ble:      { data: [], live: false },
   rf433:    { data: [], live: false },
@@ -55,10 +82,8 @@ const state = {
   pwnagotchi: { captures: 0, mood: "bored", epoch: 0, live: false },
   mqtt:     { live: false },
   alerts:   [],
-  config:   { rf433Mode: "usb" }, // updated below
+  config:   { rf433Mode: config.modules?.rf433?.mode || "usb" },
 };
-
-const STATE_FILE = path.join(__dirname, "state.json");
 
 function isString(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -165,24 +190,22 @@ adsbModule.start({
   onFlight: flights => {
     state.adsb.data = flights;
     state.adsb.live = true;
-    state.adsb.history = flights.map(f => ({ ...f, ts: f.ts || Date.now() })).slice(-500);
-    broadcast("adsb", {
-      data: state.adsb.data,
-      history: state.adsb.history,
-      live: state.adsb.live,
-    });
 
-    // Alert for new flights
+    // Alert for new flights (and accumulate history)
     flights.forEach(f => {
       const id = f.id || f.callsign;
       if (id && !seenFlights.has(id)) {
         seenFlights.add(id);
         pushAlert(`Flight detected: ${f.callsign || f.id}`, "info");
-        // Add to history
-        state.adsb.history = state.adsb.history || [];
-        state.adsb.history.push(f);
-        state.adsb.history = state.adsb.history.slice(-500);
+        // Add to history file
+        historyManager.addEntry("adsb", { ...f, ts: f.ts || Date.now() });
       }
+    });
+
+    // Broadcast updated ADS-B state
+    broadcast("adsb", {
+      data: state.adsb.data,
+      live: state.adsb.live,
     });
 
     const emergency = flights.filter(f => f.squawk >= 7500 && f.squawk <= 7777);
@@ -205,7 +228,7 @@ adsbModule.start({
 });
 
 // ── 433 MHz module (RTL-SDR → rtl_433 or MQTT) ──────────────────────
-const rf433Mode = process.env.RF433_MODE || "usb";
+const rf433Mode = config.modules?.rf433?.mode || "disabled";
 state.config.rf433Mode = rf433Mode;
 if (rf433Mode === "mqtt") {
   // 433MHz data is consumed via MQTT topic tacops/rf433_signal
@@ -216,15 +239,16 @@ if (rf433Mode === "mqtt") {
       state.rf433.data = [signal, ...state.rf433.data].slice(0, 200);
       state.rf433.live = true;
       broadcast("rf433", state.rf433.data);
+      historyManager.addEntry("rf433", { ...signal, ts: signal.ts || Date.now() });
       pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
     },
     onError: () => { state.rf433.live = false; }
   });
 } else if (rf433Mode === "disabled") {
-  console.log("[RF433] Module disabled via RF433_MODE");
-  state.rf433.live = false; // Ensure never marked as live when disabled
+  console.log("[RF433] Module disabled via config.json");
+  state.rf433.live = false;
 } else {
-  console.warn(`\n[RF433] Unknown RF433_MODE='${rf433Mode}', falling back to usb\n`);
+  console.warn(`\n[RF433] Unknown RF433 mode='${rf433Mode}', falling back to disabled\n`);
   rf433Module.start({
     onSignal: signal => {
       state.rf433.data = [signal, ...state.rf433.data].slice(0, 200);
@@ -423,44 +447,74 @@ app.get("/api/status", (req, res) => res.json({
   pwnagotchi: state.pwnagotchi.live,
 }));
 
+// ── History API endpoints ────────────────────────────────────
+app.get("/api/history/:module", async (req, res) => {
+  try {
+    const history = await historyManager.getHistory(req.params.module);
+    res.json({ module: req.params.module, count: history.length, data: history });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.delete("/api/history/:module", async (req, res) => {
+  try {
+    await historyManager.clearHistory(req.params.module);
+    res.json({ ok: true, message: `Cleared ${req.params.module} history` });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.get("/api/config", (req, res) => {
+  res.json({ 
+    config: {
+      server: config.server,
+      modules: config.modules,
+      storage: config.storage,
+    },
+    lastModified: new Date(),
+  });
+});
+
 // ── Simulation tick (fills any offline module with fake data) 
 setInterval(() => {
   const { adsb, wifi, ble, rf433, nrf24 } = state;
 
-  if (!adsb.live) {
-    const flights = simulator.genFlights();
-    state.adsb.data = flights;
-    broadcast("adsb", flights);
-  }
-  if (!wifi.live) {
-    const nets = simulator.genNets();
-    state.wifi.data = nets;
-    broadcast("wifi", nets);
-  }
-  if (!ble.live) {
-    const devices = simulator.genBle();
-    state.ble.data = devices;
-    broadcast("ble", devices);
-  }
-  // if (!rf433.live && Math.random() > 0.6) {
-  //   const signal = simulator.genRf433Signal();
-  //   state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
-  //   broadcast("rf433", state.rf433.data);
+  // if (!adsb.live) {
+  //   const flights = simulator.genFlights();
+  //   state.adsb.data = flights;
+  //   broadcast("adsb", flights);
   // }
-  if (!nrf24.live) {
-    const channels = simulator.genNrf24();
-    state.nrf24.data = channels;
-    broadcast("nrf24", channels);
-  }
-  if (!state.pwnagotchi.live && Math.random() > 0.85) {
-    state.pwnagotchi.captures = (state.pwnagotchi.captures || 0) + 1;
-    broadcast("pwnagotchi", state.pwnagotchi);
-  }
+  // if (!wifi.live) {
+  //   const nets = simulator.genNets();
+  //   state.wifi.data = nets;
+  //   broadcast("wifi", nets);
+  // }
+  // if (!ble.live) {
+  //   const devices = simulator.genBle();
+  //   state.ble.data = devices;
+  //   broadcast("ble", devices);
+  // }
+  // // if (!rf433.live && Math.random() > 0.6) {
+  // //   const signal = simulator.genRf433Signal();
+  // //   state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
+  // //   broadcast("rf433", state.rf433.data);
+  // // }
+  // if (!nrf24.live) {
+  //   const channels = simulator.genNrf24();
+  //   state.nrf24.data = channels;
+  //   broadcast("nrf24", channels);
+  // }
+  // if (!state.pwnagotchi.live && Math.random() > 0.85) {
+  //   state.pwnagotchi.captures = (state.pwnagotchi.captures || 0) + 1;
+  //   broadcast("pwnagotchi", state.pwnagotchi);
+  // }
 
-  broadcast("spectrum", simulator.genSpectrum());
+  // broadcast("spectrum", simulator.genSpectrum());
 
   // Save state periodically
-  saveState();
+  // saveState();
 
 }, 2800);
 
