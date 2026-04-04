@@ -48,6 +48,7 @@ function mergeFlights() {
       dist: Math.min(250, Math.round(dist)),
       rssi: -60, // dump1090 doesn't give RSSI per-aircraft
       squawk: f.squawk || 0,
+      ts: f.ts || now,
     });
   }
   return result;

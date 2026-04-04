@@ -14,6 +14,38 @@ const mqtt = require("mqtt");
 const BROKER_URL = process.env.MQTT_BROKER || "mqtt://127.0.0.1:1883";
 const RETRY_MS   = 5000;
 
+function isObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function isNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+function validateWifiPayload(raw) {
+  if (Array.isArray(raw)) return raw.every(item => isObject(item));
+  return isObject(raw);
+}
+
+function validateBlePayload(raw) {
+  if (Array.isArray(raw)) return raw.every(item => isObject(item));
+  return isObject(raw);
+}
+
+function validateNrf24Payload(raw) {
+  if (!Array.isArray(raw)) return false;
+  if (raw.length === 126 && raw.every(isNumber)) return true;
+  return raw.every(item => isObject(item) && isNumber(item.ch) && isNumber(item.v));
+}
+
+function validateRf433Payload(raw) {
+  return isObject(raw) && (typeof raw.proto === "string" || typeof raw.model === "string" || raw.data !== undefined);
+}
+
+function validateHeartbeatPayload(raw) {
+  return isObject(raw) && typeof raw.device === "string" && isNumber(raw.uptime) && isNumber(raw.heap);
+}
+
 function start({ onWifi, onBle, onNrf24, onRf433, onConnect, onDisconnect }) {
   let client = null;
   let connected = false;
@@ -38,26 +70,50 @@ function start({ onWifi, onBle, onNrf24, onRf433, onConnect, onDisconnect }) {
     client.on("message", (topic, msgBuf) => {
       let payload;
       try { payload = JSON.parse(msgBuf.toString()); }
-      catch { return; }
+      catch {
+        console.warn("[MQTT] Invalid JSON payload on topic", topic);
+        return;
+      }
 
       const sub = topic.replace("tacops/", "");
       switch (sub) {
         case "wifi":
+          if (!validateWifiPayload(payload)) {
+            console.warn("[MQTT] Invalid wifi payload", payload);
+            return;
+          }
           onWifi(normalizeWifi(payload));
           break;
         case "ble":
+          if (!validateBlePayload(payload)) {
+            console.warn("[MQTT] Invalid ble payload", payload);
+            return;
+          }
           onBle(normalizeBle(payload));
           break;
         case "nrf24":
+          if (!validateNrf24Payload(payload)) {
+            console.warn("[MQTT] Invalid nrf24 payload", payload);
+            return;
+          }
           onNrf24(normalizeNrf24(payload));
           break;
         case "rf433_signal":
+          if (!validateRf433Payload(payload)) {
+            console.warn("[MQTT] Invalid rf433_signal payload", payload);
+            return;
+          }
           if (onRf433) onRf433(payload);
           break;
         case "heartbeat":
+          if (!validateHeartbeatPayload(payload)) {
+            console.warn("[MQTT] Invalid heartbeat payload", payload);
+            return;
+          }
           console.log(`[MQTT] Heartbeat from ${payload.device} — uptime ${payload.uptime}s`);
           break;
         default:
+          console.warn("[MQTT] Unknown topic", topic);
           break;
       }
     });

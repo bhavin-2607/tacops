@@ -25,8 +25,19 @@ let seenBle = new Set();
 // ── Express setup ────────────────────────────────────────────
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "100kb" }));
 app.use(express.static(path.join(__dirname, "public")));
+
+function logRequest(req, res, next) {
+  const start = Date.now();
+  res.on("finish", () => {
+    const elapsed = Date.now() - start;
+    console.log(`[HTTP] ${req.method} ${req.originalUrl} ${res.statusCode} ${elapsed}ms`);
+  });
+  next();
+}
+
+app.use(logRequest);
 
 // ── HTTP + WebSocket server ──────────────────────────────────
 const server = http.createServer(app);
@@ -34,7 +45,7 @@ const wss = new WebSocket.Server({ server });
 
 // ── Shared state ─────────────────────────────────────────────
 const state = {
-  adsb:     { data: [], live: false },
+  adsb:     { data: [], live: false, history: [] },
   wifi:     { data: [], live: false },
   ble:      { data: [], live: false },
   rf433:    { data: [], live: false },
@@ -42,10 +53,66 @@ const state = {
   lora:     { data: [], live: false },
   nethunter:{ hosts: [], live: false },
   pwnagotchi: { captures: 0, mood: "bored", epoch: 0, live: false },
+  mqtt:     { live: false },
   alerts:   [],
+  config:   { rf433Mode: "usb" }, // updated below
 };
 
 const STATE_FILE = path.join(__dirname, "state.json");
+
+function isString(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isFiniteNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+function safeHandler(fn) {
+  return async (req, res, next) => {
+    try {
+      await Promise.resolve(fn(req, res, next));
+    } catch (err) {
+      next(err);
+    }
+  };
+}
+
+function validatePwnagotchi(body) {
+  if (!body || typeof body !== "object") return "Expected JSON body";
+  if (!isString(body.mood)) return "Invalid mood";
+  if (!isFiniteNumber(body.epoch) || body.epoch < 0) return "Invalid epoch";
+  if (!Number.isInteger(body.captures) || body.captures < 0) return "Invalid captures";
+  if (body.handshake !== undefined && typeof body.handshake !== "object") return "Invalid handshake";
+  if (body.handshake && body.handshake.ssid !== undefined && !isString(body.handshake.ssid)) return "Invalid handshake.ssid";
+  return null;
+}
+
+function validateXiao(body) {
+  if (!body || typeof body !== "object") return "Expected JSON body";
+  if (!isString(body.type)) return "Invalid type";
+  if (body.ts !== undefined && (!isFiniteNumber(body.ts) || body.ts < 0)) return "Invalid timestamp";
+  if (body.rssi !== undefined && !isFiniteNumber(body.rssi)) return "Invalid RSSI";
+  return null;
+}
+
+function validateXiaoHeartbeat(body) {
+  if (!body || typeof body !== "object") return "Expected JSON body";
+  if (!isFiniteNumber(body.uptime) || body.uptime < 0) return "Invalid uptime";
+  if (!isFiniteNumber(body.heap) || body.heap < 0) return "Invalid heap";
+  if (body.loraPkts !== undefined && !Number.isInteger(body.loraPkts)) return "Invalid loraPkts";
+  return null;
+}
+
+function validateNethunter(body) {
+  if (!body || typeof body !== "object") return "Expected JSON body";
+  if (body.device !== undefined && !isString(body.device)) return "Invalid device";
+  if (body.wifi_networks !== undefined && !Array.isArray(body.wifi_networks)) return "Invalid wifi_networks";
+  if (body.ble_devices !== undefined && !Array.isArray(body.ble_devices)) return "Invalid ble_devices";
+  if (body.hosts !== undefined && !Array.isArray(body.hosts)) return "Invalid hosts";
+  if (body.lora_packets !== undefined && !Array.isArray(body.lora_packets)) return "Invalid lora_packets";
+  return null;
+}
 
 // ── Load persisted state ─────────────────────────────────────
 async function loadState() {
@@ -53,6 +120,12 @@ async function loadState() {
     const data = await fs.readFile(STATE_FILE, "utf8");
     const persisted = JSON.parse(data);
     Object.assign(state, persisted);
+
+    // Live flags are transient and should not survive a restart.
+    ["adsb","wifi","ble","rf433","nrf24","lora","nethunter","pwnagotchi","mqtt"].forEach(key => {
+      if (state[key] && typeof state[key] === "object") state[key].live = false;
+    });
+
     console.log("[STATE] Loaded persisted state");
   } catch (err) {
     console.log("[STATE] No persisted state found, starting fresh");
@@ -92,7 +165,12 @@ adsbModule.start({
   onFlight: flights => {
     state.adsb.data = flights;
     state.adsb.live = true;
-    broadcast("adsb", flights);
+    state.adsb.history = flights.map(f => ({ ...f, ts: f.ts || Date.now() })).slice(-500);
+    broadcast("adsb", {
+      data: state.adsb.data,
+      history: state.adsb.history,
+      live: state.adsb.live,
+    });
 
     // Alert for new flights
     flights.forEach(f => {
@@ -128,6 +206,7 @@ adsbModule.start({
 
 // ── 433 MHz module (RTL-SDR → rtl_433 or MQTT) ──────────────────────
 const rf433Mode = process.env.RF433_MODE || "usb";
+state.config.rf433Mode = rf433Mode;
 if (rf433Mode === "mqtt") {
   // 433MHz data is consumed via MQTT topic tacops/rf433_signal
   console.log("[RF433] MQTT mode enabled");
@@ -143,6 +222,7 @@ if (rf433Mode === "mqtt") {
   });
 } else if (rf433Mode === "disabled") {
   console.log("[RF433] Module disabled via RF433_MODE");
+  state.rf433.live = false; // Ensure never marked as live when disabled
 } else {
   console.warn(`\n[RF433] Unknown RF433_MODE='${rf433Mode}', falling back to usb\n`);
   rf433Module.start({
@@ -194,10 +274,15 @@ mqttBridge.start({
     pushAlert(`433 MHz: ${signal.proto} detected — ${signal.data}`, "warn");
   }) : undefined,
   onConnect: () => {
+    state.mqtt.live = true;
+    broadcast("mqtt", state.mqtt);
     pushAlert("MQTT broker connected — ESP32 sensors online", "info");
-    if (rf433Mode === "mqtt") state.rf433.live = true;
+    // Do not assume RF433 is live just because the MQTT broker connected.
+    // RF433 should become live only when actual RF433 MQTT messages arrive.
   },
   onDisconnect: () => {
+    state.mqtt.live = false;
+    broadcast("mqtt", state.mqtt);
     state.wifi.live = false;
     state.ble.live = false;
     state.nrf24.live = false;
@@ -207,7 +292,10 @@ mqttBridge.start({
 });
 
 // ── Pwnagotchi webhook endpoint ──────────────────────────────
-app.post("/api/pwnagotchi", (req, res) => {
+app.post("/api/pwnagotchi", safeHandler((req, res) => {
+  const error = validatePwnagotchi(req.body);
+  if (error) return res.status(400).json({ ok: false, error });
+
   const { mood, epoch, captures, handshake } = req.body;
   state.pwnagotchi = { mood, epoch, captures, live: true };
   if (handshake) {
@@ -216,12 +304,15 @@ app.post("/api/pwnagotchi", (req, res) => {
   }
   broadcast("pwnagotchi", state.pwnagotchi);
   res.json({ ok: true });
-});
+}));
 
 // ── XIAO ESP32S3 dedicated endpoint (field mode HTTP POST) ───
-app.post("/api/xiao", (req, res) => {
+app.post("/api/xiao", safeHandler((req, res) => {
+  const error = validateXiao(req.body);
+  if (error) return res.status(400).json({ ok: false, error });
+
   const pkt = req.body;
-  if (!pkt || !pkt.type) return res.json({ ok: false });
+  if (!pkt.type) return res.status(400).json({ ok: false, error: "Missing packet type" });
 
   state.lora = state.lora || { data: [], live: false };
   pkt.ts = pkt.ts || Date.now();
@@ -234,15 +325,21 @@ app.post("/api/xiao", (req, res) => {
   else pushAlert(`LoRa packet on ${pkt.freq}MHz — RSSI ${pkt.rssi}dBm`, "info");
 
   res.json({ ok: true });
-});
+}));
 
-app.post("/api/xiao/heartbeat", (req, res) => {
+app.post("/api/xiao/heartbeat", safeHandler((req, res) => {
+  const error = validateXiaoHeartbeat(req.body);
+  if (error) return res.status(400).json({ ok: false, error });
+
   console.log(`[XIAO] Heartbeat — uptime:${req.body.uptime}s heap:${req.body.heap} loraPkts:${req.body.loraPkts}`);
   res.json({ ok: true });
-});
+}));
 
 // ── NetHunter field agent endpoint ──────────────────────────
-app.post("/api/nethunter", (req, res) => {
+app.post("/api/nethunter", safeHandler((req, res) => {
+  const payloadError = validateNethunter(req.body);
+  if (payloadError) return res.status(400).json({ ok: false, error: payloadError });
+
   const { wifi_networks, wifi_probes, ble_devices, hosts, lora_packets, gps, device, ts } = req.body;
 
   // Merge WiFi networks into wifi state
@@ -311,7 +408,7 @@ app.post("/api/nethunter", (req, res) => {
 
   console.log(`[NetHunter] ${device} → wifi:${(wifi_networks||[]).length} ble:${(ble_devices||[]).length} hosts:${(hosts||[]).length} lora:${(lora_packets||[]).length}`);
   res.json({ ok: true, ts: Date.now() });
-});
+}));
 
 
 
@@ -382,6 +479,16 @@ wss.on("connection", ws => {
     } catch (e) {}
   });
   ws.on("close", () => console.log("[WS] Client disconnected"));
+});
+
+app.use((req, res) => {
+  res.status(404).json({ ok: false, error: "Endpoint not found" });
+});
+
+app.use((err, req, res, next) => {
+  console.error("[ERROR]", err.stack || err);
+  if (res.headersSent) return next(err);
+  res.status(500).json({ ok: false, error: "Internal server error" });
 });
 
 server.listen(PORT, () => {

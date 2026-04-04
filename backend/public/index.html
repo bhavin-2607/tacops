@@ -137,7 +137,7 @@ const PanelHdr=({title,sub,live})=>(
 );
 
 /* ── ADS-B Panel ────────────────────────────────────────────────── */
-function AdsbPanel({data,live,state}){
+function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
   return(
     <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
       <PanelHdr title="ADS-B FLIGHTS" sub="readsb → :30003" live={live}/>
@@ -150,7 +150,15 @@ function AdsbPanel({data,live,state}){
           </thead>
           <tbody>{data.map((f,i)=>(
             <tr key={i}>
-              <td style={{color:T.acc2,fontWeight:700}}>{f.callsign||f.id||"———"}</td>
+              <td style={{color:T.acc2,fontWeight:700}}>
+                {f.id ? (
+                  <a href={`https://globe.adsbexchange.com/?icao=${encodeURIComponent(f.id)}`} target="_blank" rel="noreferrer" style={{color:T.acc2,textDecoration:"underline"}}>
+                    {f.callsign||f.id}
+                  </a>
+                ) : (
+                  f.callsign||"———"
+                )}
+              </td>
               <td style={{color:T.text}}>{(f.alt||0).toLocaleString()}</td>
               <td style={{color:T.text}}>{f.spd||0}</td>
               <td style={{color:T.text}}>{f.hdg||0}°</td>
@@ -167,7 +175,14 @@ function AdsbPanel({data,live,state}){
         )}
         {state.adsb.history && state.adsb.history.length > 0 && (
           <div style={{marginTop:20, borderTop: `2px solid ${T.border}`, paddingTop:10}}>
-            <div style={{fontSize:12, color:T.acc, marginBottom:10, fontFamily:T.display}}>FLIGHT HISTORY ({state.adsb.history.length})</div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+              <div style={{fontSize:12, color:T.acc, fontFamily:T.display}}>FLIGHT HISTORY ({state.adsb.history.length})</div>
+              {!hideClearButtons && (
+                <button onClick={clearAdsbHistory} style={{fontSize:9,padding:"4px 8px",background:T.danger,color:"#fff",border:"none",borderRadius:2,cursor:"pointer"}}>
+                  Clear history
+                </button>
+              )}
+            </div>
             <table>
               <thead>
                 <tr>{["CALLSIGN","ALT ft","SPD kt","HDG","DIST km","SQUAWK","RSSI","TIME"].map(h=>(
@@ -176,14 +191,22 @@ function AdsbPanel({data,live,state}){
               </thead>
               <tbody>{state.adsb.history.slice(-50).reverse().map((f,i)=>(
                 <tr key={i}>
-                  <td style={{color:T.acc2,fontWeight:700}}>{f.callsign||f.id||"———"}</td>
-                  <td style={{color:T.text}}>{(f.alt||0).toLocaleString()}</td>
-                  <td style={{color:T.text}}>{f.spd||0}</td>
-                  <td style={{color:T.text}}>{f.hdg||0}°</td>
-                  <td style={{color:T.text}}>{f.dist||0}</td>
-                  <td style={{color:f.squawk>=7500?T.danger:T.dim}}>{f.squawk||"—"}</td>
-                  <td><SigBar rssi={f.rssi||-70}/></td>
-                  <td style={{color:T.dim,fontSize:10}}>{new Date(f.ts||Date.now()).toLocaleTimeString()}</td>
+                  <td style={{color:T.acc2,fontWeight:700}}>
+                    {f.id ? (
+                      <a href={`https://globe.adsbexchange.com/?icao=${encodeURIComponent(f.id)}`} target="_blank" rel="noreferrer" style={{color:T.acc2,textDecoration:"underline"}}>
+                        {f.callsign||f.id}
+                      </a>
+                    ) : (
+                      f.callsign||"———"
+                    )}
+                  </td>
+                  <td style={{color:T.text}}>{f.alt > 0 ? f.alt.toLocaleString() : "—"}</td>
+                  <td style={{color:T.text}}>{f.spd > 0 ? f.spd : "—"}</td>
+                  <td style={{color:T.text}}>{f.hdg > 0 ? `${f.hdg}°` : "—"}</td>
+                  <td style={{color:T.text}}>{f.dist > 0 ? f.dist : "—"}</td>
+                  <td style={{color:f.squawk>=7500?T.danger:T.dim}}>{f.squawk ? f.squawk : "—"}</td>
+                  <td><SigBar rssi={typeof f.rssi === "number" ? f.rssi : -70}/></td>
+                  <td style={{color:T.dim,fontSize:10}}>{f.ts ? new Date(f.ts).toLocaleTimeString() : "—"}</td>
                 </tr>
               ))}</tbody>
             </table>
@@ -757,6 +780,30 @@ function App(){
   const [time,setTime]=useState(new Date());
   const [wsConn,setWsConn]=useState(false);
   const [alerts,setAlerts]=useState([]);
+  const [showSettings,setShowSettings]=useState(false);
+  const [hideClearButtons,setHideClearButtons]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_hideClearButtons"))||false;
+    }catch{
+      return false;
+    }
+  });
+  const [autoRefresh,setAutoRefresh]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_autoRefresh"))||false;
+    }catch{
+      return false;
+    }
+  });
+  const [refreshing,setRefreshing]=useState(false);
+  const [panelVisibility,setPanelVisibility]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_panelVisibility"))||
+        Object.fromEntries(NAV.map(n=>[n.id,true]));
+    }catch{
+      return Object.fromEntries(NAV.map(n=>[n.id,true]));
+    }
+  });
   const [state,setState]=useState({
     adsb:{data:[],live:false},
     wifi:{data:[],live:false},
@@ -770,6 +817,47 @@ function App(){
     alerts:[]
   });
   const wsRef=useRef();
+
+  // Toggle panel visibility
+  const togglePanel=(id)=>{
+    setPanelVisibility(p=>{
+      const updated={...p,[id]:!p[id]};
+      localStorage.setItem("tacops_panelVisibility",JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const setHideClearButtonsLocal=(value)=>{
+    setHideClearButtons(value);
+    localStorage.setItem("tacops_hideClearButtons",JSON.stringify(value));
+  };
+
+  const setAutoRefreshLocal=(value)=>{
+    setAutoRefresh(value);
+    localStorage.setItem("tacops_autoRefresh",JSON.stringify(value));
+  };
+
+  const refreshData=useCallback(async ()=>{
+    try{
+      setRefreshing(true);
+      const res=await fetch("/api/state");
+      if(res.ok){
+        const payload=await res.json();
+        setState(payload);
+        setAlerts(payload.alerts||[]);
+      }
+    }catch(e){}
+    finally{
+      setRefreshing(false);
+    }
+  },[]);
+
+  const clearAdsbHistory=()=>{
+    setState(p=>({
+      ...p,
+      adsb:{...p.adsb,history:[]}
+    }));
+  };
 
   // Clock
   useEffect(()=>{
@@ -809,11 +897,19 @@ function App(){
     return()=>wsRef.current?.close();
   },[]);
 
+  useEffect(()=>{
+    if(!autoRefresh) return;
+    const id=setInterval(refreshData,15000);
+    return()=>clearInterval(id);
+  },[autoRefresh,refreshData]);
+
+  const visibleNav=NAV.filter(n=>panelVisibility[n.id]);
   const liveCount=[state.adsb,state.wifi,state.ble,state.rf433,state.lora,state.nethunter].filter(s=>s?.live).length;
+  const mqttConn = state.mqtt?.live;
 
   const renderPanel=()=>{
     switch(panel){
-      case"adsb":  return <AdsbPanel data={state.adsb?.data||[]} live={state.adsb?.live} state={state}/>;
+      case"adsb":  return <AdsbPanel data={state.adsb?.data||[]} live={state.adsb?.live} state={state} hideClearButtons={hideClearButtons} clearAdsbHistory={clearAdsbHistory}/>;
       case"wifi":  return <WifiPanel data={state.wifi?.data||[]} pwna={state.pwnagotchi||{}} live={state.wifi?.live} state={state}/>;
       case"ble":   return <BlePanel data={state.ble?.data||[]} live={state.ble?.live} state={state}/>;
       case"rf433": return <Rf433Panel data={state.rf433?.data||[]} live={state.rf433?.live} state={state}/>;
@@ -849,9 +945,12 @@ function App(){
           <span style={{fontSize:9,letterSpacing:1,color:liveCount>0?T.acc:T.dim}}>
             {liveCount>0?`● ${liveCount} LIVE`:"○ SIM"}
           </span>
-          <span style={{fontSize:9,letterSpacing:1,color:state.pwnagotchi?.live?T.warn:T.dim}}>
-            {state.pwnagotchi?.live?"● PWNA":"○ PWNA"}
+          <span style={{fontSize:9,letterSpacing:1,color:mqttConn?T.acc:T.danger}}>
+            {mqttConn?"● MQTT":"○ MQTT"}
           </span>
+          <button onClick={refreshData} style={{fontSize:9,padding:"4px 8px",background:T.bg2,color:T.acc,border:`1px solid ${T.border}`,borderRadius:3,cursor:"pointer"}}>
+            {refreshing?"Refreshing...":"Refresh"}
+          </button>
           <span style={{fontFamily:T.display,fontSize:11,color:T.acc,letterSpacing:2}}>
             {time.toTimeString().slice(0,8)}
           </span>
@@ -866,12 +965,16 @@ function App(){
           width:66,background:T.bg1,borderRight:`1px solid ${T.border}`,
           display:"flex",flexDirection:"column",padding:"4px 0",gap:1,flexShrink:0
         }}>
-          {NAV.map(n=>(
+          {visibleNav.map(n=>(
             <button key={n.id} className={`nav-btn${panel===n.id?" on":""}`} onClick={()=>setPanel(n.id)}>
               <span className="nav-icon">{n.icon}</span>
               <span>{n.label}</span>
             </button>
           ))}
+          <button className="nav-btn" onClick={()=>setShowSettings(!showSettings)} style={{borderLeft: showSettings ? `2px solid ${T.acc}` : "2px solid transparent"}}>
+            <span className="nav-icon">⚙</span>
+            <span>Config</span>
+          </button>
         </div>
 
         {/* MAIN PANEL */}
@@ -885,36 +988,79 @@ function App(){
           display:"flex",flexDirection:"column",overflow:"hidden",flexShrink:0
         }}>
 
-          {/* Radar */}
-          <div style={{padding:"10px 0 6px",borderBottom:`1px solid ${T.border}`,flexShrink:0}}>
-            <div style={{fontSize:9,color:T.dim,letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display}}>
-              RADAR
+          {showSettings?(
+            // Settings Panel
+            <div style={{display:"flex",flexDirection:"column",overflow:"auto",flex:1}}>
+              <div style={{padding:"8px 10px",borderBottom:`1px solid ${T.border}`,flexShrink:0,background:T.bg2}}>
+                <div style={{fontSize:10,color:T.acc,letterSpacing:1,fontFamily:T.display}}>SETTINGS</div>
+              </div>
+              <div style={{padding:"10px 12px",borderBottom:`1px solid ${T.border}`,background:T.bg1,display:"grid",gap:8}}>
+                <label style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,fontSize:10,color:T.dim}}>
+                  <span>Hide all clear controls</span>
+                  <input type="checkbox" checked={hideClearButtons} onChange={e=>setHideClearButtonsLocal(e.target.checked)} />
+                </label>
+                <label style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,fontSize:10,color:T.dim}}>
+                  <span>Auto-refresh every 15s</span>
+                  <input type="checkbox" checked={autoRefresh} onChange={e=>setAutoRefreshLocal(e.target.checked)} />
+                </label>
+              </div>
+              <div style={{flex:1,overflow:"auto",padding:"8px 4px"}}>
+                {NAV.map(n=>(
+                  <div key={n.id} style={{
+                    padding:"8px 10px",borderBottom:`1px solid ${T.border}`,
+                    display:"flex",alignItems:"center",justifyContent:"space-between",
+                    cursor:"pointer",background:panelVisibility[n.id]?"rgba(0,229,160,.05)":"transparent",
+                    transition:"background .15s"
+                  }} onClick={()=>togglePanel(n.id)}>
+                    <span style={{fontSize:10,color:T.dim,flex:1}}>{n.label}</span>
+                    <span style={{
+                      fontSize:11,color:panelVisibility[n.id]?T.acc:T.dim,
+                      fontWeight:700,minWidth:14,textAlign:"right"
+                    }}>
+                      {panelVisibility[n.id]?"✓":"—"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div style={{padding:"6px 10px",borderTop:`1px solid ${T.border}`,flexShrink:0,fontSize:9,color:T.dim}}>
+                {Object.values(panelVisibility).filter(Boolean).length}/{NAV.length} enabled
+              </div>
             </div>
-            <div style={{display:"flex",justifyContent:"center"}}>
-              <Radar aircraft={state.adsb?.data||[]}/>
-            </div>
-            <div style={{
-              display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:10
-            }}>
-              <span style={{color:T.acc2}}>✈ {(state.adsb?.data||[]).length}</span>
-              <span style={{color:T.acc}}>📶 {(state.wifi?.data||[]).length}</span>
-              <span style={{color:T.dim}}>◈ {(state.ble?.data||[]).length}</span>
-            </div>
-          </div>
+          ):(
+            // Default: Radar + Alerts
+            <>
+              {/* Radar */}
+              <div style={{padding:"10px 0 6px",borderBottom:`1px solid ${T.border}`,flexShrink:0}}>
+                <div style={{fontSize:9,color:T.dim,letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display}}>
+                  RADAR
+                </div>
+                <div style={{display:"flex",justifyContent:"center"}}>
+                  <Radar aircraft={state.adsb?.data||[]}/>
+                </div>
+                <div style={{
+                  display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:10
+                }}>
+                  <span style={{color:T.acc2}}>✈ {(state.adsb?.data||[]).length}</span>
+                  <span style={{color:T.acc}}>📶 {(state.wifi?.data||[]).length}</span>
+                  <span style={{color:T.dim}}>◈ {(state.ble?.data||[]).length}</span>
+                </div>
+              </div>
 
-          {/* Alert Feed */}
-          <div style={{
-            padding:"5px 10px",fontSize:9,color:T.dim,letterSpacing:2,
-            borderBottom:`1px solid ${T.border}`,background:T.bg2,
-            fontFamily:T.display,flexShrink:0, display:"flex", justifyContent:"space-between", alignItems:"center"
-          }}>
-            ALERT FEED
-            <button onClick={()=>{if(wsRef.current && wsRef.current.readyState === WebSocket.OPEN) wsRef.current.send(JSON.stringify({type:"clear_alerts"}))}} style={{
-              fontSize:8, padding:"2px 6px", background:T.danger, color:"#fff", border:"none", borderRadius:2, cursor:"pointer",
-              opacity:wsConn?1:0.5, pointerEvents:wsConn?"auto":"none"
-            }}>Clear</button>
-          </div>
-          <div style={{flex:1,overflow:"auto"}}>
+              {/* Alert Feed */}
+              <div style={{
+                padding:"5px 10px",fontSize:9,color:T.dim,letterSpacing:2,
+                borderBottom:`1px solid ${T.border}`,background:T.bg2,
+                fontFamily:T.display,flexShrink:0, display:"flex", justifyContent:"space-between", alignItems:"center"
+              }}>
+                <span>ALERT FEED</span>
+                {!hideClearButtons && (
+                  <button onClick={()=>{if(wsRef.current && wsRef.current.readyState === WebSocket.OPEN) wsRef.current.send(JSON.stringify({type:"clear_alerts"}))}} style={{
+                    fontSize:8, padding:"2px 6px", background:T.danger, color:"#fff", border:"none", borderRadius:2, cursor:"pointer",
+                    opacity:wsConn?1:0.5, pointerEvents:wsConn?"auto":"none"
+                  }}>Clear</button>
+                )}
+              </div>
+              <div style={{flex:1,overflow:"auto"}}>
             {alerts.length===0&&(
               <div style={{padding:14,fontSize:10,color:T.dim,textAlign:"center"}}>Monitoring...</div>
             )}
@@ -934,28 +1080,30 @@ function App(){
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Status grid */}
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:1,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
-            {[
-              ["ADS-B",  state.adsb?.live,  T.acc2],
-              ["WiFi",   state.wifi?.live,  T.acc],
-              ["BLE",    state.ble?.live,   T.acc],
-              ["433MHz", state.rf433?.live, T.warn],
-              ["LoRa",   state.lora?.live,  T.acc],
-              ["NetHunter", state.nethunter?.live, T.acc2],
-              ["PWNA",   state.pwnagotchi?.live, T.warn],
-              ["MQTT",   wsConn,            T.acc],
-            ].map(([l,live,c])=>(
-              <div key={l} style={{padding:"6px 8px",background:T.bg2,textAlign:"center"}}>
-                <div style={{fontSize:8,color:live?c:T.dim,letterSpacing:1}}>
-                  {live?"● LIVE":"○ SIM"}
-                </div>
-                <div style={{fontSize:9,color:T.dim,marginTop:1}}>{l}</div>
               </div>
-            ))}
-          </div>
+
+              {/* Status grid */}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:1,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
+                {[
+                  ["ADS-B",  state.adsb?.live,  T.acc2],
+                  ["WiFi",   state.wifi?.live,  T.acc],
+                  ["BLE",    state.ble?.live,   T.acc],
+                  ["433MHz", state.config?.rf433Mode !== "disabled" && state.rf433?.live, T.warn],
+                  ["LoRa",   state.lora?.live,  T.acc],
+                  ["NetHunter", state.nethunter?.live, T.acc2],
+                  ["PWNA",   state.pwnagotchi?.live, T.warn],
+                  ["MQTT",   mqttConn,            T.acc],
+                ].map(([l,live,c])=>(
+                  <div key={l} style={{padding:"6px 8px",background:T.bg2,textAlign:"center"}}>
+                    <div style={{fontSize:8,color:live?c:T.dim,letterSpacing:1}}>
+                      {live?"● LIVE":"○ SIM"}
+                    </div>
+                    <div style={{fontSize:9,color:T.dim,marginTop:1}}>{l}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
 
