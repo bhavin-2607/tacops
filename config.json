@@ -40,7 +40,7 @@
     }
   },
   "storage": {
-    "stateFile": "backend/state.json",
+    "stateFile": "state.json",
     "dataDirectory": "data",
     "historiesDirectory": "data/histories",
     "autoCleanupDays": 30,
