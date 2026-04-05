@@ -39,6 +39,54 @@
   },
   "alerts": [
     {
+      "id": "lxq1bal7ew",
+      "msg": "Flight detected: ETD5KZ",
+      "sev": "info",
+      "ts": 1775413270835
+    },
+    {
+      "id": "iuow3bsjlq",
+      "msg": "Flight detected: SVA985",
+      "sev": "info",
+      "ts": 1775412966676
+    },
+    {
+      "id": "v9ddw4esdsp",
+      "msg": "High speed: DHX831 at 508.9kt",
+      "sev": "info",
+      "ts": 1775412120292
+    },
+    {
+      "id": "hqhcnp9f6k",
+      "msg": "Flight detected: DHX831",
+      "sev": "info",
+      "ts": 1775412120291
+    },
+    {
+      "id": "5bppso3iyps",
+      "msg": "Flight detected: BBC135",
+      "sev": "info",
+      "ts": 1775411919240
+    },
+    {
+      "id": "i405x9fk3qj",
+      "msg": "Flight detected: AIC5PG",
+      "sev": "info",
+      "ts": 1775410961056
+    },
+    {
+      "id": "eymmh2spx6m",
+      "msg": "Flight detected: UAE12W",
+      "sev": "info",
+      "ts": 1775410695028
+    },
+    {
+      "id": "ou8emvur1u",
+      "msg": "Flight detected: 06a2ef",
+      "sev": "info",
+      "ts": 1775410054749
+    },
+    {
       "id": "dkitslf1rk",
       "msg": "Flight detected: BBC151",
       "sev": "info",
