@@ -83,6 +83,7 @@ const state = {
   mqtt:     { live: false },
   alerts:   [],
   config:   { rf433Mode: config.modules?.rf433?.mode || "usb" },
+  receiver: { lat: config.modules?.adsb?.receiver?.lat || 0, lon: config.modules?.adsb?.receiver?.lon || 0 },
 };
 
 function isString(value) {
@@ -515,7 +516,7 @@ setInterval(() => {
   // broadcast("spectrum", simulator.genSpectrum());
 
   // Save state periodically
-  // saveState();
+  saveState();
 
 }, 2800);
 

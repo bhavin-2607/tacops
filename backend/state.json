@@ -37,8 +37,19 @@
   "mqtt": {
     "live": false
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "id": "dkitslf1rk",
+      "msg": "Flight detected: BBC151",
+      "sev": "info",
+      "ts": 1775409258361
+    }
+  ],
   "config": {
     "rf433Mode": "disabled"
+  },
+  "receiver": {
+    "lat": 23.0225,
+    "lon": 72.5714
   }
 }

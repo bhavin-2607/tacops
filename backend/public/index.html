@@ -141,20 +141,28 @@ function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
   const [history,setHistory]=React.useState([]);
   const [historyLoading,setHistoryLoading]=React.useState(false);
 
-  React.useEffect(()=>{
-    const loadHistory=async()=>{
-      try{
-        setHistoryLoading(true);
-        const res=await fetch("/api/history/adsb");
-        if(res.ok){
-          const json=await res.json();
-          setHistory(json.data||[]);
-        }
-      }catch(e){console.error("Failed to load ADS-B history:",e);}
-      finally{setHistoryLoading(false);}
-    };
-    loadHistory();
+  const loadHistory=React.useCallback(async()=>{
+    try{
+      setHistoryLoading(true);
+      const res=await fetch("/api/history/adsb");
+      if(res.ok){
+        const json=await res.json();
+        setHistory(json.data||[]);
+      }
+    }catch(e){
+      console.error("Failed to load ADS-B history:",e);
+    }finally{
+      setHistoryLoading(false);
+    }
   },[]);
+
+  React.useEffect(()=>{
+    loadHistory();
+  },[loadHistory]);
+
+  React.useEffect(()=>{
+    loadHistory();
+  },[data,loadHistory]);
 
   const clearHistoryLocal=async()=>{
     try{
@@ -708,10 +716,23 @@ Respond in concise tactical intelligence style. Be direct and analytical. Flag a
 }
 
 /* ── Radar Canvas ───────────────────────────────────────────────── */
-function Radar({aircraft}){
+function Radar({aircraft, receiver}){
   const canvasRef=useRef();
   const angleRef=useRef(0);
   const rafRef=useRef();
+
+  // Calculate bearing (azimuth) from receiver to aircraft
+  const calculateBearing = (lat1, lon1, lat2, lon2) => {
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const lat1Rad = lat1 * Math.PI / 180;
+    const lat2Rad = lat2 * Math.PI / 180;
+    
+    const y = Math.sin(dLon) * Math.cos(lat2Rad);
+    const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLon);
+    
+    let bearing = Math.atan2(y, x) * 180 / Math.PI;
+    return (bearing + 360) % 360; // Normalize to 0-360
+  };
 
   useEffect(()=>{
     const canvas=canvasRef.current;
@@ -760,19 +781,31 @@ function Radar({aircraft}){
       ctx.strokeStyle="rgba(0,229,160,0.9)";ctx.lineWidth=1.5;ctx.stroke();
       ctx.restore();
 
-      // Aircraft dots
-      (aircraft||[]).slice(0,12).forEach((a,i)=>{
-        const theta=(i/12)*Math.PI*2;
-        const r=R*(0.25+Math.random()*0.02+i*0.05)%R;
-        const x=cx+Math.cos(theta)*Math.min(r,R-8);
-        const y=cy+Math.sin(theta)*Math.min(r,R-8);
-        ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);
+      // Aircraft dots - ACCURATE positioning
+      (aircraft||[]).slice(0,20).forEach((a)=>{
+        if (!a.lat || !a.lon || !receiver?.lat || !receiver?.lon) return;
+        
+        // Calculate bearing from receiver to aircraft
+        const bearing = calculateBearing(receiver.lat, receiver.lon, a.lat, a.lon);
+        const bearingRad = (bearing - 90) * Math.PI / 180; // Convert to canvas coordinates (0° = East, 90° = North)
+        
+        // Scale distance to radar radius (assume max 250km = full radius)
+        const maxDist = 250; // km
+        const distRatio = Math.min((a.dist || 0) / maxDist, 1);
+        const r = R * distRatio;
+        
+        // Position on radar
+        const x = cx + Math.cos(bearingRad) * r;
+        const y = cy + Math.sin(bearingRad) * r;
+        
+        // Draw aircraft dot
+        ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);
         ctx.fillStyle=T.acc2;ctx.fill();
-        ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);
-        ctx.strokeStyle="rgba(56,178,255,0.3)";ctx.lineWidth=1;ctx.stroke();
+        ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);
+        ctx.strokeStyle="rgba(56,178,255,0.4)";ctx.lineWidth=1;ctx.stroke();
       });
 
-      // Center dot
+      // Center dot (receiver)
       ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);
       ctx.fillStyle=T.acc;ctx.fill();
 
@@ -1063,7 +1096,7 @@ function App(){
                   RADAR
                 </div>
                 <div style={{display:"flex",justifyContent:"center"}}>
-                  <Radar aircraft={state.adsb?.data||[]}/>
+                  <Radar aircraft={state.adsb?.data||[]} receiver={state.receiver}/>
                 </div>
                 <div style={{
                   display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:10
