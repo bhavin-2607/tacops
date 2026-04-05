@@ -224,7 +224,8 @@ adsbModule.start({
   onError: () => {
     if (state.adsb.live) pushAlert("RTL-SDR ADS-B feed lost — switching to simulation", "warn");
     state.adsb.live = false;
-  }
+  },
+  config: config
 });
 
 // ── 433 MHz module (RTL-SDR → rtl_433 or MQTT) ──────────────────────

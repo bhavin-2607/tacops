@@ -1,103 +1,127 @@
 // ============================================================
-//  modules/adsb.js — ADS-B via dump1090-fa
-//  Connects to dump1090 SBS output on port 30003
-//  Parses BaseStation CSV format into flight objects
+//  modules/adsb.js — ADS-B via tar1090 aircraft.json
+//  Fetches from dump1090-fa's web interface JSON endpoint
+//  Provides complete flight data including per-aircraft RSSI
 // ============================================================
-const net = require("net");
+const http = require("http");
 
-const DUMP1090_HOST = process.env.DUMP1090_HOST || "127.0.0.1";
-const DUMP1090_PORT = parseInt(process.env.DUMP1090_PORT) || 30003;
-const RECONNECT_MS = 5000;
+const TAR1090_HOST = process.env.TAR1090_HOST || "127.0.0.1";
+const TAR1090_PORT = process.env.TAR1090_PORT || 80;
+const POLL_INTERVAL_MS = 1000; // Poll every 1 second
+const AIRCRAFT_TTL = 60000; // Drop flights not seen for 60 seconds
 
-const flights = new Map(); // icao → flight object
+const flights = new Map(); // hex → flight object
 
-function parseSBS(line) {
-  // SBS format: MSG,<type>,<session>,<aircraft>,<hex>,<flight>,<date>,<time>,<date>,<time>,
-  //             <callsign>,<alt>,<speed>,<track>,<lat>,<lon>,<vert_rate>,<squawk>,...
-  const parts = line.split(",");
-  if (parts[0] !== "MSG") return null;
-
-  const icao     = parts[4]?.trim();
-  const callsign = parts[10]?.trim().replace(/_/g, "");
-  const alt      = parseInt(parts[11]);
-  const speed    = parseInt(parts[12]);
-  const hdg      = parseInt(parts[13]);
-  const lat      = parseFloat(parts[14]);
-  const lon      = parseFloat(parts[15]);
-  const squawk   = parseInt(parts[17]);
-
-  if (!icao) return null;
-  return { icao, callsign, alt, speed, hdg, lat, lon, squawk, ts: Date.now() };
+// Haversine distance calculation in kilometers
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Earth's radius in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
 }
 
-function mergeFlights() {
-  const now = Date.now();
-  const TTL = 60000; // drop flights not updated in 60s
-  const result = [];
-  for (const [icao, f] of flights.entries()) {
-    if (now - f.ts > TTL) { flights.delete(icao); continue; }
-    const dist = Math.sqrt((f.lat || 0) ** 2 + (f.lon || 0) ** 2) * 111;
-    result.push({
-      id: icao,
-      callsign: f.callsign || icao,
-      alt: f.alt || 0,
-      spd: f.speed || 0,
-      hdg: f.hdg || 0,
-      lat: f.lat || 0,
-      lon: f.lon || 0,
-      dist: Math.min(250, Math.round(dist)),
-      rssi: -60, // dump1090 doesn't give RSSI per-aircraft
-      squawk: f.squawk || 0,
-      ts: f.ts || now,
+function fetchAircraft(receiverLat, receiverLon, onFlight, onError) {
+  const req = http.get(`http://${TAR1090_HOST}:${TAR1090_PORT}/tar1090/data/aircraft.json`, (res) => {
+    let data = "";
+    
+    res.on("data", chunk => {
+      data += chunk.toString();
     });
-  }
-  return result;
-}
+    
+    res.on("end", () => {
+      try {
+        const json = JSON.parse(data);
+        if (!json.aircraft || !Array.isArray(json.aircraft)) {
+          onError(new Error("Invalid aircraft.json format"));
+          return;
+        }
 
-function start({ onFlight, onError }) {
-  let reconnectTimer = null;
+        const now = Date.now();
+        
+        // Update flights map from tar1090 data
+        json.aircraft.forEach(ac => {
+          if (ac.hex && ac.lastPosition) {
+            flights.set(ac.hex, {
+              hex: ac.hex,
+              callsign: (ac.flight || "").trim() || ac.hex,
+              alt: ac.alt_baro || ac.alt_geom || 0,
+              speed: ac.gs || ac.tas || 0,
+              hdg: ac.track || 0,
+              lat: ac.lastPosition.lat,
+              lon: ac.lastPosition.lon,
+              squawk: ac.squawk ? parseInt(ac.squawk) : 0,
+              rssi: ac.rssi || -60,
+              messages: ac.messages || 0,
+              seen: ac.seen || now,
+              ts: now,
+            });
+          }
+        });
 
-  function connect() {
-    const client = new net.Socket();
-    let buffer = "";
+        // Clean up old flights
+        const threshold = now - AIRCRAFT_TTL;
+        for (const [hex, flight] of flights.entries()) {
+          if (flight.ts < threshold) {
+            flights.delete(hex);
+          }
+        }
 
-    client.connect(DUMP1090_PORT, DUMP1090_HOST, () => {
-      console.log(`[ADS-B] Connected to dump1090 on ${DUMP1090_HOST}:${DUMP1090_PORT}`);
-    });
-
-    client.on("data", chunk => {
-      buffer += chunk.toString();
-      const lines = buffer.split("\n");
-      buffer = lines.pop(); // keep incomplete last line
-      for (const line of lines) {
-        const update = parseSBS(line.trim());
-        if (update) {
-          const existing = flights.get(update.icao) || {};
-          // merge — only overwrite defined fields
-          flights.set(update.icao, {
-            ...existing,
-            ...Object.fromEntries(Object.entries(update).filter(([_, v]) => v !== undefined && !isNaN(v) || typeof v === "string"))
+        // Convert to flight list format
+        const result = [];
+        for (const flight of flights.values()) {
+          let dist = 0;
+          if (receiverLat && receiverLon && flight.lat && flight.lon) {
+            dist = calculateDistance(receiverLat, receiverLon, flight.lat, flight.lon);
+          }
+          result.push({
+            id: flight.hex,
+            callsign: flight.callsign,
+            alt: flight.alt,
+            spd: flight.speed,
+            hdg: flight.hdg,
+            lat: flight.lat,
+            lon: flight.lon,
+            dist: Math.round(dist * 10) / 10,
+            rssi: flight.rssi,
+            squawk: flight.squawk,
+            ts: flight.ts,
           });
         }
+
+        onFlight(result);
+      } catch (err) {
+        onError(err);
       }
-      onFlight(mergeFlights());
     });
+  });
 
-    client.on("error", err => {
-      console.warn(`[ADS-B] dump1090 connection error: ${err.message}`);
-      onError(err);
-      client.destroy();
-    });
+  req.on("error", (err) => {
+    onError(err);
+  });
+}
 
-    client.on("close", () => {
-      console.warn(`[ADS-B] dump1090 disconnected — retrying in ${RECONNECT_MS}ms`);
-      onError(new Error("disconnected"));
-      reconnectTimer = setTimeout(connect, RECONNECT_MS);
-    });
-  }
+function start({ onFlight, onError, config }) {
+  const receiverLat = config?.modules?.adsb?.receiver?.lat || 0;
+  const receiverLon = config?.modules?.adsb?.receiver?.lon || 0;
 
-  // Try connecting — errors are handled gracefully
-  connect();
+  console.log(`[ADS-B] Fetching from tar1090: http://${TAR1090_HOST}:${TAR1090_PORT}/tar1090/data/aircraft.json`);
+  console.log(`[ADS-B] Receiver position: ${receiverLat}, ${receiverLon}`);
+
+  // Poll the tar1090 endpoint
+  const pollInterval = setInterval(() => {
+    fetchAircraft(receiverLat, receiverLon, onFlight, onError);
+  }, POLL_INTERVAL_MS);
+
+  // Initial fetch
+  fetchAircraft(receiverLat, receiverLon, onFlight, onError);
+
+  return {
+    stop: () => clearInterval(pollInterval)
+  };
 }
 
 module.exports = { start };

@@ -1,54 +1,15 @@
 [
   {
-    "id": "8014DF",
-    "callsign": "8014DF",
-    "alt": 0,
-    "spd": 0,
-    "hdg": 0,
-    "lat": 0,
-    "lon": 0,
-    "dist": 0,
-    "rssi": -60,
-    "squawk": 0,
-    "ts": 1775390243631
-  },
-  {
-    "id": "8014DF",
-    "callsign": "8014DF",
-    "alt": 0,
-    "spd": 0,
-    "hdg": 0,
-    "lat": 0,
-    "lon": 0,
-    "dist": 0,
-    "rssi": -60,
-    "squawk": 0,
-    "ts": 1775390373110
-  },
-  {
-    "id": "AB95FD",
-    "callsign": "AB95FD",
-    "alt": 0,
-    "spd": 0,
-    "hdg": 0,
-    "lat": 0,
-    "lon": 0,
-    "dist": 0,
-    "rssi": -60,
-    "squawk": 0,
-    "ts": 1775390403939
-  },
-  {
-    "id": "89650A",
-    "callsign": "89650A",
-    "alt": 0,
-    "spd": 0,
-    "hdg": 0,
-    "lat": 0,
-    "lon": 0,
-    "dist": 0,
-    "rssi": -60,
-    "squawk": 0,
-    "ts": 1775390814003
+    "id": "896664",
+    "callsign": "FDB523",
+    "alt": 36275,
+    "spd": 544.3,
+    "hdg": 94,
+    "lat": 23.913885,
+    "lon": 72.866821,
+    "dist": 103.6,
+    "rssi": -20.5,
+    "squawk": 6213,
+    "ts": 1775392496064
   }
 ]
