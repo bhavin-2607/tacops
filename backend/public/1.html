@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TacticalOps — rfConn</title>
+
+<!-- Puter.js — free Claude AI, no API key needed -->
+<script src="https://js.puter.com/v2/"></script>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:#050810;color:#b8ccd8;font-family:'Share Tech Mono',monospace}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#0b1018}
+::-webkit-scrollbar-thumb{background:#182028;border-radius:2px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes radarSweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scanline{0%{top:-10%}100%{top:110%}}
+
+.nav-btn{
+  width:100%;padding:13px 4px;border:none;border-left:2px solid transparent;
+  background:transparent;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;gap:4px;color:#4a6070;font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:.5px;transition:all .15s
+}
+.nav-btn:hover{background:rgba(0,229,160,.07);color:#00e5a0}
+.nav-btn.on{background:rgba(0,229,160,.12);color:#00e5a0;border-left:2px solid #00e5a0}
+.nav-icon{font-size:17px;line-height:1}
+
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{text-align:left;padding:5px 7px;font-weight:400;letter-spacing:1px;
+   color:#4a6070;border-bottom:1px solid rgba(0,229,160,.1);white-space:nowrap}
+td{padding:5px 7px;border-bottom:1px solid rgba(0,229,160,.04)}
+tr:hover td{background:rgba(0,229,160,.03)}
+
+input[type=text]{
+  background:#0d1520;border:1px solid rgba(0,229,160,.3);color:#b8ccd8;
+  padding:8px 11px;border-radius:3px;font-family:'Share Tech Mono',monospace;
+  font-size:11px;outline:none;width:100%;transition:border-color .15s
+}
+input[type=text]:focus{border-color:rgba(0,229,160,.6)}
+
+button.tx-btn{
+  background:#00e5a0;color:#050810;border:none;padding:8px 18px;border-radius:3px;
+  cursor:pointer;font-family:'Orbitron',monospace;font-size:10px;font-weight:700;
+  letter-spacing:1px;white-space:nowrap;transition:background .15s
+}
+button.tx-btn:hover{background:#00ffb3}
+button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
+
+.panel-anim{animation:fadeIn .2s ease}
+
+/* Radar canvas wrapper */
+.radar-wrap{position:relative;width:170px;height:170px;margin:0 auto}
+.radar-wrap canvas{display:block}
+
+/* Spectrum bars */
+.spec-bar{flex:1;min-width:1px;border-radius:1px 1px 0 0;transition:height .3s}
+
+/* Quick query buttons */
+.quick-btn{
+  text-align:left;background:#0d1520;border:1px solid rgba(0,229,160,.15);
+  color:#6ab8a0;padding:9px 13px;border-radius:3px;cursor:pointer;
+  font-family:'Share Tech Mono',monospace;font-size:11px;width:100%;
+  transition:all .15s;letter-spacing:.3px
+}
+.quick-btn:hover{background:rgba(0,229,160,.08);border-color:rgba(0,229,160,.35);color:#00e5a0}
+
+/* Puter status badge */
+.puter-badge{
+  display:inline-flex;align-items:center;gap:5px;padding:3px 8px;
+  border-radius:2px;font-size:9px;letter-spacing:1px;font-family:'Orbitron',monospace
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const {useState,useEffect,useRef,useCallback}=React;
+
+/* ── Theme ─────────────────────────────────────────────────────── */
+const T={
+  bg0:"#050810",bg1:"#0b1018",bg2:"#111820",bg3:"#182028",
+  acc:"#00e5a0",acc2:"#38b2ff",warn:"#ffaa00",danger:"#ff4444",
+  text:"#b8ccd8",dim:"#4a6070",border:"rgba(0,229,160,0.1)",
+  display:"'Orbitron',monospace"
+};
+
+/* ── Helpers ────────────────────────────────────────────────────── */
+const SigBar=({rssi,min=-100,max=-30})=>{
+  const pct=Math.max(0,Math.min(100,((rssi-min)/(max-min))*100));
+  const c=pct>60?T.acc:pct>30?T.warn:T.danger;
+  return(
+    <div style={{display:"flex",alignItems:"center",gap:5}}>
+      <div style={{width:46,height:3,background:T.bg3,borderRadius:2,overflow:"hidden"}}>
+        <div style={{width:`${pct}%`,height:"100%",background:c,transition:"width .4s"}}/>
+      </div>
+      <span style={{fontSize:9,color:T.dim,minWidth:34}}>{rssi}dB</span>
+    </div>
+  );
+};
+
+const LiveDot=({live,pulse=true})=>(
+  <span style={{
+    display:"inline-block",width:7,height:7,borderRadius:"50%",
+    background:live?T.acc:T.dim,
+    animation:live&&pulse?"pulse 2s infinite":"none",flexShrink:0
+  }}/>
+);
+
+const PanelHdr=({title,sub,live})=>(
+  <div style={{
+    padding:"7px 13px",borderBottom:`1px solid ${T.border}`,background:T.bg2,
+    display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0
+  }}>
+    <div style={{display:"flex",alignItems:"center",gap:8}}>
+      <LiveDot live={live}/>
+      <span style={{fontFamily:T.display,fontSize:11,letterSpacing:2,color:T.acc}}>{title}</span>
+      {sub&&<span style={{fontSize:10,color:T.dim}}>— {sub}</span>}
+    </div>
+    <span style={{fontSize:9,letterSpacing:1,color:live?T.acc:T.dim,fontFamily:T.display}}>
+      {live?"● LIVE":"○ SIM"}
+    </span>
+  </div>
+);
+
+/* ── ADS-B Panel ────────────────────────────────────────────────── */
+function AdsbPanel({data,live,state,hideClearButtons,clearAdsbHistory}){
+  const [history,setHistory]=React.useState([]);
+  const [historyLoading,setHistoryLoading]=React.useState(false);
+
+  const loadHistory=React.useCallback(async()=>{
+    try{
+      setHistoryLoading(true);
+      const res=await fetch("/api/history/adsb");
+      if(res.ok){
+        const json=await res.json();
+        setHistory(json.data||[]);
+      }
+    }catch(e){
+      console.error("Failed to load ADS-B history:",e);
+    }finally{
+      setHistoryLoading(false);
+    }
+  },[]);
+
+  React.useEffect(()=>{
+    loadHistory();
+  },[loadHistory]);
+
+  React.useEffect(()=>{
+    loadHistory();
+  },[data,loadHistory]);
+
+  const clearHistoryLocal=async()=>{
+    try{
+      const res=await fetch("/api/history/adsb",{method:"DELETE"});
+      if(res.ok){
+        setHistory([]);
+        clearAdsbHistory();
+      }
+    }catch(e){console.error("Failed to clear history:",e);}
+  };
+
+  return(
+    <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
+      <PanelHdr title="ADS-B FLIGHTS" sub="readsb → :30003" live={live}/>
+      <div style={{padding:"8px 4px",overflow:"auto"}}>
+        <table>
+          <thead>
+            <tr>{["CALLSIGN","ALT ft","SPD kt","HDG","DIST km","SQUAWK","RSSI"].map(h=>(
+              <th key={h}>{h}</th>
+            ))}</tr>
+          </thead>
+          <tbody>{data.map((f,i)=>(
+            <tr key={i}>
+              <td style={{color:T.acc2,fontWeight:700}}>
+                {f.id ? (
+                  <a href={`https://globe.adsbexchange.com/?icao=${encodeURIComponent(f.id)}`} target="_blank" rel="noreferrer" style={{color:T.acc2,textDecoration:"underline"}}>
+                    {f.callsign||f.id}
+                  </a>
+                ) : (
+                  f.callsign||"———"
+                )}
+              </td>
+              <td style={{color:T.text}}>{(f.alt||0).toLocaleString()}</td>
+              <td style={{color:T.text}}>{f.spd||0}</td>
+              <td style={{color:T.text}}>{f.hdg||0}°</td>
+              <td style={{color:T.text}}>{f.dist||0}</td>
+              <td style={{color:f.squawk>=7500?T.danger:T.dim}}>{f.squawk||"—"}</td>
+              <td><SigBar rssi={f.rssi||-70}/></td>
+            </tr>
+          ))}</tbody>
+        </table>
+        {data.length===0&&(
+          <div style={{padding:30,textAlign:"center",color:T.dim,fontSize:11}}>
+            Waiting for aircraft...
+          </div>
+        )}
+        {history.length > 0 && (
+          <div style={{marginTop:20, borderTop: `2px solid ${T.border}`, paddingTop:10}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+              <div style={{fontSize:12, color:T.acc, fontFamily:T.display}}>FLIGHT HISTORY ({history.length})</div>
+              {!hideClearButtons && (
+                <button onClick={clearHistoryLocal} style={{fontSize:9,padding:"4px 8px",background:T.danger,color:"#fff",border:"none",borderRadius:2,cursor:"pointer"}}>
+                  Clear history
+                </button>
+              )}
+            </div>
+            <table>
+              <thead>
+                <tr>{["CALLSIGN","ALT ft","SPD kt","HDG","DIST km","SQUAWK","RSSI","TIME"].map(h=>(
+                  <th key={h}>{h}</th>
+                ))}</tr>
+              </thead>
+              <tbody>{history.slice(-50).reverse().map((f,i)=>(
+                <tr key={i}>
+                  <td style={{color:T.acc2,fontWeight:700}}>
+                    {f.id ? (
+                      <a href={`https://globe.adsbexchange.com/?icao=${encodeURIComponent(f.id)}`} target="_blank" rel="noreferrer" style={{color:T.acc2,textDecoration:"underline"}}>
+                        {f.callsign||f.id}
+                      </a>
+                    ) : (
+                      f.callsign||"———"
+                    )}
+                  </td>
+                  <td style={{color:T.text}}>{f.alt > 0 ? f.alt.toLocaleString() : "—"}</td>
+                  <td style={{color:T.text}}>{f.spd > 0 ? f.spd : "—"}</td>
+                  <td style={{color:T.text}}>{f.hdg > 0 ? `${f.hdg}°` : "—"}</td>
+                  <td style={{color:T.text}}>{f.dist > 0 ? f.dist : "—"}</td>
+                  <td style={{color:f.squawk>=7500?T.danger:T.dim}}>{f.squawk ? f.squawk : "—"}</td>
+                  <td><SigBar rssi={typeof f.rssi === "number" ? f.rssi : -70}/></td>
+                  <td style={{color:T.dim,fontSize:10}}>{f.ts ? new Date(f.ts).toLocaleTimeString() : "—"}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ── WiFi Panel ─────────────────────────────────────────────────── */
+function WifiPanel({data,pwna,live,state}){
+  return(
+    <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
+      <PanelHdr title="WIFI INTELLIGENCE" sub="ESP32 + Pwnagotchi" live={live}/>
+      <div style={{padding:8}}>
+        {/* Pwnagotchi status strip */}
+        <div style={{
+          padding:"8px 13px",background:"rgba(255,170,0,.06)",
+          border:`1px solid rgba(255,170,0,.18)`,borderRadius:3,
+          display:"flex",gap:20,flexWrap:"wrap",fontSize:11,marginBottom:8
+        }}>
+          <span style={{color:T.warn,letterSpacing:1,fontFamily:T.display,fontSize:10}}>PWNAGOTCHI</span>
+          <span style={{color:T.dim}}>mood: <span style={{color:T.acc}}>{pwna.mood||"unknown"}</span></span>
+          <span style={{color:T.dim}}>captures: <span style={{color:T.acc}}>{pwna.captures||0}</span></span>
+          <span style={{color:T.dim}}>epoch: <span style={{color:T.acc}}>{pwna.epoch||0}</span></span>
+          <span style={{color:pwna.live?T.acc:T.dim,fontSize:9,letterSpacing:1}}>
+            {pwna.live?"● LIVE":"○ SIM"}
+          </span>
+        </div>
+        <table>
+          <thead>
+            <tr>{["SSID","BSSID","CH","BAND","ENC","CLI","SIG"].map(h=><th key={h}>{h}</th>)}</tr>
+          </thead>
+          <tbody>{data.map((n,i)=>(
+            <tr key={i}>
+              <td style={{color:T.acc,maxWidth:130,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{n.ssid}</td>
+              <td style={{color:T.dim,fontSize:10}}>{n.bssid}</td>
+              <td style={{color:T.text}}>{n.ch}</td>
+              <td style={{color:n.band==="5GHz"?T.acc2:T.warn,fontSize:10}}>{n.band}</td>
+              <td style={{color:n.enc==="Open"?T.danger:n.enc?.includes("✓")?T.acc:T.text}}>{n.enc}</td>
+              <td style={{color:n.cli>7?T.warn:T.text}}>{n.cli}</td>
+              <td><SigBar rssi={n.rssi||-70}/></td>
+            </tr>
+          ))}</tbody>
+        </table>
+        {data.length===0&&<div style={{padding:20,textAlign:"center",color:T.dim,fontSize:11}}>No networks captured yet</div>}
+        {state.wifi.history && state.wifi.history.length > 0 && (
+          <div style={{marginTop:20, borderTop: `2px solid ${T.border}`, paddingTop:10}}>
+            <div style={{fontSize:12, color:T.acc, marginBottom:10, fontFamily:T.display}}>WIFI HISTORY ({state.wifi.history.length})</div>
+            <table>
+              <thead>
+                <tr>{["SSID","BSSID","CH","BAND","ENC","CLI","SIG","TIME"].map(h=>(
+                  <th key={h}>{h}</th>
+                ))}</tr>
+              </thead>
+              <tbody>{state.wifi.history.slice(-50).reverse().map((n,i)=>(
+                <tr key={i}>
+                  <td style={{color:T.acc,maxWidth:130,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{n.ssid}</td>
+                  <td style={{color:T.dim,fontSize:10}}>{n.bssid}</td>
+                  <td style={{color:T.text}}>{n.ch}</td>
+                  <td style={{color:n.band==="5GHz"?T.acc2:T.warn,fontSize:10}}>{n.band}</td>
+                  <td style={{color:n.enc==="Open"?T.danger:n.enc?.includes("✓")?T.acc:T.text}}>{n.enc}</td>
+                  <td style={{color:n.cli>7?T.warn:T.text}}>{n.cli}</td>
+                  <td><SigBar rssi={n.rssi||-70}/></td>
+                  <td style={{color:T.dim,fontSize:10}}>{new Date(n.ts||Date.now()).toLocaleTimeString()}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ── BLE Panel ──────────────────────────────────────────────────── */
+function BlePanel({data,live,state}){
+  return(
+    <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
+      <PanelHdr title="BLE DEVICES" sub="ESP32 ×3" live={live}/>
+      <div style={{padding:"8px 4px"}}>
+        <table>
+          <thead>
+            <tr>{["NAME","MAC","TYPE","RSSI","LAST SEEN"].map(h=><th key={h}>{h}</th>)}</tr>
+          </thead>
+          <tbody>{data.map((d,i)=>(
+            <tr key={i}>
+              <td style={{color:T.acc2}}>{d.name||"Unknown"}</td>
+              <td style={{color:T.dim,fontSize:10}}>{d.mac}</td>
+              <td style={{color:T.dim}}>{d.type||"Generic"}</td>
+              <td><SigBar rssi={d.rssi||-80}/></td>
+              <td style={{color:T.dim,fontSize:10}}>{new Date(d.seen||Date.now()).toLocaleTimeString()}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+        {data.length===0&&<div style={{padding:20,textAlign:"center",color:T.dim,fontSize:11}}>No BLE devices detected</div>}
+        {state.ble.history && state.ble.history.length > 0 && (
+          <div style={{marginTop:20, borderTop: `2px solid ${T.border}`, paddingTop:10}}>
+            <div style={{fontSize:12, color:T.acc, marginBottom:10, fontFamily:T.display}}>BLE HISTORY ({state.ble.history.length})</div>
+            <table>
+              <thead>
+                <tr>{["NAME","MAC","TYPE","RSSI","LAST SEEN"].map(h=><th key={h}>{h}</th>)}</tr>
+              </thead>
+              <tbody>{state.ble.history.slice(-50).reverse().map((d,i)=>(
+                <tr key={i}>
+                  <td style={{color:T.acc2}}>{d.name||"Unknown"}</td>
+                  <td style={{color:T.dim,fontSize:10}}>{d.mac}</td>
+                  <td style={{color:T.dim}}>{d.type||"Generic"}</td>
+                  <td><SigBar rssi={d.rssi||-80}/></td>
+                  <td style={{color:T.dim,fontSize:10}}>{new Date(d.seen||Date.now()).toLocaleTimeString()}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ── 433 MHz Panel ──────────────────────────────────────────────── */
+function Rf433Panel({data,live,state}){
+  return(
+    <div className="panel-anim" style={{overflow:"auto",height:"100%"}}>
+      <PanelHdr title="433 MHz RF" sub="CC1101" live={live}/>
+      <div style={{padding:10,display:"flex",flexDirection:"column",gap:6}}>
+        {data.map((s,i)=>(
+          <div key={i} style={{
+            padding:"9px 13px",background:T.bg2,borderRadius:3,
+            borderLeft:`3px solid ${T.warn}`,fontSize:11
+          }}>
+            <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
+              <span style={{color:T.warn,letterSpacing:1,fontFamily:T.display,fontSize:10}}>{s.proto}</span>
+              <span style={{color:T.dim,fontSize:10}}>{new Date(s.ts||Date.now()).toLocaleTimeString()}</span>
+            </div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <span style={{color:T.dim}}>freq: <span style={{color:T.text}}>{s.freq} MHz</span></span>
+              <span style={{color:T.dim}}>data: <span style={{color:T.acc,fontFamily:"monospace"}}>{s.data}</span></span>
+              <span style={{color:T.dim}}>rssi: <span style={{color:T.text}}>{s.rssi} dBm</span></span>
+            </div>
+          </div>
+        ))}
+        {data.length===0&&<div style={{padding:20,textAlign:"center",color:T.dim,fontSize:11}}>No RF signals decoded</div>}
+        {data.length > 0 && (
+          <div style={{marginTop:10, borderTop: `1px solid ${T.border}`, paddingTop:10, fontSize:10, color:T.dim}}>
+            History: {data.length} RF signals detected
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function LoraPanel({data,live}){
+  return(
+    <div className="panel-anim" style={{padding:10,overflow:"auto",height:"100%"}}>
+      <PanelHdr title="LORA MONITOR" sub="XIAO SX1262 — 865 MHz" live={live}/>
+      <div style={{marginTop:8,display:"flex",flexDirection:"column",gap:6}}>
+        {data.map((p,i)=>(
+          <div key={i} style={{padding:"8px 13px",background:T.bg2,borderRadius:3,borderLeft:`3px solid ${p.meshtastic?T.acc2:T.acc}`,fontSize:11}}>
+            <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
+              <span style={{color:p.meshtastic?T.acc2:T.acc,letterSpacing:1}}>{p.meshtastic?"MESHTASTIC":"LORA PKT"} — {p.node_id}</span>
+              <span style={{color:T.dim,fontSize:10}}>{new Date(p.ts||Date.now()).toLocaleTimeString()}</span>
+            </div>
+            <div style={{display:"flex",gap:16,flexWrap:"wrap"}}>
+              <span style={{color:T.dim}}>freq: <span style={{color:T.text}}>{p.freq} MHz</span></span>
+              <span style={{color:T.dim}}>rssi: <span style={{color:T.text}}>{p.rssi} dBm</span></span>
+              <span style={{color:T.dim}}>snr: <span style={{color:T.text}}>{p.snr} dB</span></span>
+              <span style={{color:T.dim}}>len: <span style={{color:T.text}}>{p.len}B</span></span>
+              <span style={{color:T.dim}}>data: <span style={{color:T.warn}}>{p.data}</span></span>
+            </div>
+          </div>
+        ))}
+        {data.length===0&&<div style={{padding:20,textAlign:"center",color:T.dim,fontSize:11}}>
+          <div style={{marginBottom:8}}>Listening on 865.0 MHz IN865</div>
+          <div style={{fontSize:10,color:T.dim}}>XIAO ESP32S3 + Wio SX1262 — pending</div>
+        </div>}
+      </div>
+    </div>
+  );
+}
+
+function NetHunterPanel({data,live}){
+  const hosts=(data?.hosts)||[];
+  return(
+    <div className="panel-anim" style={{padding:10,overflow:"auto",height:"100%"}}>
+      <PanelHdr title="FIELD AGENT" sub="Mi A2 NetHunter" live={live}/>
+      <div style={{margin:"8px 0",padding:"8px 13px",background:"rgba(56,178,255,.07)",border:`1px solid rgba(56,178,255,.2)`,borderRadius:3,display:"flex",gap:20,flexWrap:"wrap",fontSize:11}}>
+        <span style={{color:T.acc2,letterSpacing:1}}>NETHUNTER</span>
+        <span style={{color:T.dim}}>device: <span style={{color:T.acc2}}>{data?.device||"offline"}</span></span>
+        <span style={{color:T.dim}}>hosts: <span style={{color:T.acc2}}>{hosts.length}</span></span>
+        {data?.gps&&<span style={{color:T.dim}}>gps: <span style={{color:T.acc}}>{data.gps.lat?.toFixed(4)},{data.gps.lon?.toFixed(4)}</span></span>}
+        <span style={{color:live?T.acc2:T.dim,fontSize:10}}>{live?"● LIVE":"○ OFFLINE"}</span>
+      </div>
+      <div style={{fontSize:10,color:T.dim,letterSpacing:2,margin:"10px 0 6px"}}>DISCOVERED HOSTS — NMAP</div>
+      {hosts.length===0&&<div style={{padding:12,textAlign:"center",color:T.dim,fontSize:11}}>No hosts discovered yet</div>}
+      <table>
+        <thead><tr>{["IP ADDRESS","HOSTNAME","FIRST SEEN"].map(h=><th key={h}>{h}</th>)}</tr></thead>
+        <tbody>{hosts.map((h,i)=><tr key={i}>
+          <td style={{color:T.acc2,fontFamily:T.display}}>{h.ip}</td>
+          <td style={{color:T.dim}}>{h.name||"—"}</td>
+          <td style={{color:T.dim,fontSize:10}}>{new Date(h.ts||Date.now()).toLocaleTimeString()}</td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+  );
+}
+
+/* ── nRF24 Panel ────────────────────────────────────────────────── */
+function Nrf24Panel({data,live}){
+  const maxV=Math.max(...(data.map(c=>c.v)||[1]),1);
+  const peak=data.reduce((a,c)=>c.v>a.v?c:a,data[0]||{ch:0,v:0});
+  const active=data.filter(c=>c.v>15).length;
+  return(
+    <div className="panel-anim" style={{padding:12,overflow:"auto",height:"100%"}}>
+      <PanelHdr title="2.4 GHz SPECTRUM" sub="nRF24L01 ×4" live={live}/>
+      <div style={{marginTop:10}}>
+        <div style={{fontSize:9,color:T.dim,letterSpacing:2,marginBottom:6}}>126-CHANNEL ACTIVITY MAP</div>
+        <div style={{
+          display:"flex",alignItems:"flex-end",gap:1,height:90,
+          background:T.bg2,padding:"6px 8px",borderRadius:3,
+          border:`1px solid ${T.border}`
+        }}>
+          {data.map(c=>(
+            <div key={c.ch} className="spec-bar" style={{
+              height:`${Math.max(4,(c.v/maxV)*100)}%`,
+              background:c.v>50?T.danger:c.v>15?T.acc:"rgba(0,229,160,.18)"
+            }}/>
+          ))}
+        </div>
+        <div style={{display:"flex",gap:14,marginTop:6,fontSize:10,color:T.dim}}>
+          <span><span style={{color:T.acc}}>■</span> Active</span>
+          <span><span style={{color:T.danger}}>■</span> High activity / drone</span>
+        </div>
+        <div style={{marginTop:12,display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6}}>
+          {[["Peak CH",peak.ch],["Active CH",active],["Max Power",maxV+"u"]].map(([l,v])=>(
+            <div key={l} style={{background:T.bg2,borderRadius:3,padding:"8px 10px",border:`1px solid ${T.border}`}}>
+              <div style={{fontFamily:T.display,fontSize:18,color:T.acc2}}>{v}</div>
+              <div style={{fontSize:9,color:T.dim,letterSpacing:1,marginTop:2}}>{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Spectrum Panel ─────────────────────────────────────────────── */
+function SpectrumPanel({data,live}){
+  const bars=data||Array.from({length:80},(_,i)=>({f:88+i*0.1,v:Math.random()*20}));
+  const maxV=Math.max(...bars.map(b=>b.v),1);
+  return(
+    <div className="panel-anim" style={{padding:12,overflow:"auto",height:"100%"}}>
+      <PanelHdr title="RF SPECTRUM" sub="RTL-SDR v4 wideband" live={live}/>
+      <div style={{marginTop:10}}>
+        <div style={{fontSize:9,color:T.dim,letterSpacing:2,marginBottom:6}}>WIDEBAND SWEEP — 500kHz–1.75GHz</div>
+        <div style={{
+          display:"flex",alignItems:"flex-end",gap:1,height:110,
+          background:T.bg2,padding:"6px 8px",borderRadius:3,
+          border:`1px solid ${T.border}`
+        }}>
+          {bars.map((b,i)=>(
+            <div key={i} style={{
+              flex:1,minWidth:1,borderRadius:"1px 1px 0 0",
+              height:`${Math.max(3,(b.v/maxV)*100)}%`,
+              background:`rgba(56,178,255,${0.3+(b.v/maxV)*0.7})`
+            }}/>
+          ))}
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:4,fontSize:9,color:T.dim}}>
+          <span>500 kHz</span><span>500 MHz</span><span>1.0 GHz</span><span>1.75 GHz</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── AI Intel Panel (Puter.js) ──────────────────────────────────── */
+function AiPanel({state}){
+  const [chat,setChat]=useState([]);
+  const [inp,setInp]=useState("");
+  const [loading,setLoading]=useState(false);
+  const [puterReady,setPuterReady]=useState(false);
+  const [puterUser,setPuterUser]=useState(null);
+  const bottomRef=useRef();
+
+  useEffect(()=>{bottomRef.current?.scrollIntoView({behavior:"smooth"});},[chat]);
+
+  // Check Puter auth status on mount
+  useEffect(()=>{
+    const check=async()=>{
+      try{
+        if(typeof puter==="undefined") return;
+        const isSignedIn=await puter.auth.isSignedIn();
+        setPuterReady(true);
+        if(isSignedIn){
+          try{
+            const user=await puter.auth.getUser();
+            setPuterUser(user?.username||"authenticated");
+          }catch(e){setPuterUser("authenticated");}
+        }
+      }catch(e){console.warn("Puter check failed:",e);}
+    };
+    // Give puter.js time to load
+    setTimeout(check,1000);
+  },[]);
+
+  const buildContext=()=>`You are TACINT — a tactical intelligence AI embedded in a real-time surveillance and RF monitoring dashboard called TacticalOps, running on a Raspberry Pi 5 (rfConn) in Ahmedabad, India.
+
+Current live sensor state:
+- ADS-B Aircraft: ${(state.adsb?.data||[]).length} tracked. Live feed: ${state.adsb?.live?"YES":"NO (simulated)"}
+- WiFi Networks: ${(state.wifi?.data||[]).length} detected. Open/unencrypted: ${(state.wifi?.data||[]).filter(n=>n.enc==="Open").length}. Live: ${state.wifi?.live?"YES":"NO"}
+- BLE Devices: ${(state.ble?.data||[]).length} in range. Live: ${state.ble?.live?"YES":"NO"}
+- 433MHz RF Signals: ${(state.rf433?.data||[]).length} decoded. Live: ${state.rf433?.live?"YES":"NO"}
+- Pwnagotchi: ${state.pwnagotchi?.captures||0} handshakes captured. Mood: ${state.pwnagotchi?.mood||"unknown"}. Epoch: ${state.pwnagotchi?.epoch||0}. Live: ${state.pwnagotchi?.live?"YES":"NO"}
+- Hardware: RTL-SDR v4, ESP32 ×3, nRF24L01+PA+LNA ×4, CC1101 433MHz, Pi Zero 2W (Pwnagotchi), Pi 5
+
+Respond in concise tactical intelligence style. Be direct and analytical. Flag anomalies. Max 100 words unless a detailed analysis is explicitly requested.`;
+
+  const send=async(msg)=>{
+    if(!msg.trim()||loading) return;
+    setInp(""); setLoading(true);
+    const userMsg={role:"user",content:msg};
+    const next=[...chat,userMsg];
+    setChat(next);
+
+    try{
+      if(typeof puter==="undefined") throw new Error("Puter.js not loaded");
+
+      // Build messages array for Puter (system + history)
+      const messages=[
+        {role:"system",content:buildContext()},
+        ...next
+      ];
+
+      const response=await puter.ai.chat(messages,{
+        model:"claude-sonnet-4-6"
+      });
+
+      // Extract text from response
+      const text=
+        response?.message?.content?.[0]?.text ||
+        response?.message?.content ||
+        response?.text ||
+        response?.content?.[0]?.text ||
+        (typeof response==="string"?response:"No response received.");
+
+      setChat([...next,{role:"assistant",content:text}]);
+
+      // Update puter user state if not set
+      if(!puterUser){
+        try{
+          const user=await puter.auth.getUser();
+          setPuterUser(user?.username||"authenticated");
+        }catch(e){setPuterUser("authenticated");}
+      }
+    }catch(e){
+      const errMsg=e.message?.includes("sign in")||e.message?.includes("auth")
+        ?"Authentication required — Puter sign-in popup should appear. Complete login then try again."
+        :`Error: ${e.message}`;
+      setChat([...next,{role:"assistant",content:errMsg}]);
+    }
+    setLoading(false);
+  };
+
+  const QUICK=[
+    {label:"🎯 Threat assessment",q:"Analyze current threat level across all sensors"},
+    {label:"⚡ Anomalies",q:"Any anomalies or suspicious activity detected?"},
+    {label:"📊 Sensor summary",q:"Give me a full status summary of all active sensors"},
+    {label:"📡 RF analysis",q:"Analyze the RF environment — WiFi, BLE and any signals"},
+    {label:"✈️ Air traffic",q:"Summarize current aircraft activity and anything notable"},
+    {label:"🔐 Network threats",q:"Which WiFi networks look suspicious or worth investigating?"},
+  ];
+
+  return(
+    <div className="panel-anim" style={{display:"flex",flexDirection:"column",height:"100%"}}>
+      {/* Header */}
+      <div style={{
+        padding:"7px 13px",borderBottom:`1px solid ${T.border}`,background:T.bg2,
+        display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0
+      }}>
+        <div style={{display:"flex",alignItems:"center",gap:8}}>
+          <LiveDot live={puterReady} pulse/>
+          <span style={{fontFamily:T.display,fontSize:11,letterSpacing:2,color:T.acc}}>AI INTEL</span>
+          <span style={{fontSize:10,color:T.dim}}>— TACINT via Puter.js</span>
+        </div>
+        <div style={{display:"flex",alignItems:"center",gap:8}}>
+          {puterUser&&(
+            <span style={{fontSize:9,color:T.acc,letterSpacing:1}}>👤 {puterUser}</span>
+          )}
+          <span className="puter-badge" style={{
+            background:puterReady?"rgba(0,229,160,.1)":"rgba(74,96,112,.1)",
+            border:`1px solid ${puterReady?T.acc:T.dim}`,
+            color:puterReady?T.acc:T.dim
+          }}>
+            {puterReady?"PUTER READY":"LOADING"}
+          </span>
+        </div>
+      </div>
+
+      {/* Puter info bar — shown until first message */}
+      {chat.length===0&&(
+        <div style={{
+          padding:"7px 13px",background:"rgba(56,178,255,.05)",
+          borderBottom:`1px solid rgba(56,178,255,.12)`,fontSize:10,color:"rgba(56,178,255,.7)",
+          display:"flex",alignItems:"center",gap:6,flexShrink:0
+        }}>
+          <span>⚡</span>
+          <span>Powered by <strong style={{color:T.acc2}}>Puter.js</strong> — free Claude AI, no API key required. First query may prompt Puter sign-in.</span>
+        </div>
+      )}
+
+      {/* Quick queries */}
+      {chat.length===0&&(
+        <div style={{padding:12,display:"flex",flexDirection:"column",gap:5,flexShrink:0}}>
+          <div style={{fontSize:9,color:T.dim,letterSpacing:2,marginBottom:4}}>QUICK QUERIES</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5}}>
+            {QUICK.map(({label,q})=>(
+              <button key={q} className="quick-btn" onClick={()=>send(q)}>{label}</button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Chat messages */}
+      <div style={{flex:1,overflow:"auto",padding:"8px 12px",display:"flex",flexDirection:"column",gap:7}}>
+        {chat.map((m,i)=>(
+          <div key={i} style={{
+            padding:"8px 11px",borderRadius:3,fontSize:11,lineHeight:1.65,
+            background:m.role==="user"?T.bg3:"rgba(0,229,160,.05)",
+            borderLeft:`2px solid ${m.role==="user"?T.dim:T.acc}`,
+            color:m.role==="user"?T.dim:T.text,
+            animation:"fadeIn .15s ease"
+          }}>
+            {m.role==="assistant"&&(
+              <span style={{color:T.acc,marginRight:7,fontFamily:T.display,fontSize:9,letterSpacing:1}}>
+                TACINT›
+              </span>
+            )}
+            {m.content}
+          </div>
+        ))}
+        {loading&&(
+          <div style={{
+            color:T.acc,fontSize:11,padding:"8px 11px",
+            animation:"blink 1s infinite",letterSpacing:1
+          }}>
+            TACINT ANALYZING...
+          </div>
+        )}
+        <div ref={bottomRef}/>
+      </div>
+
+      {/* Input */}
+      <div style={{
+        padding:"8px 12px",borderTop:`1px solid ${T.border}`,
+        display:"flex",gap:7,flexShrink:0,background:T.bg1
+      }}>
+        <input
+          type="text"
+          value={inp}
+          onChange={e=>setInp(e.target.value)}
+          onKeyDown={e=>e.key==="Enter"&&send(inp)}
+          placeholder="Query TACINT... (Enter to send)"
+        />
+        <button className="tx-btn" onClick={()=>send(inp)} disabled={loading||!inp.trim()}>TX</button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Radar Canvas ───────────────────────────────────────────────── */
+function Radar({aircraft, receiver}){
+  const canvasRef=useRef();
+  const angleRef=useRef(0);
+  const rafRef=useRef();
+
+  // Calculate bearing (azimuth) from receiver to aircraft
+  const calculateBearing = (lat1, lon1, lat2, lon2) => {
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const lat1Rad = lat1 * Math.PI / 180;
+    const lat2Rad = lat2 * Math.PI / 180;
+    
+    const y = Math.sin(dLon) * Math.cos(lat2Rad);
+    const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLon);
+    
+    let bearing = Math.atan2(y, x) * 180 / Math.PI;
+    return (bearing + 360) % 360; // Normalize to 0-360
+  };
+
+  useEffect(()=>{
+    const canvas=canvasRef.current;
+    if(!canvas) return;
+    const ctx=canvas.getContext("2d");
+    const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2,R=W/2-4;
+
+    const draw=()=>{
+      ctx.clearRect(0,0,W,H);
+      // Background
+      ctx.fillStyle="#050810";
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fill();
+
+      // Grid rings
+      [0.25,0.5,0.75,1].forEach(r=>{
+        ctx.beginPath();ctx.arc(cx,cy,R*r,0,Math.PI*2);
+        ctx.strokeStyle="rgba(0,229,160,0.12)";ctx.lineWidth=1;ctx.stroke();
+      });
+      // Crosshairs
+      ctx.strokeStyle="rgba(0,229,160,0.12)";ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(cx-R,cy);ctx.lineTo(cx+R,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(cx,cy-R);ctx.lineTo(cx,cy+R);ctx.stroke();
+
+      // Sweep gradient
+      const ang=angleRef.current;
+      const grad=ctx.createConicalGradient?.(cx,cy,ang-Math.PI*0.5,ang)||(()=>{
+        // Fallback: arc sector
+        const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+        g.addColorStop(0,"rgba(0,229,160,0.25)");
+        g.addColorStop(1,"rgba(0,229,160,0)");
+        return g;
+      })();
+
+      ctx.save();
+      ctx.translate(cx,cy);ctx.rotate(ang);
+      ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,-Math.PI*0.6,0);ctx.closePath();
+      const sg=ctx.createRadialGradient(0,0,0,0,0,R);
+      sg.addColorStop(0,"rgba(0,229,160,0.3)");
+      sg.addColorStop(1,"rgba(0,229,160,0)");
+      ctx.fillStyle=sg;ctx.fill();
+      ctx.restore();
+
+      // Sweep line
+      ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);
+      ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(R,0);
+      ctx.strokeStyle="rgba(0,229,160,0.9)";ctx.lineWidth=1.5;ctx.stroke();
+      ctx.restore();
+
+      // Aircraft dots - ACCURATE positioning
+      (aircraft||[]).slice(0,20).forEach((a)=>{
+        if (!a.lat || !a.lon || !receiver?.lat || !receiver?.lon) return;
+        
+        // Calculate bearing from receiver to aircraft
+        const bearing = calculateBearing(receiver.lat, receiver.lon, a.lat, a.lon);
+        const bearingRad = (bearing - 90) * Math.PI / 180; // Convert to canvas coordinates (0° = East, 90° = North)
+        
+        // Scale distance to radar radius (assume max 250km = full radius)
+        const maxDist = 250; // km
+        const distRatio = Math.min((a.dist || 0) / maxDist, 1);
+        const r = R * distRatio;
+        
+        // Position on radar
+        const x = cx + Math.cos(bearingRad) * r;
+        const y = cy + Math.sin(bearingRad) * r;
+        
+        // Draw aircraft dot
+        ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);
+        ctx.fillStyle=T.acc2;ctx.fill();
+        ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);
+        ctx.strokeStyle="rgba(56,178,255,0.4)";ctx.lineWidth=1;ctx.stroke();
+      });
+
+      // Center dot (receiver)
+      ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);
+      ctx.fillStyle=T.acc;ctx.fill();
+
+      angleRef.current=(ang+0.018)%(Math.PI*2);
+      rafRef.current=requestAnimationFrame(draw);
+    };
+    draw();
+    return()=>cancelAnimationFrame(rafRef.current);
+  },[aircraft]);
+
+  return(
+    <canvas ref={canvasRef} width={170} height={170}
+      style={{borderRadius:"50%",border:`1px solid rgba(0,229,160,0.2)`}}/>
+  );
+}
+
+/* ── Navigation ─────────────────────────────────────────────────── */
+const NAV=[
+  {id:"adsb",  label:"ADS-B",  icon:"✈"},
+  {id:"wifi",  label:"WiFi",   icon:"▦"},
+  {id:"ble",   label:"BLE",    icon:"◈"},
+  {id:"rf433", label:"433MHz", icon:"◎"},
+  {id:"nrf24", label:"2.4GHz", icon:"⚡"},
+  {id:"lora",  label:"LoRa",   icon:"◬"},
+  {id:"nethunter", label:"Field", icon:"◍"},
+  {id:"spec",  label:"Spectrum",icon:"〰"},
+  {id:"ai",    label:"AI Intel",icon:"◉"},
+];
+
+/* ── Root App ───────────────────────────────────────────────────── */
+function App(){
+  const [panel,setPanel]=useState("adsb");
+  const [time,setTime]=useState(new Date());
+  const [wsConn,setWsConn]=useState(false);
+  const [alerts,setAlerts]=useState([]);
+  const [showSettings,setShowSettings]=useState(false);
+  const [hideClearButtons,setHideClearButtons]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_hideClearButtons"))||false;
+    }catch{
+      return false;
+    }
+  });
+  const [autoRefresh,setAutoRefresh]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_autoRefresh"))||false;
+    }catch{
+      return false;
+    }
+  });
+  const [refreshing,setRefreshing]=useState(false);
+  const [panelVisibility,setPanelVisibility]=useState(()=>{
+    try{
+      return JSON.parse(localStorage.getItem("tacops_panelVisibility"))||
+        Object.fromEntries(NAV.map(n=>[n.id,true]));
+    }catch{
+      return Object.fromEntries(NAV.map(n=>[n.id,true]));
+    }
+  });
+  const [state,setState]=useState({
+    adsb:{data:[],live:false},
+    wifi:{data:[],live:false},
+    ble:{data:[],live:false},
+    rf433:{data:[],live:false},
+    nrf24:{data:Array.from({length:126},(_,ch)=>({ch,v:0})),live:false},
+    spectrum:{data:[],live:false},
+    lora:{data:[],live:false},
+    nethunter:{hosts:[],live:false},
+    pwnagotchi:{captures:0,mood:"unknown",epoch:0,live:false},
+    alerts:[]
+  });
+  const wsRef=useRef();
+
+  // Toggle panel visibility
+  const togglePanel=(id)=>{
+    setPanelVisibility(p=>{
+      const updated={...p,[id]:!p[id]};
+      localStorage.setItem("tacops_panelVisibility",JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const setHideClearButtonsLocal=(value)=>{
+    setHideClearButtons(value);
+    localStorage.setItem("tacops_hideClearButtons",JSON.stringify(value));
+  };
+
+  const setAutoRefreshLocal=(value)=>{
+    setAutoRefresh(value);
+    localStorage.setItem("tacops_autoRefresh",JSON.stringify(value));
+  };
+
+  const refreshData=useCallback(async ()=>{
+    try{
+      setRefreshing(true);
+      const res=await fetch("/api/state");
+      if(res.ok){
+        const payload=await res.json();
+        setState(payload);
+        setAlerts(payload.alerts||[]);
+      }
+    }catch(e){}
+    finally{
+      setRefreshing(false);
+    }
+  },[]);
+
+  const clearAdsbHistory=()=>{
+    setState(p=>({
+      ...p,
+      adsb:{...p.adsb,history:[]}
+    }));
+  };
+
+  // Clock
+  useEffect(()=>{
+    const t=setInterval(()=>setTime(new Date()),1000);
+    return()=>clearInterval(t);
+  },[]);
+
+  // WebSocket
+  useEffect(()=>{
+    function connect(){
+      const ws=new WebSocket(`ws://${location.host}`);
+      wsRef.current=ws;
+      ws.onopen=()=>setWsConn(true);
+      ws.onclose=()=>{setWsConn(false);setTimeout(connect,3000);};
+      ws.onerror=()=>{};
+      ws.onmessage=e=>{
+        try{
+          const msg=JSON.parse(e.data);
+          if(msg.type==="init"){
+            setState(msg.payload);
+            setAlerts(msg.payload.alerts||[]);
+          } else if(msg.type==="alert"){
+            setAlerts(p=>[msg.payload,...p].slice(0,100));
+          } else if(msg.type==="clear_alerts"){
+            setAlerts([]);
+          } else
+            setState(p=>({
+              ...p,
+              [msg.type]: typeof msg.payload==="object"&&!Array.isArray(msg.payload)
+                ? msg.payload
+                : {...p[msg.type], data: msg.payload}
+            }));
+        }catch(e){}
+      };
+    }
+    connect();
+    return()=>wsRef.current?.close();
+  },[]);
+
+  useEffect(()=>{
+    if(!autoRefresh) return;
+    const id=setInterval(refreshData,15000);
+    return()=>clearInterval(id);
+  },[autoRefresh,refreshData]);
+
+  const visibleNav=NAV.filter(n=>panelVisibility[n.id]);
+  const liveCount=[state.adsb,state.wifi,state.ble,state.rf433,state.lora,state.nethunter].filter(s=>s?.live).length;
+  const mqttConn = state.mqtt?.live;
+
+  const renderPanel=()=>{
+    switch(panel){
+      case"adsb":  return <AdsbPanel data={state.adsb?.data||[]} live={state.adsb?.live} state={state} hideClearButtons={hideClearButtons} clearAdsbHistory={clearAdsbHistory}/>;
+      case"wifi":  return <WifiPanel data={state.wifi?.data||[]} pwna={state.pwnagotchi||{}} live={state.wifi?.live} state={state}/>;
+      case"ble":   return <BlePanel data={state.ble?.data||[]} live={state.ble?.live} state={state}/>;
+      case"rf433": return <Rf433Panel data={state.rf433?.data||[]} live={state.rf433?.live} state={state}/>;
+      case"nrf24": return <Nrf24Panel data={state.nrf24?.data||[]} live={state.nrf24?.live}/>;
+      case"lora":  return <LoraPanel data={state.lora?.data||[]} live={state.lora?.live}/>;
+      case"nethunter": return <NetHunterPanel data={state.nethunter||{}} live={state.nethunter?.live}/>;
+      case"spec":  return <SpectrumPanel data={state.spectrum?.data||[]} live={state.spectrum?.live}/>;
+      case"ai":    return <AiPanel state={state}/>;
+      default: return null;
+    }
+  };
+
+  return(
+    <div style={{width:"100vw",height:"100vh",display:"flex",flexDirection:"column",overflow:"hidden",background:T.bg0}}>
+
+      {/* ── TOP BAR ── */}
+      <div style={{
+        display:"flex",alignItems:"center",justifyContent:"space-between",
+        padding:"0 14px",height:42,background:T.bg1,
+        borderBottom:`1px solid ${T.border}`,flexShrink:0
+      }}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <span style={{fontFamily:T.display,fontSize:14,letterSpacing:4,fontWeight:900,color:T.acc}}>
+            TACTICAL OPS
+          </span>
+          <span style={{width:1,height:16,background:T.border}}/>
+          <span style={{fontSize:9,color:T.dim,letterSpacing:2}}>rfConn // Pi5 — Ahmedabad</span>
+        </div>
+        <div style={{display:"flex",alignItems:"center",gap:16}}>
+          <span style={{fontSize:9,letterSpacing:1,color:wsConn?T.acc:T.danger}}>
+            {wsConn?"● WS":"○ WS"}
+          </span>
+          <span style={{fontSize:9,letterSpacing:1,color:liveCount>0?T.acc:T.dim}}>
+            {liveCount>0?`● ${liveCount} LIVE`:"○ SIM"}
+          </span>
+          <span style={{fontSize:9,letterSpacing:1,color:mqttConn?T.acc:T.danger}}>
+            {mqttConn?"● MQTT":"○ MQTT"}
+          </span>
+          <button onClick={refreshData} style={{fontSize:9,padding:"4px 8px",background:T.bg2,color:T.acc,border:`1px solid ${T.border}`,borderRadius:3,cursor:"pointer"}}>
+            {refreshing?"Refreshing...":"Refresh"}
+          </button>
+          <span style={{fontFamily:T.display,fontSize:11,color:T.acc,letterSpacing:2}}>
+            {time.toTimeString().slice(0,8)}
+          </span>
+        </div>
+      </div>
+
+      {/* ── BODY ── */}
+      <div style={{flex:1,display:"flex",overflow:"hidden"}}>
+
+        {/* NAV SIDEBAR */}
+        <div style={{
+          width:66,background:T.bg1,borderRight:`1px solid ${T.border}`,
+          display:"flex",flexDirection:"column",padding:"4px 0",gap:1,flexShrink:0
+        }}>
+          {visibleNav.map(n=>(
+            <button key={n.id} className={`nav-btn${panel===n.id?" on":""}`} onClick={()=>setPanel(n.id)}>
+              <span className="nav-icon">{n.icon}</span>
+              <span>{n.label}</span>
+            </button>
+          ))}
+          <button className="nav-btn" onClick={()=>setShowSettings(!showSettings)} style={{borderLeft: showSettings ? `2px solid ${T.acc}` : "2px solid transparent"}}>
+            <span className="nav-icon">⚙</span>
+            <span>Config</span>
+          </button>
+        </div>
+
+        {/* MAIN PANEL */}
+        <div style={{flex:1,overflow:"hidden",display:"flex",flexDirection:"column"}}>
+          {renderPanel()}
+        </div>
+
+        {/* RIGHT SIDEBAR */}
+        <div style={{
+          width:206,background:T.bg1,borderLeft:`1px solid ${T.border}`,
+          display:"flex",flexDirection:"column",overflow:"hidden",flexShrink:0
+        }}>
+
+          {showSettings?(
+            // Settings Panel
+            <div style={{display:"flex",flexDirection:"column",overflow:"auto",flex:1}}>
+              <div style={{padding:"8px 10px",borderBottom:`1px solid ${T.border}`,flexShrink:0,background:T.bg2}}>
+                <div style={{fontSize:10,color:T.acc,letterSpacing:1,fontFamily:T.display}}>SETTINGS</div>
+              </div>
+              <div style={{padding:"10px 12px",borderBottom:`1px solid ${T.border}`,background:T.bg1,display:"grid",gap:8}}>
+                <label style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,fontSize:10,color:T.dim}}>
+                  <span>Hide all clear controls</span>
+                  <input type="checkbox" checked={hideClearButtons} onChange={e=>setHideClearButtonsLocal(e.target.checked)} />
+                </label>
+                <label style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,fontSize:10,color:T.dim}}>
+                  <span>Auto-refresh every 15s</span>
+                  <input type="checkbox" checked={autoRefresh} onChange={e=>setAutoRefreshLocal(e.target.checked)} />
+                </label>
+              </div>
+              <div style={{flex:1,overflow:"auto",padding:"8px 4px"}}>
+                {NAV.map(n=>(
+                  <div key={n.id} style={{
+                    padding:"8px 10px",borderBottom:`1px solid ${T.border}`,
+                    display:"flex",alignItems:"center",justifyContent:"space-between",
+                    cursor:"pointer",background:panelVisibility[n.id]?"rgba(0,229,160,.05)":"transparent",
+                    transition:"background .15s"
+                  }} onClick={()=>togglePanel(n.id)}>
+                    <span style={{fontSize:10,color:T.dim,flex:1}}>{n.label}</span>
+                    <span style={{
+                      fontSize:11,color:panelVisibility[n.id]?T.acc:T.dim,
+                      fontWeight:700,minWidth:14,textAlign:"right"
+                    }}>
+                      {panelVisibility[n.id]?"✓":"—"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div style={{padding:"6px 10px",borderTop:`1px solid ${T.border}`,flexShrink:0,fontSize:9,color:T.dim}}>
+                {Object.values(panelVisibility).filter(Boolean).length}/{NAV.length} enabled
+              </div>
+            </div>
+          ):(
+            // Default: Radar + Alerts
+            <>
+              {/* Radar */}
+              <div style={{padding:"10px 0 6px",borderBottom:`1px solid ${T.border}`,flexShrink:0}}>
+                <div style={{fontSize:9,color:T.dim,letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display}}>
+                  RADAR
+                </div>
+                <div style={{display:"flex",justifyContent:"center"}}>
+                  <Radar aircraft={state.adsb?.data||[]} receiver={state.receiver}/>
+                </div>
+                <div style={{
+                  display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:10
+                }}>
+                  <span style={{color:T.acc2}}>✈ {(state.adsb?.data||[]).length}</span>
+                  <span style={{color:T.acc}}>📶 {(state.wifi?.data||[]).length}</span>
+                  <span style={{color:T.dim}}>◈ {(state.ble?.data||[]).length}</span>
+                </div>
+              </div>
+
+              {/* Alert Feed */}
+              <div style={{
+                padding:"5px 10px",fontSize:9,color:T.dim,letterSpacing:2,
+                borderBottom:`1px solid ${T.border}`,background:T.bg2,
+                fontFamily:T.display,flexShrink:0, display:"flex", justifyContent:"space-between", alignItems:"center"
+              }}>
+                <span>ALERT FEED</span>
+                {!hideClearButtons && (
+                  <button onClick={()=>{if(wsRef.current && wsRef.current.readyState === WebSocket.OPEN) wsRef.current.send(JSON.stringify({type:"clear_alerts"}))}} style={{
+                    fontSize:8, padding:"2px 6px", background:T.danger, color:"#fff", border:"none", borderRadius:2, cursor:"pointer",
+                    opacity:wsConn?1:0.5, pointerEvents:wsConn?"auto":"none"
+                  }}>Clear</button>
+                )}
+              </div>
+              <div style={{flex:1,overflow:"auto"}}>
+            {alerts.length===0&&(
+              <div style={{padding:14,fontSize:10,color:T.dim,textAlign:"center"}}>Monitoring...</div>
+            )}
+            {alerts.map((a,i)=>(
+              <div key={i} style={{
+                padding:"7px 10px",borderBottom:`1px solid rgba(0,229,160,.03)`,
+                borderLeft:`2px solid ${a.sev==="danger"?T.danger:a.sev==="warn"?T.warn:T.acc}`,
+                animation:"fadeIn .2s ease"
+              }}>
+                <div style={{
+                  fontSize:10,
+                  color:a.sev==="danger"?T.danger:a.sev==="warn"?T.warn:T.acc,
+                  lineHeight:1.4
+                }}>{a.msg}</div>
+                <div style={{fontSize:9,color:T.dim,marginTop:2}}>
+                  {new Date(a.ts||Date.now()).toLocaleTimeString()}
+                </div>
+              </div>
+            ))}
+              </div>
+
+              {/* Status grid */}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:1,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
+                {[
+                  ["ADS-B",  state.adsb?.live,  T.acc2],
+                  ["WiFi",   state.wifi?.live,  T.acc],
+                  ["BLE",    state.ble?.live,   T.acc],
+                  ["433MHz", state.config?.rf433Mode !== "disabled" && state.rf433?.live, T.warn],
+                  ["LoRa",   state.lora?.live,  T.acc],
+                  ["NetHunter", state.nethunter?.live, T.acc2],
+                  ["PWNA",   state.pwnagotchi?.live, T.warn],
+                  ["MQTT",   mqttConn,            T.acc],
+                ].map(([l,live,c])=>(
+                  <div key={l} style={{padding:"6px 8px",background:T.bg2,textAlign:"center"}}>
+                    <div style={{fontSize:8,color:live?c:T.dim,letterSpacing:1}}>
+                      {live?"● LIVE":"○ SIM"}
+                    </div>
+                    <div style={{fontSize:9,color:T.dim,marginTop:1}}>{l}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* ── BOTTOM BAR ── */}
+      <div style={{
+        padding:"3px 14px",background:T.bg1,borderTop:`1px solid ${T.border}`,
+        display:"flex",justifyContent:"space-between",flexShrink:0
+      }}>
+        <span style={{fontSize:9,color:T.dim}}>
+          groot@rfConn — TacticalOps v2.0 — readsb + MQTT + Puter.js AI
+        </span>
+        <span style={{fontSize:9,color:T.dim}}>10.96.42.97 // rfconn.local</span>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
