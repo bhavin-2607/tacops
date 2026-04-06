@@ -39,6 +39,396 @@
   },
   "alerts": [
     {
+      "id": "s4jh25pgwoj",
+      "msg": "Flight detected: BBC235",
+      "sev": "info",
+      "ts": 1775489749113
+    },
+    {
+      "id": "lt1tvlpt9t",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489650098
+    },
+    {
+      "id": "bp8pl4v792",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489649095
+    },
+    {
+      "id": "gb3qlps40ws",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489648096
+    },
+    {
+      "id": "upp53cxeptf",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489647096
+    },
+    {
+      "id": "794bk0u3i83",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489646095
+    },
+    {
+      "id": "q4xjbpi57yh",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489645094
+    },
+    {
+      "id": "tqc2uws71cf",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489644094
+    },
+    {
+      "id": "usrkdnm2mo",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489643092
+    },
+    {
+      "id": "kb17k1ecjn9",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489642092
+    },
+    {
+      "id": "3eyvu0vj723",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489641092
+    },
+    {
+      "id": "e0uowjl8bgc",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489640092
+    },
+    {
+      "id": "2y242gtvy87",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489639093
+    },
+    {
+      "id": "srlhl408khe",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489638093
+    },
+    {
+      "id": "x17lfjf2p5",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489637094
+    },
+    {
+      "id": "0w9v8sgsw08",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489636091
+    },
+    {
+      "id": "a7e98xaof97",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489635091
+    },
+    {
+      "id": "3machn6yqnv",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489634091
+    },
+    {
+      "id": "9k5gvqobfee",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489633091
+    },
+    {
+      "id": "e0vidg5jp8k",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489632091
+    },
+    {
+      "id": "01q9zh38mews",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489631089
+    },
+    {
+      "id": "jcxu8djjskq",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489630089
+    },
+    {
+      "id": "r731ylk5r7e",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489629089
+    },
+    {
+      "id": "74m2hfqljxl",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489628091
+    },
+    {
+      "id": "yj4ulvd0pgf",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489627089
+    },
+    {
+      "id": "616u0meptpm",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489626089
+    },
+    {
+      "id": "pn9k6dureds",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489625089
+    },
+    {
+      "id": "5c2zzqea3xa",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489624089
+    },
+    {
+      "id": "iaihd8bzsbm",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489623090
+    },
+    {
+      "id": "qzbv39o02zc",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489622089
+    },
+    {
+      "id": "rcdyw31n477",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489621089
+    },
+    {
+      "id": "5hlvs3krzn8",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489620089
+    },
+    {
+      "id": "28h9ryc0ysb",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489619090
+    },
+    {
+      "id": "i3mku1azzl",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489618089
+    },
+    {
+      "id": "4ietorlvi96",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489617091
+    },
+    {
+      "id": "1dq1r18m4oy",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489616090
+    },
+    {
+      "id": "a3qgr3emzf8",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489615089
+    },
+    {
+      "id": "3mhu38uwbf7",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489614089
+    },
+    {
+      "id": "0mleb6ftokln",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489613090
+    },
+    {
+      "id": "ntkyyevou",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489612089
+    },
+    {
+      "id": "rumwkrhikb",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489611090
+    },
+    {
+      "id": "f46f42tny3c",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489610089
+    },
+    {
+      "id": "btdvlualmx",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489609092
+    },
+    {
+      "id": "e1lkh3ii86a",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489608089
+    },
+    {
+      "id": "8jq2ohgawn",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489607090
+    },
+    {
+      "id": "ht55yaz7r5w",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489606090
+    },
+    {
+      "id": "3iak9sbh0yf",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489605089
+    },
+    {
+      "id": "iulc0lojuvr",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489604089
+    },
+    {
+      "id": "swppfdjfl7e",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489603089
+    },
+    {
+      "id": "7ko3vlibyyb",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489602089
+    },
+    {
+      "id": "31c6uahln0t",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489601089
+    },
+    {
+      "id": "o3v2yvjxrse",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489600090
+    },
+    {
+      "id": "nvtb2by9cl",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489599089
+    },
+    {
+      "id": "y2qahyitf4",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489598089
+    },
+    {
+      "id": "3vz7l626caw",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489597089
+    },
+    {
+      "id": "61pom5oiv8i",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489596089
+    },
+    {
+      "id": "tpw6zvx55k",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489595088
+    },
+    {
+      "id": "3t7yjippn8j",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489594088
+    },
+    {
+      "id": "aifeam9gh7",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489593089
+    },
+    {
+      "id": "ma43sl8wl2",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489592088
+    },
+    {
+      "id": "h63boirmilq",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489591088
+    },
+    {
+      "id": "hvmqjz03zos",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489590087
+    },
+    {
+      "id": "ywstyobqauj",
+      "msg": "High speed: FDB573 at 533.7kt",
+      "sev": "info",
+      "ts": 1775489589088
+    },
+    {
+      "id": "7bot6jszahk",
+      "msg": "Flight detected: FDB573",
+      "sev": "info",
+      "ts": 1775489589088
+    },
+    {
+      "id": "iduyu5qib2",
+      "msg": "Flight detected: UAE336",
+      "sev": "info",
+      "ts": 1775489553081
+    },
+    {
       "id": "0rzrd5o1kvl",
       "msg": "Flight detected: SWR154",
       "sev": "info",
