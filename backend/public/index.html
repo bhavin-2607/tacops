@@ -9,7 +9,8 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<!-- Google Material Symbols (Outlined style) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{height:100%}
@@ -22,6 +23,22 @@ body{width:100%;height:100%;background:#050810;color:#b8ccd8;font-family:'Share 
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Material Symbols base style */
+.msym{
+  font-family:'Material Symbols Outlined';
+  font-style:normal;
+  font-weight:normal;
+  line-height:1;
+  letter-spacing:normal;
+  text-transform:none;
+  display:inline-block;
+  white-space:nowrap;
+  word-wrap:normal;
+  direction:ltr;
+  -webkit-font-smoothing:antialiased;
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;
+}
 
 /* ── Desktop nav (left sidebar) ── */
 .nav-sidebar{
@@ -37,7 +54,7 @@ body{width:100%;height:100%;background:#050810;color:#b8ccd8;font-family:'Share 
 }
 .nav-btn:hover{background:rgba(0,229,160,.07);color:#00e5a0}
 .nav-btn.on{background:rgba(0,229,160,.12);color:#00e5a0;border-left:2px solid #00e5a0}
-.nav-icon{font-size:15px;line-height:1}
+.nav-icon{font-size:20px;line-height:1}
 .nav-bottom-bar{display:none}
 
 table{width:100%;border-collapse:collapse;font-size:11px}
@@ -57,7 +74,6 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
 .quick-btn:hover{background:rgba(0,229,160,.08);border-color:rgba(0,229,160,.35);color:#00e5a0}
 .puter-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:2px;font-size:9px;letter-spacing:1px;font-family:'Orbitron',monospace}
 
-/* ── AI panel input area — fixed to bottom of viewport on mobile ── */
 .ai-input-area{
   padding:8px 12px;border-top:1px solid rgba(0,229,160,0.1);
   display:flex;gap:7px;flex-shrink:0;background:#0b1018;
@@ -65,12 +81,8 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
 
 /* ══════════════════════════════════════════════
    LANDSCAPE PHONE (height ≤ 500px, landscape)
-   Nav becomes bottom tab bar. Right sidebar stays.
-   Layout: top bar → [main content] → bottom nav
    ══════════════════════════════════════════════ */
 @media (max-height:500px) and (orientation:landscape){
-
-  /* Top bar — slim */
   .topbar{height:28px!important;padding:0 8px!important}
   .topbar-title{font-size:10px!important;letter-spacing:2px!important}
   .topbar-sub{display:none!important}
@@ -78,20 +90,14 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
   .topbar-right{gap:8px!important}
   .topbar-time{font-size:9px!important;letter-spacing:1px!important}
   .topbar-badge{font-size:8px!important}
-
-  /* Bottom bar — hide to save space */
   .bottombar{display:none!important}
-
-  /* Left nav — HIDE, replaced by bottom tabs */
   .nav-sidebar{display:none!important}
-
-  /* Bottom nav tab bar */
   .nav-bottom-bar{
     display:flex!important;
     flex-direction:row;
     background:#0b1018;
     border-top:1px solid rgba(0,229,160,0.15);
-    height:46px;
+    height:50px;
     flex-shrink:0;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
@@ -112,50 +118,33 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
     background:rgba(0,229,160,.1)!important;
     color:#00e5a0!important;
   }
-  .nav-bottom-bar .nav-icon{font-size:13px!important}
-
-  /* Right sidebar — compact */
+  .nav-bottom-bar .nav-icon{font-size:16px!important}
   .right-sidebar{width:160px!important}
   .radar-canvas{width:120px!important;height:120px!important}
   .status-grid{grid-template-columns:1fr 1fr!important}
-
-  /* Main content — compact tables */
   table{font-size:9px!important}
   th{padding:2px 4px!important;font-size:8px!important}
   td{padding:2px 4px!important;font-size:9px!important}
-
-  /* Panel headers */
   .phdr{padding:3px 8px!important}
   .phdr-title{font-size:9px!important;letter-spacing:1px!important}
   .phdr-sub{display:none!important}
-
-  /* Charts */
   .nrf24-chart{height:55px!important}
   .spec-chart{height:60px!important}
-
-  /* AI quick grid */
   .quick-grid{grid-template-columns:1fr 1fr!important}
-
-  /* Pwnagotchi strip */
   .pwna-strip{padding:4px 8px!important;font-size:9px!important;gap:8px!important}
-
-  /* RF cards */
   .rf-card{padding:5px 8px!important}
-
-  /* History — collapse to save space */
   .hist-section{display:none!important}
 }
 
 /* ══════════════════════════════════════════════
    SMALL PORTRAIT (≤ 480px width)
-   Left sidebar stays but narrower
    ══════════════════════════════════════════════ */
 @media (max-width:480px) and (orientation:portrait){
   .topbar-sub{display:none!important}
   .right-sidebar{display:none!important}
   .nav-sidebar{width:50px!important}
   .nav-btn{padding:9px 2px!important;font-size:7px!important}
-  .nav-icon{font-size:13px!important}
+  .nav-icon{font-size:16px!important}
   table{font-size:10px!important}
   th,td{padding:3px 5px!important}
   .topbar-badge{font-size:8px!important}
@@ -178,8 +167,10 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
 const {useState,useEffect,useRef,useCallback}=React;
 const T={bg0:"#050810",bg1:"#0b1018",bg2:"#111820",bg3:"#182028",acc:"#00e5a0",acc2:"#38b2ff",warn:"#ffaa00",danger:"#ff4444",text:"#b8ccd8",dim:"#4a6070",border:"rgba(0,229,160,0.1)",display:"'Orbitron',monospace"};
 
-/* ── FA icon helper ── */
-const Ico=({n,style={}})=><i className={`fa-solid fa-${n}`} style={{fontSize:"inherit",...style}}/>;
+/* ── Material Symbol icon helper ── */
+const Ico=({n,style={}})=>(
+  <span className="msym" style={{fontSize:"inherit",verticalAlign:"middle",...style}}>{n}</span>
+);
 
 const SigBar=({rssi,min=-100,max=-30})=>{
   const pct=Math.max(0,Math.min(100,((rssi-min)/(max-min))*100));
@@ -437,7 +428,6 @@ function SpectrumPanel({data,live}){
 }
 
 /* ── AI Intel Panel ── */
-/* FIX: keyboard push — use visualViewport to keep input visible */
 function AiPanel({state}){
   const [chat,setChat]=useState([]);
   const [inp,setInp]=useState("");
@@ -446,24 +436,17 @@ function AiPanel({state}){
   const [puterUser,setPuterUser]=useState(null);
   const bottomRef=useRef();
   const inputRef=useRef();
-  const panelRef=useRef();
 
   useEffect(()=>{
-    /* Scroll chat to bottom whenever messages change */
-    if(bottomRef.current){
-      bottomRef.current.scrollIntoView({behavior:"smooth",block:"end"});
-    }
+    if(bottomRef.current) bottomRef.current.scrollIntoView({behavior:"smooth",block:"end"});
   },[chat,loading]);
 
-  /* visualViewport fix — when keyboard opens, scroll input into view */
   useEffect(()=>{
     if(!window.visualViewport) return;
     const onResize=()=>{
-      /* Small delay so browser finishes repositioning */
       setTimeout(()=>{
-        if(document.activeElement===inputRef.current){
+        if(document.activeElement===inputRef.current)
           inputRef.current?.scrollIntoView({behavior:"smooth",block:"nearest"});
-        }
       },100);
     };
     window.visualViewport.addEventListener("resize",onResize);
@@ -485,7 +468,6 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
     if(!msg.trim()||loading)return;
     setInp("");setLoading(true);
     const next=[...chat,{role:"user",content:msg}];setChat(next);
-    /* Blur input so keyboard closes after sending */
     inputRef.current?.blur();
     try{
       if(typeof puter==="undefined")throw new Error("Puter.js not loaded");
@@ -507,8 +489,7 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
   ];
 
   return(
-    <div ref={panelRef} className="panel-anim" style={{display:"flex",flexDirection:"column",height:"100%",overflow:"hidden"}}>
-      {/* Header */}
+    <div className="panel-anim" style={{display:"flex",flexDirection:"column",height:"100%",overflow:"hidden"}}>
       <div className="phdr" style={{padding:"7px 13px",borderBottom:`1px solid ${T.border}`,background:T.bg2,display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0}}>
         <div style={{display:"flex",alignItems:"center",gap:8}}>
           <LiveDot live={puterReady} pulse/>
@@ -516,17 +497,15 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
           <span className="phdr-sub" style={{fontSize:10,color:T.dim}}>— TACINT via Puter.js</span>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:8}}>
-          {puterUser&&<span style={{fontSize:9,color:T.acc}}><Ico n="user"/> {puterUser}</span>}
+          {puterUser&&<span style={{fontSize:9,color:T.acc,display:"flex",alignItems:"center",gap:3}}><Ico n="person" style={{fontSize:13}}/>{puterUser}</span>}
           <span className="puter-badge" style={{background:puterReady?"rgba(0,229,160,.1)":"rgba(74,96,112,.1)",border:`1px solid ${puterReady?T.acc:T.dim}`,color:puterReady?T.acc:T.dim}}>{puterReady?"PUTER READY":"LOADING"}</span>
         </div>
       </div>
 
-      {/* Info bar */}
       {chat.length===0&&<div style={{padding:"7px 13px",background:"rgba(56,178,255,.05)",borderBottom:`1px solid rgba(56,178,255,.12)`,fontSize:10,color:"rgba(56,178,255,.7)",display:"flex",alignItems:"center",gap:6,flexShrink:0}}>
-        <Ico n="bolt"/><span>Powered by <strong style={{color:T.acc2}}>Puter.js</strong> — free Claude AI, no API key required.</span>
+        <Ico n="bolt" style={{fontSize:13}}/><span>Powered by <strong style={{color:T.acc2}}>Puter.js</strong> — free Claude AI, no API key required.</span>
       </div>}
 
-      {/* Quick queries */}
       {chat.length===0&&<div style={{padding:12,display:"flex",flexDirection:"column",gap:5,flexShrink:0}}>
         <div style={{fontSize:9,color:T.dim,letterSpacing:2,marginBottom:4}}>QUICK QUERIES</div>
         <div className="quick-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5}}>
@@ -534,7 +513,6 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
         </div>
       </div>}
 
-      {/* Chat — scrollable, shrinks when keyboard opens */}
       <div style={{flex:1,overflowY:"auto",overflowX:"hidden",padding:"8px 12px",display:"flex",flexDirection:"column",gap:7,WebkitOverflowScrolling:"touch"}}>
         {chat.map((m,i)=><div key={i} style={{padding:"8px 11px",borderRadius:3,fontSize:11,lineHeight:1.65,background:m.role==="user"?T.bg3:"rgba(0,229,160,.05)",borderLeft:`2px solid ${m.role==="user"?T.dim:T.acc}`,color:m.role==="user"?T.dim:T.text,animation:"fadeIn .15s ease",flexShrink:0}}>
           {m.role==="assistant"&&<span style={{color:T.acc,marginRight:7,fontFamily:T.display,fontSize:9,letterSpacing:1}}>TACINT›</span>}
@@ -544,7 +522,6 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
         <div ref={bottomRef} style={{height:1}}/>
       </div>
 
-      {/* Input — stays above keyboard */}
       <div className="ai-input-area">
         <input
           ref={inputRef}
@@ -552,14 +529,9 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
           value={inp}
           onChange={e=>setInp(e.target.value)}
           onKeyDown={e=>e.key==="Enter"&&!e.shiftKey&&send(inp)}
-          onFocus={()=>{
-            /* Scroll input into view when focused on mobile */
-            setTimeout(()=>inputRef.current?.scrollIntoView({behavior:"smooth",block:"nearest"}),300);
-          }}
+          onFocus={()=>{setTimeout(()=>inputRef.current?.scrollIntoView({behavior:"smooth",block:"nearest"}),300);}}
           placeholder="Query TACINT..."
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
+          autoComplete="off" autoCorrect="off" autoCapitalize="off"
         />
         <button className="tx-btn" onClick={()=>send(inp)} disabled={loading||!inp.trim()}>TX</button>
       </div>
@@ -606,17 +578,17 @@ function Radar({aircraft,receiver}){
   return <canvas ref={cvRef} className="radar-canvas" width={170} height={170} style={{borderRadius:"50%",border:"1px solid rgba(0,229,160,0.2)",display:"block"}}/>;
 }
 
-/* ── Navigation config — Font Awesome icons ── */
+/* ── Navigation — Material Symbol names ── */
 const NAV=[
-  {id:"adsb",      label:"ADS-B",    fa:"plane"},
-  {id:"wifi",      label:"WiFi",     fa:"wifi"},
-  {id:"ble",       label:"BLE",      fa:"b"},
-  {id:"rf433",     label:"433MHz",   fa:"tower-broadcast"},
-  {id:"nrf24",     label:"2.4GHz",   fa:"signal"},
-  {id:"lora",      label:"LoRa",     fa:"satellite-dish"},
-  {id:"nethunter", label:"Field",    fa:"mobile-screen"},
-  {id:"spec",      label:"Spectrum", fa:"wave-square"},
-  {id:"ai",        label:"AI Intel", fa:"brain"},
+  {id:"adsb",      label:"ADS-B",    ms:"flight"},
+  {id:"wifi",      label:"WiFi",     ms:"wifi"},
+  {id:"ble",       label:"BLE",      ms:"bluetooth"},
+  {id:"rf433",     label:"433MHz",   ms:"cell_tower"},
+  {id:"nrf24",     label:"2.4GHz",   ms:"network_check"},
+  {id:"lora",      label:"LoRa",     ms:"settings_input_antenna"},
+  {id:"nethunter", label:"Field",    ms:"smartphone"},
+  {id:"spec",      label:"Spectrum", ms:"ssid_chart"},
+  {id:"ai",        label:"AI Intel", ms:"neurology"},
 ];
 
 /* ── Root App ── */
@@ -631,7 +603,7 @@ function App(){
   const [refreshing,setRefreshing]=useState(false);
   const [panelVisibility,setPV]=useState(()=>{try{return JSON.parse(localStorage.getItem("tacops_panelVisibility"))||Object.fromEntries(NAV.map(n=>[n.id,true]));}catch{return Object.fromEntries(NAV.map(n=>[n.id,true]));}});
   const [state,setState]=useState({
-    adsb:{data:[],live:false},wifi:{data:[],live:false},ble:{data:[],live:false},
+    adsb:{data:[],live:false},wifi:{data:[],live:false},ble:{data:[],live:false,history:[]},
     rf433:{data:[],live:false},nrf24:{data:Array.from({length:126},(_,ch)=>({ch,v:0})),live:false},
     spectrum:{data:[],live:false},lora:{data:[],live:false},nethunter:{hosts:[],live:false},
     pwnagotchi:{captures:0,mood:"unknown",epoch:0,live:false},alerts:[]
@@ -648,9 +620,8 @@ function App(){
 
   useEffect(()=>{
     function connect(){
-      const protocol = location.protocol === "https:" ? "wss" : "ws";
-      // const ws=new WebSocket(`ws://${location.host}`);
-      const ws = new WebSocket(`${protocol}://${location.host}`);
+      const protocol=location.protocol==="https:"?"wss":"ws";
+      const ws=new WebSocket(`${protocol}://${location.host}`);
       wsRef.current=ws;
       ws.onopen=()=>setWsConn(true);
       ws.onclose=()=>{setWsConn(false);setTimeout(connect,3000);};ws.onerror=()=>{};
@@ -684,16 +655,15 @@ function App(){
     default:return null;
   }};
 
-  /* Nav button — used in both sidebar and bottom bar */
   const NavBtn=({n})=>(
     <button className={`nav-btn${panel===n.id?" on":""}`} onClick={()=>{setPanel(n.id);setShowSettings(false);}}>
-      <span className="nav-icon"><Ico n={n.fa}/></span>
+      <span className="nav-icon"><Ico n={n.ms}/></span>
       <span>{n.label}</span>
     </button>
   );
   const SettingsBtn=()=>(
     <button className={`nav-btn${showSettings?" on":""}`} onClick={()=>setShowSettings(!showSettings)}>
-      <span className="nav-icon"><Ico n="gear"/></span>
+      <span className="nav-icon"><Ico n="settings"/></span>
       <span>Config</span>
     </button>
   );
@@ -706,7 +676,7 @@ function App(){
         <div style={{display:"flex",alignItems:"center",gap:12}}>
           <span className="topbar-title" style={{fontFamily:T.display,fontSize:14,letterSpacing:4,fontWeight:900,color:T.acc}}>TACTICAL OPS</span>
           <span style={{width:1,height:16,background:T.border}}/>
-          <span className="topbar-sub" style={{fontSize:9,color:T.dim,letterSpacing:2}}>rfConn</span>
+          <span className="topbar-sub" style={{fontSize:9,color:T.dim,letterSpacing:2}}>rfConn // Pi5 — Ahmedabad</span>
         </div>
         <div className="topbar-right" style={{display:"flex",alignItems:"center",gap:14}}>
           <span className="topbar-badge" style={{fontSize:9,letterSpacing:1,color:wsConn?T.acc:T.danger}}>{wsConn?"● WS":"○ WS"}</span>
@@ -720,7 +690,7 @@ function App(){
       {/* BODY */}
       <div style={{flex:1,display:"flex",overflow:"hidden",minHeight:0}}>
 
-        {/* LEFT NAV — desktop + portrait */}
+        {/* LEFT NAV */}
         <div className="nav-sidebar">
           {visNav.map(n=><NavBtn key={n.id} n={n}/>)}
           <SettingsBtn/>
@@ -749,7 +719,9 @@ function App(){
               <div style={{flex:1,overflow:"auto",padding:"8px 4px"}}>
                 {NAV.map(n=>(
                   <div key={n.id} style={{padding:"8px 10px",borderBottom:`1px solid ${T.border}`,display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",background:panelVisibility[n.id]?"rgba(0,229,160,.05)":"transparent"}} onClick={()=>togglePanel(n.id)}>
-                    <span style={{fontSize:10,color:T.dim,flex:1}}><Ico n={n.fa} style={{marginRight:6,fontSize:11}}/>{n.label}</span>
+                    <span style={{fontSize:10,color:T.dim,flex:1,display:"flex",alignItems:"center",gap:6}}>
+                      <Ico n={n.ms} style={{fontSize:14,color:panelVisibility[n.id]?T.acc:T.dim}}/>{n.label}
+                    </span>
                     <span style={{fontSize:11,color:panelVisibility[n.id]?T.acc:T.dim,fontWeight:700}}>{panelVisibility[n.id]?"✓":"—"}</span>
                   </div>
                 ))}
@@ -761,10 +733,10 @@ function App(){
               <div style={{padding:"10px 0 6px",borderBottom:`1px solid ${T.border}`,flexShrink:0}}>
                 <div style={{fontSize:9,color:T.dim,letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display}}>RADAR</div>
                 <div style={{display:"flex",justifyContent:"center"}}><Radar aircraft={state.adsb?.data||[]} receiver={state.receiver}/></div>
-                <div style={{display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:10}}>
-                  <span style={{color:T.acc2}}><Ico n="plane"/> {(state.adsb?.data||[]).length}</span>
-                  <span style={{color:T.acc}}><Ico n="wifi"/> {(state.wifi?.data||[]).length}</span>
-                  <span style={{color:T.dim}}><Ico n="bluetooth"/> {(state.ble?.data||[]).length}</span>
+                <div style={{display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:11}}>
+                  <span style={{color:T.acc2,display:"flex",alignItems:"center",gap:3}}><Ico n="flight" style={{fontSize:13}}/>{(state.adsb?.data||[]).length}</span>
+                  <span style={{color:T.acc,display:"flex",alignItems:"center",gap:3}}><Ico n="wifi" style={{fontSize:13}}/>{(state.wifi?.data||[]).length}</span>
+                  <span style={{color:T.dim,display:"flex",alignItems:"center",gap:3}}><Ico n="bluetooth" style={{fontSize:13}}/>{(state.ble?.data||[]).length}</span>
                 </div>
               </div>
               <div style={{padding:"5px 10px",fontSize:9,color:T.dim,letterSpacing:2,borderBottom:`1px solid ${T.border}`,background:T.bg2,fontFamily:T.display,flexShrink:0,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -781,7 +753,16 @@ function App(){
                 ))}
               </div>
               <div className="status-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:1,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
-                {[["ADS-B",state.adsb?.live,T.acc2],["WiFi",state.wifi?.live,T.acc],["BLE",state.ble?.live,T.acc],["433MHz",state.config?.rf433Mode!=="disabled"&&state.rf433?.live,T.warn],["LoRa",state.lora?.live,T.acc],["NetHunter",state.nethunter?.live,T.acc2],["PWNA",state.pwnagotchi?.live,T.warn],["MQTT",mqttConn,T.acc]].map(([l,live,c])=>(
+                {[
+                  ["ADS-B",    state.adsb?.live,                                          T.acc2],
+                  ["WiFi",     state.wifi?.live,                                          T.acc],
+                  ["BLE",      state.ble?.live,                                           T.acc],
+                  ["433MHz",   state.config?.rf433Mode!=="disabled"&&state.rf433?.live,   T.warn],
+                  ["LoRa",     state.lora?.live,                                          T.acc],
+                  ["NetHunter",state.nethunter?.live,                                     T.acc2],
+                  ["PWNA",     state.pwnagotchi?.live,                                    T.warn],
+                  ["MQTT",     mqttConn,                                                  T.acc],
+                ].map(([l,live,c])=>(
                   <div key={l} style={{padding:"6px 8px",background:T.bg2,textAlign:"center"}}>
                     <div style={{fontSize:8,color:live?c:T.dim,letterSpacing:1}}>{live?"● LIVE":"○ SIM"}</div>
                     <div style={{fontSize:9,color:T.dim,marginTop:1}}>{l}</div>
@@ -793,7 +774,7 @@ function App(){
         </div>
       </div>
 
-      {/* BOTTOM NAV — landscape phones only (CSS shows/hides) */}
+      {/* BOTTOM NAV — landscape phones only */}
       <div className="nav-bottom-bar">
         {visNav.map(n=><NavBtn key={n.id} n={n}/>)}
         <SettingsBtn/>
@@ -801,8 +782,8 @@ function App(){
 
       {/* BOTTOM BAR */}
       <div className="bottombar" style={{padding:"3px 14px",background:T.bg1,borderTop:`1px solid ${T.border}`,display:"flex",justifyContent:"space-between",flexShrink:0}}>
-        <span style={{fontSize:9,color:T.dim}}>TacticalOps v2.0</span>
-        <span style={{fontSize:9,color:T.dim}}>rfconn.local</span>
+        <span style={{fontSize:9,color:T.dim}}>TacticalOps v2.0 — groot@rfConn</span>
+        <span style={{fontSize:9,color:T.dim}}>10.96.42.97 // rfconn.local</span>
       </div>
     </div>
   );
