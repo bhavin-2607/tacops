@@ -39,7 +39,7 @@
       }
     },
     "simulator": {
-      "enabled": false,
+      "enabled": true,
       "tickMs": 2800,
       "comment": "Fills offline modules with simulated data"
     }
