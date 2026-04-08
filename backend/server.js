@@ -20,9 +20,9 @@ const simulator    = require("./modules/simulator");
 let config = {
   server: { port: 3000 },
   modules: {
-    adsb: { enabled: true, host: "127.0.0.1", port: 30003 },
+    adsb: { enabled: true, host: "0.0.0.0", port: 30003 },
     rf433: { enabled: true, mode: "usb" },
-    mqtt: { enabled: true },
+    mqtt: { enabled: false },
   },
   storage: { dataDirectory: "data" },
 };
