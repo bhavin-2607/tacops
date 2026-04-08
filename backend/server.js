@@ -483,37 +483,37 @@ app.get("/api/config", (req, res) => {
 setInterval(() => {
   const { adsb, wifi, ble, rf433, nrf24 } = state;
 
-  // if (!adsb.live) {
-  //   const flights = simulator.genFlights();
-  //   state.adsb.data = flights;
-  //   broadcast("adsb", flights);
-  // }
-  // if (!wifi.live) {
-  //   const nets = simulator.genNets();
-  //   state.wifi.data = nets;
-  //   broadcast("wifi", nets);
-  // }
-  // if (!ble.live) {
-  //   const devices = simulator.genBle();
-  //   state.ble.data = devices;
-  //   broadcast("ble", devices);
-  // }
-  // // if (!rf433.live && Math.random() > 0.6) {
-  // //   const signal = simulator.genRf433Signal();
-  // //   state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
-  // //   broadcast("rf433", state.rf433.data);
-  // // }
-  // if (!nrf24.live) {
-  //   const channels = simulator.genNrf24();
-  //   state.nrf24.data = channels;
-  //   broadcast("nrf24", channels);
-  // }
-  // if (!state.pwnagotchi.live && Math.random() > 0.85) {
-  //   state.pwnagotchi.captures = (state.pwnagotchi.captures || 0) + 1;
-  //   broadcast("pwnagotchi", state.pwnagotchi);
-  // }
+  if (!adsb.live) {
+    const flights = simulator.genFlights();
+    state.adsb.data = flights;
+    broadcast("adsb", flights);
+  }
+  if (!wifi.live) {
+    const nets = simulator.genNets();
+    state.wifi.data = nets;
+    broadcast("wifi", nets);
+  }
+  if (!ble.live) {
+    const devices = simulator.genBle();
+    state.ble.data = devices;
+    broadcast("ble", devices);
+  }
+  if (!rf433.live && Math.random() > 0.6) {
+    const signal = simulator.genRf433Signal();
+    state.rf433.data = [signal, ...state.rf433.data].slice(0, 40);
+    broadcast("rf433", state.rf433.data);
+  }
+  if (!nrf24.live) {
+    const channels = simulator.genNrf24();
+    state.nrf24.data = channels;
+    broadcast("nrf24", channels);
+  }
+  if (!state.pwnagotchi.live && Math.random() > 0.85) {
+    state.pwnagotchi.captures = (state.pwnagotchi.captures || 0) + 1;
+    broadcast("pwnagotchi", state.pwnagotchi);
+  }
 
-  // broadcast("spectrum", simulator.genSpectrum());
+  broadcast("spectrum", simulator.genSpectrum());
 
   // Save state periodically
   saveState();
