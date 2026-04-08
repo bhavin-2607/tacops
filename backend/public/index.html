@@ -648,7 +648,10 @@ function App(){
 
   useEffect(()=>{
     function connect(){
-      const ws=new WebSocket(`ws://${location.host}`);wsRef.current=ws;
+      const protocol = location.protocol === "https:" ? "wss" : "ws";
+      // const ws=new WebSocket(`ws://${location.host}`);
+      const socket = new WebSocket(`${protocol}://${location.host}`);
+      wsRef.current=ws;
       ws.onopen=()=>setWsConn(true);
       ws.onclose=()=>{setWsConn(false);setTimeout(connect,3000);};ws.onerror=()=>{};
       ws.onmessage=e=>{try{
