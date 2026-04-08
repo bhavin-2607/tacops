@@ -6,7 +6,7 @@
   },
   "modules": {
     "adsb": {
-      "enabled": true,
+      "enabled": false,
       "host": "127.0.0.1",
       "port": 30003,
       "reconnectMs": 5000,
@@ -18,7 +18,7 @@
       }
     },
     "rf433": {
-      "enabled": true,
+      "enabled": false,
       "mode": "disabled",
       "historyLimit": 200,
       "comment": "Mode: 'usb' = RTL-SDR, 'mqtt' = ESP32 MQTT, 'disabled' = off"
