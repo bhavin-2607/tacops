@@ -706,7 +706,7 @@ function App(){
         <div style={{display:"flex",alignItems:"center",gap:12}}>
           <span className="topbar-title" style={{fontFamily:T.display,fontSize:14,letterSpacing:4,fontWeight:900,color:T.acc}}>TACTICAL OPS</span>
           <span style={{width:1,height:16,background:T.border}}/>
-          <span className="topbar-sub" style={{fontSize:9,color:T.dim,letterSpacing:2}}>rfConn // Pi5 — Ahmedabad</span>
+          <span className="topbar-sub" style={{fontSize:9,color:T.dim,letterSpacing:2}}>rfConn</span>
         </div>
         <div className="topbar-right" style={{display:"flex",alignItems:"center",gap:14}}>
           <span className="topbar-badge" style={{fontSize:9,letterSpacing:1,color:wsConn?T.acc:T.danger}}>{wsConn?"● WS":"○ WS"}</span>
@@ -801,8 +801,8 @@ function App(){
 
       {/* BOTTOM BAR */}
       <div className="bottombar" style={{padding:"3px 14px",background:T.bg1,borderTop:`1px solid ${T.border}`,display:"flex",justifyContent:"space-between",flexShrink:0}}>
-        <span style={{fontSize:9,color:T.dim}}>groot@rfConn — TacticalOps v2.0 — readsb + MQTT + Puter.js AI</span>
-        <span style={{fontSize:9,color:T.dim}}>10.96.42.97 // rfconn.local</span>
+        <span style={{fontSize:9,color:T.dim}}>TacticalOps v2.0</span>
+        <span style={{fontSize:9,color:T.dim}}>rfconn.local</span>
       </div>
     </div>
   );
