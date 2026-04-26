@@ -7,9 +7,7 @@
   "modules": {
     "adsb": {
       "enabled": true,
-      "host": "127.0.0.1",
-      "port": 30003,
-      "reconnectMs": 5000,
+      "url": "http://127.0.0.1/tar1090/data/aircraft.json",
       "historyLimit": 500,
       "receiver": {
         "lat": 23.0225,
