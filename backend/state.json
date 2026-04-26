@@ -5,19 +5,1019 @@
     "history": []
   },
   "wifi": {
-    "data": [],
+    "data": [
+      {
+        "id": 0,
+        "ssid": "HP_Printer_78A",
+        "bssid": "db:b8:e5:69:ef:98",
+        "ch": 40,
+        "rssi": -593,
+        "enc": "WPA2",
+        "cli": 6,
+        "band": "5GHz"
+      },
+      {
+        "id": 1,
+        "ssid": "AndroidAP_8B3F",
+        "bssid": "00:dc:28:2e:57:a3",
+        "ch": 11,
+        "rssi": -532,
+        "enc": "WPA2",
+        "cli": 7,
+        "band": "5GHz"
+      },
+      {
+        "id": 2,
+        "ssid": "Corp_Office_5G",
+        "bssid": "f4:5f:b2:aa:7b:e3",
+        "ch": 44,
+        "rssi": -459,
+        "enc": "Open",
+        "cli": 5,
+        "band": "5GHz"
+      },
+      {
+        "id": 3,
+        "ssid": "Airtel_Xstream",
+        "bssid": "12:24:3f:d6:66:9e",
+        "ch": 1,
+        "rssi": -530,
+        "enc": "WPA2",
+        "cli": 9,
+        "band": "5GHz"
+      },
+      {
+        "id": 4,
+        "ssid": "BSNL_Fiber_01",
+        "bssid": "17:94:ed:a7:0c:86",
+        "ch": 6,
+        "rssi": -538,
+        "enc": "WPA2",
+        "cli": 11,
+        "band": "5GHz"
+      },
+      {
+        "id": 5,
+        "ssid": "DD-WRT_Mesh",
+        "bssid": "52:c1:4f:4c:c7:73",
+        "ch": 11,
+        "rssi": -522,
+        "enc": "WPA3",
+        "cli": 8,
+        "band": "5GHz"
+      },
+      {
+        "id": 6,
+        "ssid": "Corp_Office_5G",
+        "bssid": "c9:a4:86:f4:e8:f3",
+        "ch": 40,
+        "rssi": -474,
+        "enc": "WPA2",
+        "cli": 9,
+        "band": "5GHz"
+      },
+      {
+        "id": 7,
+        "ssid": "Reliance_JioFiber",
+        "bssid": "63:63:0c:6a:47:b4",
+        "ch": 149,
+        "rssi": -546,
+        "enc": "WPA3",
+        "cli": 8,
+        "band": "5GHz"
+      },
+      {
+        "id": 8,
+        "ssid": "Guest_Net",
+        "bssid": "4e:b6:fb:fe:ef:56",
+        "ch": 6,
+        "rssi": -583,
+        "enc": "WPA2",
+        "cli": 10,
+        "band": "5GHz"
+      },
+      {
+        "id": 9,
+        "ssid": "SBI_ATM_WiFi",
+        "bssid": "1e:60:96:71:02:93",
+        "ch": 40,
+        "rssi": -552,
+        "enc": "WPA2",
+        "cli": 4,
+        "band": "2.4GHz"
+      }
+    ],
     "live": false
   },
   "ble": {
-    "data": [],
+    "data": [
+      {
+        "id": 0,
+        "name": "ESP32-BLE",
+        "mac": "5b:33:15:21:9d:5b",
+        "rssi": -527,
+        "type": "Phone",
+        "seen": 1775846057278
+      },
+      {
+        "id": 1,
+        "name": "Fitbit Versa",
+        "mac": "6d:86:52:72:bc:2c",
+        "rssi": -537,
+        "type": "IoT",
+        "seen": 1775846129513
+      },
+      {
+        "id": 2,
+        "name": "Sony WH-1000",
+        "mac": "d6:50:93:4c:96:cb",
+        "rssi": -495,
+        "type": "Audio",
+        "seen": 1775845963811
+      },
+      {
+        "id": 3,
+        "name": "realme GT",
+        "mac": "6c:46:92:bb:70:59",
+        "rssi": -510,
+        "type": "Wearable",
+        "seen": 1775846186128
+      },
+      {
+        "id": 4,
+        "name": "Fitbit Versa",
+        "mac": "5f:4b:9f:58:e6:28",
+        "rssi": -527,
+        "type": "Unknown",
+        "seen": 1775846083669
+      },
+      {
+        "id": 5,
+        "name": "Pixel 7",
+        "mac": "64:9c:74:4a:37:12",
+        "rssi": -425,
+        "type": "Unknown",
+        "seen": 1775846071914
+      },
+      {
+        "id": 6,
+        "name": "realme GT",
+        "mac": "e9:3a:f5:2b:75:2d",
+        "rssi": -530,
+        "type": "IoT",
+        "seen": 1775846043216
+      },
+      {
+        "id": 7,
+        "name": "Fitbit Versa",
+        "mac": "bf:b1:c5:9b:45:6e",
+        "rssi": -480,
+        "type": "IoT",
+        "seen": 1775845902564
+      },
+      {
+        "id": 8,
+        "name": "Pixel 7",
+        "mac": "b6:73:c9:a6:bd:43",
+        "rssi": -581,
+        "type": "Wearable",
+        "seen": 1775846176385
+      }
+    ],
     "live": false
   },
   "rf433": {
-    "data": [],
+    "data": [
+      {
+        "id": "womz5tgw42m",
+        "proto": "Oregon Scientific",
+        "freq": "433.01",
+        "data": "0xB8FA6C",
+        "rssi": -80,
+        "ts": 1775846197885
+      },
+      {
+        "id": "w62gewmly6e",
+        "proto": "PT2262 Remote",
+        "freq": "433.04",
+        "data": "0xFED8DB",
+        "rssi": -76,
+        "ts": 1775846192284
+      },
+      {
+        "id": "8ni30nbqqdc",
+        "proto": "Conrad RSL",
+        "freq": "432.95",
+        "data": "0xCF6F87",
+        "rssi": -45,
+        "ts": 1775846189485
+      },
+      {
+        "id": "xbeggfduplr",
+        "proto": "PT2262 Remote",
+        "freq": "433.10",
+        "data": "0x0F127D",
+        "rssi": -48,
+        "ts": 1775846183885
+      },
+      {
+        "id": "mom7su2wt0b",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.96",
+        "data": "0xFEB111",
+        "rssi": -82,
+        "ts": 1775846175483
+      },
+      {
+        "id": "m8mgsgklobr",
+        "proto": "Holman Industries",
+        "freq": "433.07",
+        "data": "0x22D168",
+        "rssi": -58,
+        "ts": 1775846172683
+      },
+      {
+        "id": "xply2wucg08",
+        "proto": "Oregon Scientific",
+        "freq": "433.01",
+        "data": "0x3087B9",
+        "rssi": -43,
+        "ts": 1775846167080
+      },
+      {
+        "id": "ncg44rmy7x",
+        "proto": "LaCrosse TX",
+        "freq": "433.00",
+        "data": "0x00D161",
+        "rssi": -75,
+        "ts": 1775846164280
+      },
+      {
+        "id": "knp4uhh7ebc",
+        "proto": "Holman Industries",
+        "freq": "432.90",
+        "data": "0x69BFED",
+        "rssi": -71,
+        "ts": 1775846161480
+      },
+      {
+        "id": "6z9wwtozro",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.03",
+        "data": "0x16A26A",
+        "rssi": -63,
+        "ts": 1775846158679
+      },
+      {
+        "id": "vwjlx26yke",
+        "proto": "FS1000A Module",
+        "freq": "432.95",
+        "data": "0xAA6608",
+        "rssi": -62,
+        "ts": 1775846150277
+      },
+      {
+        "id": "o751h4jrjbl",
+        "proto": "Generic Temp Sensor",
+        "freq": "433.01",
+        "data": "0x3C5AE3",
+        "rssi": -51,
+        "ts": 1775846127874
+      },
+      {
+        "id": "93ud0yyi6tf",
+        "proto": "LaCrosse TX",
+        "freq": "432.96",
+        "data": "0x9FFA99",
+        "rssi": -41,
+        "ts": 1775846119473
+      },
+      {
+        "id": "vuztmadcn9",
+        "proto": "FS1000A Module",
+        "freq": "433.04",
+        "data": "0x6942D3",
+        "rssi": -70,
+        "ts": 1775846111072
+      },
+      {
+        "id": "orxc49dfbes",
+        "proto": "LaCrosse TX",
+        "freq": "433.09",
+        "data": "0x0066F5",
+        "rssi": -61,
+        "ts": 1775846108271
+      },
+      {
+        "id": "gr120agcbcc",
+        "proto": "Conrad RSL",
+        "freq": "433.00",
+        "data": "0x8FECE2",
+        "rssi": -77,
+        "ts": 1775846105470
+      },
+      {
+        "id": "27t7iksfgtd",
+        "proto": "FS1000A Module",
+        "freq": "432.94",
+        "data": "0x7DEB35",
+        "rssi": -73,
+        "ts": 1775846099870
+      },
+      {
+        "id": "1tt7xhriz2s",
+        "proto": "PT2262 Remote",
+        "freq": "433.00",
+        "data": "0xC9B2D4",
+        "rssi": -75,
+        "ts": 1775846097069
+      },
+      {
+        "id": "aga67lqx376",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.91",
+        "data": "0xCA0954",
+        "rssi": -83,
+        "ts": 1775846085867
+      },
+      {
+        "id": "rrk5sn9se9c",
+        "proto": "Kerui Alarm",
+        "freq": "433.06",
+        "data": "0xDCCB38",
+        "rssi": -42,
+        "ts": 1775846080266
+      },
+      {
+        "id": "w049rd264sg",
+        "proto": "Holman Industries",
+        "freq": "432.93",
+        "data": "0x2044DB",
+        "rssi": -78,
+        "ts": 1775846066263
+      },
+      {
+        "id": "rjs8nmwpse9",
+        "proto": "Elro AB440",
+        "freq": "432.94",
+        "data": "0x8E0715",
+        "rssi": -87,
+        "ts": 1775846063463
+      },
+      {
+        "id": "fszpnxutl3q",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.91",
+        "data": "0xBE190B",
+        "rssi": -42,
+        "ts": 1775846060664
+      },
+      {
+        "id": "mrkhb5m8xb7",
+        "proto": "Kerui Alarm",
+        "freq": "432.94",
+        "data": "0xFA79A0",
+        "rssi": -89,
+        "ts": 1775846057863
+      },
+      {
+        "id": "cmvh5u5opf",
+        "proto": "Elro AB440",
+        "freq": "432.97",
+        "data": "0x9954A4",
+        "rssi": -73,
+        "ts": 1775846046661
+      },
+      {
+        "id": "tah9i7z1ec8",
+        "proto": "Kerui Alarm",
+        "freq": "432.99",
+        "data": "0x116C81",
+        "rssi": -57,
+        "ts": 1775846041061
+      },
+      {
+        "id": "5j4kyylguq6",
+        "proto": "FS1000A Module",
+        "freq": "433.03",
+        "data": "0x35CAC9",
+        "rssi": -62,
+        "ts": 1775846032660
+      },
+      {
+        "id": "bl597qidcl",
+        "proto": "LaCrosse TX",
+        "freq": "432.94",
+        "data": "0xBDCDF2",
+        "rssi": -45,
+        "ts": 1775846027059
+      },
+      {
+        "id": "m0xm92pllbh",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.06",
+        "data": "0x17BFD4",
+        "rssi": -86,
+        "ts": 1775846024255
+      },
+      {
+        "id": "1kl9q06490li",
+        "proto": "FS1000A Module",
+        "freq": "432.92",
+        "data": "0x44FD13",
+        "rssi": -50,
+        "ts": 1775846021455
+      },
+      {
+        "id": "juiihx837x",
+        "proto": "Elro AB440",
+        "freq": "433.05",
+        "data": "0x3DBEF5",
+        "rssi": -44,
+        "ts": 1775846018655
+      },
+      {
+        "id": "esaea1lif7d",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.03",
+        "data": "0x10E5CC",
+        "rssi": -55,
+        "ts": 1775846013053
+      },
+      {
+        "id": "fs7drl5fvg",
+        "proto": "Kerui Alarm",
+        "freq": "432.91",
+        "data": "0x9A081F",
+        "rssi": -54,
+        "ts": 1775846010254
+      },
+      {
+        "id": "81fkug7nk7t",
+        "proto": "Conrad RSL",
+        "freq": "433.08",
+        "data": "0xFA0632",
+        "rssi": -66,
+        "ts": 1775846007454
+      },
+      {
+        "id": "gl2fuxrr85",
+        "proto": "Holman Industries",
+        "freq": "433.10",
+        "data": "0x46CDEC",
+        "rssi": -70,
+        "ts": 1775846004654
+      },
+      {
+        "id": "cyuu3ly5h",
+        "proto": "LaCrosse TX",
+        "freq": "433.02",
+        "data": "0x68C0FF",
+        "rssi": -68,
+        "ts": 1775846001854
+      },
+      {
+        "id": "mrhg2skzt0r",
+        "proto": "Holman Industries",
+        "freq": "433.01",
+        "data": "0x13C804",
+        "rssi": -61,
+        "ts": 1775845999052
+      },
+      {
+        "id": "w867pvzkjd",
+        "proto": "Holman Industries",
+        "freq": "432.90",
+        "data": "0x2B2D73",
+        "rssi": -57,
+        "ts": 1775845996252
+      },
+      {
+        "id": "xm8xjqagass",
+        "proto": "Generic Temp Sensor",
+        "freq": "433.00",
+        "data": "0xA87BAF",
+        "rssi": -73,
+        "ts": 1775845990651
+      },
+      {
+        "id": "6ztehjbwduw",
+        "proto": "Oregon Scientific",
+        "freq": "432.97",
+        "data": "0xCCE6F2",
+        "rssi": -57,
+        "ts": 1775845982250
+      }
+    ],
     "live": false
   },
   "nrf24": {
-    "data": [],
+    "data": [
+      {
+        "ch": 0,
+        "v": 6
+      },
+      {
+        "ch": 1,
+        "v": 0
+      },
+      {
+        "ch": 2,
+        "v": 9
+      },
+      {
+        "ch": 3,
+        "v": 50
+      },
+      {
+        "ch": 4,
+        "v": 11
+      },
+      {
+        "ch": 5,
+        "v": 7
+      },
+      {
+        "ch": 6,
+        "v": 9
+      },
+      {
+        "ch": 7,
+        "v": 3
+      },
+      {
+        "ch": 8,
+        "v": 11
+      },
+      {
+        "ch": 9,
+        "v": 4
+      },
+      {
+        "ch": 10,
+        "v": 11
+      },
+      {
+        "ch": 11,
+        "v": 65
+      },
+      {
+        "ch": 12,
+        "v": 73
+      },
+      {
+        "ch": 13,
+        "v": 8
+      },
+      {
+        "ch": 14,
+        "v": 6
+      },
+      {
+        "ch": 15,
+        "v": 3
+      },
+      {
+        "ch": 16,
+        "v": 6
+      },
+      {
+        "ch": 17,
+        "v": 8
+      },
+      {
+        "ch": 18,
+        "v": 68
+      },
+      {
+        "ch": 19,
+        "v": 9
+      },
+      {
+        "ch": 20,
+        "v": 1
+      },
+      {
+        "ch": 21,
+        "v": 1
+      },
+      {
+        "ch": 22,
+        "v": 9
+      },
+      {
+        "ch": 23,
+        "v": 6
+      },
+      {
+        "ch": 24,
+        "v": 62
+      },
+      {
+        "ch": 25,
+        "v": 10
+      },
+      {
+        "ch": 26,
+        "v": 10
+      },
+      {
+        "ch": 27,
+        "v": 45
+      },
+      {
+        "ch": 28,
+        "v": 11
+      },
+      {
+        "ch": 29,
+        "v": 2
+      },
+      {
+        "ch": 30,
+        "v": 1
+      },
+      {
+        "ch": 31,
+        "v": 3
+      },
+      {
+        "ch": 32,
+        "v": 31
+      },
+      {
+        "ch": 33,
+        "v": 10
+      },
+      {
+        "ch": 34,
+        "v": 2
+      },
+      {
+        "ch": 35,
+        "v": 8
+      },
+      {
+        "ch": 36,
+        "v": 3
+      },
+      {
+        "ch": 37,
+        "v": 7
+      },
+      {
+        "ch": 38,
+        "v": 2
+      },
+      {
+        "ch": 39,
+        "v": 42
+      },
+      {
+        "ch": 40,
+        "v": 4
+      },
+      {
+        "ch": 41,
+        "v": 4
+      },
+      {
+        "ch": 42,
+        "v": 67
+      },
+      {
+        "ch": 43,
+        "v": 7
+      },
+      {
+        "ch": 44,
+        "v": 8
+      },
+      {
+        "ch": 45,
+        "v": 1
+      },
+      {
+        "ch": 46,
+        "v": 2
+      },
+      {
+        "ch": 47,
+        "v": 47
+      },
+      {
+        "ch": 48,
+        "v": 80
+      },
+      {
+        "ch": 49,
+        "v": 7
+      },
+      {
+        "ch": 50,
+        "v": 9
+      },
+      {
+        "ch": 51,
+        "v": 4
+      },
+      {
+        "ch": 52,
+        "v": 4
+      },
+      {
+        "ch": 53,
+        "v": 7
+      },
+      {
+        "ch": 54,
+        "v": 32
+      },
+      {
+        "ch": 55,
+        "v": 9
+      },
+      {
+        "ch": 56,
+        "v": 41
+      },
+      {
+        "ch": 57,
+        "v": 10
+      },
+      {
+        "ch": 58,
+        "v": 11
+      },
+      {
+        "ch": 59,
+        "v": 2
+      },
+      {
+        "ch": 60,
+        "v": 11
+      },
+      {
+        "ch": 61,
+        "v": 4
+      },
+      {
+        "ch": 62,
+        "v": 3
+      },
+      {
+        "ch": 63,
+        "v": 7
+      },
+      {
+        "ch": 64,
+        "v": 7
+      },
+      {
+        "ch": 65,
+        "v": 71
+      },
+      {
+        "ch": 66,
+        "v": 3
+      },
+      {
+        "ch": 67,
+        "v": 2
+      },
+      {
+        "ch": 68,
+        "v": 5
+      },
+      {
+        "ch": 69,
+        "v": 4
+      },
+      {
+        "ch": 70,
+        "v": 2
+      },
+      {
+        "ch": 71,
+        "v": 1
+      },
+      {
+        "ch": 72,
+        "v": 21
+      },
+      {
+        "ch": 73,
+        "v": 56
+      },
+      {
+        "ch": 74,
+        "v": 54
+      },
+      {
+        "ch": 75,
+        "v": 0
+      },
+      {
+        "ch": 76,
+        "v": 4
+      },
+      {
+        "ch": 77,
+        "v": 83
+      },
+      {
+        "ch": 78,
+        "v": 11
+      },
+      {
+        "ch": 79,
+        "v": 3
+      },
+      {
+        "ch": 80,
+        "v": 66
+      },
+      {
+        "ch": 81,
+        "v": 0
+      },
+      {
+        "ch": 82,
+        "v": 2
+      },
+      {
+        "ch": 83,
+        "v": 98
+      },
+      {
+        "ch": 84,
+        "v": 11
+      },
+      {
+        "ch": 85,
+        "v": 0
+      },
+      {
+        "ch": 86,
+        "v": 10
+      },
+      {
+        "ch": 87,
+        "v": 2
+      },
+      {
+        "ch": 88,
+        "v": 1
+      },
+      {
+        "ch": 89,
+        "v": 91
+      },
+      {
+        "ch": 90,
+        "v": 37
+      },
+      {
+        "ch": 91,
+        "v": 11
+      },
+      {
+        "ch": 92,
+        "v": 66
+      },
+      {
+        "ch": 93,
+        "v": 10
+      },
+      {
+        "ch": 94,
+        "v": 6
+      },
+      {
+        "ch": 95,
+        "v": 2
+      },
+      {
+        "ch": 96,
+        "v": 10
+      },
+      {
+        "ch": 97,
+        "v": 4
+      },
+      {
+        "ch": 98,
+        "v": 0
+      },
+      {
+        "ch": 99,
+        "v": 39
+      },
+      {
+        "ch": 100,
+        "v": 4
+      },
+      {
+        "ch": 101,
+        "v": 50
+      },
+      {
+        "ch": 102,
+        "v": 6
+      },
+      {
+        "ch": 103,
+        "v": 8
+      },
+      {
+        "ch": 104,
+        "v": 7
+      },
+      {
+        "ch": 105,
+        "v": 6
+      },
+      {
+        "ch": 106,
+        "v": 9
+      },
+      {
+        "ch": 107,
+        "v": 4
+      },
+      {
+        "ch": 108,
+        "v": 2
+      },
+      {
+        "ch": 109,
+        "v": 8
+      },
+      {
+        "ch": 110,
+        "v": 2
+      },
+      {
+        "ch": 111,
+        "v": 4
+      },
+      {
+        "ch": 112,
+        "v": 11
+      },
+      {
+        "ch": 113,
+        "v": 1
+      },
+      {
+        "ch": 114,
+        "v": 10
+      },
+      {
+        "ch": 115,
+        "v": 0
+      },
+      {
+        "ch": 116,
+        "v": 9
+      },
+      {
+        "ch": 117,
+        "v": 5
+      },
+      {
+        "ch": 118,
+        "v": 2
+      },
+      {
+        "ch": 119,
+        "v": 4
+      },
+      {
+        "ch": 120,
+        "v": 2
+      },
+      {
+        "ch": 121,
+        "v": 3
+      },
+      {
+        "ch": 122,
+        "v": 0
+      },
+      {
+        "ch": 123,
+        "v": 7
+      },
+      {
+        "ch": 124,
+        "v": 46
+      },
+      {
+        "ch": 125,
+        "v": 8
+      }
+    ],
     "live": false
   },
   "lora": {
@@ -31,7 +1031,7 @@
   "pwnagotchi": {
     "mood": "excited",
     "epoch": 179,
-    "captures": 113,
+    "captures": 2980,
     "live": false
   },
   "mqtt": {
@@ -39,400 +1039,604 @@
   },
   "alerts": [
     {
-      "id": "s4jh25pgwoj",
-      "msg": "Flight detected: BBC235",
+      "id": "2noi0rgs2go",
+      "msg": "Low altitude: 801861 at 3175ft",
+      "sev": "warn",
+      "ts": 1775845948054
+    },
+    {
+      "id": "c76mtemrqpw",
+      "msg": "Flight detected: 801861",
+      "sev": "info",
+      "ts": 1775845948053
+    },
+    {
+      "id": "ar09wh6ifn",
+      "msg": "Flight detected: FDB524",
+      "sev": "info",
+      "ts": 1775845606017
+    },
+    {
+      "id": "nvyrp5worl",
+      "msg": "Flight detected: QTR2V",
+      "sev": "info",
+      "ts": 1775845303913
+    },
+    {
+      "id": "r8g56mdd4u",
+      "msg": "Flight detected: IGO2013",
+      "sev": "info",
+      "ts": 1775845165827
+    },
+    {
+      "id": "e1s21jca3dm",
+      "msg": "Flight detected: 06a2de",
+      "sev": "info",
+      "ts": 1775844971720
+    },
+    {
+      "id": "egicnccemi",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844958713
+    },
+    {
+      "id": "9o578ut859j",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844957713
+    },
+    {
+      "id": "2rg02t91y86",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844956712
+    },
+    {
+      "id": "v7iero3yn4i",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844955711
+    },
+    {
+      "id": "cf5hr61w16u",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844954711
+    },
+    {
+      "id": "ljbxk38icc",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844953711
+    },
+    {
+      "id": "9m7g0khwmzd",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844952710
+    },
+    {
+      "id": "ypqevc6z2ho",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844951709
+    },
+    {
+      "id": "u7r751kxm68",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844950709
+    },
+    {
+      "id": "r8bo839x4b",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844949708
+    },
+    {
+      "id": "s91g8yhel0k",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844948707
+    },
+    {
+      "id": "gkekp2f8rxa",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844947706
+    },
+    {
+      "id": "p4l5l8tz0ue",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844946706
+    },
+    {
+      "id": "kui00shitnq",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844945707
+    },
+    {
+      "id": "vuzy5biy4mf",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844944703
+    },
+    {
+      "id": "k8uvet3qjzs",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844943703
+    },
+    {
+      "id": "2k0j1nh6zq3",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844942703
+    },
+    {
+      "id": "7nh0j1otg7l",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844941703
+    },
+    {
+      "id": "m9o4dwz44wr",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844940703
+    },
+    {
+      "id": "q3ltzjj30vh",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844939702
+    },
+    {
+      "id": "ibbagel6aur",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844938702
+    },
+    {
+      "id": "jnnzblcvwxr",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844937701
+    },
+    {
+      "id": "8jf1fb0k7cs",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844936701
+    },
+    {
+      "id": "usse2lmo3va",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844935700
+    },
+    {
+      "id": "tjif6v50as8",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844934701
+    },
+    {
+      "id": "zc2860z5egg",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844933701
+    },
+    {
+      "id": "1dpifu5truo",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844932700
+    },
+    {
+      "id": "nrxol9uf3vm",
+      "msg": "High speed: AIC162 at 537.3kt",
+      "sev": "info",
+      "ts": 1775844931699
+    },
+    {
+      "id": "n3sfpdydzag",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489749113
+      "ts": 1775844930698
     },
     {
-      "id": "lt1tvlpt9t",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "7sdp7b6jcso",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489650098
+      "ts": 1775844929698
     },
     {
-      "id": "bp8pl4v792",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "tu08zhxmn2",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489649095
+      "ts": 1775844928698
     },
     {
-      "id": "gb3qlps40ws",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "2xixhf73hwx",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489648096
+      "ts": 1775844927697
     },
     {
-      "id": "upp53cxeptf",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "n7op3le5co",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489647096
+      "ts": 1775844926697
     },
     {
-      "id": "794bk0u3i83",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "npk7c1ikd19",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489646095
+      "ts": 1775844925697
     },
     {
-      "id": "q4xjbpi57yh",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "xj4444t4hn",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489645094
+      "ts": 1775844924697
     },
     {
-      "id": "tqc2uws71cf",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "1h2yhez0iwz",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489644094
+      "ts": 1775844923698
     },
     {
-      "id": "usrkdnm2mo",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ilxu4nsdvip",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489643092
+      "ts": 1775844922697
     },
     {
-      "id": "kb17k1ecjn9",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "83xykne42zu",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489642092
+      "ts": 1775844921696
     },
     {
-      "id": "3eyvu0vj723",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "yjz3ilx7f2",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489641092
+      "ts": 1775844920695
     },
     {
-      "id": "e0uowjl8bgc",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "b93eywcrlzr",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489640092
+      "ts": 1775844919695
     },
     {
-      "id": "2y242gtvy87",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ge1rsn4furv",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489639093
+      "ts": 1775844918694
     },
     {
-      "id": "srlhl408khe",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "jnag9epjqo",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489638093
+      "ts": 1775844917693
     },
     {
-      "id": "x17lfjf2p5",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "fydanwmsflb",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489637094
+      "ts": 1775844916691
     },
     {
-      "id": "0w9v8sgsw08",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "0h01tiqdsrvd",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489636091
+      "ts": 1775844915692
     },
     {
-      "id": "a7e98xaof97",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "3dc9007pp8y",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489635091
+      "ts": 1775844914691
     },
     {
-      "id": "3machn6yqnv",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "e8bqafe6i1t",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489634091
+      "ts": 1775844913692
     },
     {
-      "id": "9k5gvqobfee",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "cmjoctizny",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489633091
+      "ts": 1775844912690
     },
     {
-      "id": "e0vidg5jp8k",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "55onymgua4a",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489632091
+      "ts": 1775844911689
     },
     {
-      "id": "01q9zh38mews",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "8i2rmueeojk",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489631089
+      "ts": 1775844910688
     },
     {
-      "id": "jcxu8djjskq",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "o1rlx1tsjd",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489630089
+      "ts": 1775844909687
     },
     {
-      "id": "r731ylk5r7e",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "xosslagnu6m",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489629089
+      "ts": 1775844908687
     },
     {
-      "id": "74m2hfqljxl",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ti8m8ea6gin",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489628091
+      "ts": 1775844907687
     },
     {
-      "id": "yj4ulvd0pgf",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "typ54d66nd",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489627089
+      "ts": 1775844906686
     },
     {
-      "id": "616u0meptpm",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "77n37kro4g3",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489626089
+      "ts": 1775844905686
     },
     {
-      "id": "pn9k6dureds",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "6o3f6e1o03x",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489625089
+      "ts": 1775844904685
     },
     {
-      "id": "5c2zzqea3xa",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "x0tsaa7crl",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489624089
+      "ts": 1775844903685
     },
     {
-      "id": "iaihd8bzsbm",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "a1dloa8p7gp",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489623090
+      "ts": 1775844902685
     },
     {
-      "id": "qzbv39o02zc",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "3ui4mte20p2",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489622089
+      "ts": 1775844901685
     },
     {
-      "id": "rcdyw31n477",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "352fmg75mp2",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489621089
+      "ts": 1775844900684
     },
     {
-      "id": "5hlvs3krzn8",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "84p5mumwozg",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489620089
+      "ts": 1775844899683
     },
     {
-      "id": "28h9ryc0ysb",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "kd9jjcw2q4o",
+      "msg": "High speed: AIC162 at 537.3kt",
       "sev": "info",
-      "ts": 1775489619090
+      "ts": 1775844898683
     },
     {
-      "id": "i3mku1azzl",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "cfmqtj4xzch",
+      "msg": "Flight detected: AIC162",
       "sev": "info",
-      "ts": 1775489618089
+      "ts": 1775844898682
     },
     {
-      "id": "4ietorlvi96",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "1jxbun5ta7mh",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489617091
+      "ts": 1775843402273
     },
     {
-      "id": "1dq1r18m4oy",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "v3y0cdzlwtn",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489616090
+      "ts": 1775843401273
     },
     {
-      "id": "a3qgr3emzf8",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "l4xazp75stj",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489615089
+      "ts": 1775843400271
     },
     {
-      "id": "3mhu38uwbf7",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ul5xpm7nj2",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489614089
+      "ts": 1775843399270
     },
     {
-      "id": "0mleb6ftokln",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "xmwx5q870d",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489613090
+      "ts": 1775843398269
     },
     {
-      "id": "ntkyyevou",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "cugtfc17bhm",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489612089
+      "ts": 1775843397270
     },
     {
-      "id": "rumwkrhikb",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "hdosjf736xt",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489611090
+      "ts": 1775843396269
     },
     {
-      "id": "f46f42tny3c",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "8yjxmcojnk8",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489610089
+      "ts": 1775843395267
     },
     {
-      "id": "btdvlualmx",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "gouds9yksif",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489609092
+      "ts": 1775843394266
     },
     {
-      "id": "e1lkh3ii86a",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "2qyash3z3yl",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489608089
+      "ts": 1775843393267
     },
     {
-      "id": "8jq2ohgawn",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "yuhm89cvoob",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489607090
+      "ts": 1775843392266
     },
     {
-      "id": "ht55yaz7r5w",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "zw60aa92j4l",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489606090
+      "ts": 1775843391266
     },
     {
-      "id": "3iak9sbh0yf",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "x29kftj4zhm",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489605089
+      "ts": 1775843390264
     },
     {
-      "id": "iulc0lojuvr",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "e92hm1a7c0k",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489604089
+      "ts": 1775843389264
     },
     {
-      "id": "swppfdjfl7e",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ac31s0cpn76",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489603089
+      "ts": 1775843388263
     },
     {
-      "id": "7ko3vlibyyb",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "rz5i3awrj1g",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489602089
+      "ts": 1775843387262
     },
     {
-      "id": "31c6uahln0t",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "vhlifqr8r09",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489601089
+      "ts": 1775843386261
     },
     {
-      "id": "o3v2yvjxrse",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ukaxnpu5hd",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489600090
+      "ts": 1775843385261
     },
     {
-      "id": "nvtb2by9cl",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "5cjt8f9p92k",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489599089
+      "ts": 1775843384260
     },
     {
-      "id": "y2qahyitf4",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "ycr1k08pbvd",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489598089
+      "ts": 1775843383259
     },
     {
-      "id": "3vz7l626caw",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "a3ij7g0loxa",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489597089
+      "ts": 1775843382258
     },
     {
-      "id": "61pom5oiv8i",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "hl4n8xzulpj",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489596089
+      "ts": 1775843381258
     },
     {
-      "id": "tpw6zvx55k",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "yqn0e7ydf1",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489595088
+      "ts": 1775843380258
     },
     {
-      "id": "3t7yjippn8j",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "kkzxjwj3rn",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489594088
+      "ts": 1775843379257
     },
     {
-      "id": "aifeam9gh7",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "w7s96cgkwd",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489593089
+      "ts": 1775843378256
     },
     {
-      "id": "ma43sl8wl2",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "c9i8fwqkfh",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489592088
+      "ts": 1775843377256
     },
     {
-      "id": "h63boirmilq",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "xaz5jp6cnm",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489591088
+      "ts": 1775843376254
     },
     {
-      "id": "hvmqjz03zos",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "v9vb7emlhe",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489590087
+      "ts": 1775843375253
     },
     {
-      "id": "ywstyobqauj",
-      "msg": "High speed: FDB573 at 533.7kt",
+      "id": "y9zuz7zr1xi",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489589088
+      "ts": 1775843374254
     },
     {
-      "id": "7bot6jszahk",
-      "msg": "Flight detected: FDB573",
+      "id": "uc77t6s2b1r",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489589088
+      "ts": 1775843373253
     },
     {
-      "id": "iduyu5qib2",
-      "msg": "Flight detected: UAE336",
+      "id": "tsxqyauin4",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489553081
+      "ts": 1775843372253
     },
     {
-      "id": "0rzrd5o1kvl",
-      "msg": "Flight detected: SWR154",
+      "id": "wp7490o0l4",
+      "msg": "High speed: ETH3690 at 537.9kt",
       "sev": "info",
-      "ts": 1775489212019
+      "ts": 1775843371252
     }
   ],
   "config": {

@@ -28,14 +28,14 @@
 #include <HTTPClient.h>
 
 // ── Config ────────────────────────────────────────────────────
-const char* WIFI_SSID_HOME = "YOUR_HOME_SSID";      // ← home WiFi
-const char* WIFI_PASS_HOME = "YOUR_HOME_PASS";       // ← home WiFi pass
-const char* MQTT_BROKER    = "rfconn.local";         // ← Pi 5 mDNS
+const char* WIFI_SSID_HOME = "BSA 2.4Ghz";      // ← home WiFi
+const char* WIFI_PASS_HOME = "$$@29211526";       // ← home WiFi pass
+const char* MQTT_BROKER    = "192.168.29.115";         // ← Pi 5 mDNS
 const int   MQTT_PORT      = 1883;
 
 // Used in FIELD mode — Cloudflare tunnel URL of Pi 5
 // Get from: cloudflared tunnel --url http://localhost:3000
-const char* TACOPS_URL = "https://YOUR-TUNNEL.trycloudflare.com";
+const char* TACOPS_URL = "https://toi-palaeological-imposingly.ngrok-free.devm";
 
 const char* DEVICE_NAME = "tacops-xiao-lora";
 

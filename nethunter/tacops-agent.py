@@ -169,9 +169,16 @@ def post_state():
     with state_lock:
         payload = {**state, "ts": int(time.time() * 1000)}
     try:
+        # resp = requests.post(
+        #     f"{TACOPS_URL}/api/nethunter",
+        #     json=payload, timeout=5,
+        # )
+        # Change the post_state() function's requests.post call:
         resp = requests.post(
             f"{TACOPS_URL}/api/nethunter",
-            json=payload, timeout=5,
+            json=payload,
+            timeout=5,
+            headers={"ngrok-skip-browser-warning": "true"}   # ← add this
         )
         logging.info("[POST] → %s  wifi:%d ble:%d hosts:%d",
             TACOPS_URL,

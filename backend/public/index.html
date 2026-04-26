@@ -427,6 +427,37 @@ function SpectrumPanel({data,live}){
   );
 }
 
+/* ── Markdown-aware text renderer ── */
+function MdText({text,dim}){
+  const lines=(text||"").split("\n");
+  return <span style={{display:"block"}}>
+    {lines.map((line,i)=>{
+      // Strip leading hashes (headers)
+      const clean=line.replace(/^#{1,6}\s*/,"");
+      // Parse bold **text**
+      const parts=clean.split(/(\*\*[^*]+\*\*)/g).map((p,j)=>{
+        if(p.startsWith("**")&&p.endsWith("**"))
+          return <strong key={j} style={{color:dim?"#4a6070":"#00e5a0",fontWeight:700}}>{p.slice(2,-2)}</strong>;
+        // Strip remaining single asterisks
+        return p.replace(/\*/g,"");
+      });
+      // Skip pure separator lines like --- or ===
+      if(/^[-=|]{3,}$/.test(clean.trim())) return null;
+      // Table-like lines with pipes — render as indented row
+      if(clean.includes("|")){
+        const cells=clean.split("|").map(c=>c.trim()).filter(c=>c&&!/^-+$/.test(c));
+        if(cells.length>0)
+          return <div key={i} style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:2}}>
+            {cells.map((c,j)=><span key={j} style={{background:"rgba(0,229,160,.06)",borderRadius:2,padding:"1px 5px",fontSize:10}}>{c}</span>)}
+          </div>;
+        return null;
+      }
+      if(!clean.trim()) return <br key={i}/>;
+      return <span key={i} style={{display:"block",marginTop:i>0?3:0}}>{parts}</span>;
+    })}
+  </span>;
+}
+
 /* ── AI Intel Panel ── */
 function AiPanel({state}){
   const [chat,setChat]=useState([]);
@@ -462,7 +493,7 @@ function AiPanel({state}){
 
   const ctx=()=>`You are TACINT — tactical intelligence AI in TacticalOps on Pi 5 (rfConn) Ahmedabad, India.
 Sensors: ADS-B ${(state.adsb?.data||[]).length} aircraft live=${state.adsb?.live?"YES":"NO"} | WiFi ${(state.wifi?.data||[]).length} nets open=${(state.wifi?.data||[]).filter(n=>n.enc==="Open").length} live=${state.wifi?.live?"YES":"NO"} | BLE ${(state.ble?.data||[]).length} devs live=${state.ble?.live?"YES":"NO"} | 433MHz ${(state.rf433?.data||[]).length} sigs live=${state.rf433?.live?"YES":"NO"} | Pwnagotchi captures=${state.pwnagotchi?.captures||0} mood=${state.pwnagotchi?.mood||"?"} epoch=${state.pwnagotchi?.epoch||0} live=${state.pwnagotchi?.live?"YES":"NO"}
-Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed analysis requested.`;
+Respond in plain text only. No markdown, no asterisks, no hashtags, no pipes, no bullet symbols. Use plain sentences and line breaks only. Concise tactical style. Flag anomalies. Max 100 words unless detailed analysis requested.`;
 
   const send=async(msg)=>{
     if(!msg.trim()||loading)return;
@@ -516,7 +547,7 @@ Respond concisely tactical style. Flag anomalies. Max 100 words unless detailed 
       <div style={{flex:1,overflowY:"auto",overflowX:"hidden",padding:"8px 12px",display:"flex",flexDirection:"column",gap:7,WebkitOverflowScrolling:"touch"}}>
         {chat.map((m,i)=><div key={i} style={{padding:"8px 11px",borderRadius:3,fontSize:11,lineHeight:1.65,background:m.role==="user"?T.bg3:"rgba(0,229,160,.05)",borderLeft:`2px solid ${m.role==="user"?T.dim:T.acc}`,color:m.role==="user"?T.dim:T.text,animation:"fadeIn .15s ease",flexShrink:0}}>
           {m.role==="assistant"&&<span style={{color:T.acc,marginRight:7,fontFamily:T.display,fontSize:9,letterSpacing:1}}>TACINT›</span>}
-          {m.content}
+          <MdText text={m.content} dim={m.role==="user"}/>
         </div>)}
         {loading&&<div style={{color:T.acc,fontSize:11,padding:"8px 11px",animation:"blink 1s infinite",letterSpacing:1,flexShrink:0}}>TACINT ANALYZING...</div>}
         <div ref={bottomRef} style={{height:1}}/>
