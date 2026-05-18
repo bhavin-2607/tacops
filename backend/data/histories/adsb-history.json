@@ -1,47 +1,32 @@
 [
   {
-    "id": "80165c",
-    "callsign": "80165c",
-    "alt": 0,
-    "spd": 413.3,
-    "hdg": 244.49,
-    "lat": null,
-    "lon": null,
-    "dist": 0,
-    "rssi": -24,
-    "squawk": 0,
-    "messages": 9,
-    "seen": 0.6,
-    "ts": 1779117297483
-  },
-  {
-    "id": "800b61",
-    "callsign": "800b61",
-    "alt": 0,
-    "spd": 481.7,
-    "hdg": 85.12,
-    "lat": null,
-    "lon": null,
-    "dist": 0,
-    "rssi": -49,
-    "squawk": 0,
-    "messages": 3,
-    "seen": 0.7,
-    "ts": 1779117333495
-  },
-  {
-    "id": "8013fd",
-    "callsign": "8013fd",
+    "id": "06a0e8",
+    "callsign": "06a0e8",
     "alt": 0,
     "spd": 0,
     "hdg": 0,
     "lat": null,
     "lon": null,
     "dist": 0,
-    "rssi": -49,
+    "rssi": -27,
     "squawk": 0,
-    "messages": 2,
-    "seen": 4.7,
-    "ts": 1779117371508
+    "messages": 4,
+    "seen": 2.6,
+    "ts": 1779119852553
+  },
+  {
+    "id": "06a0e8",
+    "callsign": "06a0e8",
+    "alt": 40000,
+    "spd": 0,
+    "hdg": 0,
+    "lat": null,
+    "lon": null,
+    "dist": 0,
+    "rssi": -26,
+    "squawk": 0,
+    "messages": 15,
+    "seen": 40.6,
+    "ts": 1779119924587
   }
 ]

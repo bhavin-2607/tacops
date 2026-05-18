@@ -73,30 +73,41 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
 .quick-btn{text-align:left;background:#0d1520;border:1px solid rgba(0,229,160,.15);color:#6ab8a0;padding:9px 13px;border-radius:3px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;width:100%;transition:all .15s;letter-spacing:.3px}
 .quick-btn:hover{background:rgba(0,229,160,.08);border-color:rgba(0,229,160,.35);color:#00e5a0}
 .puter-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:2px;font-size:9px;letter-spacing:1px;font-family:'Orbitron',monospace}
-.db-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;padding:12px}
-.db-card{background:#0e1a24;border:1px solid rgba(0,229,160,.08);border-radius:4px;padding:12px 14px;position:relative;overflow:hidden;transition:border-color .2s}
-.db-card:hover{border-color:rgba(0,229,160,.22)}
-.db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.db-card.live::before{background:var(--acc)}
+.db-status-row{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;padding:18px 22px 12px}
+.db-card{background:#0b1720;border:1px solid rgba(0,229,160,.07);border-radius:5px;padding:16px 18px;position:relative;overflow:hidden;transition:border-color .25s,background .25s}
+.db-card:hover{border-color:rgba(0,229,160,.2);background:#0e1e2c}
+.db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:5px 5px 0 0}
+.db-card.live::before{background:var(--acc);box-shadow:0 0 8px var(--acc)}
 .db-card.warn::before{background:var(--warn)}
-.db-card.dead::before{background:#333}
-.db-num{font-family:'Orbitron',monospace;font-size:28px;font-weight:700;line-height:1;margin:6px 0 4px}
-.db-label{font-size:9px;letter-spacing:2px;color:#4a7090;text-transform:uppercase}
-.db-sub{font-size:9px;color:#3a6080;margin-top:3px}
-.db-bar-row{display:flex;align-items:center;gap:4px;margin-top:3px}
-.db-bar{height:3px;border-radius:2px;transition:width .4s}
-.mini-list-item{padding:4px 0;border-bottom:1px solid rgba(0,229,160,.04);font-size:10px;color:#8aabbf;display:flex;justify-content:space-between;align-items:center;line-height:1.3}
-.mini-list-item:last-child{border-bottom:none}
-.ev-row{padding:5px 0;border-bottom:1px solid rgba(0,229,160,.04);display:flex;gap:7px;align-items:flex-start}
+.db-card.dead::before{background:#1e2e3a}
+.db-num{font-family:'Orbitron',monospace;font-size:clamp(20px,2.2vw,36px);font-weight:700;line-height:1;margin:8px 0 6px;letter-spacing:-1px}
+.db-label{font-size:11px;letter-spacing:2px;color:#6a90a8;text-transform:uppercase;display:flex;align-items:center;gap:5px;font-weight:600}
+.db-sub{font-size:12px;color:#5a8098;margin-top:5px;line-height:1.4}
+.db-section-wrap{padding:0 22px 14px}
+.db-section-box{background:#0b1720;border:1px solid rgba(0,229,160,.07);border-radius:5px;padding:0;overflow:hidden;margin-bottom:10px}
+.db-section-hdr{font-size:12px;letter-spacing:2px;color:#8acce0;font-weight:600;padding:13px 18px;border-bottom:1px solid rgba(0,229,160,.1);display:flex;align-items:center;gap:8px;background:#0d1c28;text-transform:uppercase}
+.db-section-hdr span.count{margin-left:auto;font-family:'Orbitron',monospace;font-size:13px}
+.db-table{width:100%;border-collapse:collapse}
+.db-table tr{border-bottom:1px solid rgba(0,229,160,.04);transition:background .15s}
+.db-table tr:last-child{border-bottom:none}
+.db-table tr:hover{background:rgba(0,229,160,.025)}
+.db-table td{padding:12px 18px;font-size:13px;color:#8aabbf;vertical-align:middle}
+.db-table td:first-child{color:#b8ccd8;font-family:'Share Tech Mono',monospace;font-size:15px}
+.db-bar-row{display:flex;align-items:center;gap:8px;padding:7px 18px}
+.db-bar-wrap{flex:1;background:#071018;border-radius:3px;height:10px;overflow:hidden}
+.db-bar{height:100%;border-radius:3px;transition:width .5s}
+.db-ch-label{font-size:12px;color:#6a9aaa;width:44px;flex-shrink:0;font-family:'Share Tech Mono',monospace}
+.db-ch-count{font-size:12px;color:#5ab090;width:24px;text-align:right;flex-shrink:0;font-weight:600}
+.ev-row{padding:10px 18px;border-bottom:1px solid rgba(0,229,160,.04);display:flex;gap:10px;align-items:center}
 .ev-row:last-child{border-bottom:none}
-.ev-cat{font-size:8px;letter-spacing:1px;padding:2px 5px;border-radius:2px;background:#111e2a;color:#4a9090;flex-shrink:0;margin-top:1px}
-.ev-msg{font-size:10px;color:#8aabbf;line-height:1.4}
-.ev-time{font-size:8px;color:#3a6070;flex-shrink:0;margin-left:auto}
-.sev-info{color:var(--acc2)}
-.sev-warn{color:var(--warn)}
-.sev-danger{color:var(--danger)}
-.db-section{padding:0 12px 12px}
-.db-section-hdr{font-size:9px;letter-spacing:2px;color:#3a6080;padding:8px 0 6px;border-bottom:1px solid rgba(0,229,160,.06);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ev-row:hover{background:rgba(0,229,160,.02)}
+.ev-cat{font-size:11px;letter-spacing:1px;padding:4px 10px;border-radius:3px;background:#0d1e2c;color:#4ab0b0;flex-shrink:0;font-family:'Share Tech Mono',monospace;min-width:120px;text-align:center}
+.ev-msg{font-size:14px;color:#8aabbf;line-height:1.4;flex:1}
+.ev-time{font-size:11px;color:#5a8090;flex-shrink:0;font-family:'Share Tech Mono',monospace}
+.ev-sev{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ble-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:3px;background:#0d1e2c;border:1px solid rgba(167,139,250,.12);color:#a78bfa;font-size:13px;transition:border-color .2s}
+.ble-chip:hover{border-color:rgba(167,139,250,.3)}
+.open-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:3px;background:rgba(255,170,0,.08);color:var(--warn);font-size:12px;border:1px solid rgba(255,170,0,.15)}
 
 .ai-input-area{
   padding:8px 12px;border-top:1px solid rgba(0,229,160,0.1);
@@ -626,225 +637,319 @@ function DashboardPanel({state,alerts}){
   const evLog    = state.eventLog||[];
   const pwna     = state.pwnagotchi||{};
 
-  // ── Status cards data ──────────────────────────────────
   const cards=[
-    {
-      label:"ADS-B",icon:"flight",
-      val:aircraft.length,
-      live:state.adsb?.live,
-      sub: aircraft.length ? `${aircraft.filter(f=>f.alt<5000&&f.alt>0).length} low-alt · ${aircraft.filter(f=>!f.callsign).length} unident` : "no aircraft",
-      col:T.acc2,
-    },
-    {
-      label:"WiFi Nets",icon:"wifi",
-      val:nets.length,
-      live:state.wifi?.live,
-      sub:`${nets.filter(n=>n.enc==="Open").length} open · ${[...new Set(nets.map(n=>n.ch))].length} channels`,
-      col:T.acc,
-    },
-    {
-      label:"BLE Dev",icon:"bluetooth",
-      val:ble.length,
-      live:state.ble?.live,
-      sub:ble.length ? `${[...new Set(ble.map(d=>d.type||"?"))].join(" · ")||"unknown types"}` : "no devices",
-      col:"#a78bfa",
-    },
-    {
-      label:"433 MHz",icon:"sensors",
-      val:rf433.length,
-      live:state.rf433?.live,
-      sub:rf433.length ? `last: ${rf433[0]?.proto||"?"} ${rf433[0]?.data||""}`.slice(0,28) : "no signals",
-      col:T.warn,
-    },
-    {
-      label:"nRF24",icon:"router",
-      val:nrf24.filter?.(c=>c.v>0).length||0,
-      live:state.nrf24?.live,
-      sub: nrf24.length ? `${nrf24.filter(c=>c.v>50).length} hot channels` : "no activity",
-      col:"#f472b6",
-    },
-    {
-      label:"LoRa Pkts",icon:"podcasts",
-      val:lora.length,
-      live:state.lora?.live,
-      sub:lora.length ? `last RSSI ${lora[0]?.rssi||"?"}dBm` : "no packets",
-      col:"#34d399",
-    },
-    {
-      label:"Hosts",icon:"devices",
-      val:hosts.length,
-      live:state.nethunter?.live,
-      sub:hosts.length ? hosts.slice(0,2).map(h=>h.ip).join(" · ") : "no scan",
-      col:"#60a5fa",
-    },
-    {
-      label:"Pwnagotchi",icon:"catching_pokemon",
-      val:pwna.captures||0,
-      live:pwna.live,
-      sub:`${pwna.mood||"unknown"} · epoch ${pwna.epoch||0}`,
-      col:"#fb923c",
-    },
+    {label:"ADS-B",       icon:"flight",           val:aircraft.length, live:state.adsb?.live,
+     sub:`${aircraft.filter(f=>f.alt<5000&&f.alt>0).length} low-alt · ${aircraft.filter(f=>!f.callsign).length} unident`, col:T.acc2},
+    {label:"WiFi Nets",   icon:"wifi",              val:nets.length,     live:state.wifi?.live,
+     sub:`${nets.filter(n=>n.enc==="Open").length} open · ${[...new Set(nets.map(n=>n.ch))].length} ch`, col:T.acc},
+    {label:"BLE",         icon:"bluetooth",         val:ble.length,      live:state.ble?.live,
+     sub:ble.length?`${[...new Set(ble.map(d=>d.type||"?"))].slice(0,3).join(" · ")}`:"no devices", col:"#a78bfa"},
+    {label:"433 MHz",     icon:"sensors",           val:rf433.length,    live:state.rf433?.live,
+     sub:rf433.length?`${rf433[0]?.proto||"?"} · ${(rf433[0]?.data||"").slice(0,16)}`:"no signals", col:T.warn},
+    {label:"nRF24",       icon:"router",            val:nrf24.filter?.(c=>c.v>50).length||0, live:state.nrf24?.live,
+     sub:`${nrf24.filter?.(c=>c.v>0).length||0} active ch`, col:"#f472b6"},
+    {label:"LoRa",        icon:"podcasts",          val:lora.length,     live:state.lora?.live,
+     sub:lora.length?`last ${lora[0]?.rssi||"?"}dBm`:"no packets", col:"#34d399"},
+    {label:"Hosts",       icon:"devices",           val:hosts.length,    live:state.nethunter?.live,
+     sub:hosts.length?hosts.slice(0,2).map(h=>h.ip).join(" · "):"no scan", col:"#60a5fa"},
+    {label:"Pwnagotchi",  icon:"sports_esports",  val:pwna.captures||0,live:pwna.live,
+     sub:`${pwna.mood||"unknown"} · epoch ${pwna.epoch||0}`, col:"#fb923c"},
   ];
 
-  // ── Mini WiFi channel bar ──────────────────────────────
+  // WiFi channel map
   const chMap={};
   nets.forEach(n=>{const c=n.ch||0;chMap[c]=(chMap[c]||0)+1;});
-  const topChs=Object.entries(chMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const chEntries=Object.entries(chMap).sort((a,b)=>b[1]-a[1]).slice(0,12);
   const maxCh=Math.max(1,...Object.values(chMap));
-
-  // ── Top aircraft list ──────────────────────────────────
-  const topAc=aircraft.slice(0,5);
-
-  // ── Last 5 alerts ──────────────────────────────────────
-  const lastAlerts=(alerts||[]).slice(0,5);
-
-  // ── Last 8 event log entries ───────────────────────────
-  const lastEvents=evLog.slice(0,8);
-
-  const StatusDot=({live})=>(
-    <span style={{display:"inline-block",width:6,height:6,borderRadius:"50%",
-      background:live?T.acc:"#333",
-      boxShadow:live?`0 0 4px ${T.acc}`:"none",
-      animation:live?"pulse 2s infinite":"none",
-      flexShrink:0}}/>
-  );
 
   const fmtTime=ts=>{
     if(!ts)return"";
-    const d=new Date(ts);
-    return d.toLocaleTimeString("en-IN",{hour12:false,hour:"2-digit",minute:"2-digit",second:"2-digit"});
+    return new Date(ts).toLocaleTimeString("en-IN",{hour12:false});
   };
 
   const sevCol=s=>s==="danger"?T.danger:s==="warn"?T.warn:T.acc;
+  const sevBg =s=>s==="danger"?"rgba(255,68,68,.12)":s==="warn"?"rgba(255,170,0,.1)":"rgba(0,229,160,.08)";
+
+  const chCol=i=>{
+    const cols=["#00e5a0","#00c8b0","#00aac0","#0090c8","#0078c8","#5060c8","#8050b8","#b04090"];
+    return cols[i%cols.length];
+  };
+
+  // nRF24 channel activity
+  const hotChs=(nrf24||[]).filter(c=>c.v>0).sort((a,b)=>b.v-a.v).slice(0,8);
+  const maxNrf=Math.max(1,...hotChs.map(c=>c.v));
 
   return(
     <div style={{height:"100%",overflowY:"auto",background:T.bg1}}>
 
-      {/* ── Status Cards Grid ── */}
-      <div style={{padding:"10px 12px 2px",fontSize:9,letterSpacing:2,color:T.dim,fontFamily:T.display,display:"flex",alignItems:"center",gap:6}}>
-        <Ico n="dashboard" style={{fontSize:12}}/> SENSOR STATUS
+      {/* ══ STATUS BAR ══ */}
+      <div style={{padding:"14px 20px 4px",fontSize:10,letterSpacing:3,color:T.dim,fontFamily:T.display,display:"flex",alignItems:"center",gap:7}}>
+        <Ico n="dashboard" style={{fontSize:14,color:T.acc}}/> SENSOR STATUS
+        <span style={{marginLeft:"auto",fontSize:9,color:T.dim,fontFamily:"'Share Tech Mono',monospace"}}>
+          {new Date().toLocaleString("en-IN",{hour12:false})}
+        </span>
       </div>
-      <div className="db-grid">
+      <div className="db-status-row">
         {cards.map((c,i)=>(
           <div key={i} className={`db-card ${c.live?"live":c.live===false?"dead":"dead"}`}>
-            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:2}}>
-              <span style={{fontSize:9,letterSpacing:2,color:T.dim,fontFamily:T.display}}>{c.label}</span>
-              <StatusDot live={c.live}/>
+            <div className="db-label">
+              <Ico n={c.icon} style={{fontSize:13,color:c.live?c.col:T.dim}}/>
+              {c.label}
+              <span style={{marginLeft:"auto",display:"inline-block",width:7,height:7,borderRadius:"50%",
+                background:c.live?T.acc:"#1e3040",
+                boxShadow:c.live?`0 0 5px ${T.acc}`:"none",
+                animation:c.live?"pulse 2s infinite":"none"}}/>
             </div>
-            <div className="db-num" style={{color:c.live?c.col:"#2a4050"}}>{c.val}</div>
+            <div className="db-num" style={{color:c.live?c.col:"#1e3a50"}}>{c.val}</div>
             <div className="db-sub">{c.sub}</div>
           </div>
         ))}
       </div>
 
-      {/* ── Row: Aircraft + WiFi channels ── */}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,padding:"0 12px 8px"}}>
-
-        {/* Aircraft list */}
-        <div style={{background:"#0e1a24",border:"1px solid rgba(0,229,160,.08)",borderRadius:4,padding:"10px 12px"}}>
+      {/* ══ AIRCRAFT TABLE ══ */}
+      <div className="db-section-wrap">
+        <div className="db-section-box">
           <div className="db-section-hdr">
-            <Ico n="flight" style={{fontSize:11,color:T.acc2}}/> AIRCRAFT
-            <span style={{marginLeft:"auto",color:T.acc2}}>{aircraft.length}</span>
+            <Ico n="flight" style={{fontSize:14,color:T.acc2}}/>
+            AIRCRAFT IN RANGE
+            <span className="count" style={{color:T.acc2}}>{aircraft.length}</span>
           </div>
-          {topAc.length===0&&<div style={{fontSize:10,color:T.dim,padding:"6px 0"}}>No aircraft in range</div>}
-          {topAc.map((f,i)=>(
-            <div key={i} className="mini-list-item">
-              <span style={{color:f.callsign?T.acc2:T.warn,fontFamily:"'Share Tech Mono',monospace"}}>
-                {f.callsign||f.id||"????"}
-              </span>
-              <span style={{color:T.dim,fontSize:9}}>{f.alt?`${f.alt}ft`:""} {f.spd?`${f.spd}kt`:""}</span>
-            </div>
-          ))}
-          {aircraft.length>5&&<div style={{fontSize:9,color:T.dim,paddingTop:4}}>+{aircraft.length-5} more</div>}
-        </div>
-
-        {/* WiFi channel bar */}
-        <div style={{background:"#0e1a24",border:"1px solid rgba(0,229,160,.08)",borderRadius:4,padding:"10px 12px"}}>
-          <div className="db-section-hdr">
-            <Ico n="wifi" style={{fontSize:11,color:T.acc}}/> WIFI CHANNELS
-            <span style={{marginLeft:"auto",color:T.acc}}>{nets.length} nets</span>
-          </div>
-          {topChs.length===0&&<div style={{fontSize:10,color:T.dim,padding:"6px 0"}}>No networks detected</div>}
-          {topChs.map(([ch,count],i)=>(
-            <div key={i} className="db-bar-row">
-              <span style={{fontSize:9,color:T.dim,width:20,flexShrink:0}}>ch{ch}</span>
-              <div style={{flex:1,background:"#0a1520",borderRadius:2,height:6,overflow:"hidden"}}>
-                <div className="db-bar" style={{width:`${(count/maxCh)*100}%`,background:T.acc,opacity:.7}}/>
-              </div>
-              <span style={{fontSize:9,color:T.acc,width:14,textAlign:"right",flexShrink:0}}>{count}</span>
-            </div>
-          ))}
-          {nets.filter(n=>n.enc==="Open").length>0&&(
-            <div style={{marginTop:7,fontSize:9,color:T.warn,display:"flex",alignItems:"center",gap:4}}>
-              <Ico n="lock_open" style={{fontSize:10}}/>{nets.filter(n=>n.enc==="Open").length} open network{nets.filter(n=>n.enc==="Open").length>1?"s":""}
-            </div>
-          )}
+          {aircraft.length===0
+            ? <div style={{padding:"20px 18px",fontSize:12,color:T.dim}}>No aircraft detected</div>
+            : <table className="db-table" style={{width:"100%"}}>
+                <thead>
+                  <tr style={{borderBottom:`1px solid rgba(0,229,160,.08)`}}>
+                    {["Callsign","Hex ID","Altitude","Speed","Heading","Squawk","Distance","Status"].map(h=>(
+                      <td key={h} style={{padding:"8px 18px",fontSize:11,letterSpacing:1,color:"#7aaabb",fontWeight:600,textTransform:"uppercase",padding:"10px 18px"}}>{h}</td>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {aircraft.map((f,i)=>(
+                    <tr key={i}>
+                      <td style={{color:f.callsign?T.acc2:T.warn,fontWeight:600,fontSize:14}}>{f.callsign||"—"}</td>
+                      <td style={{color:T.dim,fontSize:11}}>{f.id||"—"}</td>
+                      <td>{f.alt?`${f.alt.toLocaleString()} ft`:"—"}</td>
+                      <td>{f.spd?`${f.spd} kt`:"—"}</td>
+                      <td>{f.hdg!=null?`${f.hdg}°`:"—"}</td>
+                      <td style={{color:f.squawk>=7500&&f.squawk<=7777?T.danger:T.dim}}>{f.squawk||"—"}</td>
+                      <td>{f.dist?`${f.dist.toFixed(1)} nm`:"—"}</td>
+                      <td>
+                        <span style={{fontSize:9,padding:"2px 8px",borderRadius:3,
+                          background:f.callsign?"rgba(0,229,160,.08)":"rgba(255,170,0,.1)",
+                          color:f.callsign?T.acc:T.warn}}>
+                          {f.callsign?"IDENTIFIED":"UNIDENT"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+          }
         </div>
       </div>
 
-      {/* ── Row: Last Alerts + Event Log ── */}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,padding:"0 12px 12px"}}>
-
-        {/* Last alerts */}
-        <div style={{background:"#0e1a24",border:"1px solid rgba(0,229,160,.08)",borderRadius:4,padding:"10px 12px"}}>
+      {/* ══ WIFI CHANNELS + nRF24 ══ */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:"0 20px 10px"}}>
+        <div className="db-section-box">
           <div className="db-section-hdr">
-            <Ico n="warning" style={{fontSize:11,color:T.warn}}/> RECENT ALERTS
-            <span style={{marginLeft:"auto",color:T.warn}}>{(alerts||[]).length}</span>
+            <Ico n="wifi" style={{fontSize:14,color:T.acc}}/>
+            WIFI CHANNEL ACTIVITY
+            <span className="count" style={{color:T.acc}}>{nets.length} nets</span>
           </div>
-          {lastAlerts.length===0&&<div style={{fontSize:10,color:T.dim,padding:"6px 0"}}>No alerts</div>}
-          {lastAlerts.map((a,i)=>(
-            <div key={i} className="ev-row">
-              <span style={{fontSize:8,padding:"2px 5px",borderRadius:2,background:"#111e2a",
-                color:sevCol(a.sev),flexShrink:0,marginTop:1,letterSpacing:.5}}>
-                {(a.sev||"info").toUpperCase()}
-              </span>
-              <span className="ev-msg" style={{color:sevCol(a.sev),opacity:.85}}>{a.msg}</span>
-              <span className="ev-time">{fmtTime(a.ts)}</span>
-            </div>
-          ))}
+          {chEntries.length===0
+            ? <div style={{padding:"20px 18px",fontSize:12,color:T.dim}}>No networks detected</div>
+            : <>
+                {chEntries.map(([ch,count],i)=>(
+                  <div key={ch} className="db-bar-row">
+                    <span className="db-ch-label">ch{ch}</span>
+                    <div className="db-bar-wrap">
+                      <div className="db-bar" style={{width:`${(count/maxCh)*100}%`,background:chCol(i)}}/>
+                    </div>
+                    <span className="db-ch-count">{count}</span>
+                  </div>
+                ))}
+                {nets.filter(n=>n.enc==="Open").length>0&&(
+                  <div style={{padding:"10px 18px",display:"flex",gap:8,flexWrap:"wrap"}}>
+                    {nets.filter(n=>n.enc==="Open").map((n,i)=>(
+                      <span key={i} className="open-badge">
+                        <Ico n="lock_open" style={{fontSize:11}}/>{n.ssid||"Hidden"}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
+          }
         </div>
 
-        {/* Event log */}
-        <div style={{background:"#0e1a24",border:"1px solid rgba(0,229,160,.08)",borderRadius:4,padding:"10px 12px"}}>
+        <div className="db-section-box">
           <div className="db-section-hdr">
-            <Ico n="timeline" style={{fontSize:11,color:T.acc}}/> INTEL LOG
-            <span style={{marginLeft:"auto",color:T.acc}}>{evLog.length}</span>
+            <Ico n="router" style={{fontSize:14,color:"#f472b6"}}/>
+            nRF24 CHANNEL HEATMAP
+            <span className="count" style={{color:"#f472b6"}}>{hotChs.length} active</span>
           </div>
-          {lastEvents.length===0&&<div style={{fontSize:10,color:T.dim,padding:"6px 0"}}>No events yet</div>}
-          {lastEvents.map((e,i)=>(
-            <div key={i} className="ev-row">
-              <span className="ev-cat">{e.cat}/{e.sub?.split("_")[0]}</span>
-              <span className="ev-msg">
-                {Object.entries(e)
+          {hotChs.length===0
+            ? <div style={{padding:"20px 18px",fontSize:12,color:T.dim}}>No nRF24 activity</div>
+            : hotChs.map((c,i)=>(
+                <div key={i} className="db-bar-row">
+                  <span className="db-ch-label">ch{c.ch}</span>
+                  <div className="db-bar-wrap">
+                    <div className="db-bar" style={{width:`${(c.v/maxNrf)*100}%`,
+                      background:c.v>80?"#ff4444":c.v>50?"#ff7722":"#f472b6"}}/>
+                  </div>
+                  <span className="db-ch-count" style={{color:c.v>80?T.danger:c.v>50?T.warn:"#f472b6"}}>{c.v}</span>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+
+      {/* ══ RECENT ALERTS ══ */}
+      <div className="db-section-wrap">
+        <div className="db-section-box">
+          <div className="db-section-hdr">
+            <Ico n="warning" style={{fontSize:14,color:T.warn}}/>
+            RECENT ALERTS
+            <span className="count" style={{color:T.warn}}>{(alerts||[]).length}</span>
+          </div>
+          {(alerts||[]).length===0
+            ? <div style={{padding:"20px 18px",fontSize:12,color:T.dim}}>No alerts</div>
+            : (alerts||[]).slice(0,8).map((a,i)=>(
+                <div key={i} className="ev-row">
+                  <div className="ev-sev" style={{background:sevCol(a.sev),boxShadow:`0 0 4px ${sevCol(a.sev)}`}}/>
+                  <span style={{fontSize:10,padding:"3px 9px",borderRadius:3,background:sevBg(a.sev),
+                    color:sevCol(a.sev),flexShrink:0,letterSpacing:1,minWidth:60,textAlign:"center"}}>
+                    {(a.sev||"INFO").toUpperCase()}
+                  </span>
+                  <span className="ev-msg" style={{fontSize:13,color:sevCol(a.sev),opacity:.9}}>{a.msg}</span>
+                  <span className="ev-time">{fmtTime(a.ts)}</span>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+
+      {/* ══ INTEL EVENT LOG ══ */}
+      <div className="db-section-wrap">
+        <div className="db-section-box">
+          <div className="db-section-hdr">
+            <Ico n="timeline" style={{fontSize:14,color:T.acc}}/>
+            INTEL EVENT LOG
+            <span className="count" style={{color:T.acc}}>{evLog.length} events</span>
+          </div>
+          {evLog.length===0
+            ? <div style={{padding:"20px 18px",fontSize:12,color:T.dim}}>No events in log</div>
+            : evLog.slice(0,12).map((e,i)=>{
+                const extra=Object.entries(e)
                   .filter(([k])=>!["seq","ts","cat","sub","sev"].includes(k))
-                  .slice(0,2)
-                  .map(([k,v])=>`${k}:${Array.isArray(v)?v.join(","):v}`)
-                  .join(" ")||e.sub}
-              </span>
-              <span className="ev-time">{fmtTime(e.ts)}</span>
-            </div>
-          ))}
+                  .slice(0,4)
+                  .map(([k,v])=>`${k}: ${Array.isArray(v)?v.join(", "):v}`)
+                  .join("  ·  ")||e.sub;
+                const sevC=e.sev==="danger"?T.danger:e.sev==="warn"?T.warn:T.acc2;
+                return(
+                  <div key={i} className="ev-row">
+                    <div className="ev-sev" style={{background:sevC,boxShadow:`0 0 4px ${sevC}`}}/>
+                    <span className="ev-cat">{e.cat}/{e.sub}</span>
+                    <span className="ev-msg" style={{fontSize:12}}>{extra}</span>
+                    <span className="ev-time">{fmtTime(e.ts)}</span>
+                  </div>
+                );
+              })
+          }
         </div>
       </div>
 
-      {/* ── BLE device strip ── */}
+      {/* ══ BLE DEVICES ══ */}
       {ble.length>0&&(
-        <div style={{padding:"0 12px 12px"}}>
-          <div style={{background:"#0e1a24",border:"1px solid rgba(0,229,160,.08)",borderRadius:4,padding:"10px 12px"}}>
+        <div className="db-section-wrap">
+          <div className="db-section-box">
             <div className="db-section-hdr">
-              <Ico n="bluetooth" style={{fontSize:11,color:"#a78bfa"}}/> BLE DEVICES
-              <span style={{marginLeft:"auto",color:"#a78bfa"}}>{ble.length}</span>
+              <Ico n="bluetooth" style={{fontSize:14,color:"#a78bfa"}}/>
+              BLE DEVICES
+              <span className="count" style={{color:"#a78bfa"}}>{ble.length}</span>
             </div>
-            <div style={{display:"flex",flexWrap:"wrap",gap:5}}>
-              {ble.slice(0,12).map((d,i)=>(
-                <div key={i} style={{fontSize:9,padding:"3px 8px",borderRadius:2,background:"#0a1520",
-                  border:"1px solid rgba(167,139,250,.15)",color:"#a78bfa",letterSpacing:.5}}>
-                  {d.name||d.mac||"Unknown"} <span style={{color:T.dim}}>{d.rssi}dBm</span>
+            <div style={{padding:"12px 18px",display:"flex",flexWrap:"wrap",gap:8}}>
+              {ble.map((d,i)=>(
+                <div key={i} className="ble-chip">
+                  <Ico n="bluetooth" style={{fontSize:12,color:"#a78bfa"}}/>
+                  <span>{d.name||d.mac||"Unknown"}</span>
+                  <span style={{fontSize:10,color:T.dim}}>{d.rssi}dBm</span>
+                  {d.type&&<span style={{fontSize:9,color:"#6040a0",padding:"1px 5px",background:"#0d1828",borderRadius:2}}>{d.type}</span>}
                 </div>
               ))}
-              {ble.length>12&&<div style={{fontSize:9,color:T.dim,padding:"3px 0"}}>+{ble.length-12} more</div>}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ══ 433MHz + LoRa ══ */}
+      {(rf433.length>0||lora.length>0)&&(
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:"0 20px 20px"}}>
+          {rf433.length>0&&(
+            <div className="db-section-box">
+              <div className="db-section-hdr">
+                <Ico n="sensors" style={{fontSize:14,color:T.warn}}/>
+                433 MHz SIGNALS
+                <span className="count" style={{color:T.warn}}>{rf433.length}</span>
+              </div>
+              <table className="db-table" style={{width:"100%"}}>
+                <thead>
+                  <tr style={{borderBottom:`1px solid rgba(0,229,160,.06)`}}>
+                    {["Protocol","Data","Freq","RSSI","Time"].map(h=>(
+                      <td key={h} style={{padding:"7px 18px",fontSize:9,letterSpacing:2,color:T.dim}}>{h}</td>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rf433.slice(0,8).map((s,i)=>(
+                    <tr key={i}>
+                      <td style={{color:T.warn,fontWeight:600}}>{s.proto||"?"}</td>
+                      <td style={{fontFamily:"'Share Tech Mono',monospace",fontSize:11,color:T.acc}}>{(s.data||"").slice(0,24)}</td>
+                      <td style={{color:T.dim}}>{s.freq||"433.92"} MHz</td>
+                      <td><SigBar rssi={s.rssi||-80}/></td>
+                      <td style={{color:T.dim,fontSize:10}}>{fmtTime(s.ts)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {lora.length>0&&(
+            <div className="db-section-box">
+              <div className="db-section-hdr">
+                <Ico n="podcasts" style={{fontSize:14,color:"#34d399"}}/>
+                LORA PACKETS
+                <span className="count" style={{color:"#34d399"}}>{lora.length}</span>
+              </div>
+              <table className="db-table" style={{width:"100%"}}>
+                <thead>
+                  <tr style={{borderBottom:`1px solid rgba(0,229,160,.06)`}}>
+                    {["Node ID","Freq","RSSI","SNR","Type","Time"].map(h=>(
+                      <td key={h} style={{padding:"7px 18px",fontSize:9,letterSpacing:2,color:T.dim}}>{h}</td>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {lora.slice(0,8).map((p,i)=>(
+                    <tr key={i}>
+                      <td style={{color:"#34d399",fontFamily:"'Share Tech Mono',monospace"}}>{p.node_id||"—"}</td>
+                      <td style={{color:T.dim}}>{p.freq||"865.0"} MHz</td>
+                      <td><SigBar rssi={p.rssi||-80}/></td>
+                      <td style={{color:T.dim}}>{p.snr!=null?`${p.snr}dB`:"—"}</td>
+                      <td>
+                        <span style={{fontSize:9,padding:"2px 7px",borderRadius:3,
+                          background:p.meshtastic?"rgba(52,211,153,.1)":"rgba(0,229,160,.06)",
+                          color:p.meshtastic?"#34d399":T.acc}}>
+                          {p.meshtastic?"MESHTASTIC":"RAW"}
+                        </span>
+                      </td>
+                      <td style={{color:T.dim,fontSize:10}}>{fmtTime(p.ts)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 
@@ -1048,7 +1153,7 @@ function App(){
           ):(
             <>
               <div style={{padding:"10px 0 6px",borderBottom:`1px solid ${T.border}`,flexShrink:0}}>
-                <div style={{fontSize:9,color:T.dim,letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display}}>RADAR</div>
+                <div style={{fontSize:9,color:"#6a9aaa",letterSpacing:2,textAlign:"center",marginBottom:8,fontFamily:T.display,fontWeight:600}}>RADAR</div>
                 <div style={{display:"flex",justifyContent:"center"}}><Radar aircraft={state.adsb?.data||[]} receiver={state.receiver}/></div>
                 <div style={{display:"flex",justifyContent:"center",gap:14,marginTop:7,fontSize:11}}>
                   <span style={{color:T.acc2,display:"flex",alignItems:"center",gap:3}}><Ico n="flight" style={{fontSize:13}}/>{(state.adsb?.data||[]).length}</span>
@@ -1057,7 +1162,7 @@ function App(){
                 </div>
               </div>
               <div style={{padding:"5px 10px",fontSize:9,color:T.dim,letterSpacing:2,borderBottom:`1px solid ${T.border}`,background:T.bg2,fontFamily:T.display,flexShrink:0,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <span>ALERT FEED</span>
+                <span style={{color:"#8ab0c0",fontWeight:600}}>ALERT FEED</span>
                 {!hideClearButtons&&<button onClick={()=>{if(wsRef.current&&wsRef.current.readyState===WebSocket.OPEN)wsRef.current.send(JSON.stringify({type:"clear_alerts"}));}} style={{fontSize:8,padding:"2px 6px",background:T.danger,color:"#fff",border:"none",borderRadius:2,cursor:"pointer",opacity:wsConn?1:0.5,pointerEvents:wsConn?"auto":"none"}}>Clear</button>}
               </div>
               <div style={{flex:1,overflow:"auto"}}>
