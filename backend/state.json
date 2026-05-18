@@ -2,34 +2,64 @@
   "adsb": {
     "data": [
       {
-        "id": "06a13c",
-        "callsign": "06a13c",
-        "alt": 33000,
-        "spd": 523.5,
-        "hdg": 94.27,
-        "lat": 23.977521,
-        "lon": 72.295584,
-        "dist": 109.9,
-        "rssi": -26,
-        "squawk": 0,
-        "messages": 27,
-        "seen": 18.1,
-        "ts": 1779127070539
+        "id": "8965e1",
+        "callsign": "ADY064",
+        "alt": 35950,
+        "spd": 439.6,
+        "hdg": 265.17,
+        "lat": 22.933913,
+        "lon": 72.338104,
+        "dist": 25.8,
+        "rssi": -24,
+        "squawk": 4701,
+        "messages": 610,
+        "seen": 1.4,
+        "ts": 1779127285251
       },
       {
-        "id": "80187b",
-        "callsign": "IGO45W",
-        "alt": 37000,
-        "spd": 494.6,
-        "hdg": 65.77,
-        "lat": 24.21289,
-        "lon": 72.911181,
-        "dist": 136.8,
+        "id": "8964c2",
+        "callsign": "ETD899",
+        "alt": 37975,
+        "spd": 465.6,
+        "hdg": 265.2,
+        "lat": 22.937544,
+        "lon": 72.374369,
+        "dist": 22.3,
         "rssi": -24,
-        "squawk": 3333,
-        "messages": 2240,
-        "seen": 0,
-        "ts": 1779127070539
+        "squawk": 0,
+        "messages": 589,
+        "seen": 27,
+        "ts": 1779127285251
+      },
+      {
+        "id": "80162e",
+        "callsign": "AIC5UK",
+        "alt": 5500,
+        "spd": 282.1,
+        "hdg": 13.74,
+        "lat": 23.177628,
+        "lon": 72.573486,
+        "dist": 17.3,
+        "rssi": -12,
+        "squawk": 6304,
+        "messages": 623,
+        "seen": 0.2,
+        "ts": 1779127285251
+      },
+      {
+        "id": "06a13c",
+        "callsign": "QTR934",
+        "alt": 33000,
+        "spd": 525.6,
+        "hdg": 94.47,
+        "lat": 23.939861,
+        "lon": 72.833707,
+        "dist": 105.5,
+        "rssi": -26,
+        "squawk": 2107,
+        "messages": 869,
+        "seen": 18.8,
+        "ts": 1779127285251
       }
     ],
     "live": true,
@@ -39,102 +69,102 @@
     "data": [
       {
         "id": 0,
-        "ssid": "Jio_Home_5G",
-        "bssid": "e0:0d:b1:a4:b7:d3",
-        "ch": 6,
-        "rssi": -178,
+        "ssid": "AndroidAP_8B3F",
+        "bssid": "0c:76:27:33:82:47",
+        "ch": 149,
+        "rssi": -64,
         "enc": "WPA2",
-        "cli": 9,
+        "cli": 2,
         "band": "5GHz"
       },
       {
         "id": 1,
-        "ssid": "Corp_Office_5G",
-        "bssid": "59:7f:2f:32:8b:4a",
-        "ch": 36,
-        "rssi": -100,
-        "enc": "WPA2",
-        "cli": 0,
-        "band": "5GHz"
-      },
-      {
-        "id": 2,
-        "ssid": "BSNL_Fiber_01",
-        "bssid": "1f:9a:35:85:5e:54",
-        "ch": 1,
-        "rssi": -97,
-        "enc": "WPA2",
-        "cli": 1,
-        "band": "5GHz"
-      },
-      {
-        "id": 3,
-        "ssid": "BSNL_Fiber_01",
-        "bssid": "b7:34:31:b6:5b:b5",
+        "ssid": "Jio_Home_5G",
+        "bssid": "a9:73:88:5c:10:e6",
         "ch": 44,
-        "rssi": -106,
+        "rssi": -68,
         "enc": "WPA2",
-        "cli": 9,
-        "band": "2.4GHz"
-      },
-      {
-        "id": 4,
-        "ssid": "Reliance_JioFiber",
-        "bssid": "d8:2d:19:73:07:fa",
-        "ch": 1,
-        "rssi": -100,
-        "enc": "Open",
-        "cli": 3,
-        "band": "5GHz"
-      },
-      {
-        "id": 5,
-        "ssid": "Guest_Net",
-        "bssid": "ea:1b:a2:73:03:4a",
-        "ch": 40,
-        "rssi": -141,
-        "enc": "WPA3",
         "cli": 8,
         "band": "5GHz"
       },
       {
-        "id": 6,
-        "ssid": "TP-Link_3F2A",
-        "bssid": "a4:58:13:80:83:f0",
-        "ch": 11,
-        "rssi": -114,
-        "enc": "WPA2",
-        "cli": 9,
-        "band": "2.4GHz"
-      },
-      {
-        "id": 7,
-        "ssid": "DD-WRT_Mesh",
-        "bssid": "22:5a:ef:4a:7d:63",
-        "ch": 6,
-        "rssi": -111,
-        "enc": "WPA2",
-        "cli": 11,
-        "band": "2.4GHz"
-      },
-      {
-        "id": 8,
-        "ssid": "SBI_ATM_WiFi",
-        "bssid": "4a:43:21:21:54:44",
+        "id": 2,
+        "ssid": "Guest_Net",
+        "bssid": "cf:e4:9c:9e:1d:21",
         "ch": 1,
-        "rssi": -175,
-        "enc": "Open",
+        "rssi": -76,
+        "enc": "WPA2",
+        "cli": 8,
+        "band": "5GHz"
+      },
+      {
+        "id": 3,
+        "ssid": "Guest_Net",
+        "bssid": "0e:19:62:16:e1:7d",
+        "ch": 11,
+        "rssi": -93,
+        "enc": "WPA2",
+        "cli": 5,
+        "band": "2.4GHz"
+      },
+      {
+        "id": 4,
+        "ssid": "SBI_ATM_WiFi",
+        "bssid": "79:6a:29:db:63:fe",
+        "ch": 44,
+        "rssi": -88,
+        "enc": "WPA2",
         "cli": 4,
         "band": "2.4GHz"
       },
       {
-        "id": 9,
-        "ssid": "SBI_ATM_WiFi",
-        "bssid": "7e:0c:09:f0:3c:a2",
+        "id": 5,
+        "ssid": "AndroidAP_8B3F",
+        "bssid": "02:c8:0a:dc:89:08",
         "ch": 6,
-        "rssi": -156,
+        "rssi": -81,
         "enc": "Open",
-        "cli": 5,
+        "cli": 0,
+        "band": "5GHz"
+      },
+      {
+        "id": 6,
+        "ssid": "Corp_Office_5G",
+        "bssid": "0d:12:ce:e3:69:f3",
+        "ch": 6,
+        "rssi": -43,
+        "enc": "Open",
+        "cli": 0,
+        "band": "2.4GHz"
+      },
+      {
+        "id": 7,
+        "ssid": "Guest_Net",
+        "bssid": "fa:bb:0f:b3:fa:fe",
+        "ch": 36,
+        "rssi": -52,
+        "enc": "Open",
+        "cli": 0,
+        "band": "5GHz"
+      },
+      {
+        "id": 8,
+        "ssid": "Reliance_JioFiber",
+        "bssid": "97:60:ed:6d:9f:0e",
+        "ch": 11,
+        "rssi": -45,
+        "enc": "Open",
+        "cli": 11,
+        "band": "2.4GHz"
+      },
+      {
+        "id": 9,
+        "ssid": "BSNL_Fiber_01",
+        "bssid": "fa:2f:d3:1f:eb:5e",
+        "ch": 6,
+        "rssi": -88,
+        "enc": "WPA2",
+        "cli": 11,
         "band": "5GHz"
       }
     ],
@@ -144,81 +174,337 @@
     "data": [
       {
         "id": 0,
-        "name": "Mi Band 7",
-        "mac": "e5:d3:84:2f:62:b8",
-        "rssi": -144,
-        "type": "Phone",
-        "seen": 1779126991542
+        "name": "Unknown Device",
+        "mac": "30:2f:8b:5c:69:fd",
+        "rssi": -66,
+        "type": "IoT",
+        "seen": 1779127109009
       },
       {
         "id": 1,
-        "name": "MacBook Air",
-        "mac": "4e:0e:3f:21:85:7a",
-        "rssi": -120,
-        "type": "IoT",
-        "seen": 1779126917681
+        "name": "Unknown Device",
+        "mac": "38:1f:0a:50:59:00",
+        "rssi": -98,
+        "type": "Phone",
+        "seen": 1779126999833
       },
       {
         "id": 2,
-        "name": "Fitbit Versa",
-        "mac": "70:51:9b:77:83:79",
-        "rssi": -125,
-        "type": "Phone",
-        "seen": 1779126950239
+        "name": "Sony WH-1000",
+        "mac": "a1:13:75:2e:c8:ca",
+        "rssi": -52,
+        "type": "Unknown",
+        "seen": 1779127157629
       },
       {
         "id": 3,
-        "name": "Galaxy S23",
-        "mac": "d3:e4:3b:c0:fa:29",
-        "rssi": -140,
-        "type": "Wearable",
-        "seen": 1779127025230
+        "name": "ESP32-BLE",
+        "mac": "6d:d9:fa:45:25:d4",
+        "rssi": -73,
+        "type": "Audio",
+        "seen": 1779127089315
       },
       {
         "id": 4,
-        "name": "Redmi Note 12",
-        "mac": "8c:d6:1c:d8:87:7a",
-        "rssi": -150,
-        "type": "Wearable",
-        "seen": 1779126833331
+        "name": "Mi Band 7",
+        "mac": "5f:f7:28:18:da:41",
+        "rssi": -89,
+        "type": "Phone",
+        "seen": 1779127145368
       },
       {
         "id": 5,
-        "name": "Mi Band 7",
-        "mac": "f7:78:23:94:79:d3",
-        "rssi": -102,
-        "type": "Wearable",
-        "seen": 1779126926565
+        "name": "Redmi Note 12",
+        "mac": "b1:57:f4:6c:f8:07",
+        "rssi": -75,
+        "type": "Audio",
+        "seen": 1779127180893
       },
       {
         "id": 6,
-        "name": "realme GT",
-        "mac": "35:f2:63:40:a8:c0",
-        "rssi": -131,
+        "name": "AirPods Pro",
+        "mac": "46:68:f7:4d:15:43",
+        "rssi": -94,
         "type": "Wearable",
-        "seen": 1779126984878
+        "seen": 1779127282404
       },
       {
         "id": 7,
-        "name": "Redmi Note 12",
-        "mac": "a1:90:28:a5:7a:83",
-        "rssi": -160,
-        "type": "Unknown",
-        "seen": 1779126956497
+        "name": "Galaxy S23",
+        "mac": "2e:df:c1:12:d3:49",
+        "rssi": -96,
+        "type": "Audio",
+        "seen": 1779127191083
       },
       {
         "id": 8,
-        "name": "Mi Band 7",
-        "mac": "1f:c4:8f:4a:5a:ac",
-        "rssi": -152,
-        "type": "IoT",
-        "seen": 1779126943854
+        "name": "Fitbit Versa",
+        "mac": "5c:02:04:e6:f9:6b",
+        "rssi": -85,
+        "type": "Unknown",
+        "seen": 1779127135004
       }
     ],
     "live": false
   },
   "rf433": {
     "data": [
+      {
+        "id": "nzi7piq2jxl",
+        "proto": "Conrad RSL",
+        "freq": "433.05",
+        "data": "0xC0D920",
+        "rssi": -66,
+        "ts": 1779127277726
+      },
+      {
+        "id": "u9ff9vjian",
+        "proto": "FS1000A Module",
+        "freq": "433.03",
+        "data": "0x9E75F8",
+        "rssi": -63,
+        "ts": 1779127274925
+      },
+      {
+        "id": "k43k11lmmrp",
+        "proto": "Kerui Alarm",
+        "freq": "432.99",
+        "data": "0x93C067",
+        "rssi": -90,
+        "ts": 1779127269324
+      },
+      {
+        "id": "uv7mw3114ee",
+        "proto": "PT2262 Remote",
+        "freq": "432.96",
+        "data": "0xD0100C",
+        "rssi": -81,
+        "ts": 1779127263723
+      },
+      {
+        "id": "jlqkcodewx",
+        "proto": "Kerui Alarm",
+        "freq": "433.05",
+        "data": "0x6DC1D3",
+        "rssi": -71,
+        "ts": 1779127251781
+      },
+      {
+        "id": "7fywf2oate5",
+        "proto": "Elro AB440",
+        "freq": "433.05",
+        "data": "0xE562E5",
+        "rssi": -59,
+        "ts": 1779127240577
+      },
+      {
+        "id": "laf3wa63vgc",
+        "proto": "FS1000A Module",
+        "freq": "432.99",
+        "data": "0x4A7EF8",
+        "rssi": -48,
+        "ts": 1779127234974
+      },
+      {
+        "id": "l1fe9p7kfx",
+        "proto": "Conrad RSL",
+        "freq": "433.06",
+        "data": "0xBF1DFB",
+        "rssi": -88,
+        "ts": 1779127232173
+      },
+      {
+        "id": "de0eah031ke",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.00",
+        "data": "0x5E9C44",
+        "rssi": -72,
+        "ts": 1779127223769
+      },
+      {
+        "id": "bpghturii6a",
+        "proto": "Oregon Scientific",
+        "freq": "433.03",
+        "data": "0x685FD3",
+        "rssi": -76,
+        "ts": 1779127220967
+      },
+      {
+        "id": "atp3xrx11gm",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.95",
+        "data": "0x0049AE",
+        "rssi": -62,
+        "ts": 1779127218167
+      },
+      {
+        "id": "lpdj32lp14b",
+        "proto": "Conrad RSL",
+        "freq": "432.97",
+        "data": "0x4FCF9A",
+        "rssi": -60,
+        "ts": 1779127215367
+      },
+      {
+        "id": "zbw4i27s6po",
+        "proto": "Holman Industries",
+        "freq": "433.04",
+        "data": "0x6F621F",
+        "rssi": -82,
+        "ts": 1779127204163
+      },
+      {
+        "id": "p8mgkw7oka",
+        "proto": "Elro AB440",
+        "freq": "433.08",
+        "data": "0x123D38",
+        "rssi": -60,
+        "ts": 1779127198560
+      },
+      {
+        "id": "s8tvbquskw",
+        "proto": "FS1000A Module",
+        "freq": "433.04",
+        "data": "0x64FE10",
+        "rssi": -44,
+        "ts": 1779127195760
+      },
+      {
+        "id": "1lsci20mpjnj",
+        "proto": "FS1000A Module",
+        "freq": "433.01",
+        "data": "0xD2B68F",
+        "rssi": -73,
+        "ts": 1779127184559
+      },
+      {
+        "id": "1eizxzgqg2sh",
+        "proto": "FS1000A Module",
+        "freq": "433.04",
+        "data": "0x41687C",
+        "rssi": -81,
+        "ts": 1779127181757
+      },
+      {
+        "id": "b0go7i0m6zf",
+        "proto": "LaCrosse TX",
+        "freq": "433.06",
+        "data": "0x3918F5",
+        "rssi": -69,
+        "ts": 1779127176155
+      },
+      {
+        "id": "0hq3tyd2052q",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.03",
+        "data": "0xC99E74",
+        "rssi": -84,
+        "ts": 1779127173355
+      },
+      {
+        "id": "pr4bkuks2rb",
+        "proto": "PT2262 Remote",
+        "freq": "433.01",
+        "data": "0x25F7C7",
+        "rssi": -47,
+        "ts": 1779127167753
+      },
+      {
+        "id": "wg5mx02cctc",
+        "proto": "Oregon Scientific",
+        "freq": "432.98",
+        "data": "0x103D7C",
+        "rssi": -88,
+        "ts": 1779127150948
+      },
+      {
+        "id": "gljorcu8k2",
+        "proto": "Kerui Alarm",
+        "freq": "432.97",
+        "data": "0xAE0DAF",
+        "rssi": -86,
+        "ts": 1779127148148
+      },
+      {
+        "id": "ka8hcx47gfd",
+        "proto": "FS1000A Module",
+        "freq": "433.02",
+        "data": "0x2B74E5",
+        "rssi": -73,
+        "ts": 1779127139745
+      },
+      {
+        "id": "ej7nb4x9ki9",
+        "proto": "Oregon Scientific",
+        "freq": "433.00",
+        "data": "0x3BF593",
+        "rssi": -45,
+        "ts": 1779127136943
+      },
+      {
+        "id": "h4g11uc94n9",
+        "proto": "FS1000A Module",
+        "freq": "433.08",
+        "data": "0xE6614F",
+        "rssi": -57,
+        "ts": 1779127125740
+      },
+      {
+        "id": "6j027v8phw3",
+        "proto": "PT2262 Remote",
+        "freq": "432.92",
+        "data": "0xD11807",
+        "rssi": -72,
+        "ts": 1779127114537
+      },
+      {
+        "id": "ns63iuckxos",
+        "proto": "Oregon Scientific",
+        "freq": "432.90",
+        "data": "0x936CD8",
+        "rssi": -50,
+        "ts": 1779127100531
+      },
+      {
+        "id": "0viwfbhh29o",
+        "proto": "PT2262 Remote",
+        "freq": "433.03",
+        "data": "0xB39A21",
+        "rssi": -90,
+        "ts": 1779127097730
+      },
+      {
+        "id": "05uyh1mvq06e",
+        "proto": "Kerui Alarm",
+        "freq": "433.09",
+        "data": "0x31CFF0",
+        "rssi": -54,
+        "ts": 1779127094930
+      },
+      {
+        "id": "jryk1otnxla",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.96",
+        "data": "0x0AB29B",
+        "rssi": -47,
+        "ts": 1779127089328
+      },
+      {
+        "id": "f7j59wshps",
+        "proto": "LaCrosse TX",
+        "freq": "432.98",
+        "data": "0xEA9326",
+        "rssi": -55,
+        "ts": 1779127083725
+      },
+      {
+        "id": "n8fssqla6c",
+        "proto": "FS1000A Module",
+        "freq": "433.04",
+        "data": "0x878192",
+        "rssi": -49,
+        "ts": 1779127075324
+      },
       {
         "id": "wubp2bq44b",
         "proto": "PT2262 Remote",
@@ -282,262 +568,6 @@
         "data": "0x274445",
         "rssi": -46,
         "ts": 1779127030513
-      },
-      {
-        "id": "zpu3oebl09",
-        "proto": "Oregon Scientific",
-        "freq": "432.91",
-        "data": "0xD18324",
-        "rssi": -78,
-        "ts": 1779127019310
-      },
-      {
-        "id": "m8ep5rcpamj",
-        "proto": "Oregon Scientific",
-        "freq": "433.00",
-        "data": "0x72B911",
-        "rssi": -46,
-        "ts": 1779127013708
-      },
-      {
-        "id": "qx8im21i1fr",
-        "proto": "Elro AB440",
-        "freq": "433.02",
-        "data": "0x893BC4",
-        "rssi": -56,
-        "ts": 1779127010908
-      },
-      {
-        "id": "1bc9lh3wpaz",
-        "proto": "Holman Industries",
-        "freq": "432.99",
-        "data": "0x0FCAC3",
-        "rssi": -54,
-        "ts": 1779126996903
-      },
-      {
-        "id": "21rwvlao7ra",
-        "proto": "Kerui Alarm",
-        "freq": "432.96",
-        "data": "0xD7384B",
-        "rssi": -85,
-        "ts": 1779126994103
-      },
-      {
-        "id": "i5anqn83ajr",
-        "proto": "Holman Industries",
-        "freq": "433.06",
-        "data": "0x57CDFC",
-        "rssi": -81,
-        "ts": 1779126988501
-      },
-      {
-        "id": "e4tqulrnclh",
-        "proto": "Oregon Scientific",
-        "freq": "432.97",
-        "data": "0xFFA466",
-        "rssi": -42,
-        "ts": 1779126982902
-      },
-      {
-        "id": "h6fuys810xw",
-        "proto": "Conrad RSL",
-        "freq": "432.99",
-        "data": "0x1213EB",
-        "rssi": -88,
-        "ts": 1779126977301
-      },
-      {
-        "id": "38g2mpssrix",
-        "proto": "PT2262 Remote",
-        "freq": "432.92",
-        "data": "0xAD6600",
-        "rssi": -41,
-        "ts": 1779126974501
-      },
-      {
-        "id": "qvpwp0xf97b",
-        "proto": "Elro AB440",
-        "freq": "432.92",
-        "data": "0x0C8818",
-        "rssi": -87,
-        "ts": 1779126968899
-      },
-      {
-        "id": "40p9lfgpahj",
-        "proto": "Generic Temp Sensor",
-        "freq": "432.97",
-        "data": "0x87D86A",
-        "rssi": -51,
-        "ts": 1779126966097
-      },
-      {
-        "id": "hpmmx0wqfq",
-        "proto": "Generic Temp Sensor",
-        "freq": "433.03",
-        "data": "0x415B60",
-        "rssi": -68,
-        "ts": 1779126952095
-      },
-      {
-        "id": "bjlyvbdykec",
-        "proto": "Oregon Scientific",
-        "freq": "433.01",
-        "data": "0xA2C0B9",
-        "rssi": -66,
-        "ts": 1779126949294
-      },
-      {
-        "id": "xdu3yvbunt",
-        "proto": "Holman Industries",
-        "freq": "433.09",
-        "data": "0x958FBE",
-        "rssi": -54,
-        "ts": 1779126935291
-      },
-      {
-        "id": "7ofkxlxk0fi",
-        "proto": "Oregon Scientific",
-        "freq": "433.10",
-        "data": "0xCB2F3D",
-        "rssi": -82,
-        "ts": 1779126912886
-      },
-      {
-        "id": "390x78488vt",
-        "proto": "Nexus/WeatherStation",
-        "freq": "433.08",
-        "data": "0xA1D1C6",
-        "rssi": -57,
-        "ts": 1779126904483
-      },
-      {
-        "id": "4jytptdsxmb",
-        "proto": "Conrad RSL",
-        "freq": "433.08",
-        "data": "0x994FC1",
-        "rssi": -54,
-        "ts": 1779126896084
-      },
-      {
-        "id": "0hjs8rqdjoou",
-        "proto": "PT2262 Remote",
-        "freq": "432.95",
-        "data": "0xE09E84",
-        "rssi": -83,
-        "ts": 1779126873678
-      },
-      {
-        "id": "aiprpuzru",
-        "proto": "FS1000A Module",
-        "freq": "433.06",
-        "data": "0xA9037D",
-        "rssi": -84,
-        "ts": 1779126854075
-      },
-      {
-        "id": "kcvfk2cydp",
-        "proto": "Nexus/WeatherStation",
-        "freq": "433.04",
-        "data": "0xB081DF",
-        "rssi": -58,
-        "ts": 1779126845674
-      },
-      {
-        "id": "qmashhzbh2",
-        "proto": "FS1000A Module",
-        "freq": "432.92",
-        "data": "0xA4D97F",
-        "rssi": -47,
-        "ts": 1779126834470
-      },
-      {
-        "id": "et6sg7b2hq8",
-        "proto": "FS1000A Module",
-        "freq": "433.03",
-        "data": "0x7FAF62",
-        "rssi": -79,
-        "ts": 1779126831671
-      },
-      {
-        "id": "4bdm83j1siw",
-        "proto": "Kerui Alarm",
-        "freq": "433.00",
-        "data": "0x1B8D3B",
-        "rssi": -61,
-        "ts": 1779126823268
-      },
-      {
-        "id": "hfdt0gmqkuo",
-        "proto": "Oregon Scientific",
-        "freq": "432.96",
-        "data": "0x8CAA55",
-        "rssi": -63,
-        "ts": 1779126820468
-      },
-      {
-        "id": "qf6gcz1owys",
-        "proto": "PT2262 Remote",
-        "freq": "433.00",
-        "data": "0x4366C3",
-        "rssi": -54,
-        "ts": 1779126812068
-      },
-      {
-        "id": "6vjay023qt",
-        "proto": "PT2262 Remote",
-        "freq": "433.06",
-        "data": "0x883CEC",
-        "rssi": -66,
-        "ts": 1779126798063
-      },
-      {
-        "id": "auen0ew7urs",
-        "proto": "Conrad RSL",
-        "freq": "433.06",
-        "data": "0xF68E98",
-        "rssi": -55,
-        "ts": 1779126795263
-      },
-      {
-        "id": "s47pty31ho",
-        "proto": "Oregon Scientific",
-        "freq": "433.02",
-        "data": "0x8360DB",
-        "rssi": -80,
-        "ts": 1779126789662
-      },
-      {
-        "id": "byaix7cmxj6",
-        "proto": "LaCrosse TX",
-        "freq": "433.05",
-        "data": "0x2F2102",
-        "rssi": -52,
-        "ts": 1779126786862
-      },
-      {
-        "id": "nefgg1fj0a",
-        "proto": "LaCrosse TX",
-        "freq": "432.94",
-        "data": "0xC63EAA",
-        "rssi": -90,
-        "ts": 1779126784061
-      },
-      {
-        "id": "o5ch83fpkfd",
-        "proto": "Elro AB440",
-        "freq": "433.10",
-        "data": "0x6C2057",
-        "rssi": -84,
-        "ts": 1779126778459
-      },
-      {
-        "id": "a0fg2d0hj3n",
-        "proto": "FS1000A Module",
-        "freq": "432.97",
-        "data": "0x86A230",
-        "rssi": -61,
-        "ts": 1779126767255
       }
     ],
     "live": false
@@ -546,15 +576,15 @@
     "data": [
       {
         "ch": 0,
-        "v": 11
+        "v": 8
       },
       {
         "ch": 1,
-        "v": 92
+        "v": 0
       },
       {
         "ch": 2,
-        "v": 64
+        "v": 5
       },
       {
         "ch": 3,
@@ -562,71 +592,71 @@
       },
       {
         "ch": 4,
-        "v": 0
+        "v": 2
       },
       {
         "ch": 5,
-        "v": 10
+        "v": 61
       },
       {
         "ch": 6,
-        "v": 5
+        "v": 10
       },
       {
         "ch": 7,
-        "v": 6
+        "v": 0
       },
       {
         "ch": 8,
-        "v": 9
+        "v": 3
       },
       {
         "ch": 9,
-        "v": 75
+        "v": 38
       },
       {
         "ch": 10,
-        "v": 3
+        "v": 5
       },
       {
         "ch": 11,
-        "v": 10
+        "v": 0
       },
       {
         "ch": 12,
-        "v": 4
+        "v": 5
       },
       {
         "ch": 13,
-        "v": 3
+        "v": 1
       },
       {
         "ch": 14,
-        "v": 6
+        "v": 3
       },
       {
         "ch": 15,
-        "v": 60
-      },
-      {
-        "ch": 16,
-        "v": 6
-      },
-      {
-        "ch": 17,
-        "v": 9
-      },
-      {
-        "ch": 18,
-        "v": 9
-      },
-      {
-        "ch": 19,
         "v": 10
       },
       {
+        "ch": 16,
+        "v": 5
+      },
+      {
+        "ch": 17,
+        "v": 68
+      },
+      {
+        "ch": 18,
+        "v": 3
+      },
+      {
+        "ch": 19,
+        "v": 7
+      },
+      {
         "ch": 20,
-        "v": 1
+        "v": 7
       },
       {
         "ch": 21,
@@ -634,59 +664,59 @@
       },
       {
         "ch": 22,
-        "v": 20
-      },
-      {
-        "ch": 23,
-        "v": 8
-      },
-      {
-        "ch": 24,
-        "v": 2
-      },
-      {
-        "ch": 25,
-        "v": 6
-      },
-      {
-        "ch": 26,
-        "v": 2
-      },
-      {
-        "ch": 27,
         "v": 3
       },
       {
-        "ch": 28,
-        "v": 8
-      },
-      {
-        "ch": 29,
+        "ch": 23,
         "v": 6
       },
       {
-        "ch": 30,
-        "v": 8
+        "ch": 24,
+        "v": 86
       },
       {
-        "ch": 31,
-        "v": 2
+        "ch": 25,
+        "v": 58
       },
       {
-        "ch": 32,
-        "v": 5
-      },
-      {
-        "ch": 33,
+        "ch": 26,
         "v": 7
       },
       {
-        "ch": 34,
+        "ch": 27,
+        "v": 6
+      },
+      {
+        "ch": 28,
+        "v": 4
+      },
+      {
+        "ch": 29,
+        "v": 62
+      },
+      {
+        "ch": 30,
+        "v": 11
+      },
+      {
+        "ch": 31,
+        "v": 8
+      },
+      {
+        "ch": 32,
+        "v": 1
+      },
+      {
+        "ch": 33,
         "v": 9
       },
       {
+        "ch": 34,
+        "v": 4
+      },
+      {
         "ch": 35,
-        "v": 10
+        "v": 11
       },
       {
         "ch": 36,
@@ -694,163 +724,163 @@
       },
       {
         "ch": 37,
-        "v": 7
+        "v": 2
       },
       {
         "ch": 38,
-        "v": 3
+        "v": 0
       },
       {
         "ch": 39,
-        "v": 8
+        "v": 6
       },
       {
         "ch": 40,
-        "v": 4
+        "v": 0
       },
       {
         "ch": 41,
-        "v": 11
-      },
-      {
-        "ch": 42,
-        "v": 8
-      },
-      {
-        "ch": 43,
-        "v": 2
-      },
-      {
-        "ch": 44,
-        "v": 10
-      },
-      {
-        "ch": 45,
-        "v": 2
-      },
-      {
-        "ch": 46,
-        "v": 3
-      },
-      {
-        "ch": 47,
-        "v": 2
-      },
-      {
-        "ch": 48,
-        "v": 8
-      },
-      {
-        "ch": 49,
-        "v": 10
-      },
-      {
-        "ch": 50,
-        "v": 3
-      },
-      {
-        "ch": 51,
-        "v": 78
-      },
-      {
-        "ch": 52,
-        "v": 8
-      },
-      {
-        "ch": 53,
-        "v": 76
-      },
-      {
-        "ch": 54,
-        "v": 5
-      },
-      {
-        "ch": 55,
-        "v": 2
-      },
-      {
-        "ch": 56,
-        "v": 7
-      },
-      {
-        "ch": 57,
-        "v": 0
-      },
-      {
-        "ch": 58,
-        "v": 0
-      },
-      {
-        "ch": 59,
-        "v": 11
-      },
-      {
-        "ch": 60,
-        "v": 6
-      },
-      {
-        "ch": 61,
-        "v": 5
-      },
-      {
-        "ch": 62,
-        "v": 9
-      },
-      {
-        "ch": 63,
-        "v": 0
-      },
-      {
-        "ch": 64,
-        "v": 2
-      },
-      {
-        "ch": 65,
-        "v": 99
-      },
-      {
-        "ch": 66,
-        "v": 6
-      },
-      {
-        "ch": 67,
-        "v": 9
-      },
-      {
-        "ch": 68,
-        "v": 6
-      },
-      {
-        "ch": 69,
-        "v": 10
-      },
-      {
-        "ch": 70,
-        "v": 8
-      },
-      {
-        "ch": 71,
-        "v": 3
-      },
-      {
-        "ch": 72,
-        "v": 11
-      },
-      {
-        "ch": 73,
         "v": 1
       },
       {
-        "ch": 74,
-        "v": 3
+        "ch": 42,
+        "v": 2
       },
       {
-        "ch": 75,
+        "ch": 43,
+        "v": 9
+      },
+      {
+        "ch": 44,
+        "v": 11
+      },
+      {
+        "ch": 45,
+        "v": 5
+      },
+      {
+        "ch": 46,
+        "v": 2
+      },
+      {
+        "ch": 47,
+        "v": 61
+      },
+      {
+        "ch": 48,
+        "v": 10
+      },
+      {
+        "ch": 49,
+        "v": 73
+      },
+      {
+        "ch": 50,
+        "v": 11
+      },
+      {
+        "ch": 51,
+        "v": 10
+      },
+      {
+        "ch": 52,
         "v": 6
       },
       {
-        "ch": 76,
+        "ch": 53,
+        "v": 8
+      },
+      {
+        "ch": 54,
+        "v": 96
+      },
+      {
+        "ch": 55,
+        "v": 33
+      },
+      {
+        "ch": 56,
+        "v": 9
+      },
+      {
+        "ch": 57,
+        "v": 94
+      },
+      {
+        "ch": 58,
+        "v": 8
+      },
+      {
+        "ch": 59,
         "v": 3
+      },
+      {
+        "ch": 60,
+        "v": 0
+      },
+      {
+        "ch": 61,
+        "v": 11
+      },
+      {
+        "ch": 62,
+        "v": 1
+      },
+      {
+        "ch": 63,
+        "v": 3
+      },
+      {
+        "ch": 64,
+        "v": 0
+      },
+      {
+        "ch": 65,
+        "v": 7
+      },
+      {
+        "ch": 66,
+        "v": 1
+      },
+      {
+        "ch": 67,
+        "v": 7
+      },
+      {
+        "ch": 68,
+        "v": 2
+      },
+      {
+        "ch": 69,
+        "v": 0
+      },
+      {
+        "ch": 70,
+        "v": 69
+      },
+      {
+        "ch": 71,
+        "v": 11
+      },
+      {
+        "ch": 72,
+        "v": 6
+      },
+      {
+        "ch": 73,
+        "v": 3
+      },
+      {
+        "ch": 74,
+        "v": 7
+      },
+      {
+        "ch": 75,
+        "v": 11
+      },
+      {
+        "ch": 76,
+        "v": 0
       },
       {
         "ch": 77,
@@ -858,7 +888,7 @@
       },
       {
         "ch": 78,
-        "v": 11
+        "v": 8
       },
       {
         "ch": 79,
@@ -866,23 +896,23 @@
       },
       {
         "ch": 80,
-        "v": 10
+        "v": 11
       },
       {
         "ch": 81,
-        "v": 5
+        "v": 4
       },
       {
         "ch": 82,
-        "v": 5
+        "v": 87
       },
       {
         "ch": 83,
-        "v": 3
+        "v": 35
       },
       {
         "ch": 84,
-        "v": 1
+        "v": 69
       },
       {
         "ch": 85,
@@ -890,79 +920,79 @@
       },
       {
         "ch": 86,
-        "v": 27
+        "v": 7
       },
       {
         "ch": 87,
-        "v": 9
+        "v": 8
       },
       {
         "ch": 88,
-        "v": 21
+        "v": 11
       },
       {
         "ch": 89,
-        "v": 7
+        "v": 11
       },
       {
         "ch": 90,
-        "v": 3
+        "v": 5
       },
       {
         "ch": 91,
-        "v": 5
+        "v": 4
       },
       {
         "ch": 92,
-        "v": 5
+        "v": 4
       },
       {
         "ch": 93,
-        "v": 2
+        "v": 44
       },
       {
         "ch": 94,
-        "v": 7
+        "v": 11
       },
       {
         "ch": 95,
-        "v": 0
+        "v": 5
       },
       {
         "ch": 96,
-        "v": 3
+        "v": 11
       },
       {
         "ch": 97,
-        "v": 94
-      },
-      {
-        "ch": 98,
         "v": 1
       },
       {
+        "ch": 98,
+        "v": 10
+      },
+      {
         "ch": 99,
-        "v": 2
+        "v": 0
       },
       {
         "ch": 100,
-        "v": 7
+        "v": 5
       },
       {
         "ch": 101,
-        "v": 10
+        "v": 4
       },
       {
         "ch": 102,
-        "v": 3
+        "v": 10
       },
       {
         "ch": 103,
-        "v": 9
+        "v": 10
       },
       {
         "ch": 104,
-        "v": 10
+        "v": 7
       },
       {
         "ch": 105,
@@ -974,35 +1004,35 @@
       },
       {
         "ch": 107,
-        "v": 2
+        "v": 8
       },
       {
         "ch": 108,
-        "v": 11
+        "v": 22
       },
       {
         "ch": 109,
-        "v": 9
+        "v": 75
       },
       {
         "ch": 110,
-        "v": 0
+        "v": 7
       },
       {
         "ch": 111,
-        "v": 7
+        "v": 84
       },
       {
         "ch": 112,
-        "v": 9
+        "v": 76
       },
       {
         "ch": 113,
-        "v": 38
+        "v": 9
       },
       {
         "ch": 114,
-        "v": 7
+        "v": 6
       },
       {
         "ch": 115,
@@ -1010,7 +1040,7 @@
       },
       {
         "ch": 116,
-        "v": 7
+        "v": 6
       },
       {
         "ch": 117,
@@ -1018,35 +1048,35 @@
       },
       {
         "ch": 118,
-        "v": 3
-      },
-      {
-        "ch": 119,
         "v": 7
       },
       {
-        "ch": 120,
-        "v": 8
-      },
-      {
-        "ch": 121,
-        "v": 3
-      },
-      {
-        "ch": 122,
+        "ch": 119,
         "v": 1
       },
       {
+        "ch": 120,
+        "v": 3
+      },
+      {
+        "ch": 121,
+        "v": 0
+      },
+      {
+        "ch": 122,
+        "v": 11
+      },
+      {
         "ch": 123,
-        "v": 6
+        "v": 41
       },
       {
         "ch": 124,
-        "v": 6
+        "v": 27
       },
       {
         "ch": 125,
-        "v": 4
+        "v": 8
       }
     ],
     "live": false
@@ -1062,13 +1092,67 @@
   "pwnagotchi": {
     "mood": "excited",
     "epoch": 179,
-    "captures": 11955,
+    "captures": 11964,
     "live": false
   },
   "mqtt": {
     "live": false
   },
   "alerts": [
+    {
+      "id": "9ujrry0vv9e",
+      "msg": "Low altitude: AIC5UK at 3350ft",
+      "sev": "warn",
+      "ts": 1779127236603
+    },
+    {
+      "id": "romiictgk7k",
+      "msg": "Low altitude: AIC5UK at 1825ft",
+      "sev": "warn",
+      "ts": 1779127176581
+    },
+    {
+      "id": "dksn3duy8k",
+      "msg": "Low altitude: 80162e at 1775ft",
+      "sev": "warn",
+      "ts": 1779127158575
+    },
+    {
+      "id": "m3o8w9ph01",
+      "msg": "Flight detected: 80162e",
+      "sev": "info",
+      "ts": 1779127158574
+    },
+    {
+      "id": "6vbp0wbs3o3",
+      "msg": "High speed: 4bb14d at 498.7kt",
+      "sev": "info",
+      "ts": 1779127122562
+    },
+    {
+      "id": "v90v5r5ku9",
+      "msg": "Flight detected: 8965e1",
+      "sev": "info",
+      "ts": 1779127120561
+    },
+    {
+      "id": "05y1zj7cginr",
+      "msg": "High speed: 8964c2 at 464.6kt",
+      "sev": "info",
+      "ts": 1779127090547
+    },
+    {
+      "id": "jaeoad1e2n",
+      "msg": "Flight detected: 8964c2",
+      "sev": "info",
+      "ts": 1779127090547
+    },
+    {
+      "id": "7coog8ce8uf",
+      "msg": "High speed: THY6266 at 498.7kt",
+      "sev": "info",
+      "ts": 1779127086551
+    },
     {
       "id": "bhpkbpyzxpl",
       "msg": "High speed: 06a13c at 523.5kt",
@@ -1108,6 +1192,105 @@
     "lon": 72.5714
   },
   "eventLog": [
+    {
+      "seq": 18718,
+      "ts": 1779127236603,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC5UK",
+      "alt": 3350,
+      "dist": 10.5
+    },
+    {
+      "seq": 18717,
+      "ts": 1779127176581,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC5UK",
+      "alt": 1825,
+      "dist": 0
+    },
+    {
+      "seq": 18716,
+      "ts": 1779127158575,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "80162e",
+      "alt": 1775,
+      "dist": 0
+    },
+    {
+      "seq": 18715,
+      "ts": 1779127158574,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "80162e",
+      "alt": 1775,
+      "spd": 156,
+      "hdg": 286,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18714,
+      "ts": 1779127122561,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4bb14d",
+      "spd": 498.7,
+      "alt": 0
+    },
+    {
+      "seq": 18713,
+      "ts": 1779127120560,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "8965e1",
+      "alt": 0,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18712,
+      "ts": 1779127090547,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "8964c2",
+      "spd": 464.6,
+      "alt": 0
+    },
+    {
+      "seq": 18711,
+      "ts": 1779127090547,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "8964c2",
+      "alt": 0,
+      "spd": 464.6,
+      "hdg": 265.31,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18710,
+      "ts": 1779127086550,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "THY6266",
+      "spd": 498.7,
+      "alt": 0
+    },
     {
       "seq": 18709,
       "ts": 1779127038523,
@@ -3068,103 +3251,7 @@
       "hdg": 86.6,
       "dist": 0,
       "squawk": 0
-    },
-    {
-      "seq": 18518,
-      "ts": 1779123906843,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "IGO083",
-      "spd": 431,
-      "alt": 0
-    },
-    {
-      "seq": 18517,
-      "ts": 1779123826814,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "71005f",
-      "spd": 542.4,
-      "alt": 0
-    },
-    {
-      "seq": 18516,
-      "ts": 1779123824815,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "71005f",
-      "spd": 542,
-      "alt": 0
-    },
-    {
-      "seq": 18515,
-      "ts": 1779123824814,
-      "cat": "adsb",
-      "sub": "new_flight",
-      "sev": "info",
-      "callsign": "06a07f",
-      "alt": 32000,
-      "spd": 0,
-      "hdg": 0,
-      "dist": 0,
-      "squawk": 0
-    },
-    {
-      "seq": 18514,
-      "ts": 1779123824814,
-      "cat": "adsb",
-      "sub": "new_flight",
-      "sev": "info",
-      "callsign": "71005f",
-      "alt": 0,
-      "spd": 542,
-      "hdg": 92.29,
-      "dist": 0,
-      "squawk": 0
-    },
-    {
-      "seq": 18513,
-      "ts": 1779123534707,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIQ145",
-      "alt": 1300,
-      "dist": 0
-    },
-    {
-      "seq": 18512,
-      "ts": 1779123532706,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIQ145",
-      "alt": 1300,
-      "dist": 0
-    },
-    {
-      "seq": 18511,
-      "ts": 1779123530706,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIQ145",
-      "alt": 1300,
-      "dist": 0
-    },
-    {
-      "seq": 18510,
-      "ts": 1779123528704,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "880c49",
-      "alt": 1300,
-      "dist": 0
     }
   ],
-  "_eventSeq": 18709
+  "_eventSeq": 18718
 }
