@@ -73,39 +73,39 @@ button.tx-btn:disabled{background:#1a3028;color:#2a5040;cursor:not-allowed}
 .quick-btn{text-align:left;background:#0d1520;border:1px solid rgba(0,229,160,.15);color:#6ab8a0;padding:9px 13px;border-radius:3px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;width:100%;transition:all .15s;letter-spacing:.3px}
 .quick-btn:hover{background:rgba(0,229,160,.08);border-color:rgba(0,229,160,.35);color:#00e5a0}
 .puter-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:2px;font-size:9px;letter-spacing:1px;font-family:'Orbitron',monospace}
-.db-status-row{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;padding:18px 22px 12px}
-.db-card{background:#0b1720;border:1px solid rgba(0,229,160,.07);border-radius:5px;padding:16px 18px;position:relative;overflow:hidden;transition:border-color .25s,background .25s}
+.db-status-row{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px 10px 8px}@media(min-width:600px){.db-status-row{grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 16px 10px}}@media(min-width:1024px){.db-status-row{grid-template-columns:repeat(8,1fr);gap:12px;padding:18px 22px 12px}}
+.db-card{background:#0b1720;border:1px solid rgba(0,229,160,.07);border-radius:5px;padding:8px 10px;position:relative;overflow:hidden;transition:border-color .25s,background .25s}@media(min-width:1024px){.db-card{padding:16px 18px}}
 .db-card:hover{border-color:rgba(0,229,160,.2);background:#0e1e2c}
 .db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:5px 5px 0 0}
 .db-card.live::before{background:var(--acc);box-shadow:0 0 8px var(--acc)}
 .db-card.warn::before{background:var(--warn)}
 .db-card.dead::before{background:#1e2e3a}
-.db-num{font-family:'Orbitron',monospace;font-size:clamp(20px,2.2vw,36px);font-weight:700;line-height:1;margin:8px 0 6px;letter-spacing:-1px}
+.db-num{font-family:'Orbitron',monospace;font-size:clamp(18px,4vw,36px);font-weight:700;line-height:1;margin:6px 0 4px;letter-spacing:-1px}
 .db-label{font-size:11px;letter-spacing:2px;color:#6a90a8;text-transform:uppercase;display:flex;align-items:center;gap:5px;font-weight:600}
 .db-sub{font-size:12px;color:#5a8098;margin-top:5px;line-height:1.4}
-.db-section-wrap{padding:0 22px 14px}
+.db-section-wrap{padding:0 10px 10px}@media(min-width:1024px){.db-section-wrap{padding:0 22px 14px}}
 .db-section-box{background:#0b1720;border:1px solid rgba(0,229,160,.07);border-radius:5px;padding:0;overflow:hidden;margin-bottom:10px}
-.db-section-hdr{font-size:12px;letter-spacing:2px;color:#8acce0;font-weight:600;padding:13px 18px;border-bottom:1px solid rgba(0,229,160,.1);display:flex;align-items:center;gap:8px;background:#0d1c28;text-transform:uppercase}
+.db-section-hdr{font-size:11px;letter-spacing:1px;color:#8acce0;font-weight:600;padding:10px 12px;border-bottom:1px solid rgba(0,229,160,.1);display:flex;align-items:center;gap:6px;background:#0d1c28;text-transform:uppercase;white-space:nowrap;overflow:hidden}@media(min-width:1024px){.db-section-hdr{font-size:12px;letter-spacing:2px;padding:13px 18px;gap:8px}}
 .db-section-hdr span.count{margin-left:auto;font-family:'Orbitron',monospace;font-size:13px}
 .db-table{width:100%;border-collapse:collapse}
 .db-table tr{border-bottom:1px solid rgba(0,229,160,.04);transition:background .15s}
 .db-table tr:last-child{border-bottom:none}
 .db-table tr:hover{background:rgba(0,229,160,.025)}
-.db-table td{padding:12px 18px;font-size:13px;color:#8aabbf;vertical-align:middle}
+.db-table td{padding:8px 10px;font-size:12px;color:#8aabbf;vertical-align:middle}@media(min-width:1024px){.db-table td{padding:12px 18px;font-size:13px}}.db-hide-mobile{display:none}@media(min-width:768px){.db-hide-mobile{display:table-cell}}
 .db-table td:first-child{color:#b8ccd8;font-family:'Share Tech Mono',monospace;font-size:15px}
-.db-bar-row{display:flex;align-items:center;gap:8px;padding:7px 18px}
+.db-bar-row{display:flex;align-items:center;gap:6px;padding:6px 12px}@media(min-width:1024px){.db-bar-row{gap:8px;padding:7px 18px}}
 .db-bar-wrap{flex:1;background:#071018;border-radius:3px;height:10px;overflow:hidden}
 .db-bar{height:100%;border-radius:3px;transition:width .5s}
 .db-ch-label{font-size:12px;color:#6a9aaa;width:44px;flex-shrink:0;font-family:'Share Tech Mono',monospace}
 .db-ch-count{font-size:12px;color:#5ab090;width:24px;text-align:right;flex-shrink:0;font-weight:600}
-.ev-row{padding:10px 18px;border-bottom:1px solid rgba(0,229,160,.04);display:flex;gap:10px;align-items:center}
+.ev-row{padding:8px 12px;border-bottom:1px solid rgba(0,229,160,.04);display:flex;gap:8px;align-items:center}@media(min-width:1024px){.ev-row{padding:10px 18px;gap:10px}}
 .ev-row:last-child{border-bottom:none}
 .ev-row:hover{background:rgba(0,229,160,.02)}
 .ev-cat{font-size:11px;letter-spacing:1px;padding:4px 10px;border-radius:3px;background:#0d1e2c;color:#4ab0b0;flex-shrink:0;font-family:'Share Tech Mono',monospace;min-width:120px;text-align:center}
 .ev-msg{font-size:14px;color:#8aabbf;line-height:1.4;flex:1}
 .ev-time{font-size:11px;color:#5a8090;flex-shrink:0;font-family:'Share Tech Mono',monospace}
 .ev-sev{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.ble-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:3px;background:#0d1e2c;border:1px solid rgba(167,139,250,.12);color:#a78bfa;font-size:13px;transition:border-color .2s}
+.ble-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:3px;background:#0d1e2c;border:1px solid rgba(167,139,250,.12);color:#a78bfa;font-size:11px;transition:border-color .2s}@media(min-width:1024px){.ble-chip{gap:7px;padding:8px 14px;font-size:13px}}.db-dual-grid{display:grid!important;grid-template-columns:1fr!important}@media(min-width:900px){.db-dual-grid{grid-template-columns:1fr 1fr!important;padding:0 22px 14px!important}}
 .ble-chip:hover{border-color:rgba(167,139,250,.3)}
 .open-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:3px;background:rgba(255,170,0,.08);color:var(--warn);font-size:12px;border:1px solid rgba(255,170,0,.15)}
 
@@ -719,8 +719,8 @@ function DashboardPanel({state,alerts}){
             : <table className="db-table" style={{width:"100%"}}>
                 <thead>
                   <tr style={{borderBottom:`1px solid rgba(0,229,160,.08)`}}>
-                    {["Callsign","Hex ID","Altitude","Speed","Heading","Squawk","Distance","Status"].map(h=>(
-                      <td key={h} style={{padding:"8px 18px",fontSize:11,letterSpacing:1,color:"#7aaabb",fontWeight:600,textTransform:"uppercase",padding:"10px 18px"}}>{h}</td>
+                    {["Callsign","Hex ID","Altitude","Speed","Heading","Squawk","Distance","Status"].map((h,hi)=>(
+                      <td key={h} className={hi>=4&&hi<=6?"db-hide-mobile":""} style={{padding:"8px 10px",fontSize:11,letterSpacing:1,color:"#7aaabb",fontWeight:600,textTransform:"uppercase"}}>{h}</td>
                     ))}
                   </tr>
                 </thead>
@@ -731,9 +731,9 @@ function DashboardPanel({state,alerts}){
                       <td style={{color:T.dim,fontSize:11}}>{f.id||"—"}</td>
                       <td>{f.alt?`${f.alt.toLocaleString()} ft`:"—"}</td>
                       <td>{f.spd?`${f.spd} kt`:"—"}</td>
-                      <td>{f.hdg!=null?`${f.hdg}°`:"—"}</td>
-                      <td style={{color:f.squawk>=7500&&f.squawk<=7777?T.danger:T.dim}}>{f.squawk||"—"}</td>
-                      <td>{f.dist?`${f.dist.toFixed(1)} nm`:"—"}</td>
+                      <td className="db-hide-mobile">{f.hdg!=null?`${f.hdg}°`:"—"}</td>
+                      <td className="db-hide-mobile" style={{color:f.squawk>=7500&&f.squawk<=7777?T.danger:T.dim}}>{f.squawk||"—"}</td>
+                      <td className="db-hide-mobile">{f.dist?`${f.dist.toFixed(1)} nm`:"—"}</td>
                       <td>
                         <span style={{fontSize:9,padding:"2px 8px",borderRadius:3,
                           background:f.callsign?"rgba(0,229,160,.08)":"rgba(255,170,0,.1)",
@@ -750,7 +750,7 @@ function DashboardPanel({state,alerts}){
       </div>
 
       {/* ══ WIFI CHANNELS + nRF24 ══ */}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:"0 20px 10px"}}>
+      <div className="db-dual-grid">
         <div className="db-section-box">
           <div className="db-section-hdr">
             <Ico n="wifi" style={{fontSize:14,color:T.acc}}/>
@@ -884,7 +884,7 @@ function DashboardPanel({state,alerts}){
 
       {/* ══ 433MHz + LoRa ══ */}
       {(rf433.length>0||lora.length>0)&&(
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,padding:"0 20px 20px"}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr",gap:8,padding:"0 10px 16px"}} className="db-dual-grid">
           {rf433.length>0&&(
             <div className="db-section-box">
               <div className="db-section-hdr">

@@ -1,6 +1,37 @@
 {
   "adsb": {
-    "data": [],
+    "data": [
+      {
+        "id": "06a13c",
+        "callsign": "06a13c",
+        "alt": 33000,
+        "spd": 523.5,
+        "hdg": 94.27,
+        "lat": 23.977521,
+        "lon": 72.295584,
+        "dist": 109.9,
+        "rssi": -26,
+        "squawk": 0,
+        "messages": 27,
+        "seen": 18.1,
+        "ts": 1779127070539
+      },
+      {
+        "id": "80187b",
+        "callsign": "IGO45W",
+        "alt": 37000,
+        "spd": 494.6,
+        "hdg": 65.77,
+        "lat": 24.21289,
+        "lon": 72.911181,
+        "dist": 136.8,
+        "rssi": -24,
+        "squawk": 3333,
+        "messages": 2240,
+        "seen": 0,
+        "ts": 1779127070539
+      }
+    ],
     "live": true,
     "history": []
   },
@@ -8,103 +39,103 @@
     "data": [
       {
         "id": 0,
-        "ssid": "DIRECT-Fire",
-        "bssid": "b0:64:68:c4:c1:8f",
-        "ch": 11,
-        "rssi": -91,
+        "ssid": "Jio_Home_5G",
+        "bssid": "e0:0d:b1:a4:b7:d3",
+        "ch": 6,
+        "rssi": -178,
+        "enc": "WPA2",
+        "cli": 9,
+        "band": "5GHz"
+      },
+      {
+        "id": 1,
+        "ssid": "Corp_Office_5G",
+        "bssid": "59:7f:2f:32:8b:4a",
+        "ch": 36,
+        "rssi": -100,
         "enc": "WPA2",
         "cli": 0,
         "band": "5GHz"
       },
       {
-        "id": 1,
-        "ssid": "DIRECT-Fire",
-        "bssid": "e9:29:f8:70:65:00",
-        "ch": 40,
-        "rssi": -73,
-        "enc": "Open",
-        "cli": 2,
-        "band": "5GHz"
-      },
-      {
         "id": 2,
-        "ssid": "DD-WRT_Mesh",
-        "bssid": "30:97:cf:eb:38:92",
+        "ssid": "BSNL_Fiber_01",
+        "bssid": "1f:9a:35:85:5e:54",
         "ch": 1,
-        "rssi": -170,
+        "rssi": -97,
         "enc": "WPA2",
-        "cli": 6,
+        "cli": 1,
         "band": "5GHz"
       },
       {
         "id": 3,
-        "ssid": "Jio_Home_5G",
-        "bssid": "dc:3c:ec:36:13:73",
-        "ch": 6,
-        "rssi": -72,
+        "ssid": "BSNL_Fiber_01",
+        "bssid": "b7:34:31:b6:5b:b5",
+        "ch": 44,
+        "rssi": -106,
         "enc": "WPA2",
-        "cli": 4,
+        "cli": 9,
         "band": "2.4GHz"
       },
       {
         "id": 4,
-        "ssid": "Corp_Office_5G",
-        "bssid": "f4:61:69:b0:23:f0",
+        "ssid": "Reliance_JioFiber",
+        "bssid": "d8:2d:19:73:07:fa",
         "ch": 1,
-        "rssi": -115,
-        "enc": "WPA3",
-        "cli": 11,
-        "band": "2.4GHz"
+        "rssi": -100,
+        "enc": "Open",
+        "cli": 3,
+        "band": "5GHz"
       },
       {
         "id": 5,
-        "ssid": "TP-Link_3F2A",
-        "bssid": "f9:5e:70:c5:85:31",
-        "ch": 44,
-        "rssi": -89,
-        "enc": "WPA2",
-        "cli": 2,
+        "ssid": "Guest_Net",
+        "bssid": "ea:1b:a2:73:03:4a",
+        "ch": 40,
+        "rssi": -141,
+        "enc": "WPA3",
+        "cli": 8,
         "band": "5GHz"
       },
       {
         "id": 6,
-        "ssid": "AndroidAP_8B3F",
-        "bssid": "e0:95:21:87:11:79",
-        "ch": 1,
-        "rssi": -60,
-        "enc": "WPA3",
-        "cli": 5,
-        "band": "5GHz"
+        "ssid": "TP-Link_3F2A",
+        "bssid": "a4:58:13:80:83:f0",
+        "ch": 11,
+        "rssi": -114,
+        "enc": "WPA2",
+        "cli": 9,
+        "band": "2.4GHz"
       },
       {
         "id": 7,
-        "ssid": "DIRECT-Fire",
-        "bssid": "cb:af:55:10:54:29",
-        "ch": 40,
-        "rssi": -57,
+        "ssid": "DD-WRT_Mesh",
+        "bssid": "22:5a:ef:4a:7d:63",
+        "ch": 6,
+        "rssi": -111,
         "enc": "WPA2",
-        "cli": 9,
+        "cli": 11,
         "band": "2.4GHz"
       },
       {
         "id": 8,
-        "ssid": "Corp_Office_5G",
-        "bssid": "d5:77:c2:fe:a8:a8",
-        "ch": 149,
-        "rssi": -118,
-        "enc": "WPA2",
-        "cli": 3,
+        "ssid": "SBI_ATM_WiFi",
+        "bssid": "4a:43:21:21:54:44",
+        "ch": 1,
+        "rssi": -175,
+        "enc": "Open",
+        "cli": 4,
         "band": "2.4GHz"
       },
       {
         "id": 9,
-        "ssid": "Airtel_Xstream",
-        "bssid": "27:af:8d:05:dc:f0",
-        "ch": 40,
-        "rssi": -126,
-        "enc": "WPA2",
-        "cli": 9,
-        "band": "2.4GHz"
+        "ssid": "SBI_ATM_WiFi",
+        "bssid": "7e:0c:09:f0:3c:a2",
+        "ch": 6,
+        "rssi": -156,
+        "enc": "Open",
+        "cli": 5,
+        "band": "5GHz"
       }
     ],
     "live": false
@@ -113,75 +144,75 @@
     "data": [
       {
         "id": 0,
-        "name": "Fitbit Versa",
-        "mac": "10:f5:9f:a4:f6:63",
-        "rssi": -111,
-        "type": "Audio",
-        "seen": 1779120184278
+        "name": "Mi Band 7",
+        "mac": "e5:d3:84:2f:62:b8",
+        "rssi": -144,
+        "type": "Phone",
+        "seen": 1779126991542
       },
       {
         "id": 1,
-        "name": "Galaxy S23",
-        "mac": "af:00:e0:32:17:ba",
-        "rssi": -95,
-        "type": "Wearable",
-        "seen": 1779120260130
+        "name": "MacBook Air",
+        "mac": "4e:0e:3f:21:85:7a",
+        "rssi": -120,
+        "type": "IoT",
+        "seen": 1779126917681
       },
       {
         "id": 2,
-        "name": "Galaxy S23",
-        "mac": "d5:20:4b:18:5c:71",
-        "rssi": -85,
-        "type": "Audio",
-        "seen": 1779120077148
+        "name": "Fitbit Versa",
+        "mac": "70:51:9b:77:83:79",
+        "rssi": -125,
+        "type": "Phone",
+        "seen": 1779126950239
       },
       {
         "id": 3,
-        "name": "MacBook Air",
-        "mac": "5c:5a:fd:15:f6:04",
-        "rssi": -122,
-        "type": "Unknown",
-        "seen": 1779120353590
+        "name": "Galaxy S23",
+        "mac": "d3:e4:3b:c0:fa:29",
+        "rssi": -140,
+        "type": "Wearable",
+        "seen": 1779127025230
       },
       {
         "id": 4,
-        "name": "MacBook Air",
-        "mac": "95:ee:f8:25:33:a6",
-        "rssi": -74,
-        "type": "Unknown",
-        "seen": 1779120354864
+        "name": "Redmi Note 12",
+        "mac": "8c:d6:1c:d8:87:7a",
+        "rssi": -150,
+        "type": "Wearable",
+        "seen": 1779126833331
       },
       {
         "id": 5,
-        "name": "Unknown Device",
-        "mac": "84:b8:46:cd:ed:f2",
-        "rssi": -133,
+        "name": "Mi Band 7",
+        "mac": "f7:78:23:94:79:d3",
+        "rssi": -102,
         "type": "Wearable",
-        "seen": 1779120296729
+        "seen": 1779126926565
       },
       {
         "id": 6,
-        "name": "Fitbit Versa",
-        "mac": "fb:89:07:38:64:03",
-        "rssi": -102,
-        "type": "IoT",
-        "seen": 1779120199540
+        "name": "realme GT",
+        "mac": "35:f2:63:40:a8:c0",
+        "rssi": -131,
+        "type": "Wearable",
+        "seen": 1779126984878
       },
       {
         "id": 7,
-        "name": "Galaxy S23",
-        "mac": "7f:b1:13:33:c7:ca",
-        "rssi": -86,
-        "type": "IoT",
-        "seen": 1779120318146
+        "name": "Redmi Note 12",
+        "mac": "a1:90:28:a5:7a:83",
+        "rssi": -160,
+        "type": "Unknown",
+        "seen": 1779126956497
       },
       {
         "id": 8,
-        "name": "ESP32-BLE",
-        "mac": "4a:50:37:ea:ca:e3",
-        "rssi": -140,
-        "type": "Unknown",
-        "seen": 1779120262481
+        "name": "Mi Band 7",
+        "mac": "1f:c4:8f:4a:5a:ac",
+        "rssi": -152,
+        "type": "IoT",
+        "seen": 1779126943854
       }
     ],
     "live": false
@@ -189,324 +220,324 @@
   "rf433": {
     "data": [
       {
-        "id": "7aohcw0fxp5",
+        "id": "wubp2bq44b",
         "proto": "PT2262 Remote",
-        "freq": "432.98",
-        "data": "0x735A97",
-        "rssi": -69,
-        "ts": 1779120355009
-      },
-      {
-        "id": "4sjn0r2zh6x",
-        "proto": "Conrad RSL",
-        "freq": "433.03",
-        "data": "0x15B654",
-        "rssi": -63,
-        "ts": 1779120346608
-      },
-      {
-        "id": "aqwhcwzmaed",
-        "proto": "Kerui Alarm",
-        "freq": "432.97",
-        "data": "0xE48785",
-        "rssi": -53,
-        "ts": 1779120338207
-      },
-      {
-        "id": "lqlkfhg08qc",
-        "proto": "Oregon Scientific",
-        "freq": "432.97",
-        "data": "0x4C211B",
-        "rssi": -59,
-        "ts": 1779120324202
-      },
-      {
-        "id": "12b6k79i2y5c",
-        "proto": "Kerui Alarm",
-        "freq": "433.02",
-        "data": "0x52F62F",
-        "rssi": -74,
-        "ts": 1779120310174
-      },
-      {
-        "id": "c67vurgkwx",
-        "proto": "Elro AB440",
-        "freq": "432.96",
-        "data": "0x300045",
-        "rssi": -90,
-        "ts": 1779120301772
-      },
-      {
-        "id": "ylws4tjqqhg",
-        "proto": "Generic Temp Sensor",
-        "freq": "433.04",
-        "data": "0xE22E32",
-        "rssi": -65,
-        "ts": 1779120298971
-      },
-      {
-        "id": "33te1fpkj1b",
-        "proto": "Generic Temp Sensor",
         "freq": "433.09",
-        "data": "0x087AC2",
-        "rssi": -87,
-        "ts": 1779120293369
+        "data": "0x4B592F",
+        "rssi": -55,
+        "ts": 1779127066922
       },
       {
-        "id": "iwowib93jqd",
-        "proto": "Generic Temp Sensor",
-        "freq": "433.00",
-        "data": "0x64FB58",
-        "rssi": -82,
-        "ts": 1779120290569
-      },
-      {
-        "id": "e723693y5vb",
-        "proto": "LaCrosse TX",
-        "freq": "432.97",
-        "data": "0x31F6F4",
-        "rssi": -75,
-        "ts": 1779120279364
-      },
-      {
-        "id": "cvt5su1dfdp",
-        "proto": "Holman Industries",
-        "freq": "432.92",
-        "data": "0x3C7873",
-        "rssi": -69,
-        "ts": 1779120276563
-      },
-      {
-        "id": "czb88p7vuxa",
-        "proto": "FS1000A Module",
-        "freq": "433.02",
-        "data": "0x9B92C6",
-        "rssi": -68,
-        "ts": 1779120254158
-      },
-      {
-        "id": "krkktk37sn",
+        "id": "xoxwpjrmwlj",
         "proto": "Oregon Scientific",
-        "freq": "432.95",
-        "data": "0x6B1D9A",
-        "rssi": -82,
-        "ts": 1779120242956
-      },
-      {
-        "id": "gyh1qr3b6d",
-        "proto": "Kerui Alarm",
-        "freq": "433.07",
-        "data": "0x2A3204",
-        "rssi": -59,
-        "ts": 1779120237354
-      },
-      {
-        "id": "t2yniw95h",
-        "proto": "Holman Industries",
-        "freq": "433.03",
-        "data": "0x1316C4",
-        "rssi": -82,
-        "ts": 1779120220549
-      },
-      {
-        "id": "i71iu4kb628",
-        "proto": "Elro AB440",
-        "freq": "432.92",
-        "data": "0xB2FED4",
-        "rssi": -76,
-        "ts": 1779120212145
-      },
-      {
-        "id": "2nmms5epagg",
-        "proto": "Holman Industries",
-        "freq": "433.01",
-        "data": "0x73A697",
-        "rssi": -67,
-        "ts": 1779120200944
-      },
-      {
-        "id": "x6dyqck9adh",
-        "proto": "Holman Industries",
-        "freq": "433.07",
-        "data": "0x07762A",
-        "rssi": -44,
-        "ts": 1779120195343
-      },
-      {
-        "id": "n34iidcevhn",
-        "proto": "Conrad RSL",
-        "freq": "433.05",
-        "data": "0xBC448E",
-        "rssi": -43,
-        "ts": 1779120189743
-      },
-      {
-        "id": "e48g036sdyn",
-        "proto": "Kerui Alarm",
-        "freq": "433.03",
-        "data": "0x3CC98C",
+        "freq": "433.02",
+        "data": "0x7FBEB3",
         "rssi": -70,
-        "ts": 1779120167337
+        "ts": 1779127064122
       },
       {
-        "id": "7e0imdu3vsb",
+        "id": "4v1de6sutbm",
+        "proto": "Generic Temp Sensor",
+        "freq": "433.06",
+        "data": "0x10FC42",
+        "rssi": -87,
+        "ts": 1779127052920
+      },
+      {
+        "id": "5qn8dq1h2wt",
+        "proto": "PT2262 Remote",
+        "freq": "432.96",
+        "data": "0xC572BE",
+        "rssi": -63,
+        "ts": 1779127047318
+      },
+      {
+        "id": "6sf429r64qd",
         "proto": "Nexus/WeatherStation",
         "freq": "432.96",
-        "data": "0x745ECD",
-        "rssi": -47,
-        "ts": 1779120161738
+        "data": "0xA85FAD",
+        "rssi": -83,
+        "ts": 1779127044517
       },
       {
-        "id": "j1yym58bey",
-        "proto": "Conrad RSL",
-        "freq": "432.94",
-        "data": "0x5F0DDF",
-        "rssi": -60,
-        "ts": 1779120153334
-      },
-      {
-        "id": "69wcrk8d3du",
-        "proto": "Nexus/WeatherStation",
-        "freq": "433.03",
-        "data": "0x5A3581",
-        "rssi": -80,
-        "ts": 1779120142132
-      },
-      {
-        "id": "2yv0qdqh6ca",
-        "proto": "Conrad RSL",
-        "freq": "433.01",
-        "data": "0x49EF6E",
-        "rssi": -59,
-        "ts": 1779120130930
-      },
-      {
-        "id": "4jr0gu4lagv",
-        "proto": "Nexus/WeatherStation",
-        "freq": "433.10",
-        "data": "0x698346",
-        "rssi": -46,
-        "ts": 1779120125327
-      },
-      {
-        "id": "qr9yr9c0sx",
-        "proto": "Oregon Scientific",
-        "freq": "432.93",
-        "data": "0xB66724",
-        "rssi": -41,
-        "ts": 1779120116927
-      },
-      {
-        "id": "b7ebdbvqn6",
-        "proto": "PT2262 Remote",
-        "freq": "432.90",
-        "data": "0x1B2126",
-        "rssi": -82,
-        "ts": 1779120114127
-      },
-      {
-        "id": "pk08wdc9gai",
-        "proto": "LaCrosse TX",
-        "freq": "433.10",
-        "data": "0xB9E031",
-        "rssi": -46,
-        "ts": 1779120099750
-      },
-      {
-        "id": "yzodyfnwlrk",
-        "proto": "Generic Temp Sensor",
-        "freq": "433.09",
-        "data": "0x61E812",
-        "rssi": -53,
-        "ts": 1779120085741
-      },
-      {
-        "id": "el5jseu4bpn",
-        "proto": "Elro AB440",
-        "freq": "433.01",
-        "data": "0xC40C25",
-        "rssi": -63,
-        "ts": 1779120071738
-      },
-      {
-        "id": "yup9chjywjs",
-        "proto": "Elro AB440",
-        "freq": "433.05",
-        "data": "0xD8D5A0",
-        "rssi": -50,
-        "ts": 1779120057735
-      },
-      {
-        "id": "d12gw2j8sb6",
-        "proto": "Generic Temp Sensor",
-        "freq": "433.00",
-        "data": "0x938117",
-        "rssi": -56,
-        "ts": 1779120052134
-      },
-      {
-        "id": "wt7pc9f0kdc",
-        "proto": "Kerui Alarm",
-        "freq": "433.01",
-        "data": "0x60EB49",
-        "rssi": -62,
-        "ts": 1779120046532
-      },
-      {
-        "id": "3zttmone27f",
-        "proto": "Elro AB440",
-        "freq": "432.99",
-        "data": "0x6B7B06",
-        "rssi": -65,
-        "ts": 1779120040929
-      },
-      {
-        "id": "nxvust6fcl",
+        "id": "njutpnvd2t",
         "proto": "Holman Industries",
-        "freq": "432.93",
-        "data": "0x3B2E63",
-        "rssi": -79,
-        "ts": 1779120032528
+        "freq": "433.06",
+        "data": "0x80E5D4",
+        "rssi": -55,
+        "ts": 1779127038917
       },
       {
-        "id": "3jcv2bejm02",
+        "id": "8jxi3dimwap",
+        "proto": "Nexus/WeatherStation",
+        "freq": "432.95",
+        "data": "0x3D2AF4",
+        "rssi": -57,
+        "ts": 1779127033315
+      },
+      {
+        "id": "1fibdvjpcr3",
         "proto": "LaCrosse TX",
         "freq": "432.94",
-        "data": "0xAD3996",
-        "rssi": -79,
-        "ts": 1779120026926
+        "data": "0x274445",
+        "rssi": -46,
+        "ts": 1779127030513
       },
       {
-        "id": "8wtmtxeg12e",
+        "id": "zpu3oebl09",
+        "proto": "Oregon Scientific",
+        "freq": "432.91",
+        "data": "0xD18324",
+        "rssi": -78,
+        "ts": 1779127019310
+      },
+      {
+        "id": "m8ep5rcpamj",
+        "proto": "Oregon Scientific",
+        "freq": "433.00",
+        "data": "0x72B911",
+        "rssi": -46,
+        "ts": 1779127013708
+      },
+      {
+        "id": "qx8im21i1fr",
         "proto": "Elro AB440",
         "freq": "433.02",
-        "data": "0x543752",
-        "rssi": -41,
-        "ts": 1779120021324
+        "data": "0x893BC4",
+        "rssi": -56,
+        "ts": 1779127010908
       },
       {
-        "id": "cd1gcc4l4dg",
-        "proto": "PT2262 Remote",
+        "id": "1bc9lh3wpaz",
+        "proto": "Holman Industries",
+        "freq": "432.99",
+        "data": "0x0FCAC3",
+        "rssi": -54,
+        "ts": 1779126996903
+      },
+      {
+        "id": "21rwvlao7ra",
+        "proto": "Kerui Alarm",
         "freq": "432.96",
-        "data": "0xD5B11C",
-        "rssi": -63,
-        "ts": 1779120018524
+        "data": "0xD7384B",
+        "rssi": -85,
+        "ts": 1779126994103
       },
       {
-        "id": "e22cim9maue",
+        "id": "i5anqn83ajr",
+        "proto": "Holman Industries",
+        "freq": "433.06",
+        "data": "0x57CDFC",
+        "rssi": -81,
+        "ts": 1779126988501
+      },
+      {
+        "id": "e4tqulrnclh",
+        "proto": "Oregon Scientific",
+        "freq": "432.97",
+        "data": "0xFFA466",
+        "rssi": -42,
+        "ts": 1779126982902
+      },
+      {
+        "id": "h6fuys810xw",
+        "proto": "Conrad RSL",
+        "freq": "432.99",
+        "data": "0x1213EB",
+        "rssi": -88,
+        "ts": 1779126977301
+      },
+      {
+        "id": "38g2mpssrix",
+        "proto": "PT2262 Remote",
+        "freq": "432.92",
+        "data": "0xAD6600",
+        "rssi": -41,
+        "ts": 1779126974501
+      },
+      {
+        "id": "qvpwp0xf97b",
+        "proto": "Elro AB440",
+        "freq": "432.92",
+        "data": "0x0C8818",
+        "rssi": -87,
+        "ts": 1779126968899
+      },
+      {
+        "id": "40p9lfgpahj",
+        "proto": "Generic Temp Sensor",
+        "freq": "432.97",
+        "data": "0x87D86A",
+        "rssi": -51,
+        "ts": 1779126966097
+      },
+      {
+        "id": "hpmmx0wqfq",
+        "proto": "Generic Temp Sensor",
+        "freq": "433.03",
+        "data": "0x415B60",
+        "rssi": -68,
+        "ts": 1779126952095
+      },
+      {
+        "id": "bjlyvbdykec",
+        "proto": "Oregon Scientific",
+        "freq": "433.01",
+        "data": "0xA2C0B9",
+        "rssi": -66,
+        "ts": 1779126949294
+      },
+      {
+        "id": "xdu3yvbunt",
+        "proto": "Holman Industries",
+        "freq": "433.09",
+        "data": "0x958FBE",
+        "rssi": -54,
+        "ts": 1779126935291
+      },
+      {
+        "id": "7ofkxlxk0fi",
+        "proto": "Oregon Scientific",
+        "freq": "433.10",
+        "data": "0xCB2F3D",
+        "rssi": -82,
+        "ts": 1779126912886
+      },
+      {
+        "id": "390x78488vt",
         "proto": "Nexus/WeatherStation",
         "freq": "433.08",
-        "data": "0xCF9E8A",
-        "rssi": -49,
-        "ts": 1779120010123
+        "data": "0xA1D1C6",
+        "rssi": -57,
+        "ts": 1779126904483
       },
       {
-        "id": "pdwnzjgn1xk",
+        "id": "4jytptdsxmb",
+        "proto": "Conrad RSL",
+        "freq": "433.08",
+        "data": "0x994FC1",
+        "rssi": -54,
+        "ts": 1779126896084
+      },
+      {
+        "id": "0hjs8rqdjoou",
         "proto": "PT2262 Remote",
-        "freq": "433.02",
-        "data": "0x617961",
+        "freq": "432.95",
+        "data": "0xE09E84",
+        "rssi": -83,
+        "ts": 1779126873678
+      },
+      {
+        "id": "aiprpuzru",
+        "proto": "FS1000A Module",
+        "freq": "433.06",
+        "data": "0xA9037D",
+        "rssi": -84,
+        "ts": 1779126854075
+      },
+      {
+        "id": "kcvfk2cydp",
+        "proto": "Nexus/WeatherStation",
+        "freq": "433.04",
+        "data": "0xB081DF",
+        "rssi": -58,
+        "ts": 1779126845674
+      },
+      {
+        "id": "qmashhzbh2",
+        "proto": "FS1000A Module",
+        "freq": "432.92",
+        "data": "0xA4D97F",
+        "rssi": -47,
+        "ts": 1779126834470
+      },
+      {
+        "id": "et6sg7b2hq8",
+        "proto": "FS1000A Module",
+        "freq": "433.03",
+        "data": "0x7FAF62",
+        "rssi": -79,
+        "ts": 1779126831671
+      },
+      {
+        "id": "4bdm83j1siw",
+        "proto": "Kerui Alarm",
+        "freq": "433.00",
+        "data": "0x1B8D3B",
+        "rssi": -61,
+        "ts": 1779126823268
+      },
+      {
+        "id": "hfdt0gmqkuo",
+        "proto": "Oregon Scientific",
+        "freq": "432.96",
+        "data": "0x8CAA55",
+        "rssi": -63,
+        "ts": 1779126820468
+      },
+      {
+        "id": "qf6gcz1owys",
+        "proto": "PT2262 Remote",
+        "freq": "433.00",
+        "data": "0x4366C3",
+        "rssi": -54,
+        "ts": 1779126812068
+      },
+      {
+        "id": "6vjay023qt",
+        "proto": "PT2262 Remote",
+        "freq": "433.06",
+        "data": "0x883CEC",
+        "rssi": -66,
+        "ts": 1779126798063
+      },
+      {
+        "id": "auen0ew7urs",
+        "proto": "Conrad RSL",
+        "freq": "433.06",
+        "data": "0xF68E98",
         "rssi": -55,
-        "ts": 1779120007323
+        "ts": 1779126795263
+      },
+      {
+        "id": "s47pty31ho",
+        "proto": "Oregon Scientific",
+        "freq": "433.02",
+        "data": "0x8360DB",
+        "rssi": -80,
+        "ts": 1779126789662
+      },
+      {
+        "id": "byaix7cmxj6",
+        "proto": "LaCrosse TX",
+        "freq": "433.05",
+        "data": "0x2F2102",
+        "rssi": -52,
+        "ts": 1779126786862
+      },
+      {
+        "id": "nefgg1fj0a",
+        "proto": "LaCrosse TX",
+        "freq": "432.94",
+        "data": "0xC63EAA",
+        "rssi": -90,
+        "ts": 1779126784061
+      },
+      {
+        "id": "o5ch83fpkfd",
+        "proto": "Elro AB440",
+        "freq": "433.10",
+        "data": "0x6C2057",
+        "rssi": -84,
+        "ts": 1779126778459
+      },
+      {
+        "id": "a0fg2d0hj3n",
+        "proto": "FS1000A Module",
+        "freq": "432.97",
+        "data": "0x86A230",
+        "rssi": -61,
+        "ts": 1779126767255
       }
     ],
     "live": false
@@ -515,47 +546,47 @@
     "data": [
       {
         "ch": 0,
-        "v": 7
+        "v": 11
       },
       {
         "ch": 1,
-        "v": 0
+        "v": 92
       },
       {
         "ch": 2,
-        "v": 8
+        "v": 64
       },
       {
         "ch": 3,
-        "v": 4
-      },
-      {
-        "ch": 4,
-        "v": 11
-      },
-      {
-        "ch": 5,
         "v": 1
       },
       {
+        "ch": 4,
+        "v": 0
+      },
+      {
+        "ch": 5,
+        "v": 10
+      },
+      {
         "ch": 6,
-        "v": 11
+        "v": 5
       },
       {
         "ch": 7,
-        "v": 3
+        "v": 6
       },
       {
         "ch": 8,
-        "v": 83
+        "v": 9
       },
       {
         "ch": 9,
-        "v": 7
+        "v": 75
       },
       {
         "ch": 10,
-        "v": 10
+        "v": 3
       },
       {
         "ch": 11,
@@ -563,63 +594,63 @@
       },
       {
         "ch": 12,
-        "v": 51
+        "v": 4
       },
       {
         "ch": 13,
-        "v": 6
+        "v": 3
       },
       {
         "ch": 14,
-        "v": 10
+        "v": 6
       },
       {
         "ch": 15,
-        "v": 8
+        "v": 60
       },
       {
         "ch": 16,
-        "v": 0
+        "v": 6
       },
       {
         "ch": 17,
-        "v": 6
+        "v": 9
       },
       {
         "ch": 18,
-        "v": 2
+        "v": 9
       },
       {
         "ch": 19,
-        "v": 9
+        "v": 10
       },
       {
         "ch": 20,
-        "v": 11
+        "v": 1
       },
       {
         "ch": 21,
-        "v": 2
+        "v": 1
       },
       {
         "ch": 22,
-        "v": 6
+        "v": 20
       },
       {
         "ch": 23,
-        "v": 9
+        "v": 8
       },
       {
         "ch": 24,
-        "v": 6
-      },
-      {
-        "ch": 25,
         "v": 2
       },
       {
+        "ch": 25,
+        "v": 6
+      },
+      {
         "ch": 26,
-        "v": 10
+        "v": 2
       },
       {
         "ch": 27,
@@ -627,7 +658,7 @@
       },
       {
         "ch": 28,
-        "v": 43
+        "v": 8
       },
       {
         "ch": 29,
@@ -635,47 +666,47 @@
       },
       {
         "ch": 30,
-        "v": 1
-      },
-      {
-        "ch": 31,
-        "v": 1
-      },
-      {
-        "ch": 32,
-        "v": 2
-      },
-      {
-        "ch": 33,
-        "v": 81
-      },
-      {
-        "ch": 34,
-        "v": 5
-      },
-      {
-        "ch": 35,
-        "v": 9
-      },
-      {
-        "ch": 36,
-        "v": 1
-      },
-      {
-        "ch": 37,
-        "v": 6
-      },
-      {
-        "ch": 38,
         "v": 8
       },
       {
-        "ch": 39,
+        "ch": 31,
         "v": 2
       },
       {
+        "ch": 32,
+        "v": 5
+      },
+      {
+        "ch": 33,
+        "v": 7
+      },
+      {
+        "ch": 34,
+        "v": 9
+      },
+      {
+        "ch": 35,
+        "v": 10
+      },
+      {
+        "ch": 36,
+        "v": 6
+      },
+      {
+        "ch": 37,
+        "v": 7
+      },
+      {
+        "ch": 38,
+        "v": 3
+      },
+      {
+        "ch": 39,
+        "v": 8
+      },
+      {
         "ch": 40,
-        "v": 60
+        "v": 4
       },
       {
         "ch": 41,
@@ -687,75 +718,75 @@
       },
       {
         "ch": 43,
-        "v": 11
+        "v": 2
       },
       {
         "ch": 44,
-        "v": 7
+        "v": 10
       },
       {
         "ch": 45,
-        "v": 3
+        "v": 2
       },
       {
         "ch": 46,
-        "v": 4
+        "v": 3
       },
       {
         "ch": 47,
-        "v": 4
+        "v": 2
       },
       {
         "ch": 48,
-        "v": 9
+        "v": 8
       },
       {
         "ch": 49,
-        "v": 9
+        "v": 10
       },
       {
         "ch": 50,
-        "v": 2
+        "v": 3
       },
       {
         "ch": 51,
-        "v": 5
+        "v": 78
       },
       {
         "ch": 52,
-        "v": 0
+        "v": 8
       },
       {
         "ch": 53,
-        "v": 9
+        "v": 76
       },
       {
         "ch": 54,
-        "v": 2
+        "v": 5
       },
       {
         "ch": 55,
-        "v": 9
+        "v": 2
       },
       {
         "ch": 56,
-        "v": 3
+        "v": 7
       },
       {
         "ch": 57,
-        "v": 3
+        "v": 0
       },
       {
         "ch": 58,
-        "v": 53
+        "v": 0
       },
       {
         "ch": 59,
-        "v": 4
+        "v": 11
       },
       {
         "ch": 60,
-        "v": 10
+        "v": 6
       },
       {
         "ch": 61,
@@ -767,99 +798,99 @@
       },
       {
         "ch": 63,
-        "v": 6
+        "v": 0
       },
       {
         "ch": 64,
-        "v": 7
+        "v": 2
       },
       {
         "ch": 65,
-        "v": 11
+        "v": 99
       },
       {
         "ch": 66,
-        "v": 2
+        "v": 6
       },
       {
         "ch": 67,
-        "v": 6
+        "v": 9
       },
       {
         "ch": 68,
-        "v": 4
-      },
-      {
-        "ch": 69,
-        "v": 9
-      },
-      {
-        "ch": 70,
-        "v": 2
-      },
-      {
-        "ch": 71,
-        "v": 10
-      },
-      {
-        "ch": 72,
-        "v": 7
-      },
-      {
-        "ch": 73,
-        "v": 59
-      },
-      {
-        "ch": 74,
-        "v": 7
-      },
-      {
-        "ch": 75,
-        "v": 71
-      },
-      {
-        "ch": 76,
-        "v": 90
-      },
-      {
-        "ch": 77,
-        "v": 3
-      },
-      {
-        "ch": 78,
-        "v": 2
-      },
-      {
-        "ch": 79,
-        "v": 87
-      },
-      {
-        "ch": 80,
-        "v": 3
-      },
-      {
-        "ch": 81,
-        "v": 9
-      },
-      {
-        "ch": 82,
-        "v": 7
-      },
-      {
-        "ch": 83,
-        "v": 9
-      },
-      {
-        "ch": 84,
-        "v": 2
-      },
-      {
-        "ch": 85,
         "v": 6
       },
       {
+        "ch": 69,
+        "v": 10
+      },
+      {
+        "ch": 70,
+        "v": 8
+      },
+      {
+        "ch": 71,
+        "v": 3
+      },
+      {
+        "ch": 72,
+        "v": 11
+      },
+      {
+        "ch": 73,
+        "v": 1
+      },
+      {
+        "ch": 74,
+        "v": 3
+      },
+      {
+        "ch": 75,
+        "v": 6
+      },
+      {
+        "ch": 76,
+        "v": 3
+      },
+      {
+        "ch": 77,
+        "v": 8
+      },
+      {
+        "ch": 78,
+        "v": 11
+      },
+      {
+        "ch": 79,
+        "v": 10
+      },
+      {
+        "ch": 80,
+        "v": 10
+      },
+      {
+        "ch": 81,
+        "v": 5
+      },
+      {
+        "ch": 82,
+        "v": 5
+      },
+      {
+        "ch": 83,
+        "v": 3
+      },
+      {
+        "ch": 84,
+        "v": 1
+      },
+      {
+        "ch": 85,
+        "v": 3
+      },
+      {
         "ch": 86,
-        "v": 96
+        "v": 27
       },
       {
         "ch": 87,
@@ -867,31 +898,31 @@
       },
       {
         "ch": 88,
-        "v": 2
+        "v": 21
       },
       {
         "ch": 89,
-        "v": 0
+        "v": 7
       },
       {
         "ch": 90,
-        "v": 1
+        "v": 3
       },
       {
         "ch": 91,
-        "v": 3
+        "v": 5
       },
       {
         "ch": 92,
-        "v": 4
+        "v": 5
       },
       {
         "ch": 93,
-        "v": 3
+        "v": 2
       },
       {
         "ch": 94,
-        "v": 2
+        "v": 7
       },
       {
         "ch": 95,
@@ -899,39 +930,39 @@
       },
       {
         "ch": 96,
-        "v": 38
+        "v": 3
       },
       {
         "ch": 97,
-        "v": 1
+        "v": 94
       },
       {
         "ch": 98,
-        "v": 9
+        "v": 1
       },
       {
         "ch": 99,
-        "v": 7
-      },
-      {
-        "ch": 100,
         "v": 2
       },
       {
+        "ch": 100,
+        "v": 7
+      },
+      {
         "ch": 101,
-        "v": 62
+        "v": 10
       },
       {
         "ch": 102,
-        "v": 7
+        "v": 3
       },
       {
         "ch": 103,
-        "v": 0
+        "v": 9
       },
       {
         "ch": 104,
-        "v": 7
+        "v": 10
       },
       {
         "ch": 105,
@@ -939,51 +970,51 @@
       },
       {
         "ch": 106,
-        "v": 1
+        "v": 4
       },
       {
         "ch": 107,
-        "v": 6
+        "v": 2
       },
       {
         "ch": 108,
-        "v": 81
+        "v": 11
       },
       {
         "ch": 109,
-        "v": 7
+        "v": 9
       },
       {
         "ch": 110,
-        "v": 1
+        "v": 0
       },
       {
         "ch": 111,
-        "v": 8
+        "v": 7
       },
       {
         "ch": 112,
-        "v": 5
+        "v": 9
       },
       {
         "ch": 113,
-        "v": 7
+        "v": 38
       },
       {
         "ch": 114,
-        "v": 4
+        "v": 7
       },
       {
         "ch": 115,
-        "v": 7
+        "v": 1
       },
       {
         "ch": 116,
-        "v": 4
+        "v": 7
       },
       {
         "ch": 117,
-        "v": 7
+        "v": 11
       },
       {
         "ch": 118,
@@ -995,27 +1026,27 @@
       },
       {
         "ch": 120,
-        "v": 2
+        "v": 8
       },
       {
         "ch": 121,
-        "v": 5
-      },
-      {
-        "ch": 122,
-        "v": 7
-      },
-      {
-        "ch": 123,
         "v": 3
       },
       {
+        "ch": 122,
+        "v": 1
+      },
+      {
+        "ch": 123,
+        "v": 6
+      },
+      {
         "ch": 124,
-        "v": 59
+        "v": 6
       },
       {
         "ch": 125,
-        "v": 1
+        "v": 4
       }
     ],
     "live": false
@@ -1031,13 +1062,44 @@
   "pwnagotchi": {
     "mood": "excited",
     "epoch": 179,
-    "captures": 11604,
+    "captures": 11955,
     "live": false
   },
   "mqtt": {
     "live": false
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "id": "bhpkbpyzxpl",
+      "msg": "High speed: 06a13c at 523.5kt",
+      "sev": "info",
+      "ts": 1779127038523
+    },
+    {
+      "id": "ujmce6rb5w",
+      "msg": "Flight detected: 06a13c",
+      "sev": "info",
+      "ts": 1779127038523
+    },
+    {
+      "id": "ulcgfenyirg",
+      "msg": "Flight detected: 4bb14d",
+      "sev": "info",
+      "ts": 1779126868451
+    },
+    {
+      "id": "wkgp55jwk6",
+      "msg": "Flight detected: 80187b",
+      "sev": "info",
+      "ts": 1779126794419
+    },
+    {
+      "id": "o6joj0i0948",
+      "msg": "Flight detected: AIC2283",
+      "sev": "info",
+      "ts": 1779126734392
+    }
+  ],
   "config": {
     "rf433Mode": "disabled"
   },
@@ -1047,2026 +1109,2062 @@
   },
   "eventLog": [
     {
-      "seq": 18083,
-      "ts": 1779120137270,
-      "cat": "system",
-      "sub": "adsb_offline",
-      "sev": "warn"
+      "seq": 18709,
+      "ts": 1779127038523,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "06a13c",
+      "spd": 523.5,
+      "alt": 0
     },
     {
-      "seq": 18082,
-      "ts": 1779119852553,
+      "seq": 18708,
+      "ts": 1779127038522,
       "cat": "adsb",
       "sub": "new_flight",
       "sev": "info",
-      "callsign": "06a0e8",
+      "callsign": "06a13c",
       "alt": 0,
+      "spd": 523.5,
+      "hdg": 94.27,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18707,
+      "ts": 1779126868451,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "4bb14d",
+      "alt": 39000,
       "spd": 0,
       "hdg": 0,
       "dist": 0,
       "squawk": 0
     },
     {
-      "seq": 18081,
-      "ts": 1779119842549,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18080,
-      "ts": 1779119840549,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18079,
-      "ts": 1779119838548,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18078,
-      "ts": 1779119836548,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18077,
-      "ts": 1779119834546,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18076,
-      "ts": 1779119832546,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18075,
-      "ts": 1779119830544,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18074,
-      "ts": 1779119828544,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18073,
-      "ts": 1779119826542,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18072,
-      "ts": 1779119824541,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18071,
-      "ts": 1779119822540,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18070,
-      "ts": 1779119820540,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18069,
-      "ts": 1779119818539,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18068,
-      "ts": 1779119816539,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18067,
-      "ts": 1779119814538,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18066,
-      "ts": 1779119812536,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18065,
-      "ts": 1779119810537,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18064,
-      "ts": 1779119808535,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18063,
-      "ts": 1779119806533,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18062,
-      "ts": 1779119804532,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18061,
-      "ts": 1779119802539,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18060,
-      "ts": 1779119800530,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18059,
-      "ts": 1779119798529,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18058,
-      "ts": 1779119796528,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18057,
-      "ts": 1779119794528,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18056,
-      "ts": 1779119792529,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18055,
-      "ts": 1779119790526,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18054,
-      "ts": 1779119788525,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18053,
-      "ts": 1779119786525,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "OMA816",
-      "spd": 468.8,
-      "alt": 0
-    },
-    {
-      "seq": 18052,
-      "ts": 1779119780522,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18051,
-      "ts": 1779119778521,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18050,
-      "ts": 1779119776521,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18049,
-      "ts": 1779119774520,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18048,
-      "ts": 1779119772520,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18047,
-      "ts": 1779119770519,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18046,
-      "ts": 1779119768515,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18045,
-      "ts": 1779119766515,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18044,
-      "ts": 1779119764515,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18043,
-      "ts": 1779119762514,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18042,
-      "ts": 1779119760512,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18041,
-      "ts": 1779119758512,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18040,
-      "ts": 1779119756511,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18039,
-      "ts": 1779119754510,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18038,
-      "ts": 1779119752510,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18037,
-      "ts": 1779119750510,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18036,
-      "ts": 1779119748508,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18035,
-      "ts": 1779119746508,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18034,
-      "ts": 1779119744508,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18033,
-      "ts": 1779119742508,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18032,
-      "ts": 1779119740506,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18031,
-      "ts": 1779119738505,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18030,
-      "ts": 1779119736505,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18029,
-      "ts": 1779119734503,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18028,
-      "ts": 1779119732502,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18027,
-      "ts": 1779119730502,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18026,
-      "ts": 1779119728501,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18025,
-      "ts": 1779119726501,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18024,
-      "ts": 1779119724501,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18023,
-      "ts": 1779119722498,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4350,
-      "dist": 12.9
-    },
-    {
-      "seq": 18022,
-      "ts": 1779119720497,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4250,
-      "dist": 12.6
-    },
-    {
-      "seq": 18021,
-      "ts": 1779119718496,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 4250,
-      "dist": 12.6
-    },
-    {
-      "seq": 18020,
-      "ts": 1779119716494,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3950,
-      "dist": 11.3
-    },
-    {
-      "seq": 18019,
-      "ts": 1779119714495,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3950,
-      "dist": 11.3
-    },
-    {
-      "seq": 18018,
-      "ts": 1779119712493,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3950,
-      "dist": 11.3
-    },
-    {
-      "seq": 18017,
-      "ts": 1779119710493,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3950,
-      "dist": 11.3
-    },
-    {
-      "seq": 18016,
-      "ts": 1779119708494,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3950,
-      "dist": 11.3
-    },
-    {
-      "seq": 18015,
-      "ts": 1779119704425,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3875,
-      "dist": 11
-    },
-    {
-      "seq": 18014,
-      "ts": 1779119702424,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3825,
-      "dist": 10.7
-    },
-    {
-      "seq": 18013,
-      "ts": 1779119700425,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3800,
-      "dist": 10.6
-    },
-    {
-      "seq": 18012,
-      "ts": 1779119698423,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3750,
-      "dist": 10.3
-    },
-    {
-      "seq": 18011,
-      "ts": 1779119696421,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3700,
-      "dist": 10
-    },
-    {
-      "seq": 18010,
-      "ts": 1779119694421,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3700,
-      "dist": 9.9
-    },
-    {
-      "seq": 18009,
-      "ts": 1779119692421,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3675,
-      "dist": 9.7
-    },
-    {
-      "seq": 18008,
-      "ts": 1779119690411,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3575,
-      "dist": 9.2
-    },
-    {
-      "seq": 18007,
-      "ts": 1779119688409,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3575,
-      "dist": 9.2
-    },
-    {
-      "seq": 18006,
-      "ts": 1779119686409,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3575,
-      "dist": 9.2
-    },
-    {
-      "seq": 18005,
-      "ts": 1779119684407,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3525,
-      "dist": 8.9
-    },
-    {
-      "seq": 18004,
-      "ts": 1779119682407,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3525,
-      "dist": 8.9
-    },
-    {
-      "seq": 18003,
-      "ts": 1779119680406,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3475,
-      "dist": 8.6
-    },
-    {
-      "seq": 18002,
-      "ts": 1779119678405,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3450,
-      "dist": 8.5
-    },
-    {
-      "seq": 18001,
-      "ts": 1779119676402,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3425,
-      "dist": 8.4
-    },
-    {
-      "seq": 18000,
-      "ts": 1779119674404,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3375,
-      "dist": 8.1
-    },
-    {
-      "seq": 17999,
-      "ts": 1779119672401,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3350,
-      "dist": 8
-    },
-    {
-      "seq": 17998,
-      "ts": 1779119670401,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3325,
-      "dist": 7.9
-    },
-    {
-      "seq": 17997,
-      "ts": 1779119668400,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3300,
-      "dist": 7.7
-    },
-    {
-      "seq": 17996,
-      "ts": 1779119666398,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3275,
-      "dist": 7.6
-    },
-    {
-      "seq": 17995,
-      "ts": 1779119664406,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3250,
-      "dist": 7.5
-    },
-    {
-      "seq": 17994,
-      "ts": 1779119662415,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3200,
-      "dist": 7.4
-    },
-    {
-      "seq": 17993,
-      "ts": 1779119660399,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3175,
-      "dist": 7.3
-    },
-    {
-      "seq": 17992,
-      "ts": 1779119658386,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3150,
-      "dist": 7.2
-    },
-    {
-      "seq": 17991,
-      "ts": 1779119656386,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3125,
-      "dist": 7.1
-    },
-    {
-      "seq": 17990,
-      "ts": 1779119654385,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3075,
-      "dist": 7
-    },
-    {
-      "seq": 17989,
-      "ts": 1779119652383,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 3025,
-      "dist": 6.9
-    },
-    {
-      "seq": 17988,
-      "ts": 1779119650383,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "70c105",
-      "spd": 467.8,
-      "alt": 0
-    },
-    {
-      "seq": 17987,
-      "ts": 1779119650382,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2950,
-      "dist": 6.8
-    },
-    {
-      "seq": 17986,
-      "ts": 1779119648382,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "70c105",
-      "spd": 467.8,
-      "alt": 0
-    },
-    {
-      "seq": 17985,
-      "ts": 1779119648382,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2900,
-      "dist": 6.7
-    },
-    {
-      "seq": 17984,
-      "ts": 1779119648381,
+      "seq": 18706,
+      "ts": 1779126794418,
       "cat": "adsb",
       "sub": "new_flight",
       "sev": "info",
-      "callsign": "70c105",
-      "alt": 0,
-      "spd": 467.8,
-      "hdg": 278.23,
-      "dist": 0,
-      "squawk": 0
-    },
-    {
-      "seq": 17983,
-      "ts": 1779119646381,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2800,
-      "dist": 6.6
-    },
-    {
-      "seq": 17982,
-      "ts": 1779119644381,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2750,
-      "dist": 6.6
-    },
-    {
-      "seq": 17981,
-      "ts": 1779119642380,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2700,
-      "dist": 6.5
-    },
-    {
-      "seq": 17980,
-      "ts": 1779119640379,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2625,
-      "dist": 6.4
-    },
-    {
-      "seq": 17979,
-      "ts": 1779119638378,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2600,
-      "dist": 6.4
-    },
-    {
-      "seq": 17978,
-      "ts": 1779119636378,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2575,
-      "dist": 6.3
-    },
-    {
-      "seq": 17977,
-      "ts": 1779119634377,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2550,
-      "dist": 6.2
-    },
-    {
-      "seq": 17976,
-      "ts": 1779119632377,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2475,
-      "dist": 6
-    },
-    {
-      "seq": 17975,
-      "ts": 1779119630375,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2475,
-      "dist": 6
-    },
-    {
-      "seq": 17974,
-      "ts": 1779119628375,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2475,
-      "dist": 6
-    },
-    {
-      "seq": 17973,
-      "ts": 1779119626377,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2425,
-      "dist": 5.7
-    },
-    {
-      "seq": 17972,
-      "ts": 1779119624374,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2375,
-      "dist": 5.6
-    },
-    {
-      "seq": 17971,
-      "ts": 1779119622373,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2300,
-      "dist": 5.3
-    },
-    {
-      "seq": 17970,
-      "ts": 1779119620371,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2300,
-      "dist": 5.3
-    },
-    {
-      "seq": 17969,
-      "ts": 1779119618370,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2300,
-      "dist": 5.2
-    },
-    {
-      "seq": 17968,
-      "ts": 1779119616371,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2250,
-      "dist": 5
-    },
-    {
-      "seq": 17967,
-      "ts": 1779119614369,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2200,
-      "dist": 4.9
-    },
-    {
-      "seq": 17966,
-      "ts": 1779119612369,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2175,
-      "dist": 4.7
-    },
-    {
-      "seq": 17965,
-      "ts": 1779119610367,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "ETD38P",
-      "alt": 2150,
-      "dist": 4.7
-    },
-    {
-      "seq": 17964,
-      "ts": 1779119608368,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "89643d",
-      "alt": 2125,
-      "dist": 4.6
-    },
-    {
-      "seq": 17963,
-      "ts": 1779119606366,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "89643d",
-      "alt": 2050,
-      "dist": 4.4
-    },
-    {
-      "seq": 17962,
-      "ts": 1779119604365,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "89643d",
-      "alt": 2025,
-      "dist": 4.3
-    },
-    {
-      "seq": 17961,
-      "ts": 1779119598363,
-      "cat": "adsb",
-      "sub": "new_flight",
-      "sev": "info",
-      "callsign": "89643d",
-      "alt": 0,
-      "spd": 200.8,
-      "hdg": 297.59,
-      "dist": 0,
-      "squawk": 0
-    },
-    {
-      "seq": 17960,
-      "ts": 1779119446306,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17959,
-      "ts": 1779119444303,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17958,
-      "ts": 1779119442302,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17957,
-      "ts": 1779119440301,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17956,
-      "ts": 1779119438301,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17955,
-      "ts": 1779119436301,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17954,
-      "ts": 1779119434299,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17953,
-      "ts": 1779119432299,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17952,
-      "ts": 1779119430298,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17951,
-      "ts": 1779119428297,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17950,
-      "ts": 1779119426297,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17949,
-      "ts": 1779119424294,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17948,
-      "ts": 1779119422294,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17947,
-      "ts": 1779119420294,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17946,
-      "ts": 1779119418293,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17945,
-      "ts": 1779119416291,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17944,
-      "ts": 1779119414291,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17943,
-      "ts": 1779119412291,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17942,
-      "ts": 1779119410290,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17941,
-      "ts": 1779119408289,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17940,
-      "ts": 1779119406288,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17939,
-      "ts": 1779119404286,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17938,
-      "ts": 1779119402287,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "AIC126",
-      "spd": 511.2,
-      "alt": 0
-    },
-    {
-      "seq": 17937,
-      "ts": 1779119364265,
-      "cat": "adsb",
-      "sub": "new_flight",
-      "sev": "info",
-      "callsign": "06a2b4",
-      "alt": 0,
+      "callsign": "80187b",
+      "alt": 37000,
       "spd": 0,
       "hdg": 0,
-      "dist": 0,
+      "dist": 107.4,
       "squawk": 0
     },
     {
-      "seq": 17936,
-      "ts": 1779119352260,
+      "seq": 18705,
+      "ts": 1779126734391,
       "cat": "adsb",
       "sub": "new_flight",
       "sev": "info",
-      "callsign": "896311",
+      "callsign": "AIC2283",
       "alt": 36000,
       "spd": 0,
       "hdg": 0,
-      "dist": 0,
+      "dist": 125.9,
       "squawk": 0
     },
     {
-      "seq": 17935,
-      "ts": 1779119338255,
-      "cat": "adsb",
-      "sub": "new_flight",
-      "sev": "info",
-      "callsign": "800462",
-      "alt": 37000,
-      "spd": 511.2,
-      "hdg": 65.99,
-      "dist": 0,
-      "squawk": 0
-    },
-    {
-      "seq": 17934,
-      "ts": 1779119192197,
+      "seq": 18704,
+      "ts": 1779126722391,
       "cat": "adsb",
       "sub": "high_speed",
       "sev": "info",
-      "callsign": "70605a",
-      "spd": 515.9,
+      "callsign": "a9aba2",
+      "spd": 502.4,
       "alt": 0
     },
     {
-      "seq": 17933,
-      "ts": 1779119192196,
+      "seq": 18703,
+      "ts": 1779126722388,
       "cat": "adsb",
       "sub": "new_flight",
       "sev": "info",
-      "callsign": "70605a",
+      "callsign": "a9aba2",
       "alt": 0,
-      "spd": 515.9,
-      "hdg": 85.11,
+      "spd": 502.4,
+      "hdg": 85.78,
       "dist": 0,
       "squawk": 0
     },
     {
-      "seq": 17932,
-      "ts": 1779119128171,
+      "seq": 18702,
+      "ts": 1779126660858,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "AIC2283",
+      "spd": 428,
+      "alt": 0
+    },
+    {
+      "seq": 18701,
+      "ts": 1779126658856,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "AIC2283",
+      "spd": 428,
+      "alt": 0
+    },
+    {
+      "seq": 18700,
+      "ts": 1779126398764,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "50035e",
+      "spd": 523.2,
+      "alt": 0
+    },
+    {
+      "seq": 18699,
+      "ts": 1779126398763,
       "cat": "adsb",
       "sub": "new_flight",
       "sev": "info",
-      "callsign": "70209a",
-      "alt": 40000,
-      "spd": 454.1,
-      "hdg": 261.39,
+      "callsign": "50035e",
+      "alt": 0,
+      "spd": 523.2,
+      "hdg": 63.43,
       "dist": 0,
       "squawk": 0
     },
     {
-      "seq": 17931,
-      "ts": 1779119104163,
+      "seq": 18698,
+      "ts": 1779126326733,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4925,
-      "dist": 13.3
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "801396",
+      "alt": 36000,
+      "spd": 426.2,
+      "hdg": 243.07,
+      "dist": 0,
+      "squawk": 0
     },
     {
-      "seq": 17930,
-      "ts": 1779119102162,
+      "seq": 18697,
+      "ts": 1779126078636,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4925,
-      "dist": 13.3
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "04015c",
+      "spd": 472,
+      "alt": 0
     },
     {
-      "seq": 17929,
-      "ts": 1779119100161,
+      "seq": 18696,
+      "ts": 1779126064631,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4925,
-      "dist": 13.3
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005b",
+      "spd": 505.7,
+      "alt": 0
     },
     {
-      "seq": 17928,
-      "ts": 1779119098160,
+      "seq": 18695,
+      "ts": 1779126062630,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4925,
-      "dist": 13.3
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005b",
+      "spd": 505.7,
+      "alt": 0
     },
     {
-      "seq": 17927,
-      "ts": 1779119096160,
+      "seq": 18694,
+      "ts": 1779126060629,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4925,
-      "dist": 13.3
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005b",
+      "spd": 505.7,
+      "alt": 0
     },
     {
-      "seq": 17926,
-      "ts": 1779119094158,
+      "seq": 18693,
+      "ts": 1779126058626,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005b",
+      "spd": 505.7,
+      "alt": 0
+    },
+    {
+      "seq": 18692,
+      "ts": 1779126056627,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005b",
+      "spd": 505.7,
+      "alt": 0
+    },
+    {
+      "seq": 18691,
+      "ts": 1779126056626,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "71005b",
+      "alt": 0,
+      "spd": 505.7,
+      "hdg": 85.24,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18690,
+      "ts": 1779126002608,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "04015c",
+      "alt": 34000,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 26.7,
+      "squawk": 0
+    },
+    {
+      "seq": 18689,
+      "ts": 1779125459445,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "801659",
+      "spd": 476.3,
+      "alt": 0
+    },
+    {
+      "seq": 18688,
+      "ts": 1779125457445,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "801659",
+      "spd": 476.3,
+      "alt": 0
+    },
+    {
+      "seq": 18687,
+      "ts": 1779125457445,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "801659",
+      "alt": 0,
+      "spd": 476.3,
+      "hdg": 243.7,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18686,
+      "ts": 1779125167329,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "3c66c3",
+      "alt": 41000,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18685,
+      "ts": 1779125115310,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
+      "callsign": "AIC6TL",
       "alt": 4900,
-      "dist": 13.2
+      "dist": 19.9
     },
     {
-      "seq": 17925,
-      "ts": 1779119092158,
+      "seq": 18684,
+      "ts": 1779125113309,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4900,
+      "dist": 19.9
     },
     {
-      "seq": 17924,
-      "ts": 1779119090157,
+      "seq": 18683,
+      "ts": 1779125111307,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4675,
+      "dist": 19.2
     },
     {
-      "seq": 17923,
-      "ts": 1779119088156,
+      "seq": 18682,
+      "ts": 1779125109306,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4675,
+      "dist": 19.2
     },
     {
-      "seq": 17922,
-      "ts": 1779119086158,
+      "seq": 18681,
+      "ts": 1779125107305,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4675,
+      "dist": 19.2
     },
     {
-      "seq": 17921,
-      "ts": 1779119084154,
+      "seq": 18680,
+      "ts": 1779125105304,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4675,
+      "dist": 19.2
     },
     {
-      "seq": 17920,
-      "ts": 1779119082153,
+      "seq": 18679,
+      "ts": 1779125103303,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4625,
+      "dist": 19
     },
     {
-      "seq": 17919,
-      "ts": 1779119080151,
+      "seq": 18678,
+      "ts": 1779125101303,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4550,
+      "dist": 18.9
     },
     {
-      "seq": 17918,
-      "ts": 1779119078150,
+      "seq": 18677,
+      "ts": 1779125099301,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4475,
+      "dist": 18.7
     },
     {
-      "seq": 17917,
-      "ts": 1779119076150,
+      "seq": 18676,
+      "ts": 1779125097299,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 4250,
-      "dist": 10.6
+      "callsign": "AIC6TL",
+      "alt": 4400,
+      "dist": 18.6
     },
     {
-      "seq": 17916,
-      "ts": 1779119074149,
+      "seq": 18675,
+      "ts": 1779125095300,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.1,
+      "alt": 0
+    },
+    {
+      "seq": 18674,
+      "ts": 1779125095300,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3875,
-      "dist": 9.2
+      "callsign": "AIC6TL",
+      "alt": 4325,
+      "dist": 18.3
     },
     {
-      "seq": 17915,
-      "ts": 1779119072146,
+      "seq": 18673,
+      "ts": 1779125093298,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18672,
+      "ts": 1779125093297,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3875,
-      "dist": 9.2
+      "callsign": "AIC6TL",
+      "alt": 4125,
+      "dist": 17.6
     },
     {
-      "seq": 17914,
-      "ts": 1779119070146,
+      "seq": 18671,
+      "ts": 1779125091297,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18670,
+      "ts": 1779125091297,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3875,
-      "dist": 9.2
+      "callsign": "AIC6TL",
+      "alt": 4125,
+      "dist": 17.6
     },
     {
-      "seq": 17913,
-      "ts": 1779119068144,
+      "seq": 18669,
+      "ts": 1779125089297,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18668,
+      "ts": 1779125089297,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3875,
-      "dist": 9.2
+      "callsign": "AIC6TL",
+      "alt": 4125,
+      "dist": 17.6
     },
     {
-      "seq": 17912,
-      "ts": 1779119066144,
+      "seq": 18667,
+      "ts": 1779125087297,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18666,
+      "ts": 1779125087297,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3875,
-      "dist": 9.2
+      "callsign": "AIC6TL",
+      "alt": 3950,
+      "dist": 16.9
     },
     {
-      "seq": 17911,
-      "ts": 1779119064144,
+      "seq": 18665,
+      "ts": 1779125085296,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18664,
+      "ts": 1779125085296,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3850,
-      "dist": 9
+      "callsign": "AIC6TL",
+      "alt": 3950,
+      "dist": 16.9
     },
     {
-      "seq": 17910,
-      "ts": 1779119062143,
+      "seq": 18663,
+      "ts": 1779125083295,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18662,
+      "ts": 1779125083295,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
+      "callsign": "AIC6TL",
+      "alt": 3950,
+      "dist": 16.9
+    },
+    {
+      "seq": 18661,
+      "ts": 1779125081294,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18660,
+      "ts": 1779125081294,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3925,
+      "dist": 16.9
+    },
+    {
+      "seq": 18659,
+      "ts": 1779125079294,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18658,
+      "ts": 1779125079294,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3775,
+      "dist": 16.2
+    },
+    {
+      "seq": 18657,
+      "ts": 1779125077293,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18656,
+      "ts": 1779125077293,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3775,
+      "dist": 16.2
+    },
+    {
+      "seq": 18655,
+      "ts": 1779125075292,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18654,
+      "ts": 1779125075292,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3650,
+      "dist": 15.7
+    },
+    {
+      "seq": 18653,
+      "ts": 1779125073292,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18652,
+      "ts": 1779125073292,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3650,
+      "dist": 15.7
+    },
+    {
+      "seq": 18651,
+      "ts": 1779125071292,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18650,
+      "ts": 1779125071292,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3600,
+      "dist": 15.6
+    },
+    {
+      "seq": 18649,
+      "ts": 1779125069291,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18648,
+      "ts": 1779125069290,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
       "alt": 3550,
+      "dist": 15.3
+    },
+    {
+      "seq": 18647,
+      "ts": 1779125067290,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18646,
+      "ts": 1779125067290,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3475,
+      "dist": 15.1
+    },
+    {
+      "seq": 18645,
+      "ts": 1779125065288,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18644,
+      "ts": 1779125065288,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18643,
+      "ts": 1779125063287,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18642,
+      "ts": 1779125063287,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18641,
+      "ts": 1779125061286,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 439.9,
+      "alt": 0
+    },
+    {
+      "seq": 18640,
+      "ts": 1779125061286,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18639,
+      "ts": 1779125059286,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18638,
+      "ts": 1779125057286,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18637,
+      "ts": 1779125055284,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3125,
+      "dist": 13.4
+    },
+    {
+      "seq": 18636,
+      "ts": 1779125053284,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3050,
+      "dist": 12.9
+    },
+    {
+      "seq": 18635,
+      "ts": 1779125051284,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 3050,
+      "dist": 12.9
+    },
+    {
+      "seq": 18634,
+      "ts": 1779125049282,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2975,
+      "dist": 12.6
+    },
+    {
+      "seq": 18633,
+      "ts": 1779125047281,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2925,
+      "dist": 12.3
+    },
+    {
+      "seq": 18632,
+      "ts": 1779125045281,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2875,
+      "dist": 12.1
+    },
+    {
+      "seq": 18631,
+      "ts": 1779125043280,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18630,
+      "ts": 1779125043280,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2850,
+      "dist": 11.9
+    },
+    {
+      "seq": 18629,
+      "ts": 1779125041279,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18628,
+      "ts": 1779125041279,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2800,
+      "dist": 11.7
+    },
+    {
+      "seq": 18627,
+      "ts": 1779125039279,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18626,
+      "ts": 1779125039279,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2725,
+      "dist": 11.3
+    },
+    {
+      "seq": 18625,
+      "ts": 1779125037278,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "801600",
+      "spd": 523.4,
+      "alt": 0
+    },
+    {
+      "seq": 18624,
+      "ts": 1779125037278,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18623,
+      "ts": 1779125037278,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2700,
+      "dist": 11.2
+    },
+    {
+      "seq": 18622,
+      "ts": 1779125037277,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "801600",
+      "alt": 0,
+      "spd": 523.4,
+      "hdg": 66.23,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18621,
+      "ts": 1779125035278,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18620,
+      "ts": 1779125035278,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2675,
+      "dist": 11
+    },
+    {
+      "seq": 18619,
+      "ts": 1779125033277,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18618,
+      "ts": 1779125033277,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2625,
+      "dist": 10.7
+    },
+    {
+      "seq": 18617,
+      "ts": 1779125031277,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18616,
+      "ts": 1779125031277,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2600,
+      "dist": 10.4
+    },
+    {
+      "seq": 18615,
+      "ts": 1779125029276,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18614,
+      "ts": 1779125029276,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2600,
+      "dist": 10.3
+    },
+    {
+      "seq": 18613,
+      "ts": 1779125027274,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18612,
+      "ts": 1779125027274,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2575,
+      "dist": 10.1
+    },
+    {
+      "seq": 18611,
+      "ts": 1779125025274,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18610,
+      "ts": 1779125025274,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2550,
+      "dist": 9.9
+    },
+    {
+      "seq": 18609,
+      "ts": 1779125023273,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18608,
+      "ts": 1779125023273,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2525,
+      "dist": 9.7
+    },
+    {
+      "seq": 18607,
+      "ts": 1779125021272,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18606,
+      "ts": 1779125021272,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2500,
+      "dist": 9.5
+    },
+    {
+      "seq": 18605,
+      "ts": 1779125019272,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18604,
+      "ts": 1779125019272,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2475,
+      "dist": 9.3
+    },
+    {
+      "seq": 18603,
+      "ts": 1779125017270,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18602,
+      "ts": 1779125017270,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2450,
+      "dist": 9.1
+    },
+    {
+      "seq": 18601,
+      "ts": 1779125015270,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18600,
+      "ts": 1779125015270,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2450,
+      "dist": 8.9
+    },
+    {
+      "seq": 18599,
+      "ts": 1779125013270,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18598,
+      "ts": 1779125013269,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2450,
+      "dist": 8.7
+    },
+    {
+      "seq": 18597,
+      "ts": 1779125011270,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18596,
+      "ts": 1779125011270,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2425,
+      "dist": 8.5
+    },
+    {
+      "seq": 18595,
+      "ts": 1779125009269,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18594,
+      "ts": 1779125009268,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2425,
+      "dist": 8.3
+    },
+    {
+      "seq": 18593,
+      "ts": 1779125007266,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18592,
+      "ts": 1779125007266,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2425,
       "dist": 8
     },
     {
-      "seq": 17909,
-      "ts": 1779119060141,
+      "seq": 18591,
+      "ts": 1779125005266,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3550,
-      "dist": 8
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
     },
     {
-      "seq": 17908,
-      "ts": 1779119058140,
+      "seq": 18590,
+      "ts": 1779125005265,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3550,
-      "dist": 8
-    },
-    {
-      "seq": 17907,
-      "ts": 1779119056140,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3525,
+      "callsign": "AIC6TL",
+      "alt": 2425,
       "dist": 7.9
     },
     {
-      "seq": 17906,
-      "ts": 1779119054139,
+      "seq": 18589,
+      "ts": 1779125003266,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18588,
+      "ts": 1779125003266,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3175,
+      "callsign": "AIC6TL",
+      "alt": 2425,
+      "dist": 7.8
+    },
+    {
+      "seq": 18587,
+      "ts": 1779125001265,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18586,
+      "ts": 1779125001264,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2375,
+      "dist": 7.5
+    },
+    {
+      "seq": 18585,
+      "ts": 1779124999263,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18584,
+      "ts": 1779124999263,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2375,
+      "dist": 7.4
+    },
+    {
+      "seq": 18583,
+      "ts": 1779124997263,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18582,
+      "ts": 1779124997263,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2350,
+      "dist": 7.3
+    },
+    {
+      "seq": 18581,
+      "ts": 1779124995263,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18580,
+      "ts": 1779124995262,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2325,
+      "dist": 7.1
+    },
+    {
+      "seq": 18579,
+      "ts": 1779124993262,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18578,
+      "ts": 1779124993262,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2300,
+      "dist": 7
+    },
+    {
+      "seq": 18577,
+      "ts": 1779124991262,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18576,
+      "ts": 1779124991262,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2300,
+      "dist": 6.8
+    },
+    {
+      "seq": 18575,
+      "ts": 1779124989261,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
+    },
+    {
+      "seq": 18574,
+      "ts": 1779124989261,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2275,
       "dist": 6.7
     },
     {
-      "seq": 17905,
-      "ts": 1779119052141,
+      "seq": 18573,
+      "ts": 1779124987259,
       "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3175,
-      "dist": 6.7
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80152f",
+      "spd": 438.5,
+      "alt": 0
     },
     {
-      "seq": 17904,
-      "ts": 1779119050138,
+      "seq": 18572,
+      "ts": 1779124987259,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3175,
-      "dist": 6.7
-    },
-    {
-      "seq": 17903,
-      "ts": 1779119048139,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3175,
-      "dist": 6.7
-    },
-    {
-      "seq": 17902,
-      "ts": 1779119046138,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3150,
+      "callsign": "AIC6TL",
+      "alt": 2250,
       "dist": 6.5
     },
     {
-      "seq": 17901,
-      "ts": 1779119044135,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3000,
-      "dist": 5.9
-    },
-    {
-      "seq": 17900,
-      "ts": 1779119042134,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 3000,
-      "dist": 5.9
-    },
-    {
-      "seq": 17899,
-      "ts": 1779119040134,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2750,
-      "dist": 4.7
-    },
-    {
-      "seq": 17898,
-      "ts": 1779119038133,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2750,
-      "dist": 4.7
-    },
-    {
-      "seq": 17897,
-      "ts": 1779119036133,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2750,
-      "dist": 4.7
-    },
-    {
-      "seq": 17896,
-      "ts": 1779119034132,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2750,
-      "dist": 4.7
-    },
-    {
-      "seq": 17895,
-      "ts": 1779119032131,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2700,
-      "dist": 4.5
-    },
-    {
-      "seq": 17894,
-      "ts": 1779119030130,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2625,
-      "dist": 3.8
-    },
-    {
-      "seq": 17893,
-      "ts": 1779119028130,
+      "seq": 18571,
+      "ts": 1779124985259,
       "cat": "adsb",
       "sub": "high_speed",
       "sev": "info",
-      "callsign": "QTR55J",
-      "spd": 520.8,
+      "callsign": "80152f",
+      "spd": 438.5,
       "alt": 0
     },
     {
-      "seq": 17892,
-      "ts": 1779119028129,
+      "seq": 18570,
+      "ts": 1779124985259,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2625,
-      "dist": 3.8
+      "callsign": "AIC6TL",
+      "alt": 2225,
+      "dist": 6.4
     },
     {
-      "seq": 17891,
-      "ts": 1779119026131,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "QTR55J",
-      "spd": 520.8,
-      "alt": 0
-    },
-    {
-      "seq": 17890,
-      "ts": 1779119026130,
+      "seq": 18569,
+      "ts": 1779124983258,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2625,
-      "dist": 3.8
+      "callsign": "AIC6TL",
+      "alt": 2200,
+      "dist": 6.3
     },
     {
-      "seq": 17889,
-      "ts": 1779119024129,
-      "cat": "adsb",
-      "sub": "high_speed",
-      "sev": "info",
-      "callsign": "QTR55J",
-      "spd": 520.8,
-      "alt": 0
-    },
-    {
-      "seq": 17888,
-      "ts": 1779119024128,
+      "seq": 18568,
+      "ts": 1779124981258,
       "cat": "adsb",
       "sub": "low_altitude",
       "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2600,
-      "dist": 3.5
-    },
-    {
-      "seq": 17887,
-      "ts": 1779119022126,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2500,
-      "dist": 2.7
-    },
-    {
-      "seq": 17886,
-      "ts": 1779119020126,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2500,
-      "dist": 2.7
-    },
-    {
-      "seq": 17885,
-      "ts": 1779119018126,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
-      "alt": 2500,
-      "dist": 2.7
-    },
-    {
-      "seq": 17884,
-      "ts": 1779119016124,
-      "cat": "adsb",
-      "sub": "low_altitude",
-      "sev": "warn",
-      "callsign": "AIC4DV",
+      "callsign": "AIC6TL",
       "alt": 2175,
-      "dist": 0.3
+      "dist": 6.2
+    },
+    {
+      "seq": 18567,
+      "ts": 1779124979257,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2150,
+      "dist": 6
+    },
+    {
+      "seq": 18566,
+      "ts": 1779124977255,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2125,
+      "dist": 5.9
+    },
+    {
+      "seq": 18565,
+      "ts": 1779124975254,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2075,
+      "dist": 5.6
+    },
+    {
+      "seq": 18564,
+      "ts": 1779124973254,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2075,
+      "dist": 5.6
+    },
+    {
+      "seq": 18563,
+      "ts": 1779124971253,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2075,
+      "dist": 5.6
+    },
+    {
+      "seq": 18562,
+      "ts": 1779124969253,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2025,
+      "dist": 5.5
+    },
+    {
+      "seq": 18561,
+      "ts": 1779124967251,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2000,
+      "dist": 0
+    },
+    {
+      "seq": 18560,
+      "ts": 1779124965250,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 2000,
+      "dist": 0
+    },
+    {
+      "seq": 18559,
+      "ts": 1779124963249,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1975,
+      "dist": 0
+    },
+    {
+      "seq": 18558,
+      "ts": 1779124961248,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1975,
+      "dist": 0
+    },
+    {
+      "seq": 18557,
+      "ts": 1779124959246,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1900,
+      "dist": 0
+    },
+    {
+      "seq": 18556,
+      "ts": 1779124957245,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1900,
+      "dist": 0
+    },
+    {
+      "seq": 18555,
+      "ts": 1779124955245,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1900,
+      "dist": 0
+    },
+    {
+      "seq": 18554,
+      "ts": 1779124953244,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1900,
+      "dist": 0
+    },
+    {
+      "seq": 18553,
+      "ts": 1779124951242,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIC6TL",
+      "alt": 1875,
+      "dist": 0
+    },
+    {
+      "seq": 18552,
+      "ts": 1779124933235,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "80152f",
+      "alt": 0,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18551,
+      "ts": 1779124737158,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "89652d",
+      "alt": 34000,
+      "spd": 442.5,
+      "hdg": 265.2,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18550,
+      "ts": 1779124707144,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "801540",
+      "alt": 36000,
+      "spd": 431.8,
+      "hdg": 236.24,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18549,
+      "ts": 1779124677143,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18548,
+      "ts": 1779124675136,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18547,
+      "ts": 1779124673133,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18546,
+      "ts": 1779124671131,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18545,
+      "ts": 1779124669131,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18544,
+      "ts": 1779124667130,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18543,
+      "ts": 1779124665129,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18542,
+      "ts": 1779124663127,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18541,
+      "ts": 1779124661126,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18540,
+      "ts": 1779124659125,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18539,
+      "ts": 1779124657125,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18538,
+      "ts": 1779124655124,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18537,
+      "ts": 1779124653124,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18536,
+      "ts": 1779124651122,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18535,
+      "ts": 1779124649121,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18534,
+      "ts": 1779124647121,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 431.8,
+      "alt": 0
+    },
+    {
+      "seq": 18533,
+      "ts": 1779124645119,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 432.7,
+      "alt": 0
+    },
+    {
+      "seq": 18532,
+      "ts": 1779124643119,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 432.7,
+      "alt": 0
+    },
+    {
+      "seq": 18531,
+      "ts": 1779124641119,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 432.7,
+      "alt": 0
+    },
+    {
+      "seq": 18530,
+      "ts": 1779124639117,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 432.7,
+      "alt": 0
+    },
+    {
+      "seq": 18529,
+      "ts": 1779124637117,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "80161c",
+      "spd": 432.7,
+      "alt": 0
+    },
+    {
+      "seq": 18528,
+      "ts": 1779124575092,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "80161c",
+      "alt": 32025,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 47.7,
+      "squawk": 0
+    },
+    {
+      "seq": 18527,
+      "ts": 1779124090913,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18526,
+      "ts": 1779124088911,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18525,
+      "ts": 1779124086910,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18524,
+      "ts": 1779124084910,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18523,
+      "ts": 1779124082909,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18522,
+      "ts": 1779124080908,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18521,
+      "ts": 1779124078908,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18520,
+      "ts": 1779124076907,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "4080f9",
+      "spd": 505.9,
+      "alt": 0
+    },
+    {
+      "seq": 18519,
+      "ts": 1779124076906,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "4080f9",
+      "alt": 0,
+      "spd": 505.9,
+      "hdg": 86.6,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18518,
+      "ts": 1779123906843,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "IGO083",
+      "spd": 431,
+      "alt": 0
+    },
+    {
+      "seq": 18517,
+      "ts": 1779123826814,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005f",
+      "spd": 542.4,
+      "alt": 0
+    },
+    {
+      "seq": 18516,
+      "ts": 1779123824815,
+      "cat": "adsb",
+      "sub": "high_speed",
+      "sev": "info",
+      "callsign": "71005f",
+      "spd": 542,
+      "alt": 0
+    },
+    {
+      "seq": 18515,
+      "ts": 1779123824814,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "06a07f",
+      "alt": 32000,
+      "spd": 0,
+      "hdg": 0,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18514,
+      "ts": 1779123824814,
+      "cat": "adsb",
+      "sub": "new_flight",
+      "sev": "info",
+      "callsign": "71005f",
+      "alt": 0,
+      "spd": 542,
+      "hdg": 92.29,
+      "dist": 0,
+      "squawk": 0
+    },
+    {
+      "seq": 18513,
+      "ts": 1779123534707,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIQ145",
+      "alt": 1300,
+      "dist": 0
+    },
+    {
+      "seq": 18512,
+      "ts": 1779123532706,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIQ145",
+      "alt": 1300,
+      "dist": 0
+    },
+    {
+      "seq": 18511,
+      "ts": 1779123530706,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "AIQ145",
+      "alt": 1300,
+      "dist": 0
+    },
+    {
+      "seq": 18510,
+      "ts": 1779123528704,
+      "cat": "adsb",
+      "sub": "low_altitude",
+      "sev": "warn",
+      "callsign": "880c49",
+      "alt": 1300,
+      "dist": 0
     }
   ],
-  "_eventSeq": 18083
+  "_eventSeq": 18709
 }

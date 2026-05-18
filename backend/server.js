@@ -48,6 +48,13 @@ historyManager.setLimits(config.storage?.historyLimits);
 
 let seenFlights = new Set();
 let seenBle     = new Set();
+const alertCooldown = new Map(); // key -> last alert ts
+function canAlert(key, cooldownMs=60000){
+  const now=Date.now();
+  if(alertCooldown.has(key)&&now-alertCooldown.get(key)<cooldownMs)return false;
+  alertCooldown.set(key,now);
+  return true;
+}
 
 // ── Express ──────────────────────────────────────────────────
 const app = express();
@@ -242,15 +249,21 @@ adsbModule.start({
     });
     // Low altitude
     flights.filter(f => f.alt < 5000 && f.alt > 0).forEach(f => {
-      pushEvent("adsb", "low_altitude",
-        { callsign: f.callsign || f.id, alt: f.alt, dist: f.dist }, "warn");
-      pushAlert(`Low altitude: ${f.callsign || f.id} at ${f.alt}ft`, "warn");
+      const key=`low_alt_${f.callsign||f.id}`;
+      if(canAlert(key,60000)){
+        pushEvent("adsb", "low_altitude",
+          { callsign: f.callsign || f.id, alt: f.alt, dist: f.dist }, "warn");
+        pushAlert(`Low altitude: ${f.callsign || f.id} at ${f.alt}ft`, "warn");
+      }
     });
     // High speed — only alert if below FL200 (unusual) or truly extreme (>600kt)
     flights.filter(f => (f.spd > 600) || (f.spd > 400 && f.alt < 20000)).forEach(f => {
-      pushEvent("adsb", "high_speed",
-        { callsign: f.callsign || f.id, spd: f.spd, alt: f.alt });
-      pushAlert(`High speed: ${f.callsign || f.id} at ${f.spd}kt`, "info");
+      const key=`high_spd_${f.callsign||f.id}`;
+      if(canAlert(key,120000)){
+        pushEvent("adsb", "high_speed",
+          { callsign: f.callsign || f.id, spd: f.spd, alt: f.alt });
+        pushAlert(`High speed: ${f.callsign || f.id} at ${f.spd}kt`, "info");
+      }
     });
     // No callsign
     flights.filter(f => !f.callsign && f.id).forEach(f => {
